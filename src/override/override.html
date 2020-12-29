@@ -3,11 +3,29 @@
 <head>
 	<title>New Tab / sesh</title>
 	<link rel="stylesheet" href="index.css"></link>
-	<script src="moment.js"></script>"
+	<script src="moment.js"></script>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@300;400;900&family=Source+Sans+Pro:wght@300;400;900&display=swap" rel="stylesheet">
 </head>
 <body>
-	<div id="seshParent" class="theme-blue"></div>
-	<div className="settingsContainer"></div>
+	<div id="seshParent" class="theme-blue">
+		<div class="settingsContainer">
+			<div class="title">
+				What do you want to see on New Tab?
+			</div>
+			<div class="optionsContainer">
+				<div class="option" value="nothing">Nothing</div>
+				<div class="option" value="bookmarks">Bookmarks</div>
+				<div class="option" value="message">Message</div>
+				<div class="option" value="time">Time</div>
+				<div class="option" value="date-time">Date&Time</div>
+			</div>
+			<div class="optionCustomization"></div>
+			<div class="finish">
+				<img src="icons/finish.svg" alt="finish setup" />
+			</div>
+		</div>
+	</div>
 	<script src="index.js" ></script>
 </body>
 </html>

@@ -6,6 +6,7 @@ const initialState = {
 window.onload = (event) => {
     console.log('init sesh...');
     initSesh();
+    initSetup();
 };
 
 function initSesh() {
@@ -57,15 +58,38 @@ function loadApp(state) {
             setInterval(updateTime, 500);
             return;
         }
+        case 'nothing':
         default: {
-            console.log(`default case`);
+            console.log(`doing nothing`);
         }
     }
+}
 
-    function updateTime() {
-        let timeContainer = document.getElementById("timeContainer");
-        if(timeContainer) {
-            timeContainer.innerHTML = moment().format('h:mma');
-        }
+function updateTime() {
+    let timeContainer = document.getElementById("timeContainer");
+    if(timeContainer) {
+        timeContainer.innerHTML = moment().format('h:mma');
     }
+}
+
+function updateState(event) {
+    const mode = event.target.getAttribute("value");
+    console.log(`updating state`, mode);
+    updateStateBuffer('mode', mode);
+
+}
+
+function initSetup() {
+    let elements = document.getElementsByClassName("option");
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', updateState, false);
+    }
+}
+
+function updateStateBuffer(mode, value) {
+    stateBuffer[mode] = value;
+}
+
+function finishSetup() {
+    console.log(`will store`, stateBuffer);
 }
