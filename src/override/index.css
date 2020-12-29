@@ -1,0 +1,50 @@
+#seshParent {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#messageContainer, #dateTimeContainer {
+    text-align: center;
+    padding: 20px 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    font-size: 40px;
+    font-weight: 900;
+}
+
+#dateTimeContainer {
+    flex-direction: column;
+    font-size: 45px;
+}
+#dateTimeContainer #dateContainer {
+    font-weight: 400;
+    padding: 5px 15px;
+    font-size: 20px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+
+.settingsContainer {
+    display: none;
+    opacity: 0;
+}
+
+
+/*  Themes  */
+.theme-blue {
+    background: radial-gradient(circle, #150C1E, #08040B);
+}
+.theme-blue * {
+    color: white;
+}
+.theme-blue #dateContainer {
+    background: radial-gradient(circle, #2B3286, #322991, #6827C8);
+}
