@@ -1,6 +1,7 @@
 const stateBuffer = {
     mode: "date-time",
     message: "The majority of people don't even get an opportunity to make a change. You do. So do it.",
+    theme: 'theme-blues',
 }
 
 window.onload = (event) => {
