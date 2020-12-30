@@ -51,10 +51,10 @@
     background: radial-gradient(circle, #1E0C0C, #0B0404);
 }
 .theme-hot .optionsContainer .option {
-    background: linear-gradient(to bottom right, #531616, #530000);
+    background: linear-gradient(to bottom right, #580E32, #710C21);
 }
 .theme-hot .optionsContainer .option:hover {
-    background: linear-gradient(to bottom right, #8A1934, #710101, #710101);
+    background: linear-gradient(to bottom right, #8A1934, #710101);
 }
 .theme-hot .optionsContainer .option.active {
     background: linear-gradient(to bottom right, #862B4C, #912929, #C8272A);
@@ -65,9 +65,84 @@
 .theme-hot #settingsContainer #finish:hover {
     background: linear-gradient(to bottom right, #8A1934, #710101, #710101);
 }
-#themesContainer .theme-blues {
-    background: linear-gradient(to bottom right, #8A1934, #710101, #710101) !important;
+#themesContainer .theme-hot {
+    background: linear-gradient(to bottom right, #8A1934, #710101) !important;
 }
-#themesContainer .theme-blues:hover {
+#themesContainer .theme-hot:hover {
     background: linear-gradient(to bottom right, #862B4C, #912929, #C8272A) !important;
+}
+
+
+/* Greens */
+.theme-greens {
+    background: radial-gradient(circle, #0C1E18, #0B0404);
+}
+.theme-greens * {
+    color: white;
+}
+.theme-greens #dateContainer {
+    background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666);
+}
+.theme-greens #settingsContainer{
+    background: radial-gradient(circle, #0C1E18, #0B0404);
+}
+.theme-greens .optionsContainer .option {
+    background: linear-gradient(to bottom right, #0F352A, #0F1C1E);
+}
+.theme-greens .optionsContainer .option:hover {
+    background: linear-gradient(to bottom right, #1C4F37, #164443, #175748);
+}
+.theme-greens .optionsContainer .option.active {
+    background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666);
+}
+.theme-greens #settingsContainer #finish {
+    background: linear-gradient(to bottom right, #1C4F37, #164443, #175748);
+}
+.theme-greens #settingsContainer #finish:hover {
+    background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666);
+}
+#themesContainer .theme-greens {
+    background: linear-gradient(to bottom right, #1C4F37, #164443, #175748) !important;
+}
+#themesContainer .theme-greens:hover {
+    background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666) !important;
+}
+
+
+/* Ninja */
+.theme-ninja {
+    background: radial-gradient(circle, #030303, #000000);
+}
+.theme-ninja * {
+    color: white;
+}
+.theme-ninja #dateContainer {
+    background: radial-gradient(circle, #0D0D0D, #141414);
+}
+.theme-ninja #settingsContainer{
+    background: radial-gradient(circle, #030303, #000000);
+}
+.theme-ninja .optionsContainer .option {
+    background: linear-gradient(to bottom right, #000000, #000000);
+}
+.theme-ninja .optionsContainer .option:hover {
+    background: linear-gradient(to bottom right, #090909, #0D0D0D);
+}
+.theme-ninja .optionsContainer .option.active {
+    background: radial-gradient(circle, #0D0D0D, #141414);
+}
+.theme-ninja #settingsContainer #finish {
+    background: linear-gradient(to bottom right, #090909, #0D0D0D);
+}
+.theme-ninja #settingsContainer #finish:hover {
+    background: radial-gradient(circle, #0D0D0D, #141414);
+}
+#themesContainer .theme-ninja {
+    background: linear-gradient(to bottom right, #090909, #0D0D0D) !important;
+}
+#themesContainer .theme-ninja:hover {
+    background: radial-gradient(circle, #0D0D0D, #141414) !important;
+}
+.theme-ninja #timeContainer, .theme-ninja #messageContainer, .theme-ninja #messageInput {
+    font-weight: 300 !important;
 }

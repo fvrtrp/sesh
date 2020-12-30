@@ -31,9 +31,9 @@ function fetchState() {
         console.log('Value currently is ', result.state);
         if(!result.state) {
             document.getElementById("settingsContainer").classList.add('show');
-            
         }
         else {
+            document.getElementById("seshParent").className = result.state.theme;
             loadApp(result.state);
         }
     });
@@ -92,6 +92,19 @@ function updateTime() {
     }
 }
 
+function initSetup() {
+    let elements = document.getElementsByClassName("option");
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener('click', updateState, false);
+    }
+
+    let themeButtons = document.getElementsByClassName("preview");
+    for (let i = 0; i < elements.length; i++) {
+        if(themeButtons[i])
+            themeButtons[i].addEventListener('click', updateTheme, false);
+    }
+}
+
 function updateState(event) {
     let elements = document.getElementsByClassName("option");
     for (let i = 0; i < elements.length; i++) {
@@ -114,15 +127,16 @@ function updateMessage(event) {
     // console.log(`new state buffer`, stateBuffer);
 }
 
-function initSetup() {
-    let elements = document.getElementsByClassName("option");
+function updateTheme(event) {
+    let elements = document.getElementsByClassName("preview");
     for (let i = 0; i < elements.length; i++) {
-        elements[i].addEventListener('click', updateState, false);
+        elements[i].classList.remove('active');
     }
-}
-
-function updateStateBuffer(mode, value) {
-    stateBuffer[mode] = value;
+    event.target.classList.add('active');
+    const theme = event.target.getAttribute("value");
+    // console.log(`updating theme`, theme);
+    stateBuffer['theme'] = theme;
+    document.getElementById("seshParent").className = theme;
 }
 
 function finishSetup() {
