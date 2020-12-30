@@ -1,4 +1,4 @@
-const initialState = {
+const stateBuffer = {
     mode: "date-time",
     message: "The majority of people don't even get an opportunity to make a change. You do. So do it.",
 }
@@ -26,13 +26,17 @@ function initSesh() {
 }
 
 function fetchState() {
-    chrome.storage.local.set({"state": initialState}, function() {
-        console.log('Value is set to ', initialState);
-        chrome.storage.local.get(['state'], function(result) {
-            console.log('Value currently is ', result.state);
+    chrome.storage.local.get(['state'], function(result) {
+        console.log('Value currently is ', result.state);
+        if(!result.state) {
+            document.getElementById("settingsContainer").classList.add('show');
+            
+        }
+        else {
             loadApp(result.state);
-            });
-        });
+        }
+    });
+    //chrome.storage.local.clear();
 }
     
 function loadApp(state) {
@@ -42,6 +46,8 @@ function loadApp(state) {
             target.id = "messageContainer";
             target.innerHTML = state.message;
             document.getElementById("seshParent").appendChild(target);
+
+            document.getElementById("messageInput").setAttribute("value", state.message);
             return;
         }
         case 'time': {
@@ -52,7 +58,7 @@ function loadApp(state) {
             timeContainer.innerHTML = moment().format('h:mma');
             document.getElementById("seshParent").appendChild(target);
             document.getElementById("dateTimeContainer").appendChild(timeContainer);
-            setInterval(updateTime, 30000);
+            setInterval(updateTime, 10000);
             return;
         }
         case 'date-time': {
@@ -67,9 +73,10 @@ function loadApp(state) {
             document.getElementById("seshParent").appendChild(target);
             document.getElementById("dateTimeContainer").appendChild(timeContainer);
             document.getElementById("dateTimeContainer").appendChild(dateContainer);
-            setInterval(updateTime, 30000);
+            setInterval(updateTime, 10000);
             return;
         }
+        case 'bookmarks':
         case 'nothing':
         default: {
             console.log(`doing nothing`);
@@ -85,10 +92,25 @@ function updateTime() {
 }
 
 function updateState(event) {
+    let elements = document.getElementsByClassName("option");
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].classList.remove('active');
+    }
+    event.target.classList.add('active');
     const mode = event.target.getAttribute("value");
-    console.log(`updating state`, mode);
-    updateStateBuffer('mode', mode);
-
+    // console.log(`updating state`, mode);
+    stateBuffer['mode'] = mode;
+    if(mode === 'message') {
+        document.getElementById("messageInput").classList.add("show");
+        document.getElementById("messageInput").addEventListener('change', updateMessage, false);
+    }
+    else {
+        document.getElementById("messageInput").classList.remove("show");
+    }
+}
+function updateMessage(event) {
+    stateBuffer['message'] = event.target.value;
+    // console.log(`new state buffer`, stateBuffer);
 }
 
 function initSetup() {
@@ -103,6 +125,20 @@ function updateStateBuffer(mode, value) {
 }
 
 function finishSetup() {
-    //console.log(`will store`, stateBuffer);
-    toggleSettingsScreen(false);
+    // console.log(`will store`, stateBuffer);
+
+    chrome.storage.local.set({"state": stateBuffer}, function() {
+        clearCurrentDivs();
+        loadApp(stateBuffer);
+        toggleSettingsScreen(false);
+    });
+}
+
+function clearCurrentDivs() {
+    const dateTimeContainer = document.getElementById("dateTimeContainer")
+    if(dateTimeContainer)
+        dateTimeContainer.remove();
+    const messageContainer = document.getElementById("messageContainer")
+    if(messageContainer)
+        messageContainer.remove();
 }
