@@ -6,8 +6,20 @@ const initialState = {
 window.onload = (event) => {
     console.log('init sesh...');
     initSesh();
+    initSettingsEventListener();
     initSetup();
 };
+
+function initSettingsEventListener() {
+    document.getElementById("settings").addEventListener('click', ()=>toggleSettingsScreen(true), false);
+    document.getElementById("finish").addEventListener('click', ()=>finishSetup(), false);
+}
+function toggleSettingsScreen(flag) {
+    if(flag)
+        document.getElementById("settingsContainer").classList.add('show');
+    else
+        document.getElementById("settingsContainer").classList.remove('show');
+}
 
 function initSesh() {
     fetchState();
@@ -40,7 +52,7 @@ function loadApp(state) {
             timeContainer.innerHTML = moment().format('h:mma');
             document.getElementById("seshParent").appendChild(target);
             document.getElementById("dateTimeContainer").appendChild(timeContainer);
-            setInterval(updateTime, 500);
+            setInterval(updateTime, 30000);
             return;
         }
         case 'date-time': {
@@ -55,7 +67,7 @@ function loadApp(state) {
             document.getElementById("seshParent").appendChild(target);
             document.getElementById("dateTimeContainer").appendChild(timeContainer);
             document.getElementById("dateTimeContainer").appendChild(dateContainer);
-            setInterval(updateTime, 500);
+            setInterval(updateTime, 30000);
             return;
         }
         case 'nothing':
@@ -91,5 +103,6 @@ function updateStateBuffer(mode, value) {
 }
 
 function finishSetup() {
-    console.log(`will store`, stateBuffer);
+    //console.log(`will store`, stateBuffer);
+    toggleSettingsScreen(false);
 }

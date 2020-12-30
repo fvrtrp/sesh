@@ -1,0 +1,28 @@
+/*  Themes  */
+.theme-blue {
+    background: radial-gradient(circle, #150C1E, #08040B);
+}
+.theme-blue * {
+    color: white;
+}
+.theme-blue #dateContainer {
+    background: radial-gradient(circle, #2B3286, #322991, #6827C8);
+}
+.theme-blue #settingsContainer{
+    background: radial-gradient(circle, #150C1E, #08040B);
+}
+.theme-blue .optionsContainer .option {
+    background: linear-gradient(to bottom right, #260F35, #0F0F1E);
+}
+.theme-blue .optionsContainer .option:hover {
+    background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757);
+}
+.theme-blue .optionsContainer .option.active {
+    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
+}
+.theme-blue #settingsContainer #finish {
+    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
+}
+.theme-blue #settingsContainer #finish:hover {
+    background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757);
+}
