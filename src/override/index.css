@@ -107,6 +107,7 @@ body {
     display: flex;
     justify-content: center;
     margin: 50px 0;
+    position: relative;
 }
 #settingsContainer .optionsContainer .option {
     margin: 15px;
@@ -127,6 +128,9 @@ body {
 #settingsContainer .optionCustomization {
     display: flex;
     justify-content: center;
+    position: absolute;
+    width: 70%;
+    top: 225px;
 }
 #settingsContainer .optionCustomization #messageInput{
     background: rgba(0,0,0,0.5);
