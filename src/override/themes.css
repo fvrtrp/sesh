@@ -83,6 +83,18 @@
 #themesContainer .theme-hot:hover {
     background: linear-gradient(to bottom right, #862B4C, #912929, #C8272A) !important;
 }
+.theme-hot .bookmarkItem .itemTitle{
+    background: linear-gradient(to bottom right, #580E32, #710C21);
+}
+.theme-hot .bookmarkItem:hover .itemTitle {
+    background: linear-gradient(to bottom right, #8A1934, #710101);
+}
+.theme-hot .bookmarkItem .itemTitle.active{
+    background: linear-gradient(to bottom right, #862B4C, #912929, #C8272A);
+}
+.theme-hot .connector {
+    background: #A22871;
+}
 
 
 /* Greens */
@@ -118,6 +130,18 @@
 }
 #themesContainer .theme-greens:hover {
     background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666) !important;
+}
+.theme-greens .bookmarkItem .itemTitle{
+    background: linear-gradient(to bottom right, #0F352A, #0F1C1E);
+}
+.theme-greens .bookmarkItem:hover .itemTitle {
+    background: linear-gradient(to bottom right, #1C4F37, #164443, #175748);
+}
+.theme-greens .bookmarkItem .itemTitle.active{
+    background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666);
+}
+.theme-greens .connector {
+    background: #0C5A39;
 }
 
 
@@ -157,4 +181,17 @@
 }
 .theme-ninja #timeContainer, .theme-ninja #messageContainer, .theme-ninja #messageInput {
     font-weight: 300 !important;
+}
+.theme-ninja .bookmarkItem .itemTitle{
+    background: linear-gradient(to bottom right, #000000, #000000);
+}
+.theme-ninja .bookmarkItem:hover .itemTitle {
+    background: linear-gradient(to bottom right, #090909, #0D0D0D);
+}
+.theme-ninja .bookmarkItem .itemTitle.active{
+    background: radial-gradient(circle, #0D0D0D, #141414);
+}
+.theme-ninja .connector {
+    background: #26D92D;
+    height: 2px !important;
 }
