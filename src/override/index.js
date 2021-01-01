@@ -27,13 +27,14 @@ function getBookmarks() {
 }
 
 function populateBookmarks(level, bookmarks) {
-    if(!bookmarks || bookmarks.length === 0)
-        return;
     for(let i=level; i<level+10; i++) {
         let oldBookmarksLevel = document.getElementById(`bookmarkLevel-${i}`);
         if(oldBookmarksLevel)
             oldBookmarksLevel.remove();
     }
+    if(!bookmarks || bookmarks.length === 0)
+        return;
+
     let bookmarkLevel = document.createElement("div");
     bookmarkLevel.id = `bookmarkLevel-${level}`;
     bookmarkLevel.className = "bookmarkLevel";
@@ -44,42 +45,64 @@ function populateBookmarks(level, bookmarks) {
         bookmarkItem.id = `bookmark-${item.title}`;
         bookmarkItem.className = `bookmarkItem ${item.url ? `link` : `folder`}`;
         //bookmarkItem.innerHTML = item.title;
-        bookmarkItem.setAttribute("value", item.url);
+        // bookmarkItem.setAttribute("value", item.url);
+
+        let connectorLeft = document.createElement("div");
+        connectorLeft.className = `connectorLeft connector-to-${level}`;
+        bookmarkItem.appendChild(connectorLeft);
+        document.getElementById(`bookmarkLevel-${level}`).appendChild(bookmarkItem);
 
         let title = document.createElement("div");
         title.className = `itemTitle itemTitle-${level}`;
         title.innerHTML = item.title;
         bookmarkItem.appendChild(title);
 
-        let connector = document.createElement("div");
-        connector.className = `connector connector-from-${level}`;
-        bookmarkItem.appendChild(connector);
+        let connectorRight = document.createElement("div");
+        connectorRight.className = `connectorRight connector-from-${level}`;
+        bookmarkItem.appendChild(connectorRight);
         document.getElementById(`bookmarkLevel-${level}`).appendChild(bookmarkItem);
 
-        bookmarkItem.addEventListener('click', (event)=>selectBookmark(event, level, item), false);
-        if(item.url)
-            bookmarkItem.addEventListener('dblclick', ()=>openLink(item.url), false);
+        bookmarkItem.addEventListener('click', (event)=>selectBookmark(event, level, item, index), false);
+        bookmarkItem.addEventListener('dblclick', ()=>openLinks(item), false);
     });
 }
 
-function selectBookmark(event, level, item) {
-    console.log(`details`, event.target, item);
+function selectBookmark(event, level, item, index) {
+    console.log(`details`, item, index, item.children ? item.children.length : null);
+
     populateBookmarks(level+1, item.children);
 
-    let connectors = document.getElementsByClassName(`connector-from-${level}`);
-    for (let i = 0; i < connectors.length; i++) {
-        connectors[i].classList.remove('active');
+    let rightConnectors = document.getElementsByClassName(`connector-from-${level}`);
+    for (let i = 0; i < rightConnectors.length; i++) {
+        rightConnectors[i].classList.remove('active');
     }
+    let leftConnectors = document.getElementsByClassName(`connector-to-${level+1}`);
+    for (let i = 0; i < leftConnectors.length; i++) {
+        if(leftConnectors[i])
+            leftConnectors[i].classList.add('active');
+    }
+
     let titles = document.getElementsByClassName(`itemTitle-${level}`);
     for (let i = 0; i < titles.length; i++) {
         titles[i].classList.remove('active');
     }
     event.target.classList.add('active');
     if(!item.url)
-        event.target.parentElement.querySelector('.connector').classList.add('active');
+        event.target.parentElement.querySelector('.connectorRight').classList.add('active');
+
+    
+    let connectorVertical = document.createElement("div");
+    connectorVertical.className = `connectorVertical connector-on-${level}`;
+    const connectorHeight = item.children ? (index < item.children.length ? item.children.length*70 - 70 : (index+1)*70 - 70) : 0;
+    connectorVertical.style.height = `${connectorHeight}px`;
+    document.getElementById(`bookmarkLevel-${level+1}`).appendChild(connectorVertical);
 }
-function openLink(url) {
-    window.open(url, "_blank");
+
+function openLinks(item) {
+    if(item.url)
+        window.open(item.url, "_blank");
+    else
+        item.children.forEach(child => openLinks(child));
 }
 
 

@@ -213,15 +213,20 @@ body {
 }
 #bookmarksContainer .bookmarkLevel {
     height: 100%;
+    min-width: 500px;
     overflow-y: scroll;
     overflow-x: hidden;
+    position: relative;
+}
+#bookmarksContainer .bookmarkLevel:first-child {
+    margin-left: -100px;
 }
 #bookmarksContainer .bookmarkLevel::-webkit-scrollbar {
     display: none;
 }
 #bookmarksContainer .bookmarkItem {
     position: relative;
-    width: 350px;
+    width: 500px;
     display: flex;
     align-items: center;
     height: 60px;
@@ -232,7 +237,7 @@ body {
 }
 #bookmarksContainer .bookmarkItem .itemTitle {
     position: relative;
-    width: 250px;
+    width: 300px;
     display: flex;
     align-items: center;
     padding: 5px 25px;
@@ -241,6 +246,7 @@ body {
     font-family: 'Source Code Pro', sans-serif;
     font-weight: 400;
     box-sizing: border-box;
+    word-break: break-all;
 }
 #bookmarksContainer .bookmarkItem:not(:last-child) {
     margin-bottom: 10px;
@@ -250,15 +256,32 @@ body {
 }
 #bookmarksContainer .bookmarkItem.folder {
     font-size: 20px;
+    border-radius: 6px;
 }
-#bookmarksContainer .connector {
+#bookmarksContainer .connectorRight {
     position: absolute;
-    right: 0;
-    height: 4px;
+    right: 0px;
+    height: 3px;
     width: 100px;
     opacity: 0;
-    transition: opacity 0.3s ease-in-out;
 }
-#bookmarksContainer .connector.active {
+#bookmarksContainer .connectorRight.active {
     opacity: 1;
+}
+#bookmarksContainer .connectorLeft {
+    /* position: absolute; */
+    left: -100px;
+    height: 3px;
+    width: 100px;
+    opacity: 0;
+}
+#bookmarksContainer .connectorLeft.active {
+    opacity: 1;
+}
+
+#bookmarksContainer .connectorVertical {
+    width: 4px;
+    position: absolute;
+    top: 30px;
+    left: 0;
 }
