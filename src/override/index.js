@@ -43,12 +43,17 @@ function populateBookmarks(level, bookmarks) {
         let bookmarkItem = document.createElement("div");
         bookmarkItem.id = `bookmark-${item.title}`;
         bookmarkItem.className = `bookmarkItem ${item.url ? `link` : `folder`}`;
-        bookmarkItem.innerHTML = item.title;
+        //bookmarkItem.innerHTML = item.title;
         bookmarkItem.setAttribute("value", item.url);
 
-        // let connector = document.createElement("div");
-        // connector.className = "connector";
-        // bookmarkItem.appendChild(connector);
+        let title = document.createElement("div");
+        title.className = `itemTitle itemTitle-${level}`;
+        title.innerHTML = item.title;
+        bookmarkItem.appendChild(title);
+
+        let connector = document.createElement("div");
+        connector.className = `connector connector-from-${level}`;
+        bookmarkItem.appendChild(connector);
         document.getElementById(`bookmarkLevel-${level}`).appendChild(bookmarkItem);
 
         bookmarkItem.addEventListener('click', (event)=>selectBookmark(event, level, item), false);
@@ -60,7 +65,18 @@ function populateBookmarks(level, bookmarks) {
 function selectBookmark(event, level, item) {
     console.log(`details`, event.target, item);
     populateBookmarks(level+1, item.children);
-    //event.target.classList.add('acti')
+
+    let connectors = document.getElementsByClassName(`connector-from-${level}`);
+    for (let i = 0; i < connectors.length; i++) {
+        connectors[i].classList.remove('active');
+    }
+    let titles = document.getElementsByClassName(`itemTitle-${level}`);
+    for (let i = 0; i < titles.length; i++) {
+        titles[i].classList.remove('active');
+    }
+    event.target.classList.add('active');
+    if(!item.url)
+        event.target.parentElement.querySelector('.connector').classList.add('active');
 }
 function openLink(url) {
     window.open(url, "_blank");

@@ -221,29 +221,44 @@ body {
 }
 #bookmarksContainer .bookmarkItem {
     position: relative;
-    width: 250px;
+    width: 350px;
     display: flex;
     align-items: center;
-    padding-left: 25px;
-    text-overflow: ellipsis;
     height: 60px;
     font-family: 'Source Code Pro', sans-serif;
     font-weight: 400;
     cursor: pointer;
     user-select: none;
 }
+#bookmarksContainer .bookmarkItem .itemTitle {
+    position: relative;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding: 5px 25px;
+    text-overflow: ellipsis;
+    height: 60px;
+    font-family: 'Source Code Pro', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+}
 #bookmarksContainer .bookmarkItem:not(:last-child) {
     margin-bottom: 10px;
 }
 #bookmarksContainer .bookmarkItem.link {
-    font-size: 14px;
+    font-size: 13px;
 }
 #bookmarksContainer .bookmarkItem.folder {
-    font-size: 22px;
+    font-size: 20px;
 }
 #bookmarksContainer .connector {
     position: absolute;
     right: 0;
     height: 3px;
     width: 100px;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+#bookmarksContainer .connector.active {
+    opacity: 1;
 }
