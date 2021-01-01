@@ -9,7 +9,63 @@ window.onload = (event) => {
     initSesh();
     initSettingsEventListener();
     initSetup();
+    // getBookmarks();
 };
+
+function getBookmarks() {
+    chrome.bookmarks.getTree(function(result) {
+        console.log(`results`, result);
+        if(result && result[0]) {
+            if(result[0].children) {
+                let results = result[0].children;
+                const bookmarksBar = results.filter(item => item.title === 'Bookmarks bar')[0];
+                console.log(`bookmarks bar`, bookmarksBar);
+                populateBookmarks(0, bookmarksBar.children);
+            }
+        }
+    });
+}
+
+function populateBookmarks(level, bookmarks) {
+    if(!bookmarks || bookmarks.length === 0)
+        return;
+    for(let i=level; i<level+10; i++) {
+        let oldBookmarksLevel = document.getElementById(`bookmarkLevel-${i}`);
+        if(oldBookmarksLevel)
+            oldBookmarksLevel.remove();
+    }
+    let bookmarkLevel = document.createElement("div");
+    bookmarkLevel.id = `bookmarkLevel-${level}`;
+    bookmarkLevel.className = "bookmarkLevel";
+    document.getElementById("bookmarksContainer").appendChild(bookmarkLevel);
+    
+    bookmarks.forEach((item, index) => {
+        let bookmarkItem = document.createElement("div");
+        bookmarkItem.id = `bookmark-${item.title}`;
+        bookmarkItem.className = `bookmarkItem ${item.url ? `link` : `folder`}`;
+        bookmarkItem.innerHTML = item.title;
+        bookmarkItem.setAttribute("value", item.url);
+
+        // let connector = document.createElement("div");
+        // connector.className = "connector";
+        // bookmarkItem.appendChild(connector);
+        document.getElementById(`bookmarkLevel-${level}`).appendChild(bookmarkItem);
+
+        bookmarkItem.addEventListener('click', (event)=>selectBookmark(event, level, item), false);
+        if(item.url)
+            bookmarkItem.addEventListener('dblclick', ()=>openLink(item.url), false);
+    });
+}
+
+function selectBookmark(event, level, item) {
+    console.log(`details`, event.target, item);
+    populateBookmarks(level+1, item.children);
+    //event.target.classList.add('acti')
+}
+function openLink(url) {
+    window.open(url, "_blank");
+}
+
 
 function initSettingsEventListener() {
     document.getElementById("settings").addEventListener('click', ()=>toggleSettingsScreen(true), false);
@@ -77,7 +133,13 @@ function loadApp(state) {
             setInterval(updateTime, 10000);
             return;
         }
-        case 'bookmarks':
+        case 'bookmarks': {
+            let bookmarksContainer = document.createElement("div");
+            bookmarksContainer.id = "bookmarksContainer";
+            document.getElementById("seshParent").appendChild(bookmarksContainer);
+            getBookmarks();
+            return;
+        }
         case 'nothing':
         default: {
             console.log(`doing nothing`);
@@ -156,4 +218,7 @@ function clearCurrentDivs() {
     const messageContainer = document.getElementById("messageContainer")
     if(messageContainer)
         messageContainer.remove();
+    const bookmarksContainer = document.getElementById("bookmarksContainer")
+    if(bookmarksContainer)
+        bookmarksContainer.remove();
 }

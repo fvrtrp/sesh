@@ -195,3 +195,55 @@ body {
     width: 30px;
     height: 30px;
 }
+
+
+#bookmarksContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 100px;
+    display: flex;
+    overflow-x: scroll;
+    box-sizing: border-box;
+}
+#bookmarksContainer::-webkit-scrollbar {
+    display: none;
+}
+#bookmarksContainer .bookmarkLevel {
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+#bookmarksContainer .bookmarkLevel::-webkit-scrollbar {
+    display: none;
+}
+#bookmarksContainer .bookmarkItem {
+    position: relative;
+    width: 250px;
+    display: flex;
+    align-items: center;
+    padding-left: 25px;
+    text-overflow: ellipsis;
+    height: 60px;
+    font-family: 'Source Code Pro', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
+}
+#bookmarksContainer .bookmarkItem:not(:last-child) {
+    margin-bottom: 10px;
+}
+#bookmarksContainer .bookmarkItem.link {
+    font-size: 14px;
+}
+#bookmarksContainer .bookmarkItem.folder {
+    font-size: 22px;
+}
+#bookmarksContainer .connector {
+    position: absolute;
+    right: 0;
+    height: 3px;
+    width: 100px;
+}
