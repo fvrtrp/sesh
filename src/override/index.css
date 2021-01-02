@@ -251,11 +251,16 @@ body {
 #bookmarksContainer .bookmarkItem:not(:last-child) {
     margin-bottom: 10px;
 }
+#bookmarksContainer .bookmarkLevel:not(:first-child) .bookmarkItem:not(:last-child) {
+    margin-bottom: 30px;
+}
 #bookmarksContainer .bookmarkItem.link {
     font-size: 13px;
 }
 #bookmarksContainer .bookmarkItem.folder {
     font-size: 20px;
+}
+#bookmarksContainer .bookmarkItem.folder .itemTitle{
     border-radius: 6px;
 }
 #bookmarksContainer .connectorRight {
@@ -284,4 +289,37 @@ body {
     position: absolute;
     top: 30px;
     left: 0;
+}
+
+#bookmarksContainer #bookmarksStatusBar {
+    position: absolute;
+    bottom: 10px;
+    height: 70px;
+    width: 95%;
+    left: 2.5%;
+    padding: 20px 35px;
+    border-radius: 20px;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    font-family: 'Source Code Pro', sans-serif;
+    cursor: pointer;
+}
+#bookmarksContainer #bookmarksStatusBar.active {
+    opacity: 1;
+    pointer-events: all;
+}
+#bookmarksContainer #bookmarksStatusBar .itemContents {
+    flex-basis: 15%;
+}
+#bookmarksContainer #bookmarksStatusBar .itemDescription {
+    flex-basis: 65%;
+    font-size: 18px;
+}
+#bookmarksContainer #bookmarksStatusBar .itemAction {
+    flex-basis: 20%;
 }

@@ -71,6 +71,7 @@ function selectBookmark(event, level, item, index) {
     console.log(`details`, item, index, item.children ? item.children.length : null);
 
     populateBookmarks(level+1, item.children);
+    updateStatusBar(item);
 
     let rightConnectors = document.getElementsByClassName(`connector-from-${level}`);
     for (let i = 0; i < rightConnectors.length; i++) {
@@ -93,9 +94,49 @@ function selectBookmark(event, level, item, index) {
     
     let connectorVertical = document.createElement("div");
     connectorVertical.className = `connectorVertical connector-on-${level}`;
-    const connectorHeight = item.children ? (index < item.children.length ? item.children.length*70 - 70 : (index+1)*70 - 70) : 0;
+    const connectorHeight = item.children ? (index < item.children.length ? item.children.length*90 - 90 : (index+1)*90 - 90) : 0;
     connectorVertical.style.height = `${connectorHeight}px`;
-    document.getElementById(`bookmarkLevel-${level+1}`).appendChild(connectorVertical);
+    const nextLevel = document.getElementById(`bookmarkLevel-${level+1}`);
+    if(nextLevel)
+        nextLevel.appendChild(connectorVertical);
+}
+
+function updateStatusBar(item) {
+    let oldStatusBar = document.getElementById("bookmarksStatusBar");
+    if(oldStatusBar)
+        oldStatusBar.remove();
+    let itemContents = document.createElement("div");
+    itemContents.className = "itemContents";
+    if(item.url) {
+        itemContents.innerHTML = `Type: Link`
+    }
+    else {
+        const numFolders = item.children.filter(child => !child.url).length;
+        const numLinks = item.children.filter(child => child.url).length;
+        itemContents.innerHTML = `Type: Folder<br/>${numLinks} links, ${numFolders} folders`;
+    }
+
+    let itemDescription = document.createElement("div");
+    itemDescription.className = "itemDescription";
+    if(item.url) {
+        itemDescription.innerHTML = `${item.title}<br/>${item.url}`
+    }
+    else {
+        itemDescription.innerHTML = `${item.title}`
+    }
+
+    let itemAction = document.createElement("div");
+    itemAction.className= "itemAction";
+    itemAction.innerHTML = item.url ? `Double click to open link in new tab`
+                                    : `Double click to open all links in the folder`;
+
+    const bookmarksStatusBar = document.createElement("div");
+    bookmarksStatusBar.id = "bookmarksStatusBar";
+    bookmarksStatusBar.classList = "active";
+    bookmarksStatusBar.appendChild(itemContents);
+    bookmarksStatusBar.appendChild(itemDescription);
+    bookmarksStatusBar.appendChild(itemAction);
+    document.getElementById("bookmarksContainer").appendChild(bookmarksStatusBar);
 }
 
 function openLinks(item) {
@@ -123,7 +164,7 @@ function initSesh() {
 
 function fetchState() {
     chrome.storage.local.get(['state'], function(result) {
-        console.log('Value currently is ', result.state);
+        //console.log('Value currently is ', result.state);
         if(!result.state) {
             document.getElementById("settingsContainer").classList.add('show');
         }

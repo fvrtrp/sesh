@@ -46,6 +46,13 @@
 .theme-blues .connectorLeft, .theme-blues .connectorRight, .theme-blues .connectorVertical {
     background: #0F1454;
 }
+.theme-blues #bookmarksStatusBar {
+    background: linear-gradient(to bottom right, #2B328677, #32299177, #6827C877);
+}
+.theme-blues #bookmarksStatusBar:hover {
+    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
+}
+
 
 
 
@@ -95,6 +102,12 @@
 .theme-hot .connectorLeft, .theme-hot .connectorRight, .theme-hot .connectorVertical {
     background: #A22871;
 }
+.theme-hot #bookmarksStatusBar {
+    background: linear-gradient(to bottom right, #862B4C77, #91292977, #C8272A77);
+}
+.theme-hot #bookmarksStatusBar:hover {
+    background: linear-gradient(to bottom right, #862B4C, #912929, #C8272A);
+}
 
 
 /* Greens */
@@ -142,6 +155,12 @@
 }
 .theme-greens .connectorLeft, .theme-greens .connectorRight, .theme-greens .connectorVertical {
     background: #0C5A39;
+}
+.theme-greens #bookmarksStatusBar {
+    background: linear-gradient(to bottom right, #27B53977, #25AD5777, #2D866677);
+}
+.theme-greens #bookmarksStatusBar:hover {
+    background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666);
 }
 
 
@@ -197,4 +216,10 @@
 }
 .theme-ninja .connectorVertical {
     background: #26D92D;
+}
+.theme-ninja #bookmarksStatusBar {
+    background: radial-gradient(circle, #0D0D0D77, #14141477);
+}
+.theme-ninja #bookmarksStatusBar:hover {
+    background: radial-gradient(circle, #0D0D0D, #141414);
 }
