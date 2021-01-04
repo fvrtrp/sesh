@@ -19,10 +19,13 @@
     overflow-x: hidden;
     position: relative;
 }
-#bookmarksContainer .bookmarkLevel:nth-child(2) {
+#bookmarksContainer .bookmarkLevel:nth-child(2), #bookmarksContainer .bookmarkLevel:nth-child(3) {
     margin-left: -100px;
 }
 #bookmarksContainer .bookmarkLevel::-webkit-scrollbar {
+    display: none;
+}
+#bookmarksContainer .bookmarkLevel.hide {
     display: none;
 }
 #bookmarksContainer .bookmarkItem {
@@ -138,4 +141,46 @@
     border-radius: 6px;
     font-family: 'Source Code Pro', sans-serif;
     font-weight: 400;
+}
+
+#bookmarksContainer #searchContainer {
+    display: none;
+}
+#bookmarksContainer #searchContainer.show {
+    display: block;
+}
+
+#bookmarksContainer #searchContainer #searchEmpty{
+    font-family: 'Source Code Pro', sans-serif;
+    font-size: 20px;
+    font-weight: 300;
+}
+#bookmarksContainer #searchContainer #searchResultsContainer{
+    height: 100%;
+    overflow-y: scroll;
+}
+#bookmarksContainer #searchContainer #searchResultsContainer::-webkit-scrollbar {
+    display: none;
+}
+#bookmarksContainer #searchContainer .searchResult {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 5px 25px;
+    text-overflow: ellipsis;
+    height: 100px;
+    font-family: 'Source Code Pro', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    word-break: break-all; 
+    margin-bottom: 20px;
+    cursor: pointer;
+}
+#bookmarksContainer #searchContainer .searchResult .resultTitle{
+    font-size: 20px;
+    margin: 5px 0 10px;
+}
+#bookmarksContainer #searchContainer .searchResult .resultTitle{
+    font-size: 14px;
 }

@@ -24,7 +24,14 @@ function getBookmarks() {
                 bookmarkSearch.id = `bookmarkSearch`;
                 bookmarkSearch.className = "bookmarkSearch";
                 bookmarkSearch.setAttribute("placeholder", "search");
+
+                let bookmarkSearchContainer = document.createElement("div");
+                bookmarkSearchContainer.id = `searchContainer`;
+                bookmarkSearchContainer.className = "searchContainer";
+
                 document.getElementById("bookmarksContainer").appendChild(bookmarkSearch);
+                document.getElementById("bookmarksContainer").appendChild(bookmarkSearchContainer);
+
                 bookmarkSearch.addEventListener('input', (event)=>searchBookmarks(event, bookmarksBar), false);
 
                 //console.log(`bookmarks bar`, bookmarksBar);
@@ -36,10 +43,63 @@ function getBookmarks() {
 
 function searchBookmarks(event, bookmarks) {
     const value = event.target.value;
-    if(value.trim() === '')
+    const searchContainer = document.getElementById("searchContainer");
+    let oldResults = document.getElementById(`searchResultsContainer`);
+    if(oldResults)
+        oldResults.remove();
+
+    if(value.trim() === '') {
+        searchContainer.classList.remove("show");
+        let bookmarkLevels = document.getElementsByClassName(`bookmarkLevel`);
+        for (let i = 0; i < bookmarkLevels.length; i++) {
+            bookmarkLevels[i].classList.remove('hide');
+        }
         return;
+    }
+    let bookmarkLevels = document.getElementsByClassName(`bookmarkLevel`);
+    for (let i = 0; i < bookmarkLevels.length; i++) {
+        bookmarkLevels[i].classList.add('hide');
+    }
+
     const searchResults = recursiveSearch([], bookmarks, value.toLowerCase());
     console.log(`results`, searchResults);
+    searchContainer.classList.add("show");
+
+    if(searchResults.length === 0) {
+        //show no results div
+        if(document.getElementById('searchEmpty'))
+            return;
+        let searchEmpty = document.createElement("div");
+        searchEmpty.id = `searchEmpty`;
+        searchEmpty.className = "searchEmpty";
+        searchEmpty.innerHTML = 'No results';
+        searchContainer.appendChild(searchEmpty);
+    }
+    else {
+        //hide search empty, show searchresults div
+        if(document.getElementById('searchEmpty'))
+            document.getElementById('searchEmpty').remove();
+
+        const searchResultsContainer = document.createElement("div");
+        searchResultsContainer.id = "searchResultsContainer";
+        searchContainer.appendChild(searchResultsContainer);
+
+        searchResults.forEach(item => {
+            let result = document.createElement("div");
+            result.className = "searchResult";
+            searchResultsContainer.appendChild(result);
+            let resultTitle = document.createElement("div");
+            resultTitle.className = "resultTitle";
+            resultTitle.innerHTML = item.title;
+            let resultLink = document.createElement("div");
+            resultLink.className = "resultLink";
+            resultLink.innerHTML = item.url;
+            result.appendChild(resultTitle);
+            result.appendChild(resultLink);
+            result.addEventListener('click', ()=>updateStatusBar(item), false);
+            result.addEventListener('dblclick', ()=>openLinks(item), false);
+        });
+    }
 }
 
 function recursiveSearch(list, bookmarks, value) {
