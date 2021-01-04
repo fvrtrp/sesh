@@ -40,7 +40,7 @@
 .theme-blues .bookmarkItem:hover .itemTitle, .theme-blues .searchResult:hover {
     background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757);
 }
-.theme-blues .bookmarkItem .itemTitle.active{
+.theme-blues .bookmarkItem .itemTitle.active, .theme-blues .searchResult.active{
     background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
 }
 .theme-blues .connectorLeft, .theme-blues .connectorRight {
@@ -99,7 +99,7 @@
 .theme-hot .bookmarkItem:hover .itemTitle, .theme-hot .searchResult:hover {
     background: linear-gradient(to bottom right, #8A1934, #710101);
 }
-.theme-hot .bookmarkItem .itemTitle.active{
+.theme-hot .bookmarkItem .itemTitle.active, .theme-hot .searchResult.active{
     background: linear-gradient(to bottom right, #862B4C, #912929, #C8272A);
 }
 .theme-hot .connectorLeft, .theme-hot .connectorRight {
@@ -153,10 +153,10 @@
 .theme-greens .bookmarkItem .itemTitle, .theme-greens .searchResult{
     background: linear-gradient(to bottom right, #0F352A, #0F1C1E);
 }
-.theme-greens .bookmarkItem:hover .itemTitle, .theme-greens .searchResult {
+.theme-greens .bookmarkItem:hover .itemTitle, .theme-greens .searchResult:hover {
     background: linear-gradient(to bottom right, #1C4F37, #164443, #175748);
 }
-.theme-greens .bookmarkItem .itemTitle.active{
+.theme-greens .bookmarkItem .itemTitle.active, .theme-greens .searchResult.active{
     background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666);
 }
 .theme-greens .connectorLeft, .theme-greens .connectorRight {
@@ -216,7 +216,7 @@
 .theme-ninja .bookmarkItem:hover .itemTitle, .theme-ninja .searchResult:hover {
     background: linear-gradient(to bottom right, #090909, #0D0D0D);
 }
-.theme-ninja .bookmarkItem .itemTitle.active{
+.theme-ninja .bookmarkItem .itemTitle.active, .theme-ninja .searchResult.active{
     background: radial-gradient(circle, #0D0D0D, #141414);
 }
 .theme-ninja .connectorLeft, .theme-ninja .connectorRight {

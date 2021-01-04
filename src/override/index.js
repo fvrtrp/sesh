@@ -96,10 +96,18 @@ function searchBookmarks(event, bookmarks) {
             resultLink.innerHTML = item.url;
             result.appendChild(resultTitle);
             result.appendChild(resultLink);
-            result.addEventListener('click', ()=>updateStatusBar(item), false);
+            result.addEventListener('click', (event)=>clickSearchResult(event, item), false);
             result.addEventListener('dblclick', ()=>openLinks(item), false);
         });
     }
+}
+function clickSearchResult(event, item) {
+    const searchResults = document.getElementsByClassName("searchResult");
+    for(let i=0; i<searchResults.length; i++) {
+        searchResults[i].classList.remove("active");
+    }
+    event.target.classList.add("active");
+    updateStatusBar(item);
 }
 
 function recursiveSearch(list, bookmarks, value) {
@@ -159,6 +167,7 @@ function populateBookmarks(level, bookmarks) {
 
         bookmarkItem.addEventListener('click', (event)=>selectBookmark(event, level, item, index), false);
         bookmarkItem.addEventListener('dblclick', ()=>openLinks(item), false);
+        bookmarkItem.addEventListener('contextmenu', (event)=>openRandomLink(event, item), false);
     });
 }
 
@@ -223,7 +232,7 @@ function updateStatusBar(item) {
     let itemAction = document.createElement("div");
     itemAction.className= "itemAction";
     itemAction.innerHTML = item.url ? `Double click to open link in new tab`
-                                    : `Double click to open all links in the folder`;
+                                    : `Double click to open all links in the folder<br/>Right click to open a random link from the folder`;
 
     const bookmarksStatusBar = document.createElement("div");
     bookmarksStatusBar.id = "bookmarksStatusBar";
@@ -239,6 +248,26 @@ function openLinks(item) {
         window.open(item.url, "_blank");
     else
         item.children.forEach(child => openLinks(child));
+}
+function openRandomLink(event, item) {
+    event.preventDefault();
+    if(item.url)
+        return;
+    else {
+        let selected={}, counter = 50;
+        // selected = item.children[Math.floor(Math.random()*(item.children.length))];
+        // console.log(`select int`, selected, counter);
+        do {
+            selected = item.children[Math.floor(Math.random()*(item.children.length - 1))];
+            counter--;
+            // console.log(`select int`, selected, counter);
+        } while(!selected.url && counter>=0);
+        if(!selected.url)
+            return;
+        // console.log(`random`, selected.url);
+        window.open(selected.url);
+    }
+        
 }
 
 
