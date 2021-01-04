@@ -46,7 +46,7 @@
 .theme-blues .connectorLeft, .theme-blues .connectorRight {
     background: #0F1454;
 }
-.theme-blues.connectorVertical {
+.theme-blues .connectorVertical {
     background: linear-gradient(to bottom, #0F1454, #0256F9, #0F1454);
 }
 .theme-blues #bookmarksStatusBar {

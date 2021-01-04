@@ -19,7 +19,7 @@
     overflow-x: hidden;
     position: relative;
 }
-#bookmarksContainer .bookmarkLevel:first-child {
+#bookmarksContainer .bookmarkLevel:nth-child(2) {
     margin-left: -100px;
 }
 #bookmarksContainer .bookmarkLevel::-webkit-scrollbar {
@@ -124,4 +124,18 @@
 }
 #bookmarksContainer #bookmarksStatusBar .itemAction {
     flex-basis: 20%;
+}
+
+#bookmarksContainer #bookmarkSearch {
+    position: absolute;
+    top: 25px;
+    width: 500px;
+    border: none;
+    outline: none;
+    background: #171717;
+    padding: 15px 50px;
+    box-sizing: border-box;
+    border-radius: 6px;
+    font-family: 'Source Code Pro', sans-serif;
+    font-weight: 400;
 }

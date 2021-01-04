@@ -19,11 +19,46 @@ function getBookmarks() {
             if(result[0].children) {
                 let results = result[0].children;
                 const bookmarksBar = results.filter(item => item.title === 'Bookmarks bar')[0];
+
+                let bookmarkSearch = document.createElement("input");
+                bookmarkSearch.id = `bookmarkSearch`;
+                bookmarkSearch.className = "bookmarkSearch";
+                bookmarkSearch.setAttribute("placeholder", "search");
+                document.getElementById("bookmarksContainer").appendChild(bookmarkSearch);
+                bookmarkSearch.addEventListener('input', (event)=>searchBookmarks(event, bookmarksBar), false);
+
                 //console.log(`bookmarks bar`, bookmarksBar);
                 populateBookmarks(0, bookmarksBar.children);
             }
         }
     });
+}
+
+function searchBookmarks(event, bookmarks) {
+    const value = event.target.value;
+    if(value.trim() === '')
+        return;
+    const searchResults = recursiveSearch([], bookmarks, value.toLowerCase());
+    console.log(`results`, searchResults);
+}
+
+function recursiveSearch(list, bookmarks, value) {
+    if(!bookmarks || (!bookmarks.url && (!bookmarks.children || bookmarks.children.length === 0))) {
+        return list;
+    }
+    if(bookmarks.url) {
+        if(bookmarks.url.toLowerCase().includes(value) || bookmarks.title.toLowerCase().includes(value))
+            return [...list, { title: bookmarks.title, url: bookmarks.url }];
+        else
+            return list;
+    }
+    else {
+        let newList= [];
+        bookmarks.children.forEach(item => {
+            newList = recursiveSearch(newList, item, value);
+        });
+        return [...list, ...newList];
+    }
 }
 
 function populateBookmarks(level, bookmarks) {
