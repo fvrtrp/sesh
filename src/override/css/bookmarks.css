@@ -1,0 +1,127 @@
+#bookmarksContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    padding: 100px;
+    display: flex;
+    overflow-x: scroll;
+    box-sizing: border-box;
+}
+#bookmarksContainer::-webkit-scrollbar {
+    display: none;
+}
+#bookmarksContainer .bookmarkLevel {
+    height: 100%;
+    min-width: 500px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    position: relative;
+}
+#bookmarksContainer .bookmarkLevel:first-child {
+    margin-left: -100px;
+}
+#bookmarksContainer .bookmarkLevel::-webkit-scrollbar {
+    display: none;
+}
+#bookmarksContainer .bookmarkItem {
+    position: relative;
+    width: 500px;
+    display: flex;
+    align-items: center;
+    height: 60px;
+    font-family: 'Source Code Pro', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    user-select: none;
+}
+#bookmarksContainer .bookmarkItem .itemTitle {
+    position: relative;
+    width: 300px;
+    display: flex;
+    align-items: center;
+    padding: 5px 25px;
+    text-overflow: ellipsis;
+    height: 60px;
+    font-family: 'Source Code Pro', sans-serif;
+    font-weight: 400;
+    box-sizing: border-box;
+    word-break: break-all;
+}
+#bookmarksContainer .bookmarkItem:not(:last-child) {
+    margin-bottom: 10px;
+}
+#bookmarksContainer .bookmarkLevel:not(:first-child) .bookmarkItem:not(:last-child) {
+    margin-bottom: 30px;
+}
+#bookmarksContainer .bookmarkItem.link {
+    font-size: 13px;
+}
+#bookmarksContainer .bookmarkItem.folder {
+    font-size: 20px;
+}
+#bookmarksContainer .bookmarkItem.folder .itemTitle{
+    border-radius: 6px;
+}
+#bookmarksContainer .connectorRight {
+    position: absolute;
+    right: 0px;
+    height: 4px;
+    width: 100px;
+    opacity: 0;
+}
+#bookmarksContainer .connectorRight.active {
+    opacity: 1;
+}
+#bookmarksContainer .connectorLeft {
+    /* position: absolute; */
+    left: -100px;
+    height: 4px;
+    width: 100px;
+    opacity: 0;
+}
+#bookmarksContainer .connectorLeft.active {
+    opacity: 1;
+}
+
+#bookmarksContainer .connectorVertical {
+    width: 4px;
+    position: absolute;
+    top: 30px;
+    left: 0;
+    z-index: 2;
+}
+
+#bookmarksContainer #bookmarksStatusBar {
+    position: absolute;
+    bottom: 10px;
+    height: 70px;
+    width: 95%;
+    left: 2.5%;
+    padding: 20px 35px;
+    border-radius: 20px;
+    z-index: 3;
+    opacity: 0;
+    pointer-events: none;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    font-family: 'Source Code Pro', sans-serif;
+    cursor: pointer;
+}
+#bookmarksContainer #bookmarksStatusBar.active {
+    opacity: 1;
+    pointer-events: all;
+}
+#bookmarksContainer #bookmarksStatusBar .itemContents {
+    flex-basis: 15%;
+}
+#bookmarksContainer #bookmarksStatusBar .itemDescription {
+    flex-basis: 65%;
+    font-size: 18px;
+}
+#bookmarksContainer #bookmarksStatusBar .itemAction {
+    flex-basis: 20%;
+}
