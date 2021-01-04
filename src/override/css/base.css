@@ -19,7 +19,7 @@ body {
     left: -30px;
     top: 50%;
     cursor: pointer;
-    color: #cacaca;
+    color: #cacaca !important;
     z-index: 3;
     transition: color 0.3s ease-in-out;
 }
@@ -28,7 +28,7 @@ body {
     text-decoration: none;
 }
 .attribution:hover {
-    color: white;
+    color: white !important;
 }
 
 #settings {
