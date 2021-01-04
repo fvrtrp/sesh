@@ -1,4 +1,4 @@
-const stateBuffer = {
+let stateBuffer = {
     mode: "date-time",
     message: "The majority of people don't even get an opportunity to make a change. You do. So do it.",
     theme: 'theme-blues',
@@ -14,12 +14,12 @@ window.onload = (event) => {
 
 function getBookmarks() {
     chrome.bookmarks.getTree(function(result) {
-        console.log(`results`, result);
+        //console.log(`results`, result);
         if(result && result[0]) {
             if(result[0].children) {
                 let results = result[0].children;
                 const bookmarksBar = results.filter(item => item.title === 'Bookmarks bar')[0];
-                console.log(`bookmarks bar`, bookmarksBar);
+                //console.log(`bookmarks bar`, bookmarksBar);
                 populateBookmarks(0, bookmarksBar.children);
             }
         }
@@ -68,7 +68,7 @@ function populateBookmarks(level, bookmarks) {
 }
 
 function selectBookmark(event, level, item, index) {
-    console.log(`details`, item, index, item.children ? item.children.length : null);
+    //console.log(`details`, item, index, item.children ? item.children.length : null);
 
     populateBookmarks(level+1, item.children);
     updateStatusBar(item);
@@ -94,8 +94,8 @@ function selectBookmark(event, level, item, index) {
     
     let connectorVertical = document.createElement("div");
     connectorVertical.className = `connectorVertical connector-on-${level}`;
-    const connectorHeight = item.children ? (index < item.children.length ? item.children.length*90 - 90 : (index+1)*90 - 90) : 0;
-    connectorVertical.style.height = `${connectorHeight}px`;
+    const connectorHeight = item.children ? (index < item.children.length ? `${item.children.length*90 - 90}px` : '100%') : `0`;
+    connectorVertical.style.height = connectorHeight;
     const nextLevel = document.getElementById(`bookmarkLevel-${level+1}`);
     if(nextLevel)
         nextLevel.appendChild(connectorVertical);
@@ -152,10 +152,27 @@ function initSettingsEventListener() {
     document.getElementById("finish").addEventListener('click', ()=>finishSetup(), false);
 }
 function toggleSettingsScreen(flag) {
-    if(flag)
+    if(flag) {
         document.getElementById("settingsContainer").classList.add('show');
-    else
+        document.getElementById("settings").classList.remove('show');
+    }
+    else {
         document.getElementById("settingsContainer").classList.remove('show');
+        document.getElementById("settings").classList.add('show');
+    }
+}
+
+function preloadSettings(state) {
+    //console.log(`preloading settings with`, state);
+    const option = document.querySelector(`div[value=${state.mode}]`);
+    if(option) {
+        option.classList.add('active');
+    }
+    const theme = document.querySelector(`div[value=${state.theme}]`);
+    if(theme) {
+        theme.classList.add('active');
+    }
+    stateBuffer = state;
 }
 
 function initSesh() {
@@ -183,9 +200,8 @@ function loadApp(state) {
             target.id = "messageContainer";
             target.innerHTML = state.message;
             document.getElementById("seshParent").appendChild(target);
-
             document.getElementById("messageInput").setAttribute("value", state.message);
-            return;
+            break;
         }
         case 'time': {
             let target = document.createElement("div");
@@ -196,7 +212,7 @@ function loadApp(state) {
             document.getElementById("seshParent").appendChild(target);
             document.getElementById("dateTimeContainer").appendChild(timeContainer);
             setInterval(updateTime, 10000);
-            return;
+            break;
         }
         case 'date-time': {
             let target = document.createElement("div");
@@ -211,20 +227,21 @@ function loadApp(state) {
             document.getElementById("dateTimeContainer").appendChild(timeContainer);
             document.getElementById("dateTimeContainer").appendChild(dateContainer);
             setInterval(updateTime, 10000);
-            return;
+            break;
         }
         case 'bookmarks': {
             let bookmarksContainer = document.createElement("div");
             bookmarksContainer.id = "bookmarksContainer";
             document.getElementById("seshParent").appendChild(bookmarksContainer);
             getBookmarks();
-            return;
+            break;
         }
         case 'nothing':
         default: {
             console.log(`doing nothing`);
         }
     }
+    preloadSettings(state);
 }
 
 function updateTime() {
