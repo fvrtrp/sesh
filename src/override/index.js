@@ -221,18 +221,25 @@ function updateStatusBar(item) {
     }
 
     let itemDescription = document.createElement("div");
+    let heading = document.createElement("div");
+    let link = document.createElement("div");
+    heading.className = "descriptionHeading";
+    link.className="descriptionLink";
     itemDescription.className = "itemDescription";
     if(item.url) {
-        itemDescription.innerHTML = `${item.title}<br/>${item.url}`
+        heading.innerHTML = `${item.title}`;
+        link.innerHTML = `${item.url}`;
+        itemDescription.appendChild(heading);
+        itemDescription.appendChild(link);
     }
     else {
-        itemDescription.innerHTML = `${item.title}`
+        itemDescription.innerHTML = `${item.title}`;
     }
 
     let itemAction = document.createElement("div");
     itemAction.className= "itemAction";
-    itemAction.innerHTML = item.url ? `Double click to open link in new tab`
-                                    : `Double click to open all links in the folder<br/>Right click to open a random link from the folder`;
+    itemAction.innerHTML = item.url ? `Double click card to open link in new tab`
+                                    : `Double click card to open all links in folder<br/>Right click to open a random link from the folder`;
 
     const bookmarksStatusBar = document.createElement("div");
     bookmarksStatusBar.id = "bookmarksStatusBar";
