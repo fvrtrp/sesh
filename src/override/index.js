@@ -9,16 +9,16 @@ window.onload = (event) => {
     initSesh();
     initSettingsEventListener();
     initSetup();
-    // getBookmarks();
+    // chrome.storage.local.clear();
 };
 
 function getBookmarks() {
     chrome.bookmarks.getTree(function(result) {
-        //console.log(`results`, result);
+        // console.log(`results`, result);
         if(result && result[0]) {
             if(result[0].children) {
                 let results = result[0].children;
-                const bookmarksBar = results.filter(item => item.title === 'Bookmarks bar')[0];
+                const bookmarksBar = results.filter(item => item.title.toLowerCase() === 'Bookmarks bar'.toLowerCase())[0];
 
                 let bookmarkSearch = document.createElement("input");
                 bookmarkSearch.id = `bookmarkSearch`;
@@ -314,6 +314,8 @@ function fetchState() {
     chrome.storage.local.get(['state'], function(result) {
         //console.log('Value currently is ', result.state);
         if(!result.state) {
+            preloadSettings(stateBuffer);
+            document.getElementById("seshParent").className = stateBuffer.theme;
             document.getElementById("settingsContainer").classList.add('show');
         }
         else {
