@@ -6,11 +6,41 @@ let stateBuffer = {
 
 window.onload = (event) => {
     console.log('init sesh...');
+
     initSesh();
     initSettingsEventListener();
     initSetup();
     // chrome.storage.local.clear();
 };
+
+function getDate() {
+    const date = new Date();
+    const formatted = `${date.getDate()}${nth(date.getDate())} ${date.toLocaleString('default', {month: 'short'})} , ${date.getFullYear()}`;
+    return formatted;
+
+    function nth(d) {
+        if (d > 3 && d < 21) return 'th';
+        switch (d % 10) {
+          case 1:  return "st";
+          case 2:  return "nd";
+          case 3:  return "rd";
+          default: return "th";
+        }
+    }
+}
+
+function getTime() {
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    let strTime = hours + ':' + minutes + ampm;
+    return strTime;
+}
+
 
 function getBookmarks() {
     chrome.bookmarks.getTree(function(result) {
@@ -341,10 +371,10 @@ function loadApp(state) {
             target.id = "dateTimeContainer";
             let timeContainer = document.createElement("div");
             timeContainer.id = "timeContainer";
-            timeContainer.innerHTML = moment().format('h:mma');
+            timeContainer.innerHTML = getTime();
             document.getElementById("seshParent").appendChild(target);
             document.getElementById("dateTimeContainer").appendChild(timeContainer);
-            setInterval(updateTime, 10000);
+            setInterval(updateDateTime, 5000);
             break;
         }
         case 'date-time': {
@@ -352,14 +382,14 @@ function loadApp(state) {
             target.id = "dateTimeContainer";
             let timeContainer = document.createElement("div");
             timeContainer.id = "timeContainer";
-            timeContainer.innerHTML = moment().format('h:mma');
+            timeContainer.innerHTML = getTime();
             let dateContainer = document.createElement("div");
             dateContainer.id = "dateContainer";
-            dateContainer.innerHTML = moment().format('Do MMM, YYYY');
+            dateContainer.innerHTML = getDate();
             document.getElementById("seshParent").appendChild(target);
             document.getElementById("dateTimeContainer").appendChild(timeContainer);
             document.getElementById("dateTimeContainer").appendChild(dateContainer);
-            setInterval(updateTime, 10000);
+            setInterval(updateDateTime, 5000);
             break;
         }
         case 'bookmarks': {
@@ -371,16 +401,20 @@ function loadApp(state) {
         }
         case 'nothing':
         default: {
-            console.log(`doing nothing`);
+            // console.log(`doing nothing`);
         }
     }
     preloadSettings(state);
 }
 
-function updateTime() {
+function updateDateTime() {
     let timeContainer = document.getElementById("timeContainer");
     if(timeContainer) {
-        timeContainer.innerHTML = moment().format('h:mma');
+        timeContainer.innerHTML = getTime();
+    }
+    let dateContainer = document.getElementById("dateContainer");
+    if(dateContainer) {
+        dateContainer.innerHTML = getDate();
     }
 }
 
