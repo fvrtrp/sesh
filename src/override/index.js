@@ -44,7 +44,6 @@ function getTime() {
 
 function getBookmarks() {
     chrome.bookmarks.getTree(function(result) {
-        // console.log(`results`, result);
         if(result && result[0]) {
             if(result[0].children) {
                 let results = result[0].children;
@@ -64,7 +63,6 @@ function getBookmarks() {
 
                 bookmarkSearch.addEventListener('input', (event)=>searchBookmarks(event, bookmarksBar), false);
 
-                //console.log(`bookmarks bar`, bookmarksBar);
                 populateBookmarks(0, bookmarksBar.children);
             }
         }
@@ -92,7 +90,7 @@ function searchBookmarks(event, bookmarks) {
     }
 
     const searchResults = recursiveSearch([], bookmarks, value.toLowerCase());
-    console.log(`results`, searchResults);
+
     searchContainer.classList.add("show");
 
     if(searchResults.length === 0) {
@@ -202,7 +200,6 @@ function populateBookmarks(level, bookmarks) {
 }
 
 function selectBookmark(event, level, item, index) {
-    //console.log(`details`, item, index, item.children ? item.children.length : null);
 
     populateBookmarks(level+1, item.children);
     updateStatusBar(item);
@@ -292,16 +289,12 @@ function openRandomLink(event, item) {
         return;
     else {
         let selected={}, counter = 50;
-        // selected = item.children[Math.floor(Math.random()*(item.children.length))];
-        // console.log(`select int`, selected, counter);
         do {
             selected = item.children[Math.floor(Math.random()*(item.children.length - 1))];
             counter--;
-            // console.log(`select int`, selected, counter);
         } while(!selected.url && counter>=0);
         if(!selected.url)
             return;
-        // console.log(`random`, selected.url);
         window.open(selected.url);
     }
         
@@ -324,7 +317,6 @@ function toggleSettingsScreen(flag) {
 }
 
 function preloadSettings(state) {
-    //console.log(`preloading settings with`, state);
     const option = document.querySelector(`div[value=${state.mode}]`);
     if(option) {
         option.classList.add('active');
@@ -342,7 +334,6 @@ function initSesh() {
 
 function fetchState() {
     chrome.storage.local.get(['state'], function(result) {
-        //console.log('Value currently is ', result.state);
         if(!result.state) {
             preloadSettings(stateBuffer);
             document.getElementById("seshParent").className = stateBuffer.theme;
@@ -438,7 +429,6 @@ function updateState(event) {
     }
     event.target.classList.add('active');
     const mode = event.target.getAttribute("value");
-    // console.log(`updating state`, mode);
     stateBuffer['mode'] = mode;
     if(mode === 'message') {
         document.getElementById("messageInput").classList.add("show");
@@ -450,7 +440,6 @@ function updateState(event) {
 }
 function updateMessage(event) {
     stateBuffer['message'] = event.target.value;
-    // console.log(`new state buffer`, stateBuffer);
 }
 
 function updateTheme(event) {
@@ -460,14 +449,11 @@ function updateTheme(event) {
     }
     event.target.classList.add('active');
     const theme = event.target.getAttribute("value");
-    // console.log(`updating theme`, theme);
     stateBuffer['theme'] = theme;
     document.getElementById("seshParent").className = theme;
 }
 
 function finishSetup() {
-    // console.log(`will store`, stateBuffer);
-
     chrome.storage.local.set({"state": stateBuffer}, function() {
         clearCurrentDivs();
         loadApp(stateBuffer);
