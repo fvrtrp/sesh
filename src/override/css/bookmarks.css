@@ -130,6 +130,7 @@
 }
 #bookmarksContainer #bookmarksStatusBar .descriptionLink {
     font-size: 12px;
+    font-weight: 300;
 }
 #bookmarksContainer #bookmarksStatusBar .itemAction {
     flex-basis: 20%;
@@ -186,11 +187,12 @@
     user-select: none;
 }
 #bookmarksContainer #searchContainer .searchResult .resultTitle{
-    font-size: 20px;
+    font-size: 16px;
     margin: 5px 0 10px;
     pointer-events: none;
 }
 #bookmarksContainer #searchContainer .searchResult .resultLink{
     font-size: 14px;
+    font-weight: 300;
     pointer-events: none;
 }
