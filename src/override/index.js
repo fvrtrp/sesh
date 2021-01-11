@@ -118,10 +118,10 @@ function searchBookmarks(event, bookmarks) {
             searchResultsContainer.appendChild(result);
             let resultTitle = document.createElement("div");
             resultTitle.className = "resultTitle";
-            resultTitle.innerHTML = item.title;
+            resultTitle.innerHTML = trimText(item.title, 30);
             let resultLink = document.createElement("div");
             resultLink.className = "resultLink";
-            resultLink.innerHTML = item.url;
+            resultLink.innerHTML = trimText(item.url, 50);
             result.appendChild(resultTitle);
             result.appendChild(resultLink);
             result.addEventListener('click', (event)=>clickSearchResult(event, item), false);
@@ -185,7 +185,7 @@ function populateBookmarks(level, bookmarks) {
 
         let title = document.createElement("div");
         title.className = `itemTitle itemTitle-${level}`;
-        title.innerHTML = item.title;
+        title.innerHTML = item.url ? trimText(item.title, 90) : trimText(item.title, 30);
         bookmarkItem.appendChild(title);
 
         let connectorRight = document.createElement("div");
@@ -197,6 +197,10 @@ function populateBookmarks(level, bookmarks) {
         bookmarkItem.addEventListener('dblclick', ()=>openLinks(item), false);
         bookmarkItem.addEventListener('contextmenu', (event)=>openRandomLink(event, item), false);
     });
+}
+
+function trimText(text, limit) {
+    return text.length > limit ? text.substring(0, limit) + '...' : text;
 }
 
 function selectBookmark(event, level, item, index) {
@@ -254,13 +258,13 @@ function updateStatusBar(item) {
     link.className="descriptionLink";
     itemDescription.className = "itemDescription";
     if(item.url) {
-        heading.innerHTML = `${item.title}`;
-        link.innerHTML = `${item.url}`;
+        heading.innerHTML = trimText(item.title, 90);
+        link.innerHTML = trimText(item.url, 100);
         itemDescription.appendChild(heading);
         itemDescription.appendChild(link);
     }
     else {
-        itemDescription.innerHTML = `${item.title}`;
+        itemDescription.innerHTML = trimText(item.title, 90);
     }
 
     let itemAction = document.createElement("div");
