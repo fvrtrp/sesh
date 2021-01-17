@@ -22,7 +22,7 @@ Please contact me at fvrtrp@gmail.com
 ## Authors
 
 Suraj (Fever Trip)
-ex. [@fvrtrp](https://github.com/fvrtrp)
+[@fvrtrp](https://github.com/fvrtrp)
 
 ## Version History
 
@@ -32,5 +32,3 @@ ex. [@fvrtrp](https://github.com/fvrtrp)
 ## License
 
 This project is licensed under the MIT License - see the LICENSE.md file for details
-
-## Acknowledgments
