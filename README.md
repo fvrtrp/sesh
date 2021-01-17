@@ -4,6 +4,7 @@
 ## Description
 
 Get your new tabs looking soothing and minimal. Customize it your way, to show time, date & time, bookmarks, a custom message, or just a beautiful background.
+Chrome store link: https://chrome.google.com/webstore/detail/sesh-beautiful-new-tab/jkgkocdjfgbigcifeofbbpjnghioplle
 
 ## Getting Started
 
@@ -13,7 +14,7 @@ None
 
 ### Installing
 
-https://developer.chrome.com/docs/extensions/mv2/faq/#faq-dev-01
+For local development, see: https://developer.chrome.com/docs/extensions/mv2/faq/#faq-dev-01
 
 ## Help
 
@@ -26,7 +27,7 @@ Suraj (Fever Trip)
 
 ## Version History
 
-* 0.1
+* 0.1.0
     * Initial Release
 
 ## License
