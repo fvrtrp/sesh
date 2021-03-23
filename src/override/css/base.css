@@ -34,8 +34,7 @@ body {
 #settings {
     font-family: 'Source Code Pro', sans-serif;
     font-size: 14px;
-    letter-spacing: 5px;
-    text-decoration: underline;
+    letter-spacing: 1px;
     position: absolute;
     top: 25px;
     right: 25px;

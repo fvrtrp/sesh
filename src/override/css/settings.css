@@ -54,7 +54,7 @@
     top: 225px;
 }
 #settingsContainer .optionCustomization #messageInput{
-    background: rgba(0,0,0,0.5);
+    background: rgba(0,0,0,0.1);
     border: none;
     width: 70%;
     padding: 15px 25px;

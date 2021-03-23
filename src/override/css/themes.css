@@ -232,3 +232,77 @@
 .theme-ninja #bookmarksStatusBar:hover {
     background: radial-gradient(circle, #0D0D0D, #141414);
 }
+
+/* White */
+.theme-white {
+    background: radial-gradient(circle, #FFFFFF, #F3F3F3);
+}
+.theme-white * {
+    color: black;
+}
+.theme-white #dateContainer {
+    background: linear-gradient(to bottom right, #FFFFFF, #F1F1F1, #E4E4E4);
+}
+.theme-white #settingsContainer{
+    background: radial-gradient(circle, #FFFFFF, #F3F3F3);
+}
+.theme-white .optionsContainer .option {
+    background: white;
+    box-shadow: 0px 2px 9px #eaeaea;
+}
+.theme-white .optionsContainer .option:hover {
+    background: linear-gradient(to bottom right, #FFFFFF, #FFFFFF, #ECECEC);
+}
+.theme-white .optionsContainer .option.active {
+    background: linear-gradient(to bottom right, #FFFFFF, #F1F1F1, #E4E4E4);
+}
+.theme-white #settingsContainer #finish {
+    background: linear-gradient(to bottom right, #000000, #111111, #000000);
+}
+.theme-white #settingsContainer #finish:hover {
+    background: linear-gradient(to bottom right, #111111, #222222, #111111);
+}
+#themesContainer .theme-white {
+    background: white !important;
+}
+#themesContainer .theme-white:hover {
+    background: linear-gradient(to bottom right, #FFFFFF, #FFFFFF, #ECECEC) !important;
+}
+.theme-white .bookmarkItem .itemTitle, .theme-white .searchResult{
+    background: white;
+    box-shadow: 0px 2px 9px #eaeaea;
+}
+.theme-white .bookmarkItem:hover .itemTitle, .theme-white .searchResult:hover {
+    background: linear-gradient(to bottom right, #FFFFFF, #FFFFFF, #ECECEC);
+}
+.theme-white .bookmarkItem .itemTitle.active, .theme-white .searchResult.active{
+    background: radial-gradient(to bottom right, #FFFFFF, #F1F1F1, #E4E4E4);
+}
+.theme-white .connectorLeft, .theme-white .connectorRight {
+    background: #E6E6E6;
+}
+.theme-white .connectorVertical {
+    background: linear-gradient(to bottom, #E4E4E4, #F1F1F1, #E4E4E4);
+}
+.theme-white #bookmarksStatusBar {
+    background: linear-gradient(to bottom right, #FFFFFF, #F1F1F1, #E4E4E4);
+    box-shadow: 0px 2px 9px #eaeaea;
+}
+.theme-white #bookmarksStatusBar:hover {
+    background: linear-gradient(to bottom right, #FFFFFF, #FFFFFF, #ECECEC);
+}
+.theme-white #bookmarksContainer #bookmarkSearch {
+    background: white;
+}
+.theme-white #settings, .theme-white .attribution {
+    color: gray !important;
+}
+.theme-white #settings:hover, .theme-white .attribution:hover {
+    color: black !important;
+}
+.theme-white #settingsContainer .optionCustomization #messageInput {
+    font-weight: 700;
+}
+.theme-white #messageContainer, #dateTimeContainer {
+    font-weight: 700;
+}
