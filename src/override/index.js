@@ -394,6 +394,13 @@ function loadApp(state) {
             getBookmarks();
             break;
         }
+        case 'quotes': {
+            let quotesContainer = document.createElement("div");
+            quotesContainer.id = "quotesContainer";
+            document.querySelector("#seshParent").appendChild(quotesContainer);
+            getQuotes();
+            break;
+        }
         case 'nothing':
         default: {
             // console.log(`doing nothing`);
@@ -475,4 +482,16 @@ function clearCurrentDivs() {
     const bookmarksContainer = document.getElementById("bookmarksContainer")
     if(bookmarksContainer)
         bookmarksContainer.remove();
+    const quotesContainer = document.getElementById("quotesContainer")
+    if(quotesContainer)
+        quotesContainer.remove();
+}
+
+function getQuotes() {
+    const randomQuote = quotes[Math.floor(Math.random()*(quotes.length))];
+    console.log(`zzz quotes`, randomQuote);
+    let quoteContainer = document.createElement("div");
+    quoteContainer.innerHTML = randomQuote;
+    quoteContainer.id = "quoteContainer";
+    document.querySelector("#quotesContainer").appendChild(quoteContainer);
 }

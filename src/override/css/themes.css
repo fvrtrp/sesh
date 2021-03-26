@@ -207,7 +207,7 @@
 #themesContainer .theme-ninja:hover {
     background: radial-gradient(circle, #0D0D0D, #141414) !important;
 }
-.theme-ninja #timeContainer, .theme-ninja #messageContainer, .theme-ninja #messageInput {
+.theme-ninja #timeContainer, .theme-ninja #messageContainer, .theme-ninja #messageInput, .theme-ninja #quotesContainer {
     font-weight: 300 !important;
 }
 .theme-ninja .bookmarkItem .itemTitle, .theme-ninja .searchResult{
@@ -303,6 +303,6 @@
 .theme-white #settingsContainer .optionCustomization #messageInput {
     font-weight: 700;
 }
-.theme-white #messageContainer, #dateTimeContainer {
+.theme-white #messageContainer, .theme-white #dateTimeContainer,  .theme-white #quotesContainer {
     font-weight: 700;
 }

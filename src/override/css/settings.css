@@ -42,6 +42,7 @@
     font-family: 'Source Code Pro', sans-serif;
     font-size: 22px;
     cursor: pointer;
+    text-align: center;
 }
 #settingsContainer .optionsContainer .option:hover, #settingsContainer .optionsContainer .option.active {
     font-weight: 400;
