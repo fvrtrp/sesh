@@ -63,7 +63,7 @@
     /* margin: 0 auto; */
     font-size: 30px;
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 900;
+    font-weight: 700;
     display: none;
 }
 #settingsContainer .optionCustomization #messageInput:focus{
@@ -108,15 +108,16 @@
     padding: 15px;
     border-radius: 10px;
     cursor: pointer;
-    font-size: 20px;
+    font-size: 16px;
 }
 #settingsContainer #finish span {
-    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Source Code Pro', sans-serif;
     margin-right: 20px;
     margin-top: -3px;
     text-transform: uppercase;
+    letter-spacing: 2px;
 }
 #settingsContainer #finish img{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
 }
