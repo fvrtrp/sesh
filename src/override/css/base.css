@@ -30,26 +30,32 @@ body {
 .attribution:hover {
     color: white !important;
 }
-
-#settings {
-    font-family: 'Source Code Pro', sans-serif;
-    font-size: 14px;
-    letter-spacing: 1px;
+.buttonContainer {
     position: absolute;
     top: 25px;
     right: 25px;
+    display: flex;
+}
+#settings, #openBookmarks, #closeBookmarks {
+    font-family: 'Source Code Pro', sans-serif;
+    font-size: 14px;
+    letter-spacing: 1px;
     color: #cacaca;
     cursor: pointer;
     z-index: 3;
     transition: color 0.3s ease-in-out;
     opacity: 0;
     pointer-events: none;
+    margin-left: 20px;
+    display: none;
 }
-#settings.show {
+
+#settings.show, #openBookmarks.show, #closeBookmarks.show {
     opacity: 1;
     pointer-events: all;
+    display: block;
 }
-#settings:hover {
+#settings:hover, #openBookmarks:hover, #closeBookmarks:hover {
     color: white;
 }
 

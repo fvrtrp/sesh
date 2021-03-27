@@ -300,23 +300,59 @@ function openRandomLink(event, item) {
         if(!selected.url)
             return;
         window.open(selected.url);
-    }
-        
+    }     
 }
 
 
 function initSettingsEventListener() {
     document.getElementById("settings").addEventListener('click', ()=>toggleSettingsScreen(true), false);
     document.getElementById("finish").addEventListener('click', ()=>finishSetup(), false);
+    document.getElementById("openBookmarks").addEventListener('click', ()=>openBookmarks(), false);
+    document.getElementById("closeBookmarks").addEventListener('click', ()=>closeBookmarks(), false);
 }
+
+function openBookmarks() {
+    clearCurrentDivs();
+    let closeButton = document.querySelector('#closeBookmarks');
+    if(closeButton) 
+        closeButton.classList.add('show');
+    let bookmarksContainer = document.createElement("div");
+    bookmarksContainer.id = "bookmarksContainer";
+    document.getElementById("seshParent").appendChild(bookmarksContainer);
+    let openBookmarks  = document.querySelector('#openBookmarks');
+    if(openBookmarks)
+        openBookmarks.classList.remove('show');
+    let settingsButton  = document.querySelector('#settings');
+    if(settingsButton)
+        settingsButton.classList.remove('show');
+    getBookmarks();
+}
+function closeBookmarks() {
+    clearCurrentDivs();
+    loadApp(stateBuffer);
+    let closeBookmarks  = document.querySelector('#closeBookmarks');
+    if(closeBookmarks)
+        closeBookmarks.classList.remove('show');
+    let openBookmarks  = document.querySelector('#openBookmarks');
+    if(openBookmarks)
+        openBookmarks.classList.add('show');
+    let settingsButton  = document.querySelector('#settings');
+    if(settingsButton)
+        settingsButton.classList.add('show');
+}
+
 function toggleSettingsScreen(flag) {
     if(flag) {
         document.getElementById("settingsContainer").classList.add('show');
+        document.querySelector("#openBookmarks").classList.remove("show");
+        document.querySelector("#closeBookmarks").classList.remove("show");
         document.getElementById("settings").classList.remove('show');
     }
     else {
         document.getElementById("settingsContainer").classList.remove('show');
         document.getElementById("settings").classList.add('show');
+        document.querySelector("#openBookmarks").classList.add("show");
+        document.querySelector("#closeBookmarks").classList.remove("show");
     }
 }
 

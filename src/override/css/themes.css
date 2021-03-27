@@ -297,7 +297,7 @@
 .theme-white #settings, .theme-white .attribution {
     color: gray !important;
 }
-.theme-white #settings:hover, .theme-white .attribution:hover {
+.theme-white #settings:hover, .theme-white .attribution:hover, .theme-white #openBookmarks, .theme-white #closeBookmarks {
     color: black !important;
 }
 .theme-white #settingsContainer .optionCustomization #messageInput {
@@ -305,4 +305,7 @@
 }
 .theme-white #messageContainer, .theme-white #dateTimeContainer,  .theme-white #quotesContainer {
     font-weight: 700;
+}
+.theme-white #settingsContainer #finish span {
+    color: white;
 }
