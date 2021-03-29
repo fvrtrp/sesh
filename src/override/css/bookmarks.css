@@ -28,7 +28,7 @@
 #bookmarksContainer .bookmarkLevel.hide {
     display: none;
 }
-#bookmarksContainer .bookmarkItem {
+.bookmarkItem {
     position: relative;
     width: 500px;
     display: flex;
@@ -39,7 +39,7 @@
     cursor: pointer;
     user-select: none;
 }
-#bookmarksContainer .bookmarkItem .itemTitle {
+.bookmarkItem .itemTitle {
     position: relative;
     width: 300px;
     display: flex;
@@ -58,15 +58,26 @@
 #bookmarksContainer .bookmarkLevel:not(:first-child) .bookmarkItem:not(:last-child) {
     margin-bottom: 30px;
 }
-#bookmarksContainer .bookmarkItem.link {
+.bookmarkItem.link {
     font-size: 13px;
 }
-#bookmarksContainer .bookmarkItem.folder {
+.bookmarkItem.folder {
     font-size: 20px;
 }
-#bookmarksContainer .bookmarkItem.folder .itemTitle{
+.bookmarkItem.folder .itemTitle{
     border-radius: 6px;
 }
+.bookmarkItem .pinIcon {
+    position: relative;
+    width: 25px;
+    height: 25px;
+    display: none;
+    z-index: 9;
+}
+.bookmarkItem:hover .pinIcon {
+    display: block;
+}
+
 #bookmarksContainer .connectorRight {
     position: absolute;
     right: 0px;
@@ -195,4 +206,16 @@
     font-size: 14px;
     font-weight: 300;
     pointer-events: none;
+}
+
+/*  Pinned Bookmarks */
+#pinnedItemsContainer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: calc(100% - 220px);
+    height: 80px;
+    overflow-x: scroll;
+    display: flex;
+    z-index: 9;
 }

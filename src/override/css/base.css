@@ -32,7 +32,7 @@ body {
 }
 .buttonContainer {
     position: absolute;
-    top: 25px;
+    top: 15px;
     right: 25px;
     display: flex;
 }
