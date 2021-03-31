@@ -176,9 +176,7 @@ function populateBookmarks(level, bookmarks) {
         let bookmarkItem = document.createElement("div");
         bookmarkItem.id = `bookmark-${item.title}`;
         bookmarkItem.className = `bookmarkItem ${item.url ? `link` : `folder`}`;
-        //bookmarkItem.innerHTML = item.title;
-        // bookmarkItem.setAttribute("value", item.url);
-
+        
         let connectorLeft = document.createElement("div");
         connectorLeft.className = `connectorLeft connector-to-${level}`;
         bookmarkItem.appendChild(connectorLeft);
@@ -214,16 +212,12 @@ function populateBookmarks(level, bookmarks) {
 }
 
 function updatePinnedItems(action, item) {
-    //let pinnedItems = stateBuffer.pinnedItems;
-    console.log(`updating`, action, item);
     if(action === 'add') {
         stateBuffer.pinnedItems.push(item);
     }
     else if(action === 'remove') {
         stateBuffer.pinnedItems = stateBuffer.pinnedItems.filter(bookmark => bookmark.id !== item);
     }
-    console.log(`after updating`, stateBuffer.pinnedItems);
-    //finishSetup(false);
     updateLocalStorage(() => loadPinnedItems(stateBuffer));
 }
 
@@ -242,7 +236,6 @@ function loadPinnedItems(state) {
     container.appendChild(pinnedTitle);
 
     let pinnedItems = state.pinnedItems;
-    console.log(`pinneditems in state`, pinnedItems);
     pinnedItems.forEach((item, index) => {
         let bookmarkItem = document.createElement("div");
         bookmarkItem.id = `bookmark-${item.title}`;
@@ -429,7 +422,6 @@ function toggleSettingsScreen(flag) {
         document.getElementById("settingsContainer").classList.remove('show');
         document.getElementById("settings").classList.add('show');
         document.querySelector("#openBookmarks").classList.add("show");
-        //document.querySelector("#closeBookmarks").classList.add("show");
         let pinnedItemsContainer = document.querySelector("#pinnedItemsContainer");
         if(pinnedItemsContainer)
             pinnedItemsContainer.classList.add('show');
@@ -474,7 +466,6 @@ function fetchState() {
             loadApp(result.state);
         }
     });
-    //chrome.storage.local.clear();
 }
     
 function loadApp(state) {
@@ -529,7 +520,6 @@ function loadApp(state) {
         }
         case 'nothing':
         default: {
-            // console.log(`doing nothing`);
         }
     }
     if(state.showPinnedOnAll) {
@@ -627,7 +617,6 @@ function clearCurrentDivs() {
 
 function getQuotes() {
     const randomQuote = quotes[Math.floor(Math.random()*(quotes.length))];
-    console.log(`random nihilist quote---`, randomQuote);
     let quoteContainer = document.createElement("div");
     quoteContainer.innerHTML = randomQuote;
     quoteContainer.id = "quoteContainer";
