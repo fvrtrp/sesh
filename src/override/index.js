@@ -3,7 +3,7 @@ let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
     theme: 'theme-blues',
     pinnedItems: [],
-    showPinnedItems: false,
+    showPinnedOnAll: true,
 }
 
 window.onload = () => {
@@ -42,7 +42,6 @@ function getTime() {
     let strTime = hours + ':' + minutes + ampm;
     return strTime;
 }
-
 
 function getBookmarks() {
     chrome.bookmarks.getTree(function(result) {
@@ -192,7 +191,7 @@ function populateBookmarks(level, bookmarks) {
 
         let pinIcon = document.createElement("img");
         pinIcon.className = `pinIcon`;
-        pinIcon.src = 'pin.svg';
+        pinIcon.src = 'icons/pin.svg';
         pinIcon.title = 'pin bookmark';
         bookmarkItem.appendChild(pinIcon);
 
@@ -200,6 +199,12 @@ function populateBookmarks(level, bookmarks) {
         connectorRight.className = `connectorRight connector-from-${level}`;
         bookmarkItem.appendChild(connectorRight);
         document.getElementById(`bookmarkLevel-${level}`).appendChild(bookmarkItem);
+
+        let tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.innerHTML = item.url ? `Click to select,<br/>Double click to open link`
+                                        : `Click to select,<br/>Double click to open all links,<br/>Right click to open random`;
+        bookmarkItem.appendChild(tooltip);
 
         bookmarkItem.addEventListener('click', (event)=>selectBookmark(event, level, item, index, true), false);
         bookmarkItem.addEventListener('dblclick', ()=>openLinks(item), false);
@@ -249,8 +254,8 @@ function loadPinnedItems(state) {
         bookmarkItem.appendChild(title);
 
         let pinIcon = document.createElement("img");
-        pinIcon.className = `pinIcon`;
-        pinIcon.src = 'pin.svg';
+        pinIcon.className = `pinIcon unpin`;
+        pinIcon.src = 'icons/unpin.svg';
         pinIcon.title = 'Unpin'
         bookmarkItem.appendChild(pinIcon);
 
@@ -274,9 +279,10 @@ function trimText(text, limit) {
 }
 
 function selectBookmark(event, level, item, index, shouldOpenNextLevel) {
-    if(shouldOpenNextLevel)
+    if(shouldOpenNextLevel) {
         populateBookmarks(level+1, item.children);
-    updateStatusBar(item);
+        updateStatusBar(item);
+    }
 
     let rightConnectors = document.getElementsByClassName(`connector-from-${level}`);
     for (let i = 0; i < rightConnectors.length; i++) {
@@ -292,7 +298,8 @@ function selectBookmark(event, level, item, index, shouldOpenNextLevel) {
     for (let i = 0; i < titles.length; i++) {
         titles[i].classList.remove('active');
     }
-    event.target.classList.add('active');
+    if(shouldOpenNextLevel)
+        event.target.classList.add('active');
     if(!item.url)
         event.target.parentElement.querySelector('.connectorRight').classList.add('active');
 
@@ -310,16 +317,6 @@ function updateStatusBar(item) {
     let oldStatusBar = document.getElementById("bookmarksStatusBar");
     if(oldStatusBar)
         oldStatusBar.remove();
-    let itemContents = document.createElement("div");
-    itemContents.className = "itemContents";
-    // if(item.url) {
-    //     itemContents.innerHTML = `Type: Link`
-    // }
-    // else {
-    //     const numFolders = item.children.filter(child => !child.url).length;
-    //     const numLinks = item.children.filter(child => child.url).length;
-    //     itemContents.innerHTML = `Type: Folder<br/>${numLinks} links, ${numFolders} folders`;
-    // }
 
     let itemDescription = document.createElement("div");
     let heading = document.createElement("div");
@@ -328,8 +325,8 @@ function updateStatusBar(item) {
     link.className="descriptionLink";
     itemDescription.className = "itemDescription";
     if(item.url) {
-        heading.innerHTML = trimText(item.title, 90);
-        link.innerHTML = trimText(item.url, 100);
+        heading.innerHTML = trimText(item.title, 200);
+        link.innerHTML = trimText(item.url, 300);
         itemDescription.appendChild(heading);
         itemDescription.appendChild(link);
     }
@@ -337,17 +334,10 @@ function updateStatusBar(item) {
         itemDescription.innerHTML = trimText(item.title, 90);
     }
 
-    let itemAction = document.createElement("div");
-    itemAction.className= "itemAction";
-    itemAction.innerHTML = item.url ? `Double click to open link`
-    : `Double click to open all links,<br/>Right click to open random`;
-
     const bookmarksStatusBar = document.createElement("div");
     bookmarksStatusBar.id = "bookmarksStatusBar";
     bookmarksStatusBar.classList = "active";
-    bookmarksStatusBar.appendChild(itemContents);
     bookmarksStatusBar.appendChild(itemDescription);
-    bookmarksStatusBar.appendChild(itemAction);
     document.getElementById("bookmarksContainer").appendChild(bookmarksStatusBar);
 }
 
@@ -379,6 +369,20 @@ function initSettingsEventListener() {
     document.getElementById("finish").addEventListener('click', ()=>finishSetup(true), false);
     document.getElementById("openBookmarks").addEventListener('click', ()=>openBookmarks(), false);
     document.getElementById("closeBookmarks").addEventListener('click', ()=>closeBookmarks(), false);
+    document.querySelector("#showPinnedOnAll").addEventListener('click', ()=>toggleShowPinnedOnAll(false), false);
+    document.querySelector("#hidePinnedOnAll").addEventListener('click', ()=>toggleShowPinnedOnAll(true), false);
+}
+
+function toggleShowPinnedOnAll(flag) {
+    stateBuffer['showPinnedOnAll'] = flag;
+    if(flag) {
+        document.querySelector("#showPinnedOnAll").classList.add('show');
+        document.querySelector("#hidePinnedOnAll").classList.remove('show');
+    }
+    else {
+        document.querySelector("#showPinnedOnAll").classList.remove('show');
+        document.querySelector("#hidePinnedOnAll").classList.add('show');
+    }
 }
 
 function openBookmarks() {
@@ -440,6 +444,16 @@ function preloadSettings(state) {
     const theme = document.querySelector(`div[value=${state.theme}]`);
     if(theme) {
         theme.classList.add('active');
+    }
+    const showPinnedOnAll = document.querySelector('#showPinnedOnAll');
+    const hidePinnedOnAll = document.querySelector('#hidePinnedOnAll');
+    if(state.showPinnedOnAll) {
+        showPinnedOnAll.classList.add('show');
+        hidePinnedOnAll.classList.remove('show');
+    }
+    else {
+        showPinnedOnAll.classList.remove('show');
+        hidePinnedOnAll.classList.add('show');
     }
     stateBuffer = state;
 }
@@ -518,7 +532,9 @@ function loadApp(state) {
             // console.log(`doing nothing`);
         }
     }
-    loadPinnedItems(state);
+    if(state.showPinnedOnAll) {
+        loadPinnedItems(state);
+    }
     preloadSettings(state);
 }
 

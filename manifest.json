@@ -3,7 +3,7 @@
   "version": "0.2.0",
   "manifest_version": 2,
   "description": "Make your New Tab pages beautiful and useful",
-  "homepage_url": "https://fvrtrp.github.io/sesh",
+  "homepage_url": "http://fvrtrp.com/sesh",
   "icons": {
     "16": "icons/icon16.png",
     "48": "icons/icon48.png",

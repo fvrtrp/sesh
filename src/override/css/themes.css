@@ -202,7 +202,7 @@
     background: radial-gradient(circle, #0D0D0D, #141414);
 }
 #themesContainer .theme-ninja {
-    background: linear-gradient(to bottom right, #090909, #0D0D0D) !important;
+    background: linear-gradient(to bottom right, #202020, #202020) !important;
 }
 #themesContainer .theme-ninja:hover {
     background: radial-gradient(circle, #0D0D0D, #141414) !important;
@@ -263,7 +263,7 @@
     background: linear-gradient(to bottom right, #111111, #222222, #111111);
 }
 #themesContainer .theme-white {
-    background: white !important;
+    background: lightgray !important;
 }
 #themesContainer .theme-white:hover {
     background: linear-gradient(to bottom right, #FFFFFF, #FFFFFF, #ECECEC) !important;
