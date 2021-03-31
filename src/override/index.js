@@ -228,7 +228,13 @@ function loadPinnedItems(state) {
         container.remove();
     container = document.createElement('div');
     container.id = "pinnedItemsContainer";
+    container.classList.add('show');
     document.getElementById("seshParent").appendChild(container);
+
+    let pinnedTitle = document.createElement('div');
+    pinnedTitle.classList.add('pinnedTitle');
+    pinnedTitle.innerHTML = 'Pinned<br/>Bookmarks';
+    container.appendChild(pinnedTitle);
 
     let pinnedItems = state.pinnedItems;
     console.log(`pinneditems in state`, pinnedItems);
@@ -247,6 +253,12 @@ function loadPinnedItems(state) {
         pinIcon.src = 'pin.svg';
         pinIcon.title = 'Unpin'
         bookmarkItem.appendChild(pinIcon);
+
+        let tooltip = document.createElement('div');
+        tooltip.classList.add('tooltip');
+        tooltip.innerHTML = item.url ? `Double click to open link`
+                                        : `Double click to open all links,<br/>Right click to open random`;
+        bookmarkItem.appendChild(tooltip);
 
         bookmarkItem.addEventListener('click', (event)=>selectBookmark(event, 'pinned', item, index, false), false);
         bookmarkItem.addEventListener('dblclick', ()=>openLinks(item), false);
@@ -327,8 +339,8 @@ function updateStatusBar(item) {
 
     let itemAction = document.createElement("div");
     itemAction.className= "itemAction";
-    itemAction.innerHTML = item.url ? `Double click card to open link in new tab`
-                                    : `Double click card to open all links in folder<br/>Right click to open a random link from the folder`;
+    itemAction.innerHTML = item.url ? `Double click to open link`
+    : `Double click to open all links,<br/>Right click to open random`;
 
     const bookmarksStatusBar = document.createElement("div");
     bookmarksStatusBar.id = "bookmarksStatusBar";
@@ -404,13 +416,19 @@ function toggleSettingsScreen(flag) {
         document.getElementById("settingsContainer").classList.add('show');
         document.getElementById("settings").classList.remove('show');
         document.querySelector("#openBookmarks").classList.remove("show");
-        document.querySelector("#closeBookmarks").classList.add("show");
+        document.querySelector("#closeBookmarks").classList.remove("show");
+        let pinnedItemsContainer = document.querySelector("#pinnedItemsContainer");
+        if(pinnedItemsContainer)
+            pinnedItemsContainer.classList.remove('show');
     }
     else {
         document.getElementById("settingsContainer").classList.remove('show');
         document.getElementById("settings").classList.add('show');
         document.querySelector("#openBookmarks").classList.add("show");
-        document.querySelector("#closeBookmarks").classList.remove("show");
+        //document.querySelector("#closeBookmarks").classList.add("show");
+        let pinnedItemsContainer = document.querySelector("#pinnedItemsContainer");
+        if(pinnedItemsContainer)
+            pinnedItemsContainer.classList.add('show');
     }
 }
 

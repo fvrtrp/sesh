@@ -52,6 +52,22 @@
     box-sizing: border-box;
     word-break: break-all;
 }
+.bookmarkItem .tooltip {
+    position: absolute;
+    right: -25px;
+    bottom: -35px;
+    background: rgb(35, 36, 36);
+    color: white;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-weight: 200;
+    display: none;
+    border-radius: 6px;
+    z-index: 9;
+}
+.bookmarkItem:hover .tooltip {
+    display: block;
+}
 #bookmarksContainer .bookmarkItem:not(:last-child) {
     margin-bottom: 10px;
 }
@@ -214,8 +230,23 @@
     top: 0;
     left: 0;
     width: calc(100% - 220px);
-    height: 80px;
+    height: 120px;
     overflow-x: scroll;
-    display: flex;
+    display: none;
+    margin-top: 15px;
     z-index: 9;
+}
+#pinnedItemsContainer.show {
+    display: flex;
+}
+#pinnedItemsContainer::-webkit-scrollbar {
+    display: none;
+}
+#pinnedItemsContainer .bookmarkItem {
+    width: 320px;
+}
+#pinnedItemsContainer .pinnedTitle {
+    font-weight: 300;
+    font-family: 'Source Sans Pro';
+    padding: 17px 15px 0 20px;
 }
