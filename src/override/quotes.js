@@ -21,4 +21,10 @@ const quotes = [
     `To think that we will one day find the absolute laws of the universe is naive.`, 
     `You don't know if haven't been there.`, 
     `Most people don't even get an opportunity to make a change.`,
+    `We are selectively blind`,
+    `Nihilism is perfect clarity of the absolute truth`,
+    `Every day is exactly the same.`,
+    `We're just acting out our genetic code`,
+    `What's the point of all this?`,
+    `Ordeals and cheap thrills. That's it, right?`
 ] 
