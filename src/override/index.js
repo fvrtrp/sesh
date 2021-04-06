@@ -225,6 +225,8 @@ function loadPinnedItems(state) {
     let container = document.querySelector('#pinnedItemsContainer');
     if(container)
         container.remove();
+    if(!state.pinnedItems || state.pinnedItems.length===0)
+        return;
     container = document.createElement('div');
     container.id = "pinnedItemsContainer";
     container.classList.add('show');
@@ -392,6 +394,7 @@ function openBookmarks() {
     let settingsButton  = document.querySelector('#settings');
     if(settingsButton)
         settingsButton.classList.remove('show');
+    loadPinnedItems(stateBuffer);
     getBookmarks();
 }
 function closeBookmarks() {

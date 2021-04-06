@@ -60,59 +60,62 @@
 
 
 /* Hot */
-.theme-hot {
-    background: radial-gradient(circle, #1E0C0C, #0B0404);
+.theme-amber {
+    background: radial-gradient(circle, #1E160C, #0B0804);
 }
-.theme-hot * {
+.theme-amber * {
     color: white;
 }
-.theme-hot #dateContainer {
-    background: radial-gradient(circle, #862B4C, #912929, #C8272A);
+.theme-amber #dateContainer {
+    background: radial-gradient(circle, #866320, #A48311, #866320);
 }
-.theme-hot #settingsContainer{
-    background: radial-gradient(circle, #1E0C0C, #0B0404);
+.theme-amber #settingsContainer{
+    background: radial-gradient(circle, #1E160C, #0B0804);
 }
-.theme-hot .optionsContainer .option {
-    background: linear-gradient(to bottom right, #580E32, #710C21);
+.theme-amber .optionsContainer .option {
+    background: linear-gradient(to bottom right, #0A0E14, #271F19, #0A0E14);
 }
-.theme-hot .optionsContainer .option:hover {
-    background: linear-gradient(to bottom right, #8A1934, #710101);
+.theme-amber .optionsContainer .option:hover {
+    background: linear-gradient(to bottom right, #2D2B1B, #605218, #2D2B1B);
 }
-.theme-hot .optionsContainer .option.active {
-    background: linear-gradient(to bottom right, #862B4C, #912929, #C8272A);
+.theme-amber .optionsContainer .option.active {
+    background: linear-gradient(to bottom right, #866320, #A48311, #866320);
 }
-.theme-hot #settingsContainer #finish {
-    background: linear-gradient(to bottom right, #862B4C, #912929, #C8272A);
+.theme-amber #settingsContainer #finish {
+    background: linear-gradient(to bottom right, #866320, #A48311, #866320);
 }
-.theme-hot #settingsContainer #finish:hover {
-    background: linear-gradient(to bottom right, #8A1934, #710101, #710101);
+.theme-amber #settingsContainer #finish:hover {
+    background: linear-gradient(to bottom right, #2D2B1B, #605218, #2D2B1B);
 }
-#themesContainer .theme-hot {
-    background: linear-gradient(to bottom right, #8A1934, #710101) !important;
+#themesContainer .theme-amber {
+    background: linear-gradient(to bottom right, #866320, #A48311, #866320) !important;
 }
-#themesContainer .theme-hot:hover {
-    background: linear-gradient(to bottom right, #862B4C, #912929, #C8272A) !important;
+#themesContainer .theme-amber:hover {
+    background: linear-gradient(to bottom right, #2D2B1B, #605218, #2D2B1B) !important;
 }
-.theme-hot .bookmarkItem .itemTitle, .theme-hot .searchResult{
-    background: linear-gradient(to bottom right, #580E32, #710C21);
+.theme-amber .bookmarkItem .itemTitle, .theme-amber .searchResult{
+    background: linear-gradient(to bottom right, #0A0E14, #271F19, #0A0E14);
 }
-.theme-hot .bookmarkItem:hover .itemTitle, .theme-hot .searchResult:hover {
-    background: linear-gradient(to bottom right, #8A1934, #710101);
+.theme-amber .bookmarkItem:hover .itemTitle, .theme-amber .searchResult:hover {
+    background: linear-gradient(to bottom right, #2D2B1B, #605218, #2D2B1B);
 }
-.theme-hot .bookmarkItem .itemTitle.active, .theme-hot .searchResult.active{
-    background: linear-gradient(to bottom right, #862B4C, #912929, #C8272A);
+.theme-amber .bookmarkItem .itemTitle.active, .theme-amber .searchResult.active{
+    background: linear-gradient(to bottom right, #866320, #A48311, #866320);
 }
-.theme-hot .connectorLeft, .theme-hot .connectorRight {
-    background: #A22871;
+.theme-amber .connectorLeft, .theme-amber .connectorRight {
+    background: #FFC005;
 }
-.theme-hot .connectorVertical {
-    background: linear-gradient(to bottom, #A22871, #FF0599, #A22871);
+.theme-amber .connectorVertical {
+    background: linear-gradient(to bottom, #866320, #A48311, #866320);
 }
-.theme-hot #bookmarksStatusBar {
-    background: linear-gradient(to bottom right, #862B4C77, #91292977, #C8272A77);
+.theme-amber #bookmarksStatusBar {
+    background: linear-gradient(to bottom right, #86632077, #A4831177, #86632077);
 }
-.theme-hot #bookmarksStatusBar:hover {
-    background: linear-gradient(to bottom right, #862B4C, #912929, #C8272A);
+.theme-amber #bookmarksStatusBar:hover {
+    background: linear-gradient(to bottom right, #866320, #A48311, #866320);
+}
+.theme-amber #timeContainer, .theme-amber #messageContainer, .theme-amber #messageInput, .theme-amber #quotesContainer {
+    font-weight: 300 !important;
 }
 
 
