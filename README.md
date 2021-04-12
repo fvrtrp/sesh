@@ -26,7 +26,7 @@ Please contact me at fvrtrp@gmail.com
 
 ## Authors
 
-Suraj (Fever Trip)
+[@surajk95](https://github.com/surajk95)
 [@fvrtrp](https://github.com/fvrtrp)
 
 ## Version History

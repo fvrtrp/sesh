@@ -214,6 +214,10 @@ function populateBookmarks(level, bookmarks) {
 function updatePinnedItems(action, item) {
     if(action === 'add') {
         stateBuffer.pinnedItems.push(item);
+        if(stateBuffer.pinnedItems)
+            stateBuffer.pinnedItems.push(item);
+        else
+            stateBuffer.pinnedItems = [item];
     }
     else if(action === 'remove') {
         stateBuffer.pinnedItems = stateBuffer.pinnedItems.filter(bookmark => bookmark.id !== item);
