@@ -103,7 +103,7 @@
     background: linear-gradient(to bottom right, #866320, #A48311, #866320);
 }
 .theme-amber .connectorLeft, .theme-amber .connectorRight {
-    background: #FFC005;
+    background: #866320;
 }
 .theme-amber .connectorVertical {
     background: linear-gradient(to bottom, #866320, #A48311, #866320);

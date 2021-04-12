@@ -19,7 +19,7 @@ const quotes = [
     `Time moves forward, and nothing changes.`,
     `The search for meaning is pointless.`,
     `To think that we will one day find the absolute laws of the universe is naive.`, 
-    `You don't know if haven't been there.`, 
+    `You don't know if you haven't been there.`, 
     `Most people don't even get an opportunity to make a change.`,
     `We are selectively blind`,
     `Nihilism is perfect clarity of the absolute truth`,
