@@ -3,7 +3,11 @@
 
 ## Description
 
-Get your new tabs looking soothing and minimal. Customize it your way, to show time, date & time, bookmarks, a custom message, or just a beautiful background.
+Make your new tab page beautiful and useful. Customize it your way, to show date & time, bookmarks, a quote, a custom message, or just a beautiful background.
+Choose between 5 themes too!
+The bookmarks screen also has a pin, function, a search function, and shortcuts to open a random link from the current folder, or to open all links within the current folder.
+Additional features and themes to be added in the future, based on user feedback.
+
 Chrome store link: https://chrome.google.com/webstore/detail/sesh-beautiful-new-tab/jkgkocdjfgbigcifeofbbpjnghioplle
 
 ## Getting Started
@@ -27,6 +31,8 @@ Suraj (Fever Trip)
 
 ## Version History
 
+* 0.2.0
+    * Added pin bookmarks functionality, nihilist quotes mode, ui/ux improvements
 * 0.1.0
     * Initial Release
 
