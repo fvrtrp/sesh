@@ -1,4 +1,4 @@
-# sesh - Beautiful New Tab extension for Google Chrome
+# sesh - Beautiful New Tab extension for Google Chrome & Chromium based browsers (Brave, Edge etc)
 
 
 ## Description

@@ -1,135 +1,47 @@
-import { loadDateTime } from './addons/date-time.js'
-import { loadQuotes } from './addons/quotes.js'
-import { loadMessage } from './addons/message.js'
-
 let stateBuffer = {
     mode: "date-time",
     message: "Most people don't even get an opportunity to make a change. You do.",
-    //theme: 'theme-blues',
+    theme: 'theme-blues',
     pinnedItems: [],
     showPinnedOnAll: true,
-    theme: 'ninja',
-    content: 'message',
-    utilities: ["showPinnedBookmarks"]
 }
 
 window.onload = () => {
-    console.log('init sesh...')
+    console.log('init sesh...');
 
-    initSesh()
-    // initSettingsEventListener()
-    // initSetup()
-
+    initSesh();
+    initSettingsEventListener();
+    initSetup();
     // chrome.storage.local.clear();
 };
 
+function getDate() {
+    const date = new Date();
+    const formatted = `${date.getDate()}${nth(date.getDate())} ${date.toLocaleString('default', {month: 'short'})} , ${date.getFullYear()}`;
+    return formatted;
 
-
-function initSesh() {
-    // chrome.storage.local.get(['state'], function(result) {
-    //     //redo this
-    //     if(!result.state) {
-    //         preloadSettings(stateBuffer);
-    //         document.getElementById("seshParent").className = stateBuffer.theme;
-    //         document.getElementById("settingsContainer").classList.add('show');
-    //     }
-    //     else {
-    //         document.getElementById("seshParent").className = result.state.theme;
-    //         loadApp(result.state);
-    //     }
-    // });
-    loadApp(stateBuffer)
-}
-
-function loadApp(state) {
-    loadTheme(state.theme)
-    loadContent(state)
-    //loadUtilities(state.utilities)
-}
-
-function loadTheme(theme) {
-
-}
-
-function loadContent(state) {
-    switch(state.content) {
-        case 'date-time': {
-            loadDateTime()
-            break
+    function nth(d) {
+        if (d > 3 && d < 21) return 'th';
+        switch (d % 10) {
+          case 1:  return "st";
+          case 2:  return "nd";
+          case 3:  return "rd";
+          default: return "th";
         }
-        case 'quotes': {
-            loadQuotes()
-            break
-        }
-        case 'message': {
-            loadMessage(state.message)
-            break
-        }
-        default: break
     }
 }
 
-// function loadApp(state) {
-//     switch(state.mode) {
-//         case 'message': {
-//             let target = document.createElement("div");
-//             target.id = "messageContainer";
-//             target.innerHTML = state.message;
-//             document.getElementById("seshParent").appendChild(target);
-//             document.getElementById("messageInput").setAttribute("value", state.message);
-//             break;
-//         }
-//         case 'time': {
-//             let target = document.createElement("div");
-//             target.id = "dateTimeContainer";
-//             let timeContainer = document.createElement("div");
-//             timeContainer.id = "timeContainer";
-//             timeContainer.innerHTML = getTime();
-//             document.getElementById("seshParent").appendChild(target);
-//             document.getElementById("dateTimeContainer").appendChild(timeContainer);
-//             setInterval(updateDateTime, 5000);
-//             break;
-//         }
-//         case 'date-time': {
-//             let target = document.createElement("div");
-//             target.id = "dateTimeContainer";
-//             let timeContainer = document.createElement("div");
-//             timeContainer.id = "timeContainer";
-//             timeContainer.innerHTML = getTime();
-//             let dateContainer = document.createElement("div");
-//             dateContainer.id = "dateContainer";
-//             dateContainer.innerHTML = getDate();
-//             document.getElementById("seshParent").appendChild(target);
-//             document.getElementById("dateTimeContainer").appendChild(timeContainer);
-//             document.getElementById("dateTimeContainer").appendChild(dateContainer);
-//             setInterval(updateDateTime, 5000);
-//             break;
-//         }
-//         case 'bookmarks': {
-//             let bookmarksContainer = document.createElement("div");
-//             bookmarksContainer.id = "bookmarksContainer";
-//             document.getElementById("seshParent").appendChild(bookmarksContainer);
-//             getBookmarks();
-//             break;
-//         }
-//         case 'quotes': {
-//             let quotesContainer = document.createElement("div");
-//             quotesContainer.id = "quotesContainer";
-//             document.querySelector("#seshParent").appendChild(quotesContainer);
-//             getQuotes();
-//             break;
-//         }
-//         case 'nothing':
-//         default: {
-//         }
-//     }
-//     if(state.showPinnedOnAll) {
-//         loadPinnedItems(state);
-//     }
-//     preloadSettings(state);
-// }
-
-
+function getTime() {
+    const date = new Date();
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let ampm = hours >= 12 ? 'pm' : 'am';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0'+minutes : minutes;
+    let strTime = hours + ':' + minutes + ampm;
+    return strTime;
+}
 
 function getBookmarks() {
     chrome.bookmarks.getTree(function(result) {
@@ -544,6 +456,95 @@ function preloadSettings(state) {
     stateBuffer = state;
 }
 
+function initSesh() {
+    fetchState();
+}
+
+function fetchState() {
+    chrome.storage.local.get(['state'], function(result) {
+        if(!result.state) {
+            preloadSettings(stateBuffer);
+            document.getElementById("seshParent").className = stateBuffer.theme;
+            document.getElementById("settingsContainer").classList.add('show');
+        }
+        else {
+            document.getElementById("seshParent").className = result.state.theme;
+            loadApp(result.state);
+        }
+    });
+}
+    
+function loadApp(state) {
+    switch(state.mode) {
+        case 'message': {
+            let target = document.createElement("div");
+            target.id = "messageContainer";
+            target.innerHTML = state.message;
+            document.getElementById("seshParent").appendChild(target);
+            document.getElementById("messageInput").setAttribute("value", state.message);
+            break;
+        }
+        case 'time': {
+            let target = document.createElement("div");
+            target.id = "dateTimeContainer";
+            let timeContainer = document.createElement("div");
+            timeContainer.id = "timeContainer";
+            timeContainer.innerHTML = getTime();
+            document.getElementById("seshParent").appendChild(target);
+            document.getElementById("dateTimeContainer").appendChild(timeContainer);
+            setInterval(updateDateTime, 5000);
+            break;
+        }
+        case 'date-time': {
+            let target = document.createElement("div");
+            target.id = "dateTimeContainer";
+            let timeContainer = document.createElement("div");
+            timeContainer.id = "timeContainer";
+            timeContainer.innerHTML = getTime();
+            let dateContainer = document.createElement("div");
+            dateContainer.id = "dateContainer";
+            dateContainer.innerHTML = getDate();
+            document.getElementById("seshParent").appendChild(target);
+            document.getElementById("dateTimeContainer").appendChild(timeContainer);
+            document.getElementById("dateTimeContainer").appendChild(dateContainer);
+            setInterval(updateDateTime, 5000);
+            break;
+        }
+        case 'bookmarks': {
+            let bookmarksContainer = document.createElement("div");
+            bookmarksContainer.id = "bookmarksContainer";
+            document.getElementById("seshParent").appendChild(bookmarksContainer);
+            getBookmarks();
+            break;
+        }
+        case 'quotes': {
+            let quotesContainer = document.createElement("div");
+            quotesContainer.id = "quotesContainer";
+            document.querySelector("#seshParent").appendChild(quotesContainer);
+            getQuotes();
+            break;
+        }
+        case 'nothing':
+        default: {
+        }
+    }
+    if(state.showPinnedOnAll) {
+        loadPinnedItems(state);
+    }
+    preloadSettings(state);
+}
+
+function updateDateTime() {
+    let timeContainer = document.getElementById("timeContainer");
+    if(timeContainer) {
+        timeContainer.innerHTML = getTime();
+    }
+    let dateContainer = document.getElementById("dateContainer");
+    if(dateContainer) {
+        dateContainer.innerHTML = getDate();
+    }
+}
+
 function initSetup() {
     let elements = document.getElementsByClassName("option");
     for (let i = 0; i < elements.length; i++) {
@@ -598,8 +599,7 @@ function finishSetup() {
 
 function updateLocalStorage(callback) {
     chrome.storage.local.set({"state": stateBuffer}, function() {
-        if(callback)
-            callback()
+        callback();
     });
 }
 
@@ -619,4 +619,12 @@ function clearCurrentDivs() {
     const pinnedItemsContainer = document.getElementById("pinnedItemsContainer")
     if(pinnedItemsContainer)
         pinnedItemsContainer.remove();
+}
+
+function getQuotes() {
+    const randomQuote = quotes[Math.floor(Math.random()*(quotes.length))];
+    let quoteContainer = document.createElement("div");
+    quoteContainer.innerHTML = randomQuote;
+    quoteContainer.id = "quoteContainer";
+    document.querySelector("#quotesContainer").appendChild(quoteContainer);
 }

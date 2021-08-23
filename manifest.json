@@ -1,8 +1,8 @@
 {
-  "name": "sesh - Beautiful New Tab",
-  "version": "1.1.3",
+  "name": "sesh dev",
+  "version": "1.1.4",
   "manifest_version": 2,
-  "description": "Make your New Tab pages beautiful and useful",
+  "description": "Beautiful new tab",
   "homepage_url": "http://fvrtrp.com/sesh",
   "icons": {
     "16": "icons/icon16.png",
