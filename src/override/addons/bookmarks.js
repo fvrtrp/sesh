@@ -16,7 +16,7 @@ function getBookmarks() {
 
                 let bookmarkSearch = createElement("bookmarkSearch", "bookmarkSearch", "#bookmarksContainer", "input")
                 bookmarkSearch.setAttribute("placeholder", "search")
-                document.createElement("searchContainer", "searchContainer", "#bookmarksContainer")
+                createElement("searchContainer", "searchContainer", "#bookmarksContainer")
 
                 bookmarkSearch.addEventListener('input', (event)=>searchBookmarks(event, bookmarksBar), false)
                 populateBookmarks(0, bookmarksBar.children)
