@@ -12,14 +12,18 @@ function getBookmarks() {
         if(result && result[0]) {
             if(result[0].children) {
                 let results = result[0].children
-                const bookmarksBar = results.filter(item => item.title.toLowerCase() === 'Bookmarks bar'.toLowerCase())[0]
+                const bookmarksBar = results.filter(item => (
+                    item.title.toLowerCase() === 'Bookmarks bar'.toLowerCase() ||
+                    item.title.toLowerCase() === 'Bookmarks'.toLowerCase())
+                    )[0]
 
                 let bookmarkSearch = createElement("bookmarkSearch", "bookmarkSearch", "#bookmarksContainer", "input")
                 bookmarkSearch.setAttribute("placeholder", "search")
                 createElement("searchContainer", "searchContainer", "#bookmarksContainer")
 
                 bookmarkSearch.addEventListener('input', (event)=>searchBookmarks(event, bookmarksBar), false)
-                populateBookmarks(0, bookmarksBar.children)
+                if(typeof bookmarksBar !== 'undefined')
+                    populateBookmarks(0, bookmarksBar.children)
             }
         }
     });

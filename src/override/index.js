@@ -2,6 +2,7 @@ import { loadDateTime } from './addons/date-time.js'
 import { loadQuotes } from './addons/quotes.js'
 import { loadMessage } from './addons/message.js'
 import { loadBookmarks } from './addons/bookmarks.js'
+import { loadMoviePosters } from './addons/movie-posters/index.js'
 
 let stateBuffer = {
     mode: "date-time",
@@ -9,8 +10,8 @@ let stateBuffer = {
     //theme: 'theme-blues',
     pinnedItems: [],
     showPinnedOnAll: true,
-    theme: 'ninja',
-    content: 'bookmarks',
+    theme: 'movie-posters',
+    content: 'quotes',
     utilities: ["showPinnedBookmarks"]
 }
 
@@ -49,7 +50,13 @@ function loadApp(state) {
 }
 
 function loadTheme(theme) {
-
+    switch(theme) {
+        case 'movie-posters': {
+            loadMoviePosters()
+            break
+        }
+        default: {}
+    }
 }
 
 function loadContent(state) {
