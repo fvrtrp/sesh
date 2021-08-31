@@ -35,6 +35,7 @@ body {
     top: 15px;
     right: 25px;
     display: flex;
+    z-index: 5;
 }
 #settings, #openBookmarks, #closeBookmarks {
     font-family: 'Source Code Pro', sans-serif;
@@ -70,6 +71,7 @@ body {
     font-size: 40px;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 500;
+    pointer-events: none;
 }
 
 #quotesContainer {

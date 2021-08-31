@@ -1,8 +1,9 @@
 import { loadDateTime } from './addons/date-time.js'
 import { loadQuotes } from './addons/quotes.js'
 import { loadMessage } from './addons/message.js'
-import { loadBookmarks } from './addons/bookmarks.js'
+import { loadBookmarks, showBookmarksShortcut } from './addons/bookmarks.js'
 import { loadMoviePosters } from './addons/movie-posters/index.js'
+import { loadSettings } from './utils.js'
 
 let stateBuffer = {
     mode: "date-time",
@@ -11,8 +12,8 @@ let stateBuffer = {
     pinnedItems: [],
     showPinnedOnAll: true,
     theme: 'movie-posters',
-    content: 'quotes',
-    utilities: ["showPinnedBookmarks"]
+    content: 'date-time',
+    utilities: ["showPinnedBookmarks", "showBookmarksShortcut"]
 }
 
 window.onload = () => {
@@ -40,12 +41,14 @@ function initSesh() {
     //         loadApp(result.state);
     //     }
     // });
+    loadSettings()
     loadApp(stateBuffer)
 }
 
 function loadApp(state) {
     loadTheme(state.theme)
     loadContent(state)
+    loadUtilities(state.utilities)
     //loadUtilities(state.utilities)
 }
 
@@ -78,6 +81,12 @@ function loadContent(state) {
             break
         }
         default: break
+    }
+}
+
+function loadUtilities(utilities) {
+    if(utilities.includes('showBookmarksShortcut')) {
+        showBookmarksShortcut()
     }
 }
 

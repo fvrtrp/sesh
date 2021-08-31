@@ -9,13 +9,11 @@ export function loadMoviePosters() {
     createElement("","picture", "#pictureContainer", "img")
     createElement("posterContainer","posterContainer", "#seshParent")
     const poster = createElement("poster","picture", "#posterContainer", "img")
-    createElement("movieTitleContainer","movieTitleContainer", "#seshParent")
-    const movieTitle = createElement("movieTitle","movieTitle", "#movieTitleContainer")
+    createElement("movieTitleContainer","movieTitleContainer", "#posterContainer")
+    createElement("movieTitle","movieTitle", "#movieTitleContainer")
 
     poster.addEventListener('mouseenter', ()=>toggleZoom(true))
     poster.addEventListener('mouseleave', ()=>toggleZoom(false))
-    movieTitle.addEventListener('mouseenter', ()=>toggleZoom(true))
-    movieTitle.addEventListener('mouseleave', ()=>toggleZoom(false))
 
     setBackgroundAndText()
 }
@@ -32,15 +30,15 @@ let movieTitle = ""
 function toggleZoom(flag) {
     if(flag) {
         //document.querySelector('#poster').classList.add('zoomedPicture');
-        document.querySelector('.picture').classList.add('zoomedBackground')
+        document.querySelector('.picture').classList.toggle('zoomedBackground')
         document.querySelector('#pictureContainer').classList.add('noblur')
-        document.querySelector('#movieTitle').innerText = movieTitle
+        document.querySelector('#movieTitle').style.visibility = 'initial'
     }
     else {
         //document.querySelector('#poster').classList.remove('zoomedPicture');
-        document.querySelector('.picture').classList.remove('zoomedBackground')
+        //document.querySelector('.picture').classList.remove('zoomedBackground')
         document.querySelector('#pictureContainer').classList.remove('noblur')
-        document.querySelector('#movieTitle').innerText = ''
+        //document.querySelector('#movieTitle').style.visibility = 'hidden'
     }
 }
 
@@ -53,8 +51,9 @@ function setBackgroundAndText() {
     for(let item of pictures){
         item.src = link;
     }
-
-    document.querySelector("#movieTitle").innerText = ''
+    document.querySelector('#movieTitle').style.visibility = 'hidden'
+    document.querySelector('#movieTitle').innerText = movieTitle
+    //toggleZoom(true)
 }
 
 
@@ -173,7 +172,7 @@ const imageList = [
     },
     {
         title: "Army of the Dead (2021)",
-        url: "https://lh3.googleusercontent.com/proxy/k2CLncx4vACas8Miq5726lAKy-iyP8dKrXUI9YpMkx5IaeDjc47sKGavfvqmR8_wuvQYvxjpFoBlYXW4QzRhODNw41oESzyu6VhWkxvPR76YCGv9XtNDKxOrSho",
+        url: "https://m.media-amazon.com/images/M/MV5BNGY0NzgzYzctYWQwMC00MzM2LThjNGMtZjFjMWUyNzg0ZmM0XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg",
     },
     {
         title: "Watchmen (2009)",

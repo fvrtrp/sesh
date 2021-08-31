@@ -1,10 +1,52 @@
-import { createElement } from '../utils.js'
+import { createElement, clearCurrentDivs } from '../utils.js'
 
 export function loadBookmarks() {
     console.log(`loading bookmarks`)
-    createElement("bookmarksContainer","", "#seshParent");
+    createElement("bookmarksContainer","", "#seshParent")
     getBookmarks()
 }
+
+export function showBookmarksShortcut() {
+    const bookmarksButton = createElement("openBookmarks","show", "#buttonContainer")
+    bookmarksButton.innerHTML = "bookmarks" 
+    bookmarksButton.addEventListener('click', ()=>openBookmarks(), false)
+
+    const closeButton = createElement("closeBookmarks", "", "#buttonContainer")
+    closeButton.innerHTML = "close"
+    bookmarksButton.addEventListener('click', ()=>openBookmarks(), false)
+    closeButton.addEventListener('click', ()=>closeBookmarks(), false);
+}
+
+function openBookmarks() {
+    clearCurrentDivs()
+    let closeButton = document.querySelector('#closeBookmarks')
+    if(closeButton) 
+        closeButton.classList.add('show')
+    let bookmarksContainer = createElement("bookmarksContainer", "", "#seshParent")
+    let openBookmarks  = document.querySelector('#openBookmarks')
+    if(openBookmarks)
+        openBookmarks.classList.remove('show')
+    let settingsButton  = document.querySelector('#settings')
+    if(settingsButton)
+        settingsButton.classList.remove('show')
+    //loadPinnedItems(stateBuffer)
+    getBookmarks()
+}
+
+function closeBookmarks() {
+    clearCurrentDivs()
+    //loadApp(stateBuffer);
+    let closeBookmarks  = document.querySelector('#closeBookmarks')
+    if(closeBookmarks)
+        closeBookmarks.classList.remove('show')
+    let openBookmarks  = document.querySelector('#openBookmarks')
+    if(openBookmarks)
+        openBookmarks.classList.add('show')
+    let settingsButton  = document.querySelector('#settings')
+    if(settingsButton)
+        settingsButton.classList.add('show')
+}
+
 
 function getBookmarks() {
     chrome.bookmarks.getTree(function(result) {
