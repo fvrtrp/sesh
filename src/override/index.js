@@ -12,7 +12,7 @@ let stateBuffer = {
     pinnedItems: [],
     showPinnedOnAll: true,
     theme: 'movie-posters',
-    content: 'date-time',
+    content: 'bookmarks',
     utilities: ["showPinnedBookmarks", "showBookmarksShortcut"]
 }
 

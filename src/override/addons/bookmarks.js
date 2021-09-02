@@ -60,8 +60,7 @@ function getBookmarks() {
                     )[0]
 
                 let bookmarkSearch = createElement("bookmarkSearch", "bookmarkSearch", "#bookmarksContainer", "input")
-                bookmarkSearch.setAttribute("placeholder", "search")
-                createElement("searchContainer", "searchContainer", "#bookmarksContainer")
+                bookmarkSearch.setAttribute("placeholder", "search by title, url etc")
 
                 bookmarkSearch.addEventListener('input', (event)=>searchBookmarks(event, bookmarksBar), false)
                 if(typeof bookmarksBar !== 'undefined')
@@ -168,9 +167,6 @@ function populateBookmarks(level, bookmarks) {
             `bookmarkItem ${item.url ? `link` : `folder`}`,
             `#bookmarkLevel-${level}`
         )
-        
-        let connectorLeft = createElement("", `connectorLeft connector-to-${level}`)
-        bookmarkItem.appendChild(connectorLeft)
 
         let title = createElement("", `itemTitle itemTitle-${level}`)
         title.innerHTML = item.url ? trimText(item.title, 90) : trimText(item.title, 30)
@@ -181,9 +177,6 @@ function populateBookmarks(level, bookmarks) {
         pinIcon.src = 'assets/pin.svg'
         pinIcon.title = 'pin bookmark'
         bookmarkItem.appendChild(pinIcon)
-
-        let connectorRight = createElement("", `connectorRight connector-from-${level}`)
-        bookmarkItem.appendChild(connectorRight);
 
         let tooltip = document.createElement('div')
         tooltip.classList.add('tooltip')
@@ -208,33 +201,16 @@ function selectBookmark(event, level, item, index, shouldOpenNextLevel) {
         updateStatusBar(item)
     }
 
-    let rightConnectors = document.getElementsByClassName(`connector-from-${level}`)
-    for (let i = 0; i < rightConnectors.length; i++) {
-        rightConnectors[i].classList.remove('active')
-    }
-    let leftConnectors = document.getElementsByClassName(`connector-to-${level+1}`)
-    for (let i = 0; i < leftConnectors.length; i++) {
-        if(leftConnectors[i])
-            leftConnectors[i].classList.add('active')
-    }
-
     let titles = document.getElementsByClassName(`itemTitle-${level}`)
     for (let i = 0; i < titles.length; i++) {
         titles[i].classList.remove('active')
     }
     if(shouldOpenNextLevel)
         event.target.classList.add('active')
-    if(!item.url)
-        event.target.parentElement.querySelector('.connectorRight').classList.add('active')
 
     
-    let connectorVertical = document.createElement("div")
-    connectorVertical.className = `connectorVertical connector-on-${level}`
-    const connectorHeight = item.children ? (index < item.children.length ? `${item.children.length*90 - 90}px` : '100%') : `0`
-    connectorVertical.style.height = connectorHeight
-    const nextLevel = document.getElementById(`bookmarkLevel-${level+1}`)
-    if(nextLevel)
-        nextLevel.appendChild(connectorVertical)
+    let svgContainer = createElement(`svgConnector-${level}`, `svgConnector`, `#bookmarkLevel-${level}`)
+    svgContainer.innerHTML = 'connect'
 }
 
 function updateStatusBar(item) {

@@ -34,13 +34,13 @@
 #themesContainer .theme-blues:hover {
     background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8) !important;
 }
-.theme-blues .bookmarkItem .itemTitle, .theme-blues .searchResult{
+.theme-blues .searchResult{
     background: linear-gradient(to bottom right, #260F35, #0F0F1E);
 }
-.theme-blues .bookmarkItem:hover .itemTitle, .theme-blues .searchResult:hover {
+.theme-blues .searchResult:hover {
     background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757);
 }
-.theme-blues .bookmarkItem .itemTitle.active, .theme-blues .searchResult.active{
+.theme-blues .searchResult.active{
     background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
 }
 .theme-blues .connectorLeft, .theme-blues .connectorRight {

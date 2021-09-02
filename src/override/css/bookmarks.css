@@ -1,12 +1,13 @@
 #bookmarksContainer {
     position: fixed;
-    top: 100px;
+    top: 50px;
     left: 0;
-    height: calc(100% - 100px);
+    height: calc(100% - 150px);
     width: 100%;
-    padding: 100px;
+    padding: 50px 100px 50px;
     display: flex;
     overflow-x: scroll;
+    overflow-y: hidden;
     box-sizing: border-box;
 }
 #bookmarksContainer::-webkit-scrollbar {
@@ -14,13 +15,19 @@
 }
 #bookmarksContainer .bookmarkLevel {
     height: 100%;
-    min-width: 500px;
+    min-width: 250px;
+    margin-top: 50px;
     overflow-y: scroll;
     overflow-x: hidden;
     position: relative;
+    background: black;
+    border-radius: 10px;
 }
-#bookmarksContainer .bookmarkLevel:nth-child(2), #bookmarksContainer .bookmarkLevel:nth-child(3) {
-    margin-left: -100px;
+#bookmarksContainer .bookmarkLevel:not(:nth-child(1)), #bookmarksContainer .bookmarkLevel:not(:nth-child(2)) {
+    margin-left: 150px;
+}
+#bookmarksContainer .bookmarkLevel:nth-child(2) {
+    margin-left: 0;
 }
 #bookmarksContainer .bookmarkLevel::-webkit-scrollbar {
     display: none;
@@ -30,7 +37,7 @@
 }
 .bookmarkItem {
     position: relative;
-    width: 500px;
+    width: 250px;
     display: flex;
     align-items: center;
     height: 60px;
@@ -41,7 +48,7 @@
 }
 .bookmarkItem .itemTitle {
     position: relative;
-    width: 300px;
+    width: 250px;
     display: flex;
     align-items: center;
     padding: 5px 25px;
@@ -54,12 +61,12 @@
 }
 .bookmarkItem .tooltip {
     position: absolute;
-    right: 50px;
+    right: 25px;
     top: 75px;
     background: rgb(35, 36, 36);
     color: white;
     padding: 5px 10px;
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 200;
     display: none;
     border-radius: 6px;
@@ -68,20 +75,12 @@
 .bookmarkItem:hover .tooltip {
     display: block;
 }
-#bookmarksContainer .bookmarkItem:not(:last-child) {
-    margin-bottom: 10px;
-}
-#bookmarksContainer .bookmarkLevel:not(:first-child) .bookmarkItem:not(:last-child) {
-    margin-bottom: 30px;
-}
 .bookmarkItem.link {
     font-size: 13px;
+    font-weight: 200;
 }
 .bookmarkItem.folder {
-    font-size: 20px;
-}
-.bookmarkItem.folder .itemTitle{
-    border-radius: 6px;
+    font-size: 16px;
 }
 .bookmarkItem .pinIcon {
     position: relative;
@@ -98,37 +97,8 @@
     display: block;
 }
 
-#bookmarksContainer .connectorRight {
-    position: absolute;
-    right: 0px;
-    height: 4px;
-    width: 100px;
-    opacity: 0;
-}
-#bookmarksContainer .connectorRight.active {
-    opacity: 1;
-}
-#bookmarksContainer .connectorLeft {
-    /* position: absolute; */
-    left: -100px;
-    height: 4px;
-    width: 100px;
-    opacity: 0;
-}
-#bookmarksContainer .connectorLeft.active {
-    opacity: 1;
-}
-
-#bookmarksContainer .connectorVertical {
-    width: 4px;
-    position: absolute;
-    top: 30px;
-    left: 0;
-    z-index: 2;
-}
-
 #bookmarksContainer #bookmarksStatusBar {
-    position: absolute;
+    position: fixed;
     bottom: 10px;
     height: 50px;
     width: 98%;
@@ -170,7 +140,7 @@
 
 #bookmarksContainer #bookmarkSearch {
     position: absolute;
-    top: 35px;
+    top: 0;
     width: 400px;
     border: none;
     outline: none;
@@ -259,4 +229,12 @@
     top: 150px;
     bottom: -35px;
     top: initial;
+}
+
+.svgConnector {
+    position: absolute;
+    right: -150px;
+    top: 0;
+    width: 150px;
+    height: 100%;
 }
