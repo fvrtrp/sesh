@@ -160,12 +160,13 @@ function populateBookmarks(level, bookmarks) {
         return
 
     createElement(`bookmarkLevel-${level}`, "bookmarkLevel", "#bookmarksContainer")
+    createElement(`bookmarksContainer-${level}`, "bookmarksContainer", `#bookmarkLevel-${level}`)
     
     bookmarks.forEach((item, index) => {
         let bookmarkItem = createElement(
             `bookmark-${item.title}`,
             `bookmarkItem ${item.url ? `link` : `folder`}`,
-            `#bookmarkLevel-${level}`
+            `#bookmarksContainer-${level}`
         )
 
         let title = createElement("", `itemTitle itemTitle-${level}`)
@@ -205,12 +206,35 @@ function selectBookmark(event, level, item, index, shouldOpenNextLevel) {
     for (let i = 0; i < titles.length; i++) {
         titles[i].classList.remove('active')
     }
+    let connector = document.querySelector(`#svgConnector-${level}`)
+    if(connector)
+        connector.remove()
+
     if(shouldOpenNextLevel)
         event.target.classList.add('active')
 
-    
-    let svgContainer = createElement(`svgConnector-${level}`, `svgConnector`, `#bookmarkLevel-${level}`)
-    svgContainer.innerHTML = 'connect'
+    if(!item.url) {
+// generate connector with svg
+        const el = event.target
+        const position = el.getBoundingClientRect()
+        const connectorHeight = document.querySelector(`#bookmarkLevel-${level}`).scrollTop + position.y - 120
+        console.log(`zzz posn`, connectorHeight, el, position)
+
+        let svgContainer = createElement(`svgConnector-${level}`, `svgConnector`, `#bookmarkLevel-${level}`)
+        svgContainer.style["height"] = `${connectorHeight}px`
+        
+        const yMax = connectorHeight
+        svgContainer.innerHTML = `
+        <svg viewBox="0 0 150 ${yMax}">
+            <path d="
+                M 0, ${yMax}
+                Q 75,${yMax} 75,${(yMax+30)/2}
+                T 150, 30
+                "
+            />
+        </svg>  
+        `
+    }
 }
 
 function updateStatusBar(item) {
