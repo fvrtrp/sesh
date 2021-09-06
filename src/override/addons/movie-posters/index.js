@@ -3,6 +3,9 @@ import { createElement, loadStyle } from '../../utils.js'
 export function loadMoviePosters() {
     console.log(`loading movie posters`)
     loadCss()
+}
+
+function resumeLoading() {
 
     createElement("vignetteContainer","", "#seshParent")
     createElement("pictureContainer","pictureContainer", "#seshParent")
@@ -20,7 +23,7 @@ export function loadMoviePosters() {
 function loadCss() {
     loadStyle("addons/movie-posters/index.css")
     .then(() => {
-        // do something
+        resumeLoading()
     }).catch(err => alert(err))
 }
 
