@@ -14,6 +14,12 @@ function getQuotes() {
     document.querySelector("#quotesContainer").appendChild(quoteContainer);
 }
 
+export function cleanup() {
+    const quotesContainer = document.getElementById("quotesContainer")
+    if(quotesContainer)
+        quotesContainer.remove()
+}
+
 const quotes = [
     `It is what it is.`,
     `What contains the box?`,

@@ -1,19 +1,17 @@
 import { loadDateTime } from './addons/date-time.js'
 import { loadQuotes } from './addons/quotes.js'
 import { loadMessage } from './addons/message.js'
-import { loadBookmarks, showBookmarksShortcut } from './addons/bookmarks.js'
+import { loadBookmarks, showBookmarksShortcut, loadPinnedBookmarks } from './addons/bookmarks.js'
 import { loadMoviePosters } from './addons/movie-posters/index.js'
 import { loadSettings } from './utils.js'
 
-let stateBuffer = {
-    mode: "date-time",
+export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
-    //theme: 'theme-blues',
     pinnedItems: [],
-    showPinnedOnAll: true,
+    version: 0.3,
     theme: 'movie-posters',
-    content: 'bookmarks',
-    utilities: ["showPinnedBookmarks", "showBookmarksShortcut"]
+    content: 'quotes',
+    utilities: ["showPinnedBookmarks", "showBookmarksShortcut"],
 }
 
 window.onload = () => {
@@ -29,26 +27,27 @@ window.onload = () => {
 
 
 function initSesh() {
-    // chrome.storage.local.get(['state'], function(result) {
-    //     //redo this
-    //     if(!result.state) {
-    //         preloadSettings(stateBuffer);
-    //         document.getElementById("seshParent").className = stateBuffer.theme;
-    //         document.getElementById("settingsContainer").classList.add('show');
-    //     }
-    //     else {
-    //         document.getElementById("seshParent").className = result.state.theme;
-    //         loadApp(result.state);
-    //     }
-    // });
-    loadSettings()
-    loadApp(stateBuffer)
+    chrome.storage.local.get(['state'], function(result) {
+        console.log(`zzz result`, result)
+        //redo this
+        if(!result.state || (!'version' in result.state)) {
+            // preloadSettings(stateBuffer)
+            // document.getElementById("seshParent").className = stateBuffer.theme
+            // document.getElementById("settingsContainer").classList.add('show')
+        }
+        // else {
+        //     document.getElementById("seshParent").className = result.state.theme;
+        //     loadApp(result.state);
+            loadSettings()
+            loadApp(result.state)
+        // }
+    });
 }
 
-function loadApp(state) {
+export function loadApp(state) {
     loadTheme(state.theme)
     loadContent(state)
-    loadUtilities(state.utilities)
+    loadUtilities(state)
     //loadUtilities(state.utilities)
 }
 
@@ -84,9 +83,12 @@ function loadContent(state) {
     }
 }
 
-function loadUtilities(utilities) {
-    if(utilities.includes('showBookmarksShortcut')) {
+function loadUtilities(state) {
+    if(state && state.utilities && state.utilities.includes('showBookmarksShortcut')) {
         showBookmarksShortcut()
+    }
+    if(state && state.utilities && state.utilities.includes('showPinnedBookmarks')) {
+        loadPinnedBookmarks(state)
     }
 }
 
@@ -105,69 +107,6 @@ function loadUtilities(utilities) {
 //     }
 //     preloadSettings(state);
 // }
-
-
-function updatePinnedItems(action, item) {
-    if(action === 'add') {
-        if(stateBuffer.pinnedItems)
-            stateBuffer.pinnedItems.push(item);
-        else
-            stateBuffer.pinnedItems = [item];
-    }
-    else if(action === 'remove') {
-        stateBuffer.pinnedItems = stateBuffer.pinnedItems.filter(bookmark => bookmark.id !== item);
-    }
-    updateLocalStorage(() => loadPinnedItems(stateBuffer));
-}
-
-function loadPinnedItems(state) {
-    let container = document.querySelector('#pinnedItemsContainer');
-    if(container)
-        container.remove();
-    if(!state.pinnedItems || state.pinnedItems.length===0)
-        return;
-    container = document.createElement('div');
-    container.id = "pinnedItemsContainer";
-    container.classList.add('show');
-    document.getElementById("seshParent").appendChild(container);
-
-    let pinnedTitle = document.createElement('div');
-    pinnedTitle.classList.add('pinnedTitle');
-    pinnedTitle.innerHTML = 'Pinned<br/>Bookmarks';
-    container.appendChild(pinnedTitle);
-
-    let pinnedItems = state.pinnedItems;
-    pinnedItems.forEach((item, index) => {
-        let bookmarkItem = document.createElement("div");
-        bookmarkItem.id = `bookmark-${item.title}`;
-        bookmarkItem.className = `bookmarkItem ${item.url ? `link` : `folder`}`;
-
-        let title = document.createElement("div");
-        title.className = `itemTitle`;
-        title.innerHTML = item.url ? trimText(item.title, 90) : trimText(item.title, 30);
-        bookmarkItem.appendChild(title);
-
-        let pinIcon = document.createElement("img");
-        pinIcon.className = `pinIcon unpin`;
-        pinIcon.src = 'assets/unpin.svg';
-        pinIcon.title = 'Unpin'
-        bookmarkItem.appendChild(pinIcon);
-
-        let tooltip = document.createElement('div');
-        tooltip.classList.add('tooltip');
-        tooltip.innerHTML = item.url ? `Double click to open link`
-                                        : `Double click to open all links,<br/>Right click to open random`;
-        bookmarkItem.appendChild(tooltip);
-
-        bookmarkItem.addEventListener('click', (event)=>selectBookmark(event, 'pinned', item, index, false), false);
-        bookmarkItem.addEventListener('dblclick', ()=>openLinks(item), false);
-        bookmarkItem.addEventListener('contextmenu', (event)=>openRandomLink(event, item), false);
-        pinIcon.addEventListener('click', (e) => {e.stopPropagation(); updatePinnedItems('remove', item.id)});
-
-        container.appendChild(bookmarkItem);
-    });
-}
-
 
 function initSettingsEventListener() {
     document.getElementById("settings").addEventListener('click', ()=>toggleSettingsScreen(true), false);
@@ -188,37 +127,6 @@ function toggleShowPinnedOnAll(flag) {
         document.querySelector("#showPinnedOnAll").classList.remove('show');
         document.querySelector("#hidePinnedOnAll").classList.add('show');
     }
-}
-
-function openBookmarks() {
-    clearCurrentDivs();
-    let closeButton = document.querySelector('#closeBookmarks');
-    if(closeButton) 
-        closeButton.classList.add('show');
-    let bookmarksContainer = document.createElement("div");
-    bookmarksContainer.id = "bookmarksContainer";
-    document.getElementById("seshParent").appendChild(bookmarksContainer);
-    let openBookmarks  = document.querySelector('#openBookmarks');
-    if(openBookmarks)
-        openBookmarks.classList.remove('show');
-    let settingsButton  = document.querySelector('#settings');
-    if(settingsButton)
-        settingsButton.classList.remove('show');
-    loadPinnedItems(stateBuffer);
-    getBookmarks();
-}
-function closeBookmarks() {
-    clearCurrentDivs();
-    loadApp(stateBuffer);
-    let closeBookmarks  = document.querySelector('#closeBookmarks');
-    if(closeBookmarks)
-        closeBookmarks.classList.remove('show');
-    let openBookmarks  = document.querySelector('#openBookmarks');
-    if(openBookmarks)
-        openBookmarks.classList.add('show');
-    let settingsButton  = document.querySelector('#settings');
-    if(settingsButton)
-        settingsButton.classList.add('show');
 }
 
 function toggleSettingsScreen(flag) {
@@ -313,29 +221,4 @@ function finishSetup() {
         clearCurrentDivs();
         loadApp(stateBuffer);
     });
-}
-
-function updateLocalStorage(callback) {
-    chrome.storage.local.set({"state": stateBuffer}, function() {
-        if(callback)
-            callback()
-    });
-}
-
-function clearCurrentDivs() {
-    const dateTimeContainer = document.getElementById("dateTimeContainer")
-    if(dateTimeContainer)
-        dateTimeContainer.remove();
-    const messageContainer = document.getElementById("messageContainer")
-    if(messageContainer)
-        messageContainer.remove();
-    const bookmarksContainer = document.getElementById("bookmarksContainer")
-    if(bookmarksContainer)
-        bookmarksContainer.remove();
-    const quotesContainer = document.getElementById("quotesContainer")
-    if(quotesContainer)
-        quotesContainer.remove();
-    const pinnedItemsContainer = document.getElementById("pinnedItemsContainer")
-    if(pinnedItemsContainer)
-        pinnedItemsContainer.remove();
 }

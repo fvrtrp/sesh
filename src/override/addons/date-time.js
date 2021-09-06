@@ -48,3 +48,9 @@ function updateDateTime() {
         dateContainer.innerHTML = getDate()
     }
 }
+
+export function cleanup() {
+    const dateTimeContainer = document.getElementById("dateTimeContainer")
+    if(dateTimeContainer)
+        dateTimeContainer.remove()
+}

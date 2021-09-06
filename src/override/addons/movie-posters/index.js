@@ -9,8 +9,7 @@ export function loadMoviePosters() {
     createElement("","picture", "#pictureContainer", "img")
     createElement("posterContainer","posterContainer", "#seshParent")
     const poster = createElement("poster","picture", "#posterContainer", "img")
-    createElement("movieTitleContainer","movieTitleContainer", "#posterContainer")
-    createElement("movieTitle","movieTitle", "#movieTitleContainer")
+    createElement("movieTitle","movieTitle", "#posterContainer")
 
     poster.addEventListener('mouseenter', ()=>toggleZoom(true))
     poster.addEventListener('mouseleave', ()=>toggleZoom(false))
@@ -56,6 +55,15 @@ function setBackgroundAndText() {
     //toggleZoom(true)
 }
 
+export function cleanup() {
+    console.log(`cleaning up movies`)
+    let container = document.getElementById("vignetteContainer")
+    if(container)   container.remove()
+    container = document.getElementById("pictureContainer")
+    if(container)   container.remove()
+    container = document.getElementById("posterContainer")
+    if(container)   container.remove()
+}
 
 const imageList = [
     {
@@ -93,10 +101,6 @@ const imageList = [
     {
         title: "Moonlight (2016)",
         url: "https://m.media-amazon.com/images/M/MV5BNzQxNTIyODAxMV5BMl5BanBnXkFtZTgwNzQyMDA3OTE@._V1_UY1200_CR90,0,630,1200_AL_.jpg",
-    },
-    {
-        title: "Fear and Loathing in Las Vegas (1998)",
-        url: "https://m.media-amazon.com/images/M/MV5BNjA2ZDY3ZjYtZmNiMC00MDU5LTgxMWEtNzk1YmI3NzdkMTU0XkEyXkFqcGdeQXVyNjQyMjcwNDM@._V1_UY1200_CR87,0,630,1200_AL_.jpg",
     },
     {
         title: "Fight Club (1999)",
@@ -169,10 +173,6 @@ const imageList = [
     {
         title: "Archenemy (2020)",
         url: "https://m.media-amazon.com/images/M/MV5BMzhlMTE0NjgtZjQ1Ni00MDRhLTg5NWItYTRjMTgzODE1MDk0XkEyXkFqcGdeQXVyMzQwMTY2Nzk@._V1_UY1200_CR90,0,630,1200_AL_.jpg",
-    },
-    {
-        title: "Army of the Dead (2021)",
-        url: "https://m.media-amazon.com/images/M/MV5BNGY0NzgzYzctYWQwMC00MzM2LThjNGMtZjFjMWUyNzg0ZmM0XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_.jpg",
     },
     {
         title: "Watchmen (2009)",

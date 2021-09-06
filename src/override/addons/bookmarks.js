@@ -1,4 +1,5 @@
-import { createElement, clearCurrentDivs } from '../utils.js'
+import { createElement, clearCurrentDivs, updateLocalStorage } from '../utils.js'
+import { stateBuffer, loadApp } from '../index.js'
 
 export function loadBookmarks() {
     console.log(`loading bookmarks`)
@@ -29,13 +30,13 @@ function openBookmarks() {
     let settingsButton  = document.querySelector('#settings')
     if(settingsButton)
         settingsButton.classList.remove('show')
-    //loadPinnedItems(stateBuffer)
+    loadPinnedBookmarks(stateBuffer)
     getBookmarks()
 }
 
 function closeBookmarks() {
     clearCurrentDivs()
-    //loadApp(stateBuffer);
+    loadApp(stateBuffer)
     let closeBookmarks  = document.querySelector('#closeBookmarks')
     if(closeBookmarks)
         closeBookmarks.classList.remove('show')
@@ -61,6 +62,8 @@ function getBookmarks() {
 
                 let bookmarkSearch = createElement("bookmarkSearch", "bookmarkSearch", "#bookmarksContainer", "input")
                 bookmarkSearch.setAttribute("placeholder", "search by title, url etc")
+
+                createElement("searchContainer", "searchContainer", "#bookmarksContainer")
 
                 bookmarkSearch.addEventListener('input', (event)=>searchBookmarks(event, bookmarksBar), false)
                 if(typeof bookmarksBar !== 'undefined')
@@ -283,4 +286,72 @@ function openRandomLink(event, item) {
             return
         window.open(selected.url)
     }     
+}
+
+
+export function loadPinnedBookmarks(state) {
+    let container = document.querySelector('#pinnedItemsContainer')
+    if(container)
+        container.remove()
+    if(!state.pinnedItems || state.pinnedItems.length===0)
+        return
+    container = createElement('pinnedItemsContainer', 'show', '#seshParent')
+
+    let pinnedTitle = document.createElement('div')
+    pinnedTitle.classList.add('pinnedTitle')
+    pinnedTitle.innerHTML = 'Pinned'
+    container.appendChild(pinnedTitle)
+
+    let pinnedItems = state.pinnedItems
+    pinnedItems.forEach((item, index) => {
+        let bookmarkItem = document.createElement("div")
+        bookmarkItem.id = `bookmark-${item.title}`
+        bookmarkItem.className = `bookmarkItem ${item.url ? `link` : `folder`}`
+
+        let title = document.createElement("div")
+        title.className = `itemTitle`
+        title.innerHTML = item.url ? trimText(item.title, 90) : trimText(item.title, 30)
+        bookmarkItem.appendChild(title)
+
+        let pinIcon = document.createElement("img")
+        pinIcon.className = `pinIcon unpin`
+        pinIcon.src = 'assets/unpin.svg'
+        pinIcon.title = 'Unpin'
+        bookmarkItem.appendChild(pinIcon)
+
+        let tooltip = document.createElement('div')
+        tooltip.classList.add('tooltip')
+        tooltip.innerHTML = item.url ? `Double click to open link`
+                                        : `Double click to open all links,<br/>Right click to open random`
+        bookmarkItem.appendChild(tooltip);
+
+        bookmarkItem.addEventListener('click', (event)=>selectBookmark(event, 'pinned', item, index, false), false)
+        bookmarkItem.addEventListener('dblclick', ()=>openLinks(item), false)
+        bookmarkItem.addEventListener('contextmenu', (event)=>openRandomLink(event, item), false)
+        pinIcon.addEventListener('click', (e) => {e.stopPropagation(); updatePinnedItems('remove', item.id)})
+
+        container.appendChild(bookmarkItem);
+    });
+}
+
+function updatePinnedItems(action, item) {
+    if(action === 'add') {
+        if(stateBuffer.pinnedItems)
+            stateBuffer.pinnedItems.push(item)
+        else
+            stateBuffer.pinnedItems = [item]
+    }
+    else if(action === 'remove') {
+        stateBuffer.pinnedItems = stateBuffer.pinnedItems.filter(bookmark => bookmark.id !== item)
+    }
+    updateLocalStorage(() => loadPinnedBookmarks(stateBuffer))
+}
+
+export function cleanup() {
+    const bookmarksContainer = document.getElementById("bookmarksContainer")
+    if(bookmarksContainer)
+        bookmarksContainer.remove()
+    const pinnedItemsContainer = document.getElementById("pinnedItemsContainer")
+    if(pinnedItemsContainer)
+        pinnedItemsContainer.remove()
 }

@@ -1,9 +1,10 @@
 #bookmarksContainer {
     position: fixed;
+    z-index: 5;
     top: 50px;
     left: 0;
     height: calc(100% - 150px);
-    width: 100%;
+    width: calc(100% - 200px);
     padding: 50px 100px 50px;
     display: flex;
     overflow-x: scroll;
@@ -205,18 +206,17 @@
 
 /*  Pinned Bookmarks */
 #pinnedItemsContainer {
-    position: absolute;
-    top: 0;
+    position: fixed;
+    bottom: 0;
     left: 0;
-    width: calc(100% - 220px);
-    height: 120px;
-    overflow-x: scroll;
+    width: 250px;
+    max-height: 300px;
+    overflow-y: scroll;
     display: none;
-    margin-top: 15px;
     z-index: 9;
 }
 #pinnedItemsContainer.show {
-    display: flex;
+    display: block;
 }
 #pinnedItemsContainer::-webkit-scrollbar {
     display: none;
@@ -230,8 +230,8 @@
     padding: 15px 15px 0 20px;
 }
 #pinnedItemsContainer .tooltip {
-    right: -100px;
-    top: 150px;
+    right: 0;
+    top: 50px;
     bottom: -35px;
     top: initial;
 }

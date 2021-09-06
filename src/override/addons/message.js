@@ -7,3 +7,8 @@ export function loadMessage(message) {
     //document.querySelector("#messageInput").setAttribute("value", state.message)
 }
 
+export function cleanup() {
+    const messageContainer = document.getElementById("messageContainer")
+    if(messageContainer)
+        messageContainer.remove()
+}

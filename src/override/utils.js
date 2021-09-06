@@ -1,3 +1,10 @@
+import { stateBuffer } from "./index.js"
+import { cleanup as cleanupDateTime } from './addons/date-time.js'
+import { cleanup as cleanupQuotes } from './addons/quotes.js'
+import { cleanup as cleanupMessage } from './addons/message.js'
+import { cleanup as cleanupBookmarks } from './addons/bookmarks.js'
+import { cleanup as cleanupMoviePosters } from './addons/movie-posters/index.js'
+
 export function createElement(id, className, parent, type) {
     if(!type)
         type = "div"
@@ -30,19 +37,17 @@ export function loadSettings() {
 }
 
 export function clearCurrentDivs() {
-    const dateTimeContainer = document.getElementById("dateTimeContainer")
-    if(dateTimeContainer)
-        dateTimeContainer.remove()
-    const messageContainer = document.getElementById("messageContainer")
-    if(messageContainer)
-        messageContainer.remove()
-    const bookmarksContainer = document.getElementById("bookmarksContainer")
-    if(bookmarksContainer)
-        bookmarksContainer.remove()
-    const quotesContainer = document.getElementById("quotesContainer")
-    if(quotesContainer)
-        quotesContainer.remove()
-    const pinnedItemsContainer = document.getElementById("pinnedItemsContainer")
-    if(pinnedItemsContainer)
-        pinnedItemsContainer.remove()
+    console.log(`clearing divs`)
+    cleanupDateTime()
+    cleanupMessage()
+    cleanupQuotes()
+    cleanupMoviePosters()
+    cleanupBookmarks()
+}
+
+export function updateLocalStorage(callback) {
+    chrome.storage.local.set({"state": stateBuffer}, function() {
+        if(callback)
+            callback()
+    });
 }
