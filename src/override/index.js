@@ -1,7 +1,7 @@
 import { loadDateTime } from './addons/date-time.js'
 import { loadQuotes } from './addons/quotes.js'
 import { loadMessage } from './addons/message.js'
-import { loadBookmarks, showBookmarksShortcut, loadPinnedBookmarks } from './addons/bookmarks.js'
+import { loadBookmarks, showBookmarksShortcut, loadPinnedBookmarks } from './addons/bookmarks/index.js'
 import { loadMoviePosters } from './addons/movie-posters/index.js'
 import { loadSettings } from './utils.js'
 
@@ -107,15 +107,6 @@ function loadUtilities(state) {
 //     }
 //     preloadSettings(state);
 // }
-
-function initSettingsEventListener() {
-    document.getElementById("settings").addEventListener('click', ()=>toggleSettingsScreen(true), false);
-    document.getElementById("finish").addEventListener('click', ()=>finishSetup(true), false);
-    document.getElementById("openBookmarks").addEventListener('click', ()=>openBookmarks(), false);
-    document.getElementById("closeBookmarks").addEventListener('click', ()=>closeBookmarks(), false);
-    document.querySelector("#showPinnedOnAll").addEventListener('click', ()=>toggleShowPinnedOnAll(false), false);
-    document.querySelector("#hidePinnedOnAll").addEventListener('click', ()=>toggleShowPinnedOnAll(true), false);
-}
 
 function toggleShowPinnedOnAll(flag) {
     stateBuffer['showPinnedOnAll'] = flag;

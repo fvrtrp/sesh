@@ -2,7 +2,7 @@ import { stateBuffer } from "./index.js"
 import { cleanup as cleanupDateTime } from './addons/date-time.js'
 import { cleanup as cleanupQuotes } from './addons/quotes.js'
 import { cleanup as cleanupMessage } from './addons/message.js'
-import { cleanup as cleanupBookmarks } from './addons/bookmarks.js'
+import { cleanup as cleanupBookmarks } from './addons/bookmarks/index.js'
 import { cleanup as cleanupMoviePosters } from './addons/movie-posters/index.js'
 
 export function createElement(id, className, parent, type) {

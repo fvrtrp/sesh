@@ -1,5 +1,5 @@
-import { createElement, clearCurrentDivs, updateLocalStorage } from '../utils.js'
-import { stateBuffer, loadApp } from '../index.js'
+import { createElement, clearCurrentDivs, updateLocalStorage } from '../../utils.js'
+import { stateBuffer, loadApp } from '../../index.js'
 
 export function loadBookmarks() {
     console.log(`loading bookmarks`)
@@ -178,7 +178,7 @@ function populateBookmarks(level, bookmarks) {
 
         let pinIcon = document.createElement("img")
         pinIcon.className = `pinIcon`
-        pinIcon.src = 'assets/pin.svg'
+        pinIcon.src = 'addons/bookmarks/assets/pin.svg'
         pinIcon.title = 'pin bookmark'
         bookmarkItem.appendChild(pinIcon)
 
@@ -315,7 +315,7 @@ export function loadPinnedBookmarks(state) {
 
         let pinIcon = document.createElement("img")
         pinIcon.className = `pinIcon unpin`
-        pinIcon.src = 'assets/unpin.svg'
+        pinIcon.src = 'addons/bookmarks/assets/unpin.svg'
         pinIcon.title = 'Unpin'
         bookmarkItem.appendChild(pinIcon)
 
