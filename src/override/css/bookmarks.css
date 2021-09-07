@@ -46,7 +46,7 @@
     width: 250px;
     display: flex;
     align-items: center;
-    height: 60px;
+    height: 40px;
     font-family: 'Source Code Pro', sans-serif;
     font-weight: 400;
     cursor: pointer;
@@ -59,7 +59,7 @@
     align-items: center;
     padding: 5px 25px;
     text-overflow: ellipsis;
-    height: 60px;
+    height: 40px;
     font-family: 'Source Code Pro', sans-serif;
     font-weight: 400;
     box-sizing: border-box;
@@ -82,11 +82,11 @@
     display: block;
 }
 .bookmarkItem.link {
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 200;
 }
 .bookmarkItem.folder {
-    font-size: 16px;
+    font-size: 14px;
 }
 .bookmarkItem .pinIcon {
     position: relative;

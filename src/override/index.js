@@ -38,13 +38,13 @@ function initSesh() {
         // else {
         //     document.getElementById("seshParent").className = result.state.theme;
         //     loadApp(result.state);
-            loadSettings()
             loadApp(result.state)
         // }
     });
 }
 
 export function loadApp(state) {
+    loadSettings()
     loadTheme(state.theme)
     loadContent(state)
     loadUtilities(state)

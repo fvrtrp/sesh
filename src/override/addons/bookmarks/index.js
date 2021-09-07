@@ -39,15 +39,12 @@ function openBookmarks() {
 function closeBookmarks() {
     clearCurrentDivs()
     loadApp(stateBuffer)
-    let closeBookmarks  = document.querySelector('#closeBookmarks')
-    if(closeBookmarks)
-        closeBookmarks.classList.remove('show')
-    let openBookmarks  = document.querySelector('#openBookmarks')
-    if(openBookmarks)
-        openBookmarks.classList.add('show')
-    let settingsButton  = document.querySelector('#settings')
-    if(settingsButton)
-        settingsButton.classList.add('show')
+    // let openBookmarks  = document.querySelector('#openBookmarks')
+    // if(openBookmarks)
+    //     openBookmarks.classList.add('show')
+    // let settingsButton  = document.querySelector('#settings')
+    // if(settingsButton)
+    //     settingsButton.classList.add('show')
 }
 
 
