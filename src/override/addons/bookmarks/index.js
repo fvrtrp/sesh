@@ -1,10 +1,21 @@
-import { createElement, clearCurrentDivs, updateLocalStorage } from '../../utils.js'
+import { createElement, clearCurrentDivs, updateLocalStorage, loadStyle } from '../../utils.js'
 import { stateBuffer, loadApp } from '../../index.js'
 
 const selectedBookmark = {}
 
 export function loadBookmarks() {
     console.log(`loading bookmarks`)
+    loadCss()
+}
+
+function loadCss() {
+    loadStyle("addons/bookmarks/index.css")
+    .then(() => {
+        resumeLoading()
+    }).catch(err => alert(err))
+}
+
+function resumeLoading() {
     createElement("bookmarksContainer","", "#seshParent")
     getBookmarks()
 }

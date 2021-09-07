@@ -37,7 +37,7 @@ body {
     display: flex;
     z-index: 5;
 }
-#settings, #openBookmarks, #closeBookmarks {
+.buttonContainer>div {
     font-family: 'Source Code Pro', sans-serif;
     font-size: 14px;
     letter-spacing: 1px;
@@ -51,12 +51,12 @@ body {
     display: none;
 }
 
-#settings.show, #openBookmarks.show, #closeBookmarks.show {
+.buttonContainer>div.show {
     opacity: 1;
     pointer-events: all;
     display: block;
 }
-#settings:hover, #openBookmarks:hover, #closeBookmarks:hover {
+.buttonContainer>div:hover {
     color: white;
 }
 
@@ -70,7 +70,7 @@ body {
     height: 100%;
     font-size: 40px;
     font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 500;
+    font-weight: 400;
     pointer-events: none;
 }
 

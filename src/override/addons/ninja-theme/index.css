@@ -1,0 +1,60 @@
+/* Ninja */
+
+.theme-ninja {
+    background: radial-gradient(circle, #030303, #000000);
+}
+.theme-ninja * {
+    color: white;
+}
+.theme-ninja #dateContainer {
+    background: radial-gradient(circle, #0D0D0D, #141414);
+}
+.theme-ninja #settingsContainer{
+    background: radial-gradient(circle, #030303, #000000);
+}
+.theme-ninja .optionsContainer .option {
+    background: linear-gradient(to bottom right, #000000, #000000);
+}
+.theme-ninja .optionsContainer .option:hover {
+    background: linear-gradient(to bottom right, #090909, #0D0D0D);
+}
+.theme-ninja .optionsContainer .option.active {
+    background: radial-gradient(circle, #0D0D0D, #141414);
+}
+.theme-ninja #settingsContainer #finish {
+    background: linear-gradient(to bottom right, #090909, #0D0D0D);
+}
+.theme-ninja #settingsContainer #finish:hover {
+    background: radial-gradient(circle, #0D0D0D, #141414);
+}
+#themesContainer .theme-ninja {
+    background: linear-gradient(to bottom right, #202020, #202020) !important;
+}
+#themesContainer .theme-ninja:hover {
+    background: radial-gradient(circle, #0D0D0D, #141414) !important;
+}
+.theme-ninja #timeContainer, .theme-ninja #messageContainer, .theme-ninja #messageInput, .theme-ninja #quotesContainer {
+    font-weight: 300 !important;
+}
+.theme-ninja .bookmarkItem .itemTitle, .theme-ninja .searchResult{
+    background: linear-gradient(to bottom right, #000000, #000000);
+}
+.theme-ninja .bookmarkItem:hover .itemTitle, .theme-ninja .searchResult:hover {
+    background: linear-gradient(to bottom right, #090909, #0D0D0D);
+}
+.theme-ninja .bookmarkItem .itemTitle.active, .theme-ninja .searchResult.active{
+    background: radial-gradient(circle, #0D0D0D, #141414);
+}
+.theme-ninja .connectorLeft, .theme-ninja .connectorRight {
+    background: #26D92D;
+    height: 2px !important;
+}
+.theme-ninja .connectorVertical {
+    background: #26D92D;
+}
+.theme-ninja #bookmarksStatusBar {
+    background: radial-gradient(circle, #0D0D0D77, #14141477);
+}
+.theme-ninja #bookmarksStatusBar:hover {
+    background: radial-gradient(circle, #0D0D0D, #141414);
+}

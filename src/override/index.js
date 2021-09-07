@@ -2,26 +2,29 @@ import { loadDateTime } from './addons/date-time.js'
 import { loadQuotes } from './addons/quotes.js'
 import { loadMessage } from './addons/message.js'
 import { loadBookmarks, showBookmarksShortcut, loadPinnedBookmarks } from './addons/bookmarks/index.js'
+import { loadVanillaTheme } from './addons/vanilla-themes/index.js'
+import { loadNinjaTheme } from './addons/ninja-theme/index.js'
 import { loadMoviePosters } from './addons/movie-posters/index.js'
-import { loadSettings } from './utils.js'
+import { loadSettings, updateLocalStorage } from './utils.js'
 
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
     pinnedItems: [],
     version: 0.3,
-    theme: 'movie-posters',
-    content: 'quotes',
-    utilities: ["showPinnedBookmarks", "showBookmarksShortcut"],
+    theme: 'ninja',
+    content: 'bookmarks',
+    utilities: [
+        //"showPinnedBookmarks",
+        //"showBookmarksShortcut"
+    ],
 }
 
 window.onload = () => {
     console.log('init sesh...')
-
+    // chrome.storage.local.clear();
     initSesh()
     // initSettingsEventListener()
     // initSetup()
-
-    // chrome.storage.local.clear();
 };
 
 
@@ -31,15 +34,15 @@ function initSesh() {
         console.log(`zzz result`, result)
         //redo this
         if(!result.state || (!'version' in result.state)) {
-            // preloadSettings(stateBuffer)
+            //preloadSettings(stateBuffer)
+            updateLocalStorage()
             // document.getElementById("seshParent").className = stateBuffer.theme
             // document.getElementById("settingsContainer").classList.add('show')
         }
-        // else {
+        else {
         //     document.getElementById("seshParent").className = result.state.theme;
-        //     loadApp(result.state);
             loadApp(result.state)
-        // }
+        }
     });
 }
 
@@ -55,6 +58,14 @@ function loadTheme(theme) {
     switch(theme) {
         case 'movie-posters': {
             loadMoviePosters()
+            break
+        }
+        case 'vanilla': {
+            loadVanillaTheme()
+            break
+        }
+        case 'ninja': {
+            loadNinjaTheme()
             break
         }
         default: {}
