@@ -1,7 +1,7 @@
 import { loadDateTime } from './addons/date-time.js'
 import { loadQuotes } from './addons/quotes.js'
 import { loadMessage } from './addons/message.js'
-import { loadBookmarks, showBookmarksShortcut, loadPinnedBookmarks } from './addons/bookmarks/index.js'
+import { loadBookmarks, showBookmarksShortcut, loadPinnedBookmarks, loadBookmarkStyles } from './addons/bookmarks/index.js'
 import { loadVanillaTheme } from './addons/vanilla-themes/index.js'
 import { loadNinjaTheme } from './addons/ninja-theme/index.js'
 import { loadMoviePosters } from './addons/movie-posters/index.js'
@@ -12,16 +12,16 @@ export let stateBuffer = {
     pinnedItems: [],
     version: 0.3,
     theme: 'ninja',
-    content: 'bookmarks',
+    content: 'quotes',
     utilities: [
-        //"showPinnedBookmarks",
+        "showPinnedBookmarks",
         //"showBookmarksShortcut"
     ],
 }
 
 window.onload = () => {
     console.log('init sesh...')
-    // chrome.storage.local.clear();
+    //chrome.storage.local.clear();
     initSesh()
     // initSettingsEventListener()
     // initSetup()
@@ -97,9 +97,11 @@ function loadContent(state) {
 function loadUtilities(state) {
     if(state && state.utilities && state.utilities.includes('showBookmarksShortcut')) {
         showBookmarksShortcut()
+        loadBookmarkStyles()
     }
     if(state && state.utilities && state.utilities.includes('showPinnedBookmarks')) {
         loadPinnedBookmarks(state)
+        loadBookmarkStyles()
     }
 }
 

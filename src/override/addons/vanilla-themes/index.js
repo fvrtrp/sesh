@@ -15,5 +15,5 @@ function loadCss(theme) {
 
 const themes = [
     "blues",
-    "greens",
+    "autumn",
 ]

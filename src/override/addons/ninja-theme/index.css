@@ -4,10 +4,19 @@
     background: radial-gradient(circle, #030303, #000000);
 }
 .theme-ninja * {
-    color: white;
+    color: rgb(187, 187, 187);
+}
+.theme-ninja #timeContainer {
+    font: 200 50px 'Source Code Pro', sans-serif;
+    margin-bottom: 15px;
 }
 .theme-ninja #dateContainer {
-    background: radial-gradient(circle, #0D0D0D, #141414);
+    font: 200 16px 'Source Code Pro', sans-serif;
+    letter-spacing: 5px;
+}
+.theme-ninja #quotesContainer {
+    font: 200 18px 'Source Code Pro', sans-serif;
+    letter-spacing: 5.4px;
 }
 .theme-ninja #settingsContainer{
     background: radial-gradient(circle, #030303, #000000);
@@ -33,7 +42,7 @@
 #themesContainer .theme-ninja:hover {
     background: radial-gradient(circle, #0D0D0D, #141414) !important;
 }
-.theme-ninja #timeContainer, .theme-ninja #messageContainer, .theme-ninja #messageInput, .theme-ninja #quotesContainer {
+.theme-ninja #messageContainer, .theme-ninja #messageInput {
     font-weight: 300 !important;
 }
 .theme-ninja .bookmarkItem .itemTitle, .theme-ninja .searchResult{

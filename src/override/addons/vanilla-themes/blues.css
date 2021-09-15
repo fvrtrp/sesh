@@ -1,10 +1,13 @@
 /* Blues */
 
 .theme-blues {
-    background: radial-gradient(circle, #150C1E, #08040B);
+    background: radial-gradient(circle, #0C0E1E, #05040B);
 }
 .theme-blues * {
     color: white;
+}
+.theme-blues #timeContainer {
+    font: 300 50px 'Open Sans', sans-serif;
 }
 .theme-blues #dateContainer {
     background: radial-gradient(circle, #2B3286, #322991, #6827C8);
