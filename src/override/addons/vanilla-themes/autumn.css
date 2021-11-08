@@ -1,56 +1,59 @@
 /* Greens */
 
-.theme-greens {
-    background: radial-gradient(circle, #0C1E18, #0B0404);
+.theme-autumn {
+    background: radial-gradient(circle, #171114, #000000);
 }
-.theme-greens * {
+.theme-autumn * {
     color: white;
 }
-.theme-greens #dateContainer {
-    background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666);
+.theme-autumn #timeContainer {
+    font: 300 50px 'Open Sans', sans-serif;
 }
-.theme-greens #settingsContainer{
+.theme-autumn #dateContainer {
+    background: linear-gradient(to bottom right, #A60063, #AA0D4F, #C85227);
+}
+.theme-autumn #settingsContainer{
     background: radial-gradient(circle, #0C1E18, #0B0404);
 }
-.theme-greens .optionsContainer .option {
+.theme-autumn .optionsContainer .option {
     background: linear-gradient(to bottom right, #0F352A, #0F1C1E);
 }
-.theme-greens .optionsContainer .option:hover {
+.theme-autumn .optionsContainer .option:hover {
     background: linear-gradient(to bottom right, #1C4F37, #164443, #175748);
 }
-.theme-greens .optionsContainer .option.active {
+.theme-autumn .optionsContainer .option.active {
     background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666);
 }
-.theme-greens #settingsContainer #finish {
+.theme-autumn #settingsContainer #finish {
     background: linear-gradient(to bottom right, #1C4F37, #164443, #175748);
 }
-.theme-greens #settingsContainer #finish:hover {
+.theme-autumn #settingsContainer #finish:hover {
     background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666);
 }
-#themesContainer .theme-greens {
+#themesContainer .theme-autumn {
     background: linear-gradient(to bottom right, #1C4F37, #164443, #175748) !important;
 }
-#themesContainer .theme-greens:hover {
+#themesContainer .theme-autumn:hover {
     background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666) !important;
 }
-.theme-greens .bookmarkItem .itemTitle, .theme-greens .searchResult{
+.theme-autumn .bookmarkItem .itemTitle, .theme-autumn .searchResult{
     background: linear-gradient(to bottom right, #0F352A, #0F1C1E);
 }
-.theme-greens .bookmarkItem:hover .itemTitle, .theme-greens .searchResult:hover {
+.theme-autumn .bookmarkItem:hover .itemTitle, .theme-autumn .searchResult:hover {
     background: linear-gradient(to bottom right, #1C4F37, #164443, #175748);
 }
-.theme-greens .bookmarkItem .itemTitle.active, .theme-greens .searchResult.active{
+.theme-autumn .bookmarkItem .itemTitle.active, .theme-autumn .searchResult.active{
     background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666);
 }
-.theme-greens .connectorLeft, .theme-greens .connectorRight {
+.theme-autumn .connectorLeft, .theme-autumn .connectorRight {
     background: #0C5A39;
 }
-.theme-greens .connectorVertical {
+.theme-autumn .connectorVertical {
     background: linear-gradient(to bottom, #0C5A39, #21C07C, #0C5A39);
 }
-.theme-greens #bookmarksStatusBar {
+.theme-autumn #bookmarksStatusBar {
     background: linear-gradient(to bottom right, #27B53977, #25AD5777, #2D866677);
 }
-.theme-greens #bookmarksStatusBar:hover {
+.theme-autumn #bookmarksStatusBar:hover {
     background: linear-gradient(to bottom right, #27B539, #25AD57, #2D8666);
 }

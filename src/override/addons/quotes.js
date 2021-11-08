@@ -28,7 +28,7 @@ const quotes = [
     `You are your habits.`,
     `You won't regret making a choice if you don't make a choice. `,
     `Life is a pattern of patterns.`,
-    `Ignorance is bliss, as long as you stay that way.`,
+    `Ignorance is bliss, as long as it lasts.`,
     `We're not the champions of evolution; we're the byproducts.`,
     `The more you change, everything stays the same.`,
     `If you've done something and nobody knows, have you really done it?`,

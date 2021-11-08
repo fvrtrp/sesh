@@ -8,6 +8,12 @@ export function loadBookmarks() {
     loadCss()
 }
 
+export function loadBookmarkStyles() {
+    loadStyle("addons/bookmarks/index.css")
+    .then(() => {
+    }).catch(err => alert(err))
+}
+
 function loadCss() {
     loadStyle("addons/bookmarks/index.css")
     .then(() => {

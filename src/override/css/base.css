@@ -87,10 +87,7 @@ body {
     font-size: 50px;
 }
 #dateTimeContainer #dateContainer {
-    font-weight: 400;
     padding: 5px 25px;
-    font-size: 20px;
     border-radius: 10px;
     margin-top: 15px;
-    font-family: 'Source Code Pro', sans-serif;
 }
