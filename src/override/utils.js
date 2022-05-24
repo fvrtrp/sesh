@@ -31,7 +31,9 @@ export function loadStyle(src) {
 
 export function loadSettings() {
     //createElement("settingsContainer", "settingsContainer", "#seshParent")
-    createElement("buttonContainer", "buttonContainer", "#seshParent")
+    const buttonContainer = document.querySelector("#buttonContainer")
+    if(!buttonContainer)
+        createElement("buttonContainer", "buttonContainer", "#seshParent")
     const settingsButton = createElement("settings", "show", "#buttonContainer")
     settingsButton.innerHTML = "settings"
 }
@@ -42,7 +44,9 @@ export function clearCurrentDivs() {
     cleanupMessage()
     cleanupQuotes()
     cleanupMoviePosters()
-    cleanupBookmarks()
+    //cleanupBookmarks()
+    const settingsButton = document.querySelector("#settings")
+    if(settingsButton)  settingsButton.remove()
 }
 
 export function updateLocalStorage(callback) {

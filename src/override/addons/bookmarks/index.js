@@ -22,7 +22,7 @@ function loadCss() {
 }
 
 function resumeLoading() {
-    createElement("bookmarksContainer","", "#seshParent")
+    //createElement("bookmarksContainer","", "#seshParent")
     getBookmarks()
 }
 
@@ -33,35 +33,36 @@ export function showBookmarksShortcut() {
 
     const closeButton = createElement("closeBookmarks", "", "#buttonContainer")
     closeButton.innerHTML = "close"
-    bookmarksButton.addEventListener('click', ()=>openBookmarks(), false)
+    //bookmarksButton.addEventListener('click', ()=>openBookmarks(), false)
     closeButton.addEventListener('click', ()=>closeBookmarks(), false);
 }
 
 function openBookmarks() {
+    console.log(`zzzopencalled`)
     clearCurrentDivs()
     let closeButton = document.querySelector('#closeBookmarks')
-    if(closeButton) 
-        closeButton.classList.add('show')
-    let bookmarksContainer = createElement("bookmarksContainer", "", "#seshParent")
+    if(closeButton) closeButton.classList.add('show')
+    createElement("bookmarksContainer", "", "#seshParent")
     let openBookmarks  = document.querySelector('#openBookmarks')
-    if(openBookmarks)
-        openBookmarks.classList.remove('show')
+    if(openBookmarks)   openBookmarks.classList.remove('show')
     let settingsButton  = document.querySelector('#settings')
-    if(settingsButton)
-        settingsButton.classList.remove('show')
+    if(settingsButton)  settingsButton.classList.remove('show')
     loadPinnedBookmarks(stateBuffer)
     getBookmarks()
 }
 
 function closeBookmarks() {
+    let closeButton = document.querySelector('#closeBookmarks')
+    if(closeButton) closeButton.remove()
+    let openBookmarks  = document.querySelector('#openBookmarks')
+    if(openBookmarks)   openBookmarks.remove()
+    const bookmarksContainer = document.querySelector("#bookmarksContainer")
+    if(bookmarksContainer)  bookmarksContainer.remove()
+    const pinnedItemsContainer = document.querySelector("#pinnedItemsContainer")
+    if(pinnedItemsContainer)    pinnedItemsContainer.remove()
+
     clearCurrentDivs()
     loadApp(stateBuffer)
-    // let openBookmarks  = document.querySelector('#openBookmarks')
-    // if(openBookmarks)
-    //     openBookmarks.classList.add('show')
-    // let settingsButton  = document.querySelector('#settings')
-    // if(settingsButton)
-    //     settingsButton.classList.add('show')
 }
 
 
@@ -370,10 +371,4 @@ function updatePinnedItems(action, item) {
 }
 
 export function cleanup() {
-    const bookmarksContainer = document.getElementById("bookmarksContainer")
-    if(bookmarksContainer)
-        bookmarksContainer.remove()
-    const pinnedItemsContainer = document.getElementById("pinnedItemsContainer")
-    if(pinnedItemsContainer)
-        pinnedItemsContainer.remove()
 }

@@ -1,0 +1,22 @@
+#zenContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* z-index: -1; */
+    background: black;
+    pointer-events: none;
+}
+
+#quoteContainer {
+    color: white;
+}
+
+#zenContainer .graphLines {
+    color: white;
+}
+#zenContainer line {
+    stroke-width: 0.2;
+    stroke: rgb(86, 209, 146);
+}

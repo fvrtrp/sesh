@@ -5,13 +5,14 @@ import { loadBookmarks, showBookmarksShortcut, loadPinnedBookmarks, loadBookmark
 import { loadVanillaTheme } from './addons/vanilla-themes/index.js'
 import { loadNinjaTheme } from './addons/ninja-theme/index.js'
 import { loadMoviePosters } from './addons/movie-posters/index.js'
+import { loadZenTheme } from './addons/zen/index.js'
 import { loadSettings, updateLocalStorage } from './utils.js'
 
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
     pinnedItems: [],
     version: 0.3,
-    theme: 'ninja',
+    theme: 'zen',
     content: 'quotes',
     utilities: [
         "showPinnedBookmarks",
@@ -48,9 +49,10 @@ function initSesh() {
 
 export function loadApp(state) {
     loadSettings()
-    loadTheme(state.theme)
-    loadContent(state)
-    loadUtilities(state)
+    //loadTheme(state.theme)
+    loadTheme('ninja')
+    loadContent({...state, content:'quotes'})
+    loadUtilities({...state, utilities:['showBookmarksShortcut']})
     //loadUtilities(state.utilities)
 }
 
@@ -66,6 +68,10 @@ function loadTheme(theme) {
         }
         case 'ninja': {
             loadNinjaTheme()
+            break
+        }
+        case 'zen': {
+            loadZenTheme()
             break
         }
         default: {}
