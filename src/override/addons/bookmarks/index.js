@@ -235,20 +235,27 @@ function selectBookmark(event, level, item, index, shouldOpenNextLevel) {
     const el = event.target
     if(!item.url) {
         selectedBookmark[level] = el
-        updateConnector(level)
+        updateConnector(level, true)
+    }
+    else {
+        removeConnector(level)
     }
 }
 
-function updateConnector(level) {
+function updateConnector(level, create) {
     if(!selectedBookmark || !selectedBookmark[level])   return
     const el = selectedBookmark[level]
     const position = el.getBoundingClientRect()
     const levelScroll = document.querySelector(`#bookmarkLevel-${level}`).scrollTop
     const connectorHeight = levelScroll + position.y - 120
     let svgContainer = document.querySelector(`#svgConnector-${level}`)
-    if(!svgContainer) {
+    if(create) {
+        if(svgContainer)
+            svgContainer.remove()
         svgContainer = createElement(`svgConnector-${level}`, `svgConnector`, `#bookmarkLevel-${level}`)
     }
+    if(!svgContainer)
+        return
     svgContainer.style["height"] = `${connectorHeight}px`
     const yMax = connectorHeight, yMin = levelScroll+30
     svgContainer.innerHTML = `
@@ -261,6 +268,12 @@ function updateConnector(level) {
         />
     </svg>  
     `
+}
+
+function removeConnector(level) {
+    let svgContainer = document.querySelector(`#svgConnector-${level}`)
+    if(svgContainer)
+        svgContainer.remove()
 }
 
 function updateStatusBar(item) {
