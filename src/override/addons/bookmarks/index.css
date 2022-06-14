@@ -214,6 +214,7 @@
     overflow-y: scroll;
     display: none;
     z-index: 9;
+    border-radius: 10px;
 }
 #pinnedItemsContainer.show {
     display: block;
@@ -233,8 +234,8 @@
     letter-spacing: 7px;
     text-align: center;
 }
-#pinnedItemsContainer .itemTitle:not(:last-child) {
-    border-bottom: solid 1px #333333;
+#pinnedItemsContainer .itemTitle {
+    padding: 0;
 }
 #pinnedItemsContainer .tooltip {
     right: 0;
@@ -259,11 +260,13 @@
 /* support for themes */
 .theme-ninja #pinnedItemsContainer {
     border: solid 1px #757575;
-    border-radius: 10px;
     background: black;
 }
 .theme-ninja #pinnedItemsContainer .itemTitle {
     color: white;
+}
+.theme-ninja #pinnedItemsContainer .itemTitle:not(:last-child) {
+    border-bottom: solid 1px #333333;
 }
 .theme-ninja .pinnedTitle {
     background: #111111;

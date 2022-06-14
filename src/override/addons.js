@@ -5,7 +5,7 @@ export const addons = {
         "movie-posters",
     ],
     "content": [
-        "Date and time",
+        "date-time",
         "nihilist quotes",
         "custom message",
         "nothing"

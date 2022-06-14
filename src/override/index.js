@@ -51,7 +51,7 @@ export function loadApp(state) {
     loadSettings()
     //loadTheme(state.theme)
     loadTheme('ninja')
-    loadContent({...state, content:'quotes'})
+    loadContent({...state, content:'date-time'})
     loadUtilities({...state, utilities:['showBookmarksShortcut', 'showPinnedBookmarks']})
     //loadUtilities(state.utilities)
     preloadSettings(state)
