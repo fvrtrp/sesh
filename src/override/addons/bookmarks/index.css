@@ -54,7 +54,7 @@
 }
 .bookmarkItem .itemTitle {
     position: relative;
-    width: 250px;
+    width: 80%;
     display: flex;
     align-items: center;
     padding: 5px 25px;
@@ -207,8 +207,8 @@
 /*  Pinned Bookmarks */
 #pinnedItemsContainer {
     position: fixed;
-    bottom: 0;
-    left: 0;
+    bottom: 25px;
+    left: 25px;
     width: 250px;
     max-height: 300px;
     overflow-y: scroll;
@@ -222,12 +222,19 @@
     display: none;
 }
 #pinnedItemsContainer .bookmarkItem {
-    width: 320px;
+    width: 100%;
+    justify-content: center;
 }
 #pinnedItemsContainer .pinnedTitle {
-    font-weight: 300;
+    font-weight: 400;
     font-family: 'Source Sans Pro';
-    padding: 15px 15px 0 20px;
+    padding: 8px 15px 9px 20px;
+    text-transform: uppercase;
+    letter-spacing: 7px;
+    text-align: center;
+}
+#pinnedItemsContainer .itemTitle:not(:last-child) {
+    border-bottom: solid 1px #333333;
 }
 #pinnedItemsContainer .tooltip {
     right: 0;
@@ -246,4 +253,18 @@
     fill: none;
     stroke: darkturquoise;
     stroke-width: 1px;
+}
+
+
+/* support for themes */
+.theme-ninja #pinnedItemsContainer {
+    border: solid 1px #757575;
+    border-radius: 10px;
+    background: black;
+}
+.theme-ninja #pinnedItemsContainer .itemTitle {
+    color: white;
+}
+.theme-ninja .pinnedTitle {
+    background: #111111;
 }

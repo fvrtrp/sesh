@@ -346,7 +346,7 @@ export function loadPinnedBookmarks(state) {
 
         let title = document.createElement("div")
         title.className = `itemTitle`
-        title.innerHTML = item.url ? trimText(item.title, 90) : trimText(item.title, 30)
+        title.innerHTML = item.url ? trimText(item.title, 35) : trimText(item.title, 30)
         bookmarkItem.appendChild(title)
 
         let pinIcon = document.createElement("img")

@@ -52,8 +52,9 @@ export function loadApp(state) {
     //loadTheme(state.theme)
     loadTheme('ninja')
     loadContent({...state, content:'quotes'})
-    loadUtilities({...state, utilities:['showBookmarksShortcut']})
+    loadUtilities({...state, utilities:['showBookmarksShortcut', 'showPinnedBookmarks']})
     //loadUtilities(state.utilities)
+    preloadSettings(state)
 }
 
 function loadTheme(theme) {
@@ -160,24 +161,24 @@ function toggleSettingsScreen(flag) {
 }
 
 function preloadSettings(state) {
-    const option = document.querySelector(`div[value=${state.mode}]`);
-    if(option) {
-        option.classList.add('active');
-    }
-    const theme = document.querySelector(`div[value=${state.theme}]`);
-    if(theme) {
-        theme.classList.add('active');
-    }
-    const showPinnedOnAll = document.querySelector('#showPinnedOnAll');
-    const hidePinnedOnAll = document.querySelector('#hidePinnedOnAll');
-    if(state.showPinnedOnAll) {
-        showPinnedOnAll.classList.add('show');
-        hidePinnedOnAll.classList.remove('show');
-    }
-    else {
-        showPinnedOnAll.classList.remove('show');
-        hidePinnedOnAll.classList.add('show');
-    }
+    // const option = document.querySelector(`div[value=${state.mode}]`);
+    // if(option) {
+    //     option.classList.add('active');
+    // }
+    // const theme = document.querySelector(`div[value=${state.theme}]`);
+    // if(theme) {
+    //     theme.classList.add('active');
+    // }
+    // const showPinnedOnAll = document.querySelector('#showPinnedOnAll');
+    // const hidePinnedOnAll = document.querySelector('#hidePinnedOnAll');
+    // if(state.showPinnedOnAll) {
+    //     showPinnedOnAll.classList.add('show');
+    //     hidePinnedOnAll.classList.remove('show');
+    // }
+    // else {
+    //     showPinnedOnAll.classList.remove('show');
+    //     hidePinnedOnAll.classList.add('show');
+    // }
     stateBuffer = state;
 }
 
