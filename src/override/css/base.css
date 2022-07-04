@@ -76,7 +76,9 @@ body {
 }
 
 #quotesContainer {
-    font-size: 30px;
+    font-size: 27px;
+    font-weight: 300;
+    font-style: italic;
 }
 
 #messageContainer {

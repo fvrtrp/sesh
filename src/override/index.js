@@ -50,8 +50,8 @@ function initSesh() {
 export function loadApp(state) {
     loadSettings()
     //loadTheme(state.theme)
-    loadTheme('ninja')
-    loadContent({...state, content:'date-time'})
+    loadTheme('vanilla')
+    loadContent({...state, content:'quotes'})
     loadUtilities({...state, utilities:['showBookmarksShortcut', 'showPinnedBookmarks']})
     //loadUtilities(state.utilities)
     preloadSettings(state)

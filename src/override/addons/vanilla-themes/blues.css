@@ -11,6 +11,8 @@
 }
 .theme-blues #dateContainer {
     background: radial-gradient(circle, #2B3286, #322991, #6827C8);
+    font: 400 16px 'Source Code Pro', sans-serif;
+    letter-spacing: 5px;
 }
 .theme-blues #settingsContainer{
     background: radial-gradient(circle, #150C1E, #08040B);
@@ -36,17 +38,14 @@
 #themesContainer .theme-blues:hover {
     background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8) !important;
 }
-.theme-blues .searchResult{
+.theme-blues .searchResult {
     background: linear-gradient(to bottom right, #260F35, #0F0F1E);
 }
 .theme-blues .searchResult:hover {
     background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757);
 }
-.theme-blues .searchResult.active{
+.theme-blues .searchResult.active {
     background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
-}
-.theme-blues .connectorLeft, .theme-blues .connectorRight {
-    background: #0F1454;
 }
 .theme-blues .connectorVertical {
     background: linear-gradient(to bottom, #0F1454, #0256F9, #0F1454);
@@ -55,5 +54,5 @@
     background: linear-gradient(to bottom right, #2B328677, #32299177, #6827C877);
 }
 .theme-blues #bookmarksStatusBar:hover {
-    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
+    background: linear-gradient(to bottom right, #2B328677, #32299177, #6827C877);
 }

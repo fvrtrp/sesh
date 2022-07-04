@@ -4,7 +4,7 @@
     top: 50px;
     left: 0;
     height: calc(100% - 150px);
-    width: calc(100% - 200px);
+    width: calc(100%);
     padding: 50px 100px 50px;
     display: flex;
     overflow-x: scroll;
@@ -24,7 +24,6 @@
 }
 #bookmarksContainer .bookmarkLevel .bookmarksContainer {
     position: relative;
-    background: black;
     width: 250px;
     border-radius: 10px;
     
@@ -51,13 +50,14 @@
     font-weight: 400;
     cursor: pointer;
     user-select: none;
+    justify-content: center;
 }
 .bookmarkItem .itemTitle {
     position: relative;
     width: 80%;
     display: flex;
     align-items: center;
-    padding: 5px 25px;
+    padding: 0;
     text-overflow: ellipsis;
     height: 40px;
     font-family: 'Source Code Pro', sans-serif;
@@ -89,9 +89,10 @@
     font-size: 14px;
 }
 .bookmarkItem .pinIcon {
-    position: relative;
+    position: absolute;
     width: 25px;
     height: 25px;
+    right: 25px;
     display: none;
     z-index: 9;
 }
@@ -237,6 +238,9 @@
 #pinnedItemsContainer .itemTitle {
     padding: 0;
 }
+#pinnedItemsContainer .bookmarkItem:not(:last-child) .itemTitle, .bookmarksContainer .bookmarkItem:not(:last-child) .itemTitle {
+    border-bottom: solid 1px #333333;
+}
 #pinnedItemsContainer .tooltip {
     right: 0;
     top: 50px;
@@ -258,16 +262,36 @@
 
 
 /* support for themes */
-.theme-ninja #pinnedItemsContainer {
+.theme-ninja #pinnedItemsContainer, .theme-ninja .bookmarksContainer {
     border: solid 1px #757575;
     background: black;
 }
 .theme-ninja #pinnedItemsContainer .itemTitle {
     color: white;
 }
-.theme-ninja #pinnedItemsContainer .itemTitle:not(:last-child) {
+.theme-ninja #pinnedItemsContainer .itemTitle:not(:last-child), .theme-ninja #bookmarksContainer .itemTitle:not(:last-child) {
     border-bottom: solid 1px #333333;
 }
 .theme-ninja .pinnedTitle {
     background: #111111;
+}
+
+.theme-blues #pinnedItemsContainer, .theme-blues .bookmarksContainer {
+    background: linear-gradient(to bottom right, #0B0D20, #161142, #150B22);
+}
+.theme-blues .pinnedTitle {
+    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
+}
+.theme-blues .svgConnector svg {
+    stroke: #8172FF;
+}
+
+.theme-autumn #pinnedItemsContainer, .theme-autumn .bookmarksContainer {
+    background: linear-gradient(to bottom right, #151013, #1A0D14, #15080A);
+}
+.theme-autumn .pinnedTitle {
+    background: linear-gradient(to bottom right, #A60063, #AA0D4F, #C85227);
+}
+.theme-autumn .svgConnector svg {
+    stroke: #FFB76C;
 }

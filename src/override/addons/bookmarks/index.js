@@ -195,7 +195,7 @@ function populateBookmarks(level, bookmarks) {
         )
 
         let title = createElement("", `itemTitle itemTitle-${level}`)
-        title.innerHTML = item.url ? trimText(item.title, 90) : trimText(item.title, 30)
+        title.innerHTML = item.url ? trimText(item.title, 50) : trimText(item.title, 30)
         bookmarkItem.appendChild(title)
 
         let pinIcon = document.createElement("img")
@@ -383,7 +383,9 @@ function updatePinnedItems(action, item) {
     else if(action === 'remove') {
         stateBuffer.pinnedItems = stateBuffer.pinnedItems.filter(bookmark => bookmark.id !== item)
     }
-    updateLocalStorage(() => loadPinnedBookmarks(stateBuffer))
+    updateLocalStorage(
+        //() => loadPinnedBookmarks(stateBuffer)
+    )
 }
 
 export function cleanup() {
