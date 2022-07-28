@@ -65,26 +65,26 @@ function openSettingsScreen() {
     if(settingsContainer)
         settingsContainer.remove()
     settingsContainer = createElement("settingsContainer", "settingsContainer show", "#seshParent")
-    let settingsString = `<div class="themesContainer">`
+    let settingsString = `<div class="settingsParent">`
     const themes = addons.themes
     const contentItems = addons.content
     const utilities = addons.utilities
 
-    settingsString += `<div class="settingsSection">`
+    settingsString += `<div class="settingsSection themeSection"><div class="sectionTitle">themes</div><div class="sectionItems">`
     themes.forEach(i => {
         settingsString += `<div class="settingsItem themeOption">${i}</div>`
     })
-    settingsString += `</div>`
-    settingsString += `<div class="settingsSection">`
+    settingsString += `</div></div>`
+    settingsString += `<div class="settingsSection contentSection"><div class="sectionTitle">content</div><div class="sectionItems">`
     contentItems.forEach(i => {
         settingsString += `<div class="settingsItem contentOption">${i}</div>`
     })
-    settingsString += `</div>`
-    settingsString += `<div class="settingsSection">`
+    settingsString += `</div></div>`
+    settingsString += `<div class="settingsSection utilitySection"><div class="sectionTitle">utilities</div><div class="sectionItems">`
     utilities.forEach(i => {
         settingsString += `<div class="settingsItem utilityOption">${i}</div>`
     })
-    settingsString += `</div>`
+    settingsString += `</div></div>`
 
     settingsString += `</div>`
     settingsContainer.innerHTML = settingsString

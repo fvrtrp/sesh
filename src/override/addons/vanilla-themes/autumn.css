@@ -9,9 +9,6 @@
 .theme-autumn #timeContainer {
     font: 300 50px 'Open Sans', sans-serif;
 }
-.theme-autumn #settingsContainer {
-    background: radial-gradient(circle, #0C1E18, #0B0404);
-}
 .theme-autumn #dateContainer {
     background: linear-gradient(to bottom right, #A60063, #AA0D4F, #C85227);
     font: 400 16px 'Source Code Pro', sans-serif;

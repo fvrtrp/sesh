@@ -14,9 +14,6 @@
     font: 400 16px 'Source Code Pro', sans-serif;
     letter-spacing: 5px;
 }
-.theme-blues #settingsContainer{
-    background: radial-gradient(circle, #150C1E, #08040B);
-}
 .theme-blues .optionsContainer .option {
     background: linear-gradient(to bottom right, #260F35, #0F0F1E);
 }
