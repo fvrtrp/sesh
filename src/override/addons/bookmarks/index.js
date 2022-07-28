@@ -132,10 +132,10 @@ function searchBookmarks(event, bookmarks) {
         createElement("searchResultsContainer", "", "#searchContainer")
 
         searchResults.forEach(item => {
-            let result = createElement("", "searchResult", "#searchResultsContainer")
-            let resultTitle = createElement("", "resultTitle")
+            let result = createElement("", "bookmarkItem searchItem", "#searchResultsContainer")
+            let resultTitle = createElement("", "itemTitle")
             resultTitle.innerHTML = trimText(item.title, 30)
-            let resultLink = createElement("", "resultLink")
+            let resultLink = createElement("", "itemLink")
             resultLink.innerHTML = trimText(item.url, 50)
             result.appendChild(resultTitle)
             result.appendChild(resultLink)

@@ -1,4 +1,4 @@
-import { stateBuffer } from "./index.js"
+import { stateBuffer, loadApp } from "./index.js"
 import { cleanup as cleanupDateTime } from './addons/date-time.js'
 import { cleanup as cleanupQuotes } from './addons/quotes.js'
 import { cleanup as cleanupMessage } from './addons/message.js'
@@ -40,9 +40,27 @@ export function loadSettings() {
     settingsButton.addEventListener('click', ()=>openSettingsScreen(), false)
 }
 
+function closeSettingsScreen() {
+    let settingsContainer = document.querySelector(`#settingsContainer`)
+    if(settingsContainer)   settingsContainer.remove()
+    clearCurrentDivs()
+    loadApp()
+}
+
 function openSettingsScreen() {
     console.log(`opening settings`, addons)
     //clearCurrentDivs()
+    clearCurrentDivs()
+    let closeButton = document.querySelector('#closeBookmarks')
+    if(closeButton) closeButton.classList.add('show')
+    closeButton.addEventListener('click', ()=>closeSettingsScreen(), false)
+
+    createElement("bookmarksContainer", "", "#seshParent")
+    let openBookmarks  = document.querySelector('#openBookmarks')
+    if(openBookmarks)   openBookmarks.classList.remove('show')
+    let settingsButton  = document.querySelector('#settings')
+    if(settingsButton)  settingsButton.classList.remove('show')
+    
     let settingsContainer = document.querySelector(`#settingsContainer`)
     if(settingsContainer)
         settingsContainer.remove()

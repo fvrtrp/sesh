@@ -52,6 +52,12 @@
     user-select: none;
     justify-content: center;
 }
+.bookmarkItem.searchItem {
+    display: block;
+    width: 500px;
+    height: 80px;
+    padding: 5px 15px;
+}
 .bookmarkItem .itemTitle {
     position: relative;
     width: 80%;
@@ -186,7 +192,6 @@
     padding: 5px 25px;
     text-overflow: ellipsis;
     height: 100px;
-    font-family: 'Source Code Pro', sans-serif;
     font-weight: 400;
     box-sizing: border-box;
     word-break: break-all; 
@@ -195,7 +200,7 @@
     user-select: none;
 }
 #bookmarksContainer #searchContainer .searchResult .resultTitle{
-    font-size: 16px;
+    font-size: 14px;
     margin: 5px 0 10px;
     pointer-events: none;
 }
@@ -259,24 +264,30 @@
     stroke: darkturquoise;
     stroke-width: 1px;
 }
+#pinnedItemsContainer .bookmarkItem:not(:last-child) .itemTitle, #bookmarksContainer .bookmarkItem:not(:last-child) .itemTitle, #searchResultsContainer .searchItem:not(:last-child) {
+    border-bottom: solid 1px #333333;
+}
+#searchResultsContainer .itemTitle:not(:last-child) {
+    border-bottom: none;
+}
 
 
 /* support for themes */
-.theme-ninja #pinnedItemsContainer, .theme-ninja .bookmarksContainer {
+.theme-ninja #pinnedItemsContainer, .theme-ninja .bookmarksContainer, .theme-ninja .searchResultsContainer {
     border: solid 1px #757575;
     background: black;
 }
 .theme-ninja #pinnedItemsContainer .itemTitle {
     color: white;
 }
-.theme-ninja #pinnedItemsContainer .itemTitle:not(:last-child), .theme-ninja #bookmarksContainer .itemTitle:not(:last-child) {
+.theme-ninja #pinnedItemsContainer .itemTitle:not(:last-child), .theme-ninja #bookmarksContainer .itemTitle:not(:last-child), .theme-ninja #searchResultsContainer .itemTitle:not(:last-child) {
     border-bottom: solid 1px #333333;
 }
 .theme-ninja .pinnedTitle {
     background: #111111;
 }
 
-.theme-blues #pinnedItemsContainer, .theme-blues .bookmarksContainer {
+.theme-blues #pinnedItemsContainer, .theme-blues .bookmarksContainer, .theme-blues #searchResultsContainer {
     background: linear-gradient(to bottom right, #0B0D20, #161142, #150B22);
 }
 .theme-blues .pinnedTitle {
@@ -286,7 +297,7 @@
     stroke: #8172FF;
 }
 
-.theme-autumn #pinnedItemsContainer, .theme-autumn .bookmarksContainer {
+.theme-autumn #pinnedItemsContainer, .theme-autumn .bookmarksContainer, .theme-autumn #searchResultsContainer {
     background: linear-gradient(to bottom right, #151013, #1A0D14, #15080A);
 }
 .theme-autumn .pinnedTitle {

@@ -45,15 +45,6 @@
 .theme-ninja #messageContainer, .theme-ninja #messageInput {
     font-weight: 300 !important;
 }
-.theme-ninja .bookmarkItem .itemTitle, .theme-ninja .searchResult{
-    background: linear-gradient(to bottom right, #000000, #000000);
-}
-.theme-ninja .bookmarkItem:hover .itemTitle, .theme-ninja .searchResult:hover {
-    background: linear-gradient(to bottom right, #090909, #0D0D0D);
-}
-.theme-ninja .bookmarkItem .itemTitle.active, .theme-ninja .searchResult.active{
-    background: radial-gradient(circle, #0D0D0D, #141414);
-}
 .theme-ninja .connectorLeft, .theme-ninja .connectorRight {
     background: #26D92D;
     height: 2px !important;
