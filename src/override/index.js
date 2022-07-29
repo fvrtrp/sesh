@@ -12,11 +12,11 @@ export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
     pinnedItems: [],
     version: 0.3,
-    theme: 'zen',
+    theme: 'vanilla-themes',
     content: 'quotes',
     utilities: [
         "showPinnedBookmarks",
-        //"showBookmarksShortcut"
+        "showBookmarksShortcut"
     ],
 }
 
@@ -36,7 +36,7 @@ function initSesh() {
         //redo this
         if(!result.state || (!'version' in result.state)) {
             //preloadSettings(stateBuffer)
-            updateLocalStorage()
+            updateLocalStorage(initSesh())
             // document.getElementById("seshParent").className = stateBuffer.theme
             // document.getElementById("settingsContainer").classList.add('show')
         }
@@ -49,12 +49,12 @@ function initSesh() {
 
 export function loadApp(state) {
     loadSettings()
-    //loadTheme(state.theme)
-    loadTheme('vanilla')
-    loadContent({...state, content:'quotes'})
-    loadUtilities({...state, utilities:['showBookmarksShortcut', 'showPinnedBookmarks']})
-    //loadUtilities(state.utilities)
-    preloadSettings(state)
+    loadTheme(state.theme)
+    //loadTheme('vanilla')
+    loadContent(state)
+    //loadUtilities({...state, utilities:['showBookmarksShortcut', 'showPinnedBookmarks']})
+    loadUtilities(state)
+    //preloadSettings(state)
 }
 
 function loadTheme(theme) {
@@ -63,7 +63,7 @@ function loadTheme(theme) {
             loadMoviePosters()
             break
         }
-        case 'vanilla': {
+        case 'vanilla-themes': {
             loadVanillaTheme()
             break
         }
@@ -111,22 +111,6 @@ function loadUtilities(state) {
         loadBookmarkStyles()
     }
 }
-
-// function loadApp(state) {
-//     switch(state.mode) {
-//         case 'bookmarks': {
-//             let bookmarksContainer = document.createElement("div");
-//             bookmarksContainer.id = "bookmarksContainer";
-//             document.getElementById("seshParent").appendChild(bookmarksContainer);
-//             getBookmarks();
-//             break;
-//         }
-//     }
-//     if(state.showPinnedOnAll) {
-//         loadPinnedItems(state);
-//     }
-//     preloadSettings(state);
-// }
 
 function toggleShowPinnedOnAll(flag) {
     stateBuffer['showPinnedOnAll'] = flag;
@@ -182,54 +166,6 @@ function preloadSettings(state) {
     stateBuffer = state;
 }
 
-function initSetup() {
-    let elements = document.getElementsByClassName("option");
-    for (let i = 0; i < elements.length; i++) {
-        elements[i].addEventListener('click', updateState, false);
-    }
-
-    let themeButtons = document.getElementsByClassName("preview");
-    for (let i = 0; i < elements.length; i++) {
-        if(themeButtons[i])
-            themeButtons[i].addEventListener('click', updateTheme, false);
-    }
-}
-
-function updateState(event) {
-    let elements = document.getElementsByClassName("option");
-    for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.remove('active');
-    }
-    event.target.classList.add('active');
-    const mode = event.target.getAttribute("value");
-    stateBuffer['mode'] = mode;
-    if(mode === 'message') {
-        document.getElementById("messageInput").classList.add("show");
-        document.getElementById("messageInput").addEventListener('change', updateMessage, false);
-    }
-    else {
-        document.getElementById("messageInput").classList.remove("show");
-    }
-}
 function updateMessage(event) {
     stateBuffer['message'] = event.target.value;
-}
-
-function updateTheme(event) {
-    let elements = document.getElementsByClassName("preview");
-    for (let i = 0; i < elements.length; i++) {
-        elements[i].classList.remove('active');
-    }
-    event.target.classList.add('active');
-    const theme = event.target.getAttribute("value");
-    stateBuffer['theme'] = theme;
-    document.getElementById("seshParent").className = theme;
-}
-
-function finishSetup() {
-    chrome.storage.local.set({"state": stateBuffer}, function() {
-        toggleSettingsScreen(false);
-        clearCurrentDivs();
-        loadApp(stateBuffer);
-    });
 }

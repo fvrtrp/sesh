@@ -44,7 +44,7 @@ function closeSettingsScreen() {
     let settingsContainer = document.querySelector(`#settingsContainer`)
     if(settingsContainer)   settingsContainer.remove()
     clearCurrentDivs()
-    loadApp()
+    loadApp(stateBuffer)
 }
 
 function openSettingsScreen() {
@@ -65,29 +65,48 @@ function openSettingsScreen() {
     if(settingsContainer)
         settingsContainer.remove()
     settingsContainer = createElement("settingsContainer", "settingsContainer show", "#seshParent")
-    let settingsString = `<div class="settingsParent">`
+
     const themes = addons.themes
     const contentItems = addons.content
     const utilities = addons.utilities
 
-    settingsString += `<div class="settingsSection themeSection"><div class="sectionTitle">themes</div><div class="sectionItems">`
-    themes.forEach(i => {
-        settingsString += `<div class="settingsItem themeOption">${i}</div>`
-    })
-    settingsString += `</div></div>`
-    settingsString += `<div class="settingsSection contentSection"><div class="sectionTitle">content</div><div class="sectionItems">`
-    contentItems.forEach(i => {
-        settingsString += `<div class="settingsItem contentOption">${i}</div>`
-    })
-    settingsString += `</div></div>`
-    settingsString += `<div class="settingsSection utilitySection"><div class="sectionTitle">utilities</div><div class="sectionItems">`
-    utilities.forEach(i => {
-        settingsString += `<div class="settingsItem utilityOption">${i}</div>`
-    })
-    settingsString += `</div></div>`
+    createElement("", "settingsParent", "#settingsContainer")
 
-    settingsString += `</div>`
-    settingsContainer.innerHTML = settingsString
+    createElement("","settingsSection themeSection",".settingsParent")
+    let sectionTitle = createElement("", "sectionTitle", ".themeSection")
+    sectionTitle.innerHTML = "themes"
+    createElement("", "sectionItems themeItems", ".themeSection")
+    themes.forEach(i => {
+        let el = createElement("", "settingsItem themeOption", ".themeItems")
+        el.innerHTML = i
+        el.addEventListener('click', ()=>applySetting('theme', i, false))
+    })
+
+    createElement("","settingsSection contentSection",".settingsParent")
+    sectionTitle = createElement("", "sectionTitle", ".contentSection")
+    sectionTitle.innerHTML = "content"
+    createElement("", "sectionItems contentItems", ".contentSection")
+    contentItems.forEach(i => {
+        let el = createElement("", "settingsItem contentOption", ".contentItems")
+        el.innerHTML = i
+        el.addEventListener('click', ()=>applySetting('content', i, false))
+    })
+
+    createElement("","settingsSection utilitySection",".settingsParent")
+    sectionTitle = createElement("", "sectionTitle", ".utilitySection")
+    sectionTitle.innerHTML = "utility"
+    createElement("", "sectionItems utilityItems", ".utilitySection")
+    utilities.forEach(i => {
+        let el = createElement("", "settingsItem utilityOption", ".utilityItems")
+        el.innerHTML = i
+    })
+
+}
+
+function applySetting(type, val) {
+    stateBuffer[type] = val
+    console.log(`zzz`, stateBuffer)
+    updateLocalStorage()
 }
 
 export function clearCurrentDivs() {
@@ -102,6 +121,7 @@ export function clearCurrentDivs() {
 }
 
 export function updateLocalStorage(callback) {
+    console.log(`updating local`, {"state": stateBuffer})
     chrome.storage.local.set({"state": stateBuffer}, function() {
         if(callback)
             callback()
