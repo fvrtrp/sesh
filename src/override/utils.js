@@ -92,14 +92,14 @@ function openSettingsScreen() {
         el.addEventListener('click', ()=>applySetting('content', i, false))
     })
 
-    createElement("","settingsSection utilitySection",".settingsParent")
-    sectionTitle = createElement("", "sectionTitle", ".utilitySection")
-    sectionTitle.innerHTML = "utility"
-    createElement("", "sectionItems utilityItems", ".utilitySection")
-    utilities.forEach(i => {
-        let el = createElement("", "settingsItem utilityOption", ".utilityItems")
-        el.innerHTML = i
-    })
+    // createElement("","settingsSection utilitySection",".settingsParent")
+    // sectionTitle = createElement("", "sectionTitle", ".utilitySection")
+    // sectionTitle.innerHTML = "utility"
+    // createElement("", "sectionItems utilityItems", ".utilitySection")
+    // utilities.forEach(i => {
+    //     let el = createElement("", "settingsItem utilityOption", ".utilityItems")
+    //     el.innerHTML = i
+    // })
 
 }
 

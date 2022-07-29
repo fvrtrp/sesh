@@ -19,7 +19,7 @@
 }
 #settingsContainer .settingsParent {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: calc(100% - 50px);
     margin-left: 50px;
     padding-top: 50px;

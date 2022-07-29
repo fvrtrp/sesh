@@ -43,6 +43,7 @@ function initSesh() {
         else {
         //     document.getElementById("seshParent").className = result.state.theme;
             loadApp(result.state)
+            stateBuffer = result.state
         }
     });
 }

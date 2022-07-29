@@ -6,11 +6,11 @@ export function loadMoviePosters() {
 }
 
 function resumeLoading() {
-
-    createElement("vignetteContainer","", "#seshParent")
-    createElement("pictureContainer","pictureContainer", "#seshParent")
+    createElement("vignetteBackground","", "#seshParent")
+    createElement("vignetteContainer","", "#vignetteBackground")
+    createElement("pictureContainer","pictureContainer", "#vignetteBackground")
     createElement("","picture", "#pictureContainer", "img")
-    createElement("posterContainer","posterContainer", "#seshParent")
+    createElement("posterContainer","posterContainer", "#vignetteBackground")
     const poster = createElement("poster","picture", "#posterContainer", "img")
     createElement("movieTitle","movieTitle", "#posterContainer")
 
@@ -60,7 +60,9 @@ function setBackgroundAndText() {
 
 export function cleanup() {
     console.log(`cleaning up movies`)
-    let container = document.getElementById("vignetteContainer")
+    let container = document.getElementById("vignetteBackground")
+    if(container)   container.remove()
+    container = document.getElementById("vignetteContainer")
     if(container)   container.remove()
     container = document.getElementById("pictureContainer")
     if(container)   container.remove()
