@@ -36,7 +36,7 @@ body {
     top: 15px;
     right: 25px;
     display: flex;
-    z-index: 5;
+    z-index: 10;
 }
 .buttonContainer>div {
     font-family: 'Source Code Pro', sans-serif;

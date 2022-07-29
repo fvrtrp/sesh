@@ -57,7 +57,7 @@ function openSettingsScreen() {
 
     createElement("bookmarksContainer", "", "#seshParent")
     let openBookmarks  = document.querySelector('#openBookmarks')
-    if(openBookmarks)   openBookmarks.classList.remove('show')
+    if(openBookmarks)   openBookmarks.remove()
     let settingsButton  = document.querySelector('#settings')
     if(settingsButton)  settingsButton.classList.remove('show')
     

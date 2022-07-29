@@ -65,7 +65,9 @@
 }
 .settingsSection .settingsItem:hover {
     color: rgb(17, 210, 253);
-    border-bottom: solid 4px rgb(17, 210, 253);
+}
+.settingsSection .settingsItem.active {
+    color: rgb(17, 253, 182);
 }
 #settingsContainer .title {
     font-size: 30px;
