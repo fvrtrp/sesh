@@ -86,7 +86,7 @@ function loadContent(state) {
             loadDateTime()
             break
         }
-        case 'quotes': {
+        case 'nihilist quotes': {
             loadQuotes()
             break
         }

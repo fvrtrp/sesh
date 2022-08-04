@@ -76,8 +76,8 @@ function openSettingsScreen() {
     let sectionTitle = createElement("", "sectionTitle", ".themeSection")
     sectionTitle.innerHTML = "themes"
     createElement("", "sectionItems themeItems", ".themeSection")
-    themes.forEach(i => {
-        let el = createElement("", "settingsItem themeOption", ".themeItems")
+    themes.forEach((i, index) => {
+        let el = createElement(`theme-${index}`, "settingsItem themeOption", ".themeItems")
         el.innerHTML = i
         el.addEventListener('click', ()=>applySetting('theme', i, false))
     })
@@ -86,8 +86,8 @@ function openSettingsScreen() {
     sectionTitle = createElement("", "sectionTitle", ".contentSection")
     sectionTitle.innerHTML = "content"
     createElement("", "sectionItems contentItems", ".contentSection")
-    contentItems.forEach(i => {
-        let el = createElement("", "settingsItem contentOption", ".contentItems")
+    contentItems.forEach((i, index) => {
+        let el = createElement(`content-${index}`, "settingsItem contentOption", ".contentItems")
         el.innerHTML = i
         if(i==='custom message') {
             let inp = document.createElement('input')
@@ -99,27 +99,37 @@ function openSettingsScreen() {
         el.addEventListener('click', ()=>applySetting('content', i, false))
     })
 
-    // createElement("","settingsSection utilitySection",".settingsParent")
-    // sectionTitle = createElement("", "sectionTitle", ".utilitySection")
-    // sectionTitle.innerHTML = "utility"
-    // createElement("", "sectionItems utilityItems", ".utilitySection")
-    // utilities.forEach(i => {
-    //     let el = createElement("", "settingsItem utilityOption", ".utilityItems")
-    //     el.innerHTML = i
-    // })
-
+    updateHighlights()
 }
 
 function applySetting(type, val) {
     if(type === 'content' && val.type === 'custom message') {
         stateBuffer['content'] = 'custom message'
         stateBuffer['message'] = val.value
+        updateHighlights()
         updateLocalStorage()
         return
     }
     stateBuffer[type] = val
     console.log(`zzz`, stateBuffer)
+    updateHighlights()
     updateLocalStorage()
+}
+
+function updateHighlights() {
+    const themes = addons.themes
+    const contentItems = addons.content
+
+    themes.forEach((i, index) => {
+        const el = document.querySelector(`#theme-${index}`)
+        if(el && stateBuffer['theme'] === i)  el.classList.add('active')
+        else    el.classList.remove('active')
+    })
+    contentItems.forEach((i, index) => {
+        const el = document.querySelector(`#content-${index}`)
+        if(el && stateBuffer['content'] === i)  el.classList.add('active')
+        else    el.classList.remove('active')
+    })
 }
 
 export function clearCurrentDivs() {
