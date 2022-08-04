@@ -89,6 +89,13 @@ function openSettingsScreen() {
     contentItems.forEach(i => {
         let el = createElement("", "settingsItem contentOption", ".contentItems")
         el.innerHTML = i
+        if(i==='custom message') {
+            let inp = document.createElement('input')
+            inp.value = stateBuffer['message']
+            inp.classList.add('customInput')
+            inp.addEventListener('input', (e) => {applySetting('content', {type: 'custom message', value: e.target.value})})
+            el.appendChild(inp)
+        }
         el.addEventListener('click', ()=>applySetting('content', i, false))
     })
 
@@ -104,6 +111,12 @@ function openSettingsScreen() {
 }
 
 function applySetting(type, val) {
+    if(type === 'content' && val.type === 'custom message') {
+        stateBuffer['content'] = 'custom message'
+        stateBuffer['message'] = val.value
+        updateLocalStorage()
+        return
+    }
     stateBuffer[type] = val
     console.log(`zzz`, stateBuffer)
     updateLocalStorage()

@@ -90,7 +90,7 @@ function loadContent(state) {
             loadQuotes()
             break
         }
-        case 'message': {
+        case 'custom message': {
             loadMessage(state.message)
             break
         }
