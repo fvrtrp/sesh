@@ -1,3 +1,41 @@
+/* movies */
+
+.theme-movies {
+    background: radial-gradient(circle, #030303, #000000);
+}
+.theme-movies * {
+    color: rgb(187, 187, 187);
+}
+.theme-movies #timeContainer {
+    font: 200 50px 'Source Code Pro', sans-serif;
+    margin-bottom: 15px;
+}
+.theme-movies #dateContainer {
+    font: 200 16px 'Source Code Pro', sans-serif;
+    letter-spacing: 5px;
+}
+.theme-movies #quotesContainer {
+    font: 200 18px 'Source Code Pro', sans-serif;
+    letter-spacing: 5.4px;
+}
+.theme-movies #messageContainer, .theme-movies #messageInput {
+    font-weight: 300 !important;
+}
+.theme-movies .connectorLeft, .theme-movies .connectorRight {
+    background: #26D92D;
+    height: 2px !important;
+}
+.theme-movies .connectorVertical {
+    background: #26D92D;
+}
+.theme-movies #bookmarksStatusBar {
+    background: radial-gradient(circle, #0D0D0D77, #14141477);
+}
+.theme-movies #bookmarksStatusBar:hover {
+    background: radial-gradient(circle, #0D0D0D, #141414);
+}
+
+
 #vignetteBackground {
     position: fixed;
     top: 0;
@@ -54,6 +92,7 @@
     cursor: pointer;
     pointer-events: all;
     margin-top: 15px;
+    word-break: break-all;
 }
 .zoomedPicture {
     transform: scale(1.1);

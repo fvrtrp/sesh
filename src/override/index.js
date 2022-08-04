@@ -49,6 +49,7 @@ function initSesh() {
 }
 
 export function loadApp(state) {
+    console.log(`loading app`)
     loadSettings()
     loadTheme(state.theme)
     //loadTheme('vanilla')

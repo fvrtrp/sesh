@@ -55,14 +55,13 @@ function openBookmarks() {
 }
 
 function closeBookmarks() {
+    console.log(`closing bookmarks`)
     let closeButton = document.querySelector('#closeBookmarks')
     if(closeButton) closeButton.remove()
     let openBookmarks  = document.querySelector('#openBookmarks')
     if(openBookmarks)   openBookmarks.remove()
     const bookmarksContainer = document.querySelector("#bookmarksContainer")
     if(bookmarksContainer)  bookmarksContainer.remove()
-    const pinnedItemsContainer = document.querySelector("#pinnedItemsContainer")
-    //if(pinnedItemsContainer)    pinnedItemsContainer.style.display = "block"
 
     clearCurrentDivs()
     loadApp(stateBuffer)
@@ -389,4 +388,6 @@ function updatePinnedItems(action, item) {
 }
 
 export function cleanup() {
+    const bookmarksContainer = document.querySelector("#bookmarksContainer")
+    if(bookmarksContainer)  bookmarksContainer.remove()
 }

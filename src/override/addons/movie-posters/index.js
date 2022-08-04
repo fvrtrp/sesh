@@ -23,6 +23,7 @@ function resumeLoading() {
 function loadCss() {
     loadStyle("addons/movie-posters/index.css")
     .then(() => {
+        document.querySelector("#seshParent").className = `theme-movies`
         resumeLoading()
     }).catch(err => alert(err))
 }

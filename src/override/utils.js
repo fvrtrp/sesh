@@ -43,6 +43,8 @@ export function loadSettings() {
 function closeSettingsScreen() {
     let settingsContainer = document.querySelector(`#settingsContainer`)
     if(settingsContainer)   settingsContainer.remove()
+    let settingsClose = document.querySelector(`#closeSettings`)
+    if(settingsClose)   settingsClose.remove()
     clearCurrentDivs()
     loadApp(stateBuffer)
 }
@@ -51,8 +53,10 @@ function openSettingsScreen() {
     console.log(`opening settings`, addons)
     //clearCurrentDivs()
     clearCurrentDivs()
-    let closeButton = document.querySelector('#closeBookmarks')
-    if(closeButton) closeButton.classList.add('show')
+    let closeButton = document.querySelector('#closeSettings')
+    if(closeButton) closeButton.remove()
+    closeButton = createElement("closeSettings", "show", "#buttonContainer")
+    closeButton.innerHTML = "close"
     closeButton.addEventListener('click', ()=>closeSettingsScreen(), false)
 
     createElement("bookmarksContainer", "", "#seshParent")
@@ -111,7 +115,6 @@ function applySetting(type, val) {
         return
     }
     stateBuffer[type] = val
-    console.log(`zzz`, stateBuffer)
     updateHighlights()
     updateLocalStorage()
 }
@@ -138,7 +141,7 @@ export function clearCurrentDivs() {
     cleanupMessage()
     cleanupQuotes()
     cleanupMoviePosters()
-    //cleanupBookmarks()
+    cleanupBookmarks()
     const settingsButton = document.querySelector("#settings")
     if(settingsButton)  settingsButton.remove()
 }

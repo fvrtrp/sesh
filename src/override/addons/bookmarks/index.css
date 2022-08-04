@@ -273,17 +273,20 @@
 
 
 /* support for themes */
-.theme-ninja #pinnedItemsContainer, .theme-ninja .bookmarksContainer, .theme-ninja .searchResultsContainer {
+.theme-ninja #pinnedItemsContainer, .theme-ninja .bookmarksContainer, .theme-ninja .searchResultsContainer,
+.theme-movies #pinnedItemsContainer, .theme-movies .bookmarksContainer, .theme-movies .searchResultsContainer {
     border: solid 1px #757575;
     background: black;
 }
-.theme-ninja #pinnedItemsContainer .itemTitle {
+.theme-ninja #pinnedItemsContainer .itemTitle,
+.theme-movies #pinnedItemsContainer .itemTitle  {
     color: white;
 }
-.theme-ninja #pinnedItemsContainer .itemTitle:not(:last-child), .theme-ninja #bookmarksContainer .itemTitle:not(:last-child), .theme-ninja #searchResultsContainer .itemTitle:not(:last-child) {
+.theme-ninja #pinnedItemsContainer .itemTitle:not(:last-child), .theme-ninja #bookmarksContainer .itemTitle:not(:last-child), .theme-ninja #searchResultsContainer .itemTitle:not(:last-child),
+.theme-movies #pinnedItemsContainer .itemTitle:not(:last-child), .theme-movies #bookmarksContainer .itemTitle:not(:last-child), .theme-movies #searchResultsContainer .itemTitle:not(:last-child) {
     border-bottom: solid 1px #333333;
 }
-.theme-ninja .pinnedTitle {
+.theme-ninja .pinnedTitle, .theme-movies .pinnedTitle {
     background: #111111;
 }
 

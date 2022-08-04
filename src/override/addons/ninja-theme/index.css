@@ -18,30 +18,6 @@
     font: 200 18px 'Source Code Pro', sans-serif;
     letter-spacing: 5.4px;
 }
-.theme-ninja #settingsContainer{
-    background: radial-gradient(circle, #030303, #000000);
-}
-.theme-ninja .optionsContainer .option {
-    background: linear-gradient(to bottom right, #000000, #000000);
-}
-.theme-ninja .optionsContainer .option:hover {
-    background: linear-gradient(to bottom right, #090909, #0D0D0D);
-}
-.theme-ninja .optionsContainer .option.active {
-    background: radial-gradient(circle, #0D0D0D, #141414);
-}
-.theme-ninja #settingsContainer #finish {
-    background: linear-gradient(to bottom right, #090909, #0D0D0D);
-}
-.theme-ninja #settingsContainer #finish:hover {
-    background: radial-gradient(circle, #0D0D0D, #141414);
-}
-#themesContainer .theme-ninja {
-    background: linear-gradient(to bottom right, #202020, #202020) !important;
-}
-#themesContainer .theme-ninja:hover {
-    background: radial-gradient(circle, #0D0D0D, #141414) !important;
-}
 .theme-ninja #messageContainer, .theme-ninja #messageInput {
     font-weight: 300 !important;
 }
