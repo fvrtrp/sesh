@@ -4,19 +4,56 @@
     left: 0;
     width: 100%;
     height: 100%;
-    /* z-index: -1; */
-    background: black;
     pointer-events: none;
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradient 35s ease infinite;
 }
 
-#quoteContainer {
-    color: white;
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
 }
 
-#zenContainer .graphLines {
+/* Blues */
+
+.theme-zen * {
     color: white;
 }
-#zenContainer line {
-    stroke-width: 0.2;
-    stroke: rgb(86, 209, 146);
+.theme-zen #timeContainer {
+    font: 400 50px 'Open Sans', sans-serif;
+}
+.theme-zen #dateContainer {
+    background: rgba(0, 0, 0, 0.15);
+    font: 400 16px 'Source Sans Pro', sans-serif;
+    padding: 10px 25px !important;
+    letter-spacing: 5px;
+}
+.theme-zen #settingsContainer #finish {
+    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
+}
+.theme-zen #settingsContainer #finish:hover {
+    background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757);
+}
+#themesContainer .theme-zen {
+    background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757) !important;
+}
+#themesContainer .theme-zen:hover {
+    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8) !important;
+}
+.theme-zen .connectorVertical {
+    background: linear-gradient(to bottom, #0F1454, #0256F9, #0F1454);
+}
+.theme-zen #bookmarksStatusBar {
+    background: linear-gradient(to bottom right, #2B328677, #32299177, #6827C877);
+}
+.theme-zen #bookmarksStatusBar:hover {
+    background: linear-gradient(to bottom right, #2B328677, #32299177, #6827C877);
 }

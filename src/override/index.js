@@ -54,8 +54,8 @@ export function loadApp(state) {
     loadTheme(state.theme)
     //loadTheme('vanilla')
     loadContent(state)
-    //loadUtilities({...state, utilities:['showBookmarksShortcut', 'showPinnedBookmarks']})
-    loadUtilities(state)
+    loadUtilities({...state, utilities:['showBookmarksShortcut', 'showPinnedBookmarks']})
+    //loadUtilities(state)
     //preloadSettings(state)
 }
 

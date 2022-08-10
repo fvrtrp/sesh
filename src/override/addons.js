@@ -3,6 +3,7 @@ export const addons = {
         "vanilla-themes",
         "ninja",
         "movie-posters",
+        "zen",
     ],
     "content": [
         "date-time",

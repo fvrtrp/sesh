@@ -278,16 +278,23 @@
     border: solid 1px #757575;
     background: black;
 }
+.theme-zen #pinnedItemsContainer, .theme-zen .bookmarksContainer, .theme-zen .searchResultsContainer {
+    background: rgba(0, 0, 0, 0.25);
+}
 .theme-ninja #pinnedItemsContainer .itemTitle,
 .theme-movies #pinnedItemsContainer .itemTitle  {
     color: white;
 }
 .theme-ninja #pinnedItemsContainer .itemTitle:not(:last-child), .theme-ninja #bookmarksContainer .itemTitle:not(:last-child), .theme-ninja #searchResultsContainer .itemTitle:not(:last-child),
-.theme-movies #pinnedItemsContainer .itemTitle:not(:last-child), .theme-movies #bookmarksContainer .itemTitle:not(:last-child), .theme-movies #searchResultsContainer .itemTitle:not(:last-child) {
+.theme-movies #pinnedItemsContainer .itemTitle:not(:last-child), .theme-movies #bookmarksContainer .itemTitle:not(:last-child), .theme-movies #searchResultsContainer .itemTitle:not(:last-child),
+.theme-zen #pinnedItemsContainer .itemTitle:not(:last-child), .theme-zen #bookmarksContainer .itemTitle:not(:last-child), .theme-zen #searchResultsContainer .itemTitle:not(:last-child) {
     border-bottom: solid 1px #333333;
 }
 .theme-ninja .pinnedTitle, .theme-movies .pinnedTitle {
     background: #111111;
+}
+.theme-zen .pinnedTitle, .theme-zen #bookmarkSearch {
+    background:rgba(0, 0, 0, 0.25) !important;
 }
 
 .theme-blues #pinnedItemsContainer, .theme-blues .bookmarksContainer, .theme-blues #searchResultsContainer {

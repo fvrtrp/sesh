@@ -22,6 +22,7 @@
     outline: none;
     border-bottom: solid 0.5px white;
     background: black;
+    color: white;
     margin-left: 15px;
 }
 #settingsContainer .settingsParent {
