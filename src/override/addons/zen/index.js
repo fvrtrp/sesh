@@ -15,5 +15,10 @@ function loadCss() {
     }).catch(err => alert(err))
 }
 
+export function cleanup() {
+    console.log(`cleaning up zen theme`)
+    let container = document.getElementById("zenContainer")
+    if(container)   container.remove()
+}
 
 
