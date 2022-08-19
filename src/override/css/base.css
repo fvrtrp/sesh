@@ -37,6 +37,11 @@ body {
     right: 25px;
     display: flex;
     z-index: 10;
+    background: black;
+    padding: 15px 10px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 .buttonContainer>div {
     font-family: 'Source Code Pro', sans-serif;
@@ -48,8 +53,9 @@ body {
     transition: color 0.3s ease-in-out;
     opacity: 0;
     pointer-events: none;
-    margin-left: 20px;
     display: none;
+    margin: 0 20px;
+    letter-spacing: 4px;
 }
 
 .buttonContainer>div.show {

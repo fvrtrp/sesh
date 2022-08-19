@@ -274,12 +274,10 @@
 
 /* support for themes */
 .theme-ninja #pinnedItemsContainer, .theme-ninja .bookmarksContainer, .theme-ninja .searchResultsContainer,
-.theme-movies #pinnedItemsContainer, .theme-movies .bookmarksContainer, .theme-movies .searchResultsContainer {
+.theme-movies #pinnedItemsContainer, .theme-movies .bookmarksContainer, .theme-movies .searchResultsContainer,
+.theme-zen #pinnedItemsContainer, .theme-zen .bookmarksContainer, .theme-zen .searchResultsContainer {
     border: solid 1px #757575;
     background: black;
-}
-.theme-zen #pinnedItemsContainer, .theme-zen .bookmarksContainer, .theme-zen .searchResultsContainer {
-    background: rgba(0, 0, 0, 0.25);
 }
 .theme-ninja #pinnedItemsContainer .itemTitle,
 .theme-movies #pinnedItemsContainer .itemTitle  {
@@ -293,7 +291,7 @@
 .theme-ninja .pinnedTitle, .theme-movies .pinnedTitle {
     background: #111111;
 }
-.theme-zen .pinnedTitle, .theme-zen #bookmarkSearch {
+.theme-zen .pinnedTitle {
     background:rgba(0, 0, 0, 0.25) !important;
 }
 

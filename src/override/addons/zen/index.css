@@ -1,3 +1,11 @@
+.theme-zen {
+    background: radial-gradient(circle, #030303, #000000);
+}
+
+.theme-zen * {
+    color: white;
+}
+
 #zenContainer {
     position: fixed;
     top: 0;
@@ -22,11 +30,6 @@
 	}
 }
 
-/* Blues */
-
-.theme-zen * {
-    color: white;
-}
 .theme-zen #timeContainer {
     font: 400 50px 'Open Sans', sans-serif;
 }
