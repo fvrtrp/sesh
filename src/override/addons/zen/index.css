@@ -34,32 +34,19 @@
 }
 
 .theme-zen #timeContainer {
-    font: 400 50px 'Open Sans', sans-serif;
+    font: 300 50px 'Open Sans', sans-serif;
 }
 .theme-zen #dateContainer {
     background: rgba(0, 0, 0, 0.15);
-    font: 400 16px 'Source Sans Pro', sans-serif;
+    font: 300 16px 'Source Sans Pro', sans-serif;
     padding: 10px 25px !important;
     letter-spacing: 5px;
-}
-.theme-zen #settingsContainer #finish {
-    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
-}
-.theme-zen #settingsContainer #finish:hover {
-    background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757);
-}
-#themesContainer .theme-zen {
-    background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757) !important;
-}
-#themesContainer .theme-zen:hover {
-    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8) !important;
 }
 .theme-zen .connectorVertical {
     background: linear-gradient(to bottom, #0F1454, #0256F9, #0F1454);
 }
 .theme-zen #bookmarksStatusBar {
-    background: linear-gradient(to bottom right, #2B328677, #32299177, #6827C877);
+    background: radial-gradient(circle, #0D0D0D77, #14141477);
 }
 .theme-zen #bookmarksStatusBar:hover {
-    background: linear-gradient(to bottom right, #2B328677, #32299177, #6827C877);
-}
+    background: radial-gradient(circle, #0D0D0D, #141414);
