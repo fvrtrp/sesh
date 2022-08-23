@@ -30,7 +30,7 @@ window.onload = () => {
 
 function initSesh() {
     chrome.storage.local.get(['state'], function(result) {
-        console.log(`zzz result`, result)
+        // console.log(`zzz result`, result)
         if(!result.state || (!'version' in result.state)) {
             updateLocalStorage(initSesh())
         }
