@@ -51,8 +51,6 @@ function closeSettingsScreen() {
 }
 
 function openSettingsScreen() {
-    console.log(`opening settings`, addons)
-    //clearCurrentDivs()
     clearCurrentDivs()
     let closeButton = document.querySelector('#closeSettings')
     if(closeButton) closeButton.remove()
@@ -70,6 +68,14 @@ function openSettingsScreen() {
     if(settingsContainer)
         settingsContainer.remove()
     settingsContainer = createElement("settingsContainer", "settingsContainer show", "#seshParent")
+
+    const attribution = createElement("attribution", "attribution", "#settingsContainer", "a")
+    attribution.className = "attribution"
+    attribution.innerHTML = "sesh"
+    attribution.href = "https://fvrtrp.github.io/"
+
+    const settingsIcon = createElement("settingsIcon", "settingsIcon", "#settingsContainer", "img")
+    settingsIcon.src = "../../../icons/icon128.png"
 
     const themes = addons.themes
     const contentItems = addons.content

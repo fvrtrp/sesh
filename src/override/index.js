@@ -13,7 +13,7 @@ export let stateBuffer = {
     pinnedItems: [],
     version: 0.3,
     theme: 'vanilla-themes',
-    content: 'quotes',
+    content: 'date-time',
     utilities: [
         "showPinnedBookmarks",
         "showBookmarksShortcut"
@@ -24,8 +24,6 @@ window.onload = () => {
     console.log('init sesh...')
     //chrome.storage.local.clear();
     initSesh()
-    // initSettingsEventListener()
-    // initSetup()
 };
 
 
@@ -33,15 +31,10 @@ window.onload = () => {
 function initSesh() {
     chrome.storage.local.get(['state'], function(result) {
         console.log(`zzz result`, result)
-        //redo this
         if(!result.state || (!'version' in result.state)) {
-            //preloadSettings(stateBuffer)
             updateLocalStorage(initSesh())
-            // document.getElementById("seshParent").className = stateBuffer.theme
-            // document.getElementById("settingsContainer").classList.add('show')
         }
         else {
-        //     document.getElementById("seshParent").className = result.state.theme;
             loadApp(result.state)
             stateBuffer = result.state
         }
@@ -52,11 +45,8 @@ export function loadApp(state) {
     console.log(`loading app`)
     loadSettings()
     loadTheme(state.theme)
-    //loadTheme('vanilla')
     loadContent(state)
     loadUtilities({...state, utilities:['showBookmarksShortcut', 'showPinnedBookmarks']})
-    //loadUtilities(state)
-    //preloadSettings(state)
 }
 
 function loadTheme(theme) {

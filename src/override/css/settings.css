@@ -201,3 +201,11 @@
 #settingsContainer .togglePinnedItems img.show {
     display: inline-block;
 }
+
+.settingsIcon {
+    position: absolute;
+    bottom: 60px;
+    right: 25px;
+    width: 70px;
+    pointer-events: none;
+}
