@@ -6,6 +6,7 @@ import { loadVanillaTheme } from './addons/vanilla-themes/index.js'
 import { loadNinjaTheme } from './addons/ninja-theme/index.js'
 import { loadMoviePosters } from './addons/movie-posters/index.js'
 import { loadZenTheme } from './addons/zen/index.js'
+import { loadGeometryTheme } from './addons/geometry/index.js'
 import { loadSettings, updateLocalStorage } from './utils.js'
 
 export let stateBuffer = {
@@ -65,6 +66,10 @@ function loadTheme(theme) {
         }
         case 'zen': {
             loadZenTheme()
+            break
+        }
+        case 'geometry': {
+            loadGeometryTheme()
             break
         }
         default: {}

@@ -1,0 +1,46 @@
+/* Blues */
+
+.theme-blues {
+    background: radial-gradient(circle, #0C0E1E, #05040B);
+}
+.theme-blues * {
+    color: white;
+}
+.theme-blues #timeContainer {
+    font: 300 50px 'Open Sans', sans-serif;
+}
+.theme-blues #dateContainer {
+    background: radial-gradient(circle, #2B3286, #322991, #6827C8);
+    font: 400 16px 'Source Code Pro', sans-serif;
+    letter-spacing: 5px;
+}
+.theme-blues .optionsContainer .option {
+    background: linear-gradient(to bottom right, #260F35, #0F0F1E);
+}
+.theme-blues .optionsContainer .option:hover {
+    background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757);
+}
+.theme-blues .optionsContainer .option.active {
+    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
+}
+.theme-blues #settingsContainer #finish {
+    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
+}
+.theme-blues #settingsContainer #finish:hover {
+    background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757);
+}
+#themesContainer .theme-blues {
+    background: linear-gradient(to bottom right, #1C204F, #1A1644, #311757) !important;
+}
+#themesContainer .theme-blues:hover {
+    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8) !important;
+}
+.theme-blues .connectorVertical {
+    background: linear-gradient(to bottom, #0F1454, #0256F9, #0F1454);
+}
+.theme-blues #bookmarksStatusBar {
+    background: linear-gradient(to bottom right, #2B328677, #32299177, #6827C877);
+}
+.theme-blues #bookmarksStatusBar:hover {
+    background: linear-gradient(to bottom right, #2B328677, #32299177, #6827C877);
+}
