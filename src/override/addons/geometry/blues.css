@@ -44,3 +44,33 @@
 .theme-blues #bookmarksStatusBar:hover {
     background: linear-gradient(to bottom right, #2B328677, #32299177, #6827C877);
 }
+
+
+.shape { 
+    animation-name: floating;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+}
+.speed1 {
+    animation-duration: 45s;
+}
+.speed2 {
+    animation-duration: 60s;
+}
+.speed3 {
+    animation-duration: 75s;
+}
+.speed4 {
+    animation-duration: 90s;
+}
+ 
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    25%  { transform: translate(150px, 300px); }
+    50%  { transform: translate(450px, 105px); }
+    75%  { transform: translate(-240px, -225px); }
+    100%   { transform: translate(0, -0px); }   
+}
