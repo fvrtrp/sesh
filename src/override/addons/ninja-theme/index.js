@@ -1,6 +1,6 @@
 import { loadStyle } from '../../utils.js'
 
-export function loadNinjaTheme() {
+export function loadTheme() {
     console.log(`loading ninja theme`)
     loadCss()
 }

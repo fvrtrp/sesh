@@ -1,6 +1,6 @@
 import { createElement, loadStyle } from '../../utils.js'
 
-export function loadMoviePosters() {
+export function loadTheme() {
     console.log(`loading movie posters`)
     loadCss()
 }

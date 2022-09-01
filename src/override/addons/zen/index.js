@@ -1,6 +1,6 @@
 import { createElement, loadStyle } from '../../utils.js'
 
-export function loadZenTheme() {
+export function loadTheme() {
     console.log(`loading zen...`)
     createElement("zenContainer","", "#seshParent")
     loadCss()

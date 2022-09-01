@@ -5,6 +5,7 @@ import { cleanup as cleanupMessage } from './addons/message.js'
 import { cleanup as cleanupBookmarks } from './addons/bookmarks/index.js'
 import { cleanup as cleanupMoviePosters } from './addons/movie-posters/index.js'
 import { cleanup as cleanupZen } from './addons/zen/index.js'
+import { cleanup as cleanupGeometry } from './addons/geometry/index.js'
 import { addons } from './addons.js'
 
 export function createElement(id, className, parent, type) {
@@ -149,6 +150,7 @@ export function clearCurrentDivs() {
     cleanupQuotes()
     cleanupMoviePosters()
     cleanupZen()
+    cleanupGeometry()
     cleanupBookmarks()
     const settingsButton = document.querySelector("#settings")
     if(settingsButton)  settingsButton.remove()

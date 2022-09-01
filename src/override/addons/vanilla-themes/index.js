@@ -1,6 +1,6 @@
 import { loadStyle } from '../../utils.js'
 
-export function loadVanillaTheme() {
+export function loadTheme() {
     console.log(`loading a vanilla theme`)
     const randomTheme = themes[Math.floor(Math.random()*themes.length)]
     loadCss(randomTheme)
