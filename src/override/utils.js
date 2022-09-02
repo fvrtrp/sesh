@@ -73,7 +73,7 @@ function openSettingsScreen() {
     const attribution = createElement("attribution", "attribution", "#settingsContainer", "a")
     attribution.className = "attribution"
     attribution.innerHTML = "sesh"
-    attribution.href = "https://fvrtrp.github.io/"
+    attribution.href = "https://fvrtrp.github.io/sesh"
 
     const settingsIcon = createElement("settingsIcon", "settingsIcon", "#settingsContainer", "img")
     settingsIcon.src = "../../../icons/icon128.png"
