@@ -1,0 +1,89 @@
+/* Blues */
+
+.theme-geometry {
+    background: radial-gradient(circle, #0C0E1E, #05040B);
+}
+.geometry-blue {
+    background: radial-gradient(circle, #11172B, #171717);
+}
+.geometry-red {
+    background: radial-gradient(circle, #350808, #171717);
+}
+.geometry-pink {
+    background: radial-gradient(circle, #2B1124, #171717);
+}
+.geometry-yellow {
+    background: radial-gradient(circle, #2D2608, #171717);
+}
+.geometry-green {
+    background: radial-gradient(circle, #0C2617, #171717);
+}
+
+.theme-geometry * {
+    color: white;
+}
+.theme-geometry #quotesContainer {
+    font: 300 20px 'Open Sans', sans-serif;
+    letter-spacing: 7px;
+    text-transform: uppercase;
+}
+.theme-geometry #messageContainer {
+    font: 300 45px 'Open Sans', sans-serif;
+    letter-spacing: 10px;
+    text-transform: uppercase;
+}
+.theme-geometry #timeContainer {
+    font: 300 50px 'Open Sans', sans-serif;
+    letter-spacing: 10px;
+}
+.theme-geometry #dateContainer {
+    background: none;
+    font: 300 16px 'Source Code Pro', sans-serif;
+    letter-spacing: 4.3px;
+    margin-top: 0 !important;
+}
+
+.theme-geometry .connectorVertical {
+    background: linear-gradient(to bottom, #0F1454, #0256F9, #0F1454);
+}
+.theme-geometry #bookmarksStatusBar {
+    background: radial-gradient(circle, #0D0D0D77, #14141477);
+}
+.theme-geometry #bookmarksStatusBar:hover {
+    background: radial-gradient(circle, #0D0D0D, #141414);
+}
+
+
+.shape { 
+    animation-name: floating;
+    animation-duration: 20s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+    margin-left: 30px;
+    margin-top: 5px;
+    transition: fill 2s ease-in-out;
+}
+.shape:hover {
+    /* opacity: 0.5; */
+    fill: #0256F9;
+}
+.speed1 {
+    animation-duration: 45s;
+}
+.speed2 {
+    animation-duration: 60s;
+}
+.speed3 {
+    animation-duration: 75s;
+}
+.speed4 {
+    animation-duration: 90s;
+}
+ 
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    25%  { transform: translate(150px, 300px); }
+    50%  { transform: translate(450px, 105px); }
+    75%  { transform: translate(-240px, -225px); }
+    100%   { transform: translate(0, -0px); }   
+}

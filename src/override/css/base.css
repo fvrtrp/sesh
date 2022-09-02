@@ -39,14 +39,13 @@ body {
     display: flex;
     z-index: 10;
     background: black;
-    padding: 15px 10px;
+    padding: 12px 5px;
     border-radius: 8px;
     text-transform: uppercase;
-    font-weight: 400;
 }
 .buttonContainer>div {
-    font-family: 'Source Code Pro', sans-serif;
-    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
     letter-spacing: 1px;
     color: #cacaca;
     cursor: pointer;
@@ -56,7 +55,8 @@ body {
     pointer-events: none;
     display: none;
     margin: 0 20px;
-    letter-spacing: 4px;
+    letter-spacing: 6px;
+    font-weight: 400;
 }
 
 .buttonContainer>div.show {
