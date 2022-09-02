@@ -12,8 +12,8 @@ import { loadSettings, updateLocalStorage } from './utils.js'
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
     pinnedItems: [],
-    version: 0.3,
-    theme: 'vanilla-themes',
+    version: "1.1.4",
+    theme: 'geometry',
     content: 'date-time',
     utilities: [
         "showPinnedBookmarks",

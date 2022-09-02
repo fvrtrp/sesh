@@ -158,7 +158,7 @@ export function clearCurrentDivs() {
 }
 
 export function updateLocalStorage(callback) {
-    console.log(`updating local`, {"state": stateBuffer})
+    // console.log(`updating local`, {"state": stateBuffer})
     chrome.storage.local.set({"state": stateBuffer}, function() {
         if(callback)
             callback()
