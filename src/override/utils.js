@@ -164,3 +164,14 @@ export function updateLocalStorage(callback) {
             callback()
     });
 }
+
+export function launch_toast(message='') {
+    const x = document.getElementById("toast")
+    x.className = "show";
+    if(message) {
+        x.innerText = message
+    }
+    setTimeout(function(){
+        x.className = x.className.replace("show", "");
+    }, 2000);
+}

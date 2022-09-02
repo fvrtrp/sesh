@@ -158,39 +158,12 @@
     border: solid 2px white;
 }
 
-#settingsContainer #finish {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    right: 40px;
-    bottom: 25px;
-    padding: 15px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 16px;
-}
-#settingsContainer #finish span {
-    font-family: 'Source Code Pro', sans-serif;
-    margin-right: 20px;
-    margin-top: -3px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-}
-#settingsContainer #finish img{
-    width: 20px;
-    height: 20px;
-}
-
 #settingsContainer .togglePinnedItems {
     display: flex;
     align-items: center;
     padding: 10px 30px;
     background: rgba(0, 0, 0, 0.2);
     margin-top: 25px;
-    font-family: 'Source Sans Pro';
-    font-weight: 300;
-    font-size: 14px;
     border-radius: 4px;
 }
 #settingsContainer .togglePinnedItems img {

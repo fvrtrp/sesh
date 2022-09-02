@@ -1,4 +1,4 @@
-import { createElement, clearCurrentDivs, updateLocalStorage, loadStyle } from '../../utils.js'
+import { createElement, clearCurrentDivs, updateLocalStorage, loadStyle, launch_toast } from '../../utils.js'
 import { stateBuffer, loadApp } from '../../index.js'
 
 const selectedBookmark = {}
@@ -48,7 +48,6 @@ function openBookmarks() {
     let settingsButton  = document.querySelector('#settings')
     if(settingsButton)  settingsButton.classList.remove('show')
     const pinnedItemsContainer = document.querySelector("#pinnedItemsContainer")
-    console.log(`zzzyes`, pinnedItemsContainer)
     if(pinnedItemsContainer)    pinnedItemsContainer.remove()
     //loadPinnedBookmarks(stateBuffer)
     getBookmarks()
@@ -343,7 +342,7 @@ export function loadPinnedBookmarks(state) {
     let pinnedItems = state.pinnedItems
     pinnedItems.forEach((item, index) => {
         let bookmarkItem = document.createElement("div")
-        bookmarkItem.id = `bookmark-${item.title}`
+        bookmarkItem.id = `pinnedbookmark-${item.id}`
         bookmarkItem.className = `bookmarkItem ${item.url ? `link` : `folder`}`
 
         let title = document.createElement("div")
@@ -366,13 +365,21 @@ export function loadPinnedBookmarks(state) {
         bookmarkItem.addEventListener('click', (event)=>selectBookmark(event, 'pinned', item, index, false), false)
         bookmarkItem.addEventListener('dblclick', ()=>openLinks(item), false)
         bookmarkItem.addEventListener('contextmenu', (event)=>openRandomLink(event, item), false)
-        pinIcon.addEventListener('click', (e) => {e.stopPropagation(); updatePinnedItems('remove', item.id)})
+        pinIcon.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const target = document.querySelector(`#pinnedbookmark-${item.id}`)
+            console.log(target)
+            if(target) target.remove()
+            updatePinnedItems('remove', item.id)
+
+        })
 
         container.appendChild(bookmarkItem);
     });
 }
 
 function updatePinnedItems(action, item) {
+    launch_toast('updated pinned bookmarks')
     if(action === 'add') {
         if(stateBuffer.pinnedItems)
             stateBuffer.pinnedItems.push(item)
