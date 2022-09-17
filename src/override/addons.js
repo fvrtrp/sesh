@@ -4,7 +4,8 @@ export const addons = {
         "ninja",
         "movie-posters",
         "zen",
-        "geometry"
+        "geometry",
+        "gameoflife"
     ],
     "content": [
         "date-time",
