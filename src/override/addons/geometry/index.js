@@ -44,7 +44,7 @@ function initGeometry(theme) {
 
 function makeTriangle(theme) {
     const windowHeight = window.innerHeight, windowWidth = window.innerWidth
-    const square = createElement("square","", "#geometryContainer")
+    const square = createElement("square","square", "#geometryContainer")
     const size = Math.floor(Math.random()*50) + 100
     square.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`
     square.style.width = `${size}px`
@@ -65,7 +65,7 @@ function makeTriangle(theme) {
 
 function makeCircle(theme) {
     const windowHeight = window.innerHeight, windowWidth = window.innerWidth
-    const square = createElement("square","", "#geometryContainer")
+    const square = createElement("square","square", "#geometryContainer")
     const size = Math.floor(Math.random()*50) + 100
     square.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`
     square.style.width = `${size}px`
@@ -86,7 +86,7 @@ function makeCircle(theme) {
 
 function makeSquare(theme) {
     const windowHeight = window.innerHeight, windowWidth = window.innerWidth
-    const square = createElement("square","", "#geometryContainer")
+    const square = createElement("square","square", "#geometryContainer")
     const size = Math.floor(Math.random()*50) + 100
     square.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`
     square.style.width = `${size}px`

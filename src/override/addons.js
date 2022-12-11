@@ -5,7 +5,7 @@ export const addons = {
         "movie-posters",
         "zen",
         "geometry",
-        "gameoflife"
+        // "gameoflife"
     ],
     "content": [
         "date-time",

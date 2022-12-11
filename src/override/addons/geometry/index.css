@@ -4,19 +4,19 @@
     background: radial-gradient(circle, #0C0E1E, #05040B);
 }
 .geometry-blue {
-    background: radial-gradient(circle, #11172B, #171717);
+    background: linear-gradient(to bottom right, #000000, #0c0d2b);
 }
 .geometry-red {
-    background: radial-gradient(circle, #350808, #171717);
+    background: linear-gradient(to bottom right, #000000, #0c0d2b);
 }
 .geometry-pink {
-    background: radial-gradient(circle, #2B1124, #171717);
+    background: linear-gradient(to bottom right, #000000, #0c0d2b);
 }
 .geometry-yellow {
-    background: radial-gradient(circle, #2D2608, #171717);
+    background: linear-gradient(to bottom right, #000000, #0c0d2b);
 }
 .geometry-green {
-    background: radial-gradient(circle, #0C2617, #171717);
+    background: linear-gradient(to bottom right, #000000, #0c0d2b);
 }
 
 .theme-geometry * {
@@ -53,7 +53,12 @@
     background: radial-gradient(circle, #0D0D0D, #141414);
 }
 
-
+.square {
+    mix-blend-mode: difference;
+}
+.square:hover {
+    mix-blend-mode: plus-lighter;
+}
 .shape { 
     animation-name: floating;
     animation-duration: 20s;
@@ -62,10 +67,10 @@
     margin-left: 30px;
     margin-top: 5px;
     transition: fill 2s ease-in-out;
+    border-radius: 8px;
 }
 .shape:hover {
     /* opacity: 0.5; */
-    fill: #0256F9;
 }
 .speed1 {
     animation-duration: 45s;
