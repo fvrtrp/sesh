@@ -39,13 +39,14 @@ function initGeometry(theme) {
         makeSquare(theme)
         makeCircle(theme)
         makeTriangle(theme)
+        // makeApple(theme)
     }
 }
 
 function makeTriangle(theme) {
     const windowHeight = window.innerHeight, windowWidth = window.innerWidth
     const square = createElement("square","square", "#geometryContainer")
-    const size = Math.floor(Math.random()*50) + 100
+    const size = Math.floor(Math.random()*50) + 50
     square.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`
     square.style.width = `${size}px`
     square.style.height = `${size}px`
@@ -63,10 +64,23 @@ function makeTriangle(theme) {
 </svg>`
 }
 
+function makeApple(theme) {
+    const windowHeight = window.innerHeight, windowWidth = window.innerWidth
+    const square = createElement("apple",`fruit speed${Math.floor(Math.random()*3) + 2}`, "#geometryContainer")
+    const size = Math.floor(Math.random()*50) + 50
+    square.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`
+    square.style.width = `${size}px`
+    square.style.height = `${size}px`
+    square.style.position = 'absolute'
+    square.style.left = `${Math.floor(Math.random()*(windowWidth-200))}px`
+    square.style.top = `${Math.floor(Math.random()*(windowHeight-200))}px`
+    square.innerHTML = `<img src="addons/geometry/rotten-apple.svg" />`
+}
+
 function makeCircle(theme) {
     const windowHeight = window.innerHeight, windowWidth = window.innerWidth
     const square = createElement("square","square", "#geometryContainer")
-    const size = Math.floor(Math.random()*50) + 100
+    const size = Math.floor(Math.random()*50) + 50
     square.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`
     square.style.width = `${size}px`
     square.style.height = `${size}px`
@@ -87,7 +101,7 @@ function makeCircle(theme) {
 function makeSquare(theme) {
     const windowHeight = window.innerHeight, windowWidth = window.innerWidth
     const square = createElement("square","square", "#geometryContainer")
-    const size = Math.floor(Math.random()*50) + 100
+    const size = Math.floor(Math.random()*50) + 50
     square.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`
     square.style.width = `${size}px`
     square.style.height = `${size}px`

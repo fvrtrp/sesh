@@ -72,7 +72,7 @@
     object-fit: cover;
     width: 100%;
     height: 100%;
-    transition: transform 2s ease-in-out, height 12s ease-out;
+    transition: opacity 2s ease-in-out, height 12s ease-out;
     /* transform: scale(1.2); */
 }
 
@@ -98,7 +98,7 @@
     transform: scale(1.1);
 }
 .zoomedBackground {
-    height: 400%;
+    opacity: 0;
 }
 .noblur {
     filter: blur(4px);
@@ -111,20 +111,26 @@
     right: 0;
     top: 45px;
     height: 100%;
-    max-width: 100px;
+    width: 500px;
     display: flex;
     align-items: center;
     z-index: 3;
     pointer-events: none;
     flex-direction: column;
     justify-content: center;
+    transition: all 4s ease-in-out;
 }
 #posterContainer img {
     width: 100%;
-    height: 100%;
-    max-height: calc(25%);
+    height: 80%;
     object-fit: contain;
     border-radius: 10px;
     cursor: pointer;
     pointer-events: all;
+    transition: all 4s ease-in-out;
+    opacity: 0.4;
+}
+#posterContainer img.maximized {
+    opacity: 1;
+    transform: scale(1.1);
 }

@@ -9,14 +9,18 @@ import { cleanup as cleanupGeometry } from './addons/geometry/index.js'
 import { cleanup as cleanupGameoflife } from './addons/gameoflife/index.js'
 import { addons } from './addons.js'
 
-export function createElement(id, className, parent, type) {
+export function createElement(id, className, parent, type, method) {
     if(!type)
         type = "div"
     let el = document.createElement(type)
     el.id = id || ""
     el.className = className || ""
-    if(parent)
-        document.querySelector(parent).appendChild(el)
+    if(parent) {
+        if(method==='unshift')
+            document.querySelector(parent).insertBefore(el, document.querySelector(parent).children[0])
+        else
+            document.querySelector(parent).appendChild(el)
+    }
     return el
 }
 
@@ -71,6 +75,9 @@ function openSettingsScreen() {
         settingsContainer.remove()
     settingsContainer = createElement("settingsContainer", "settingsContainer show", "#seshParent")
 
+    const bg = createElement('settingsBg', 'settingsBg', '#settingsContainer', 'img')
+    bg.src = "./sesh-rounded-bg.svg"
+
     const attribution = createElement("attribution", "attribution", "#settingsContainer", "a")
     attribution.className = "attribution"
     attribution.innerHTML = "sesh"
@@ -114,6 +121,26 @@ function openSettingsScreen() {
     })
 
     updateHighlights()
+    attachCursorStyle()
+    attachItemStyles()
+}
+
+function attachItemStyles() {
+    for(let item of document.querySelectorAll('.settingsItem')) {
+        const att = createElement('decor', 'decor')
+        item.appendChild(att)
+    }
+}
+
+function attachCursorStyle() {
+    const el = createElement('cursorHighlight', 'cursorHighlight', ".settingsContainer")
+    const radius = 50
+    document.addEventListener('mousemove', (e) => {
+        el.style.width = radius + 'px'
+        el.style.height = radius + 'px'
+        cursorHighlight.style.left = e.clientX-radius/2 + 'px'
+        cursorHighlight.style.top = e.clientY-radius/2 + 'px'
+    })
 }
 
 function applySetting(type, val) {

@@ -52,14 +52,14 @@
 .theme-geometry #bookmarksStatusBar:hover {
     background: radial-gradient(circle, #0D0D0D, #141414);
 }
-
+.fruit img{
+    object-fit: contain;
+    max-width: 100%;
+}
 .square {
     mix-blend-mode: difference;
 }
-.square:hover {
-    mix-blend-mode: plus-lighter;
-}
-.shape { 
+.shape, .fruit { 
     animation-name: floating;
     animation-duration: 20s;
     animation-iteration-count: infinite;

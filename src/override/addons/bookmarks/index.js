@@ -27,7 +27,7 @@ function resumeLoading() {
 }
 
 export function showBookmarksShortcut() {
-    const bookmarksButton = createElement("openBookmarks","show", "#buttonContainer")
+    const bookmarksButton = createElement("openBookmarks", "show", "#buttonContainer", "div", "unshift")
     bookmarksButton.innerHTML = "bookmarks" 
     bookmarksButton.addEventListener('click', ()=>openBookmarks(), false)
 
@@ -38,7 +38,6 @@ export function showBookmarksShortcut() {
 }
 
 function openBookmarks() {
-    console.log(`zzzopencalled`)
     clearCurrentDivs()
     let closeButton = document.querySelector('#closeBookmarks')
     if(closeButton) closeButton.classList.add('show')
@@ -54,7 +53,6 @@ function openBookmarks() {
 }
 
 function closeBookmarks() {
-    console.log(`closing bookmarks`)
     let closeButton = document.querySelector('#closeBookmarks')
     if(closeButton) closeButton.remove()
     let openBookmarks  = document.querySelector('#openBookmarks')
@@ -69,7 +67,6 @@ function closeBookmarks() {
 
 function getBookmarks() {
     chrome.bookmarks.getTree(function(result) {
-        console.log(`fetched bookmarks`, result)
         if(result && result[0]) {
             if(result[0].children) {
                 let results = result[0].children
@@ -368,7 +365,6 @@ export function loadPinnedBookmarks(state) {
         pinIcon.addEventListener('click', (e) => {
             e.stopPropagation();
             const target = document.querySelector(`#pinnedbookmark-${item.id}`)
-            console.log(target)
             if(target) target.remove()
             updatePinnedItems('remove', item.id)
 
