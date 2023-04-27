@@ -7,7 +7,7 @@ import { loadTheme as loadNinjaTheme } from './addons/ninja-theme/index.js'
 import { loadTheme as loadMoviePosters } from './addons/movie-posters/index.js'
 import { loadTheme as loadZenTheme } from './addons/zen/index.js'
 import { loadTheme as loadGeometryTheme } from './addons/geometry/index.js'
-import { loadTheme as loadGameoflifeTheme } from './addons/gameoflife/index.js'
+import { loadTheme as loadGoogleEarth } from './addons/google-earth/index.js'
 import { loadSettings, updateLocalStorage } from './utils.js'
 
 export let stateBuffer = {
@@ -53,6 +53,10 @@ export function loadApp(state) {
 
 function loadTheme(theme) {
     switch(theme) {
+        case 'google-earth': {
+            loadGoogleEarth()
+            break
+        }
         case 'movie-posters': {
             loadMoviePosters()
             break
@@ -71,10 +75,6 @@ function loadTheme(theme) {
         }
         case 'geometry': {
             loadGeometryTheme()
-            break
-        }
-        case 'gameoflife': {
-            loadGameoflifeTheme()
             break
         }
         default: {}

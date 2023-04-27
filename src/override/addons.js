@@ -5,13 +5,13 @@ export const addons = {
         "movie-posters",
         "zen",
         "geometry",
-        // "gameoflife"
+        "google-earth"
     ],
     "content": [
         "date-time",
         "nihilist quotes",
         "custom message",
-        "nothing"
+        "nothing",
     ],
     "utilities": [
         "show bookmarks shortcut on home",
