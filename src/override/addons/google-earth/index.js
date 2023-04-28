@@ -27,6 +27,7 @@ function setBackgroundAndText() {
     const randomId = Math.floor(Math.random() * images.length)
     const item = document.querySelector(".picture")
     item.src = `https://www.gstatic.com/prettyearth/assets/full/${images[randomId]}.jpg`
+    setTimeout(()=>document.querySelector('#pictureContainer').classList.add('active'), 10)
 }
 
 // DO THIS

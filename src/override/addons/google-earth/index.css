@@ -8,7 +8,7 @@
     flex-direction: column;
 }
 .theme-googleearth #timeContainer {
-    font: 700 50px 'Open Sans', sans-serif;
+    font: 700 40px 'Open Sans', sans-serif;
     color: white;
     text-shadow: 3px 4px #00000073;
 }
@@ -17,7 +17,7 @@
     color: white;
     font: 400 16px 'Source Sans Pro', sans-serif;
     padding: 10px 25px !important;
-    letter-spacing: 5px;
+    letter-spacing: 2px;
 }
 .theme-googleearth #quotesContainer {
     font: 200 18px 'Source Code Pro', sans-serif;
@@ -62,10 +62,14 @@
     height: 100%;
     overflow: hidden;
     pointer-events: none;
+    transition: opacity 2s ease-in-out;
+    opacity: 0;
 }
 .picture {
     object-fit: cover;
     width: 100%;
     height: 100%;
-    transition: opacity 2s ease-in-out, height 12s ease-out;
+}
+#pictureContainer.active {
+    opacity: 1;
 }
