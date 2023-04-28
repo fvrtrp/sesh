@@ -10,6 +10,7 @@
 .theme-googleearth #timeContainer {
     font: 700 50px 'Open Sans', sans-serif;
     color: white;
+    text-shadow: 3px 4px #00000073;
 }
 .theme-googleearth #dateContainer {
     background: rgba(0, 0, 0, 0.15);
