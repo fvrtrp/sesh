@@ -85,7 +85,7 @@ function openSettingsScreen() {
 
     const settingsIcon = createElement("settingsIcon", "settingsIcon", "#settingsContainer", "img")
     settingsIcon.src = "../../../icons/icon128.png"
-    settingsIcon.setAttribute('title', 'sesh by fvrtrp')
+    settingsIcon.setAttribute('title', 'sesh by fevertrip')
 
     const themes = addons.themes
     const contentItems = addons.content

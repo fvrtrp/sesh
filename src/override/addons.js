@@ -1,16 +1,16 @@
 export const addons = {
     "themes": [
-        "vanilla-themes",
-        "ninja",
+        "google-earth",
+        "geometry",
         "movie-posters",
         "zen",
-        "geometry",
-        "google-earth"
+        "ninja",
+        "vanilla-themes",
     ],
     "content": [
         "date-time",
-        "nihilist quotes",
         "custom message",
+        "nihilist quotes",
         "nothing",
     ],
     "utilities": [
