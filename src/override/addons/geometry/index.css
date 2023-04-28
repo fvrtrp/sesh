@@ -42,10 +42,6 @@
     letter-spacing: 5px;
     margin-top: 0 !important;
 }
-
-.theme-geometry .connectorVertical {
-    background: linear-gradient(to bottom, #0F1454, #0256F9, #0F1454);
-}
 .theme-geometry #bookmarksStatusBar {
     background: radial-gradient(circle, #0D0D0D77, #14141477);
 }

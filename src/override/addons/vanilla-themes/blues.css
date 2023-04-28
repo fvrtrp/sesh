@@ -27,9 +27,6 @@
 #themesContainer .theme-blues:hover {
     background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8) !important;
 }
-.theme-blues .connectorVertical {
-    background: linear-gradient(to bottom, #0F1454, #0256F9, #0F1454);
-}
 .theme-blues #bookmarksStatusBar {
     background: linear-gradient(to bottom right, #2B328677, #32299177, #6827C877);
 }

@@ -21,13 +21,6 @@
 .theme-ninja #messageContainer, .theme-ninja #messageInput {
     font-weight: 300 !important;
 }
-.theme-ninja .connectorLeft, .theme-ninja .connectorRight {
-    background: #26D92D;
-    height: 2px !important;
-}
-.theme-ninja .connectorVertical {
-    background: #26D92D;
-}
 .theme-ninja #bookmarksStatusBar {
     background: radial-gradient(circle, #0D0D0D77, #14141477);
 }

@@ -13,9 +13,6 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    /* background-image: url('../../assets/gold-contour.svg'); */
-
-
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 	background-size: 400% 400%;
 	animation: gradient 35s ease infinite;
@@ -41,9 +38,6 @@
     font: 300 16px 'Source Sans Pro', sans-serif;
     padding: 10px 25px !important;
     letter-spacing: 5px;
-}
-.theme-zen .connectorVertical {
-    background: linear-gradient(to bottom, #0F1454, #0256F9, #0F1454);
 }
 .theme-zen #bookmarksStatusBar {
     background: radial-gradient(circle, #0D0D0D77, #14141477);

@@ -21,13 +21,6 @@
 .theme-movies #messageContainer, .theme-movies #messageInput {
     font-weight: 300 !important;
 }
-.theme-movies .connectorLeft, .theme-movies .connectorRight {
-    background: #26D92D;
-    height: 2px !important;
-}
-.theme-movies .connectorVertical {
-    background: #26D92D;
-}
 .theme-movies #bookmarksStatusBar {
     background: radial-gradient(circle, #0D0D0D77, #14141477);
 }
