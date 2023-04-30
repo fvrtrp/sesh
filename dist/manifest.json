@@ -5,12 +5,12 @@
   "description": "Beautiful new tab",
   "homepage_url": "http://fvrtrp.github.io/sesh",
   "icons": {
-    "16": "dist/icons/icon16.png",
-    "48": "dist/icons/icon48.png",
-    "128": "dist/icons/icon128.png"
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
   },
   "chrome_url_overrides": {
-    "newtab": "dist/index.html"
+    "newtab": "index.html"
   },
   "permissions": [
     "bookmarks",
