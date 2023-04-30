@@ -1,16 +1,8 @@
-import { createElement, loadStyle } from '../../utils.js'
+import { createElement } from '../../utils.js'
 
 export function loadTheme() {
     createElement("zenContainer","", "#seshParent")
-    loadCss()
-}
-
-
-function loadCss() {
-    loadStyle("override/addons/zen/index.css")
-    .then(() => {
-        document.querySelector("#seshParent").className = `theme-zen`
-    }).catch(err => alert(err))
+    document.querySelector("#seshParent").className = `theme-zen`
 }
 
 export function cleanup() {

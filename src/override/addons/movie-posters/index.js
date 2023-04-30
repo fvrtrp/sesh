@@ -1,11 +1,8 @@
-import { createElement, loadStyle } from '../../utils.js'
+import { createElement } from '../../utils.js'
 import { imageList } from './movie-list.js'
 
 export function loadTheme() {
-    loadCss()
-}
-
-function resumeLoading() {
+    document.querySelector("#seshParent").className = `theme-movies`
     createElement("vignetteBackground","", "#seshParent")
     createElement("vignetteContainer","", "#vignetteBackground")
     createElement("pictureContainer","pictureContainer", "#vignetteBackground")
@@ -18,14 +15,6 @@ function resumeLoading() {
     poster.addEventListener('mouseleave', ()=>toggleZoom(false))
 
     setBackgroundAndText()
-}
-
-function loadCss() {
-    loadStyle("override/addons//movie-posters/index.css")
-    .then(() => {
-        document.querySelector("#seshParent").className = `theme-movies`
-        resumeLoading()
-    }).catch(err => alert(err))
 }
 
 let movieTitle = ""

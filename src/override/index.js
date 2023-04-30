@@ -1,15 +1,23 @@
+import './css/index.css'
 import { loadDateTime } from './addons/date-time.js'
 import { loadQuotes } from './addons/quotes.js'
 import { loadMessage } from './addons/message.js'
-import { loadBookmarks, showBookmarksShortcut, loadPinnedBookmarks, loadBookmarkStyles } from './addons/bookmarks/index.js'
+import { loadBookmarks, showBookmarksShortcut, loadPinnedBookmarks } from './addons/bookmarks/index.js'
+import './addons/bookmarks/index.css'
 import { loadTheme as loadVanillaTheme } from './addons/vanilla-themes/index.js'
+import './addons/vanilla-themes/autumn.css'
+import './addons/vanilla-themes/blues.css'
 import { loadTheme as loadNinjaTheme } from './addons/ninja-theme/index.js'
+import './addons/ninja-theme/index.css'
 import { loadTheme as loadMoviePosters } from './addons/movie-posters/index.js'
+import './addons/movie-posters/index.css'
 import { loadTheme as loadZenTheme } from './addons/zen/index.js'
+import './addons/zen/index.css'
 import { loadTheme as loadGeometryTheme } from './addons/geometry/index.js'
+import './addons/geometry/index.css'
 import { loadTheme as loadGoogleEarth } from './addons/google-earth/index.js'
+import './addons/google-earth/index.css'
 import { loadSettings, updateLocalStorage } from './utils.js'
-import './css/index.css'
 
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
@@ -105,11 +113,9 @@ function loadContent(state) {
 function loadUtilities(state) {
     if(state && state.utilities && state.utilities.includes('showBookmarksShortcut')) {
         showBookmarksShortcut()
-        loadBookmarkStyles()
     }
     if(state && state.utilities && state.utilities.includes('showPinnedBookmarks')) {
         loadPinnedBookmarks(state)
-        loadBookmarkStyles()
     }
 }
 

@@ -1,25 +1,14 @@
-import { createElement, loadStyle } from '../../utils.js'
+import { createElement } from '../../utils.js'
 import { images } from './image-list.js'
 
 export function loadTheme() {
-    loadCss()
-}
-
-function resumeLoading() {
+    document.querySelector("#seshParent").className = `theme-googleearth`
     createElement("vignetteBackground","", "#seshParent")
     createElement("vignetteContainer","", "#vignetteBackground")
     createElement("pictureContainer","pictureContainer", "#vignetteBackground")
     createElement("","picture", "#pictureContainer", "img")
 
     setBackgroundAndText()
-}
-
-function loadCss() {
-    loadStyle("override/addons/google-earth/index.css")
-    .then(() => {
-        document.querySelector("#seshParent").className = `theme-googleearth`
-        resumeLoading()
-    }).catch(err => alert(err))
 }
 
 function setBackgroundAndText() {

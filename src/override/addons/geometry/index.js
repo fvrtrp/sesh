@@ -1,18 +1,10 @@
-import { createElement, loadStyle } from '../../utils.js'
+import { createElement } from '../../utils.js'
 
 export function loadTheme() {
     createElement("geometryContainer","", "#seshParent")
-    const randomTheme = themes[Math.floor(Math.random()*themes.length)]
-    loadCss(randomTheme)
-}
-
-function loadCss(theme) {
-    loadStyle(`override/addons/geometry/index.css`)
-    .then(() => {
-        document.querySelector("#seshParent").className = `theme-geometry geometry-${theme}`
-        initGeometry(theme)
-
-    }).catch(err => alert(err))
+    const theme = themes[Math.floor(Math.random()*themes.length)]
+    document.querySelector("#seshParent").className = `theme-geometry geometry-${theme}`
+    initGeometry(theme)
 }
 
 const themes = [

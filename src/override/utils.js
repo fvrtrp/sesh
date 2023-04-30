@@ -26,19 +26,6 @@ export function createElement(id, className, parent, type, method) {
     return el
 }
 
-export function loadStyle(src) {
-    return new Promise(function (resolve, reject) {
-        let link = document.createElement('link')
-        link.href = src
-        link.rel = 'stylesheet'
-
-        link.onload = () => resolve(link)
-        link.onerror = () => reject(new Error(`Style load error for ${src}`))
-
-        document.head.append(link)
-    });
-}
-
 export function loadSettings() {
     //createElement("settingsContainer", "settingsContainer", "#seshParent")
     const buttonContainer = document.querySelector("#buttonContainer")

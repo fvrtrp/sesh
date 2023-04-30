@@ -1,4 +1,4 @@
-import { createElement, clearCurrentDivs, updateLocalStorage, loadStyle, launch_toast } from '../../utils.js'
+import { createElement, clearCurrentDivs, updateLocalStorage, launch_toast } from '../../utils.js'
 import { stateBuffer, loadApp } from '../../index.js'
 import PinImg from 'override/addons/bookmarks/assets/pin.svg'
 import UnpinImg from 'override/addons/bookmarks/assets/unpin.svg'
@@ -6,23 +6,6 @@ import UnpinImg from 'override/addons/bookmarks/assets/unpin.svg'
 const selectedBookmark = {}
 
 export function loadBookmarks() {
-    loadCss()
-}
-
-export function loadBookmarkStyles() {
-    loadStyle("override/addons/bookmarks/index.css")
-    .then(() => {
-    }).catch(err => alert(err))
-}
-
-function loadCss() {
-    loadStyle("override/addons/bookmarks/index.css")
-    .then(() => {
-        resumeLoading()
-    }).catch(err => alert(err))
-}
-
-function resumeLoading() {
     getBookmarks()
 }
 
