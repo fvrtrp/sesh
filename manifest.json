@@ -1,6 +1,6 @@
 {
   "name": "sesh - Beautiful New Tab",
-  "version": "1.1.8",
+  "version": "2.0.0",
   "manifest_version": 3,
   "description": "Beautiful new tab",
   "homepage_url": "http://fvrtrp.github.io/sesh",
@@ -10,7 +10,7 @@
     "128": "src/icons/icon128.png"
   },
   "chrome_url_overrides": {
-    "newtab": "src/override/override.html"
+    "newtab": "src/index.html"
   },
   "permissions": [
     "bookmarks",

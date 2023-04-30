@@ -2,7 +2,6 @@ import { createElement, loadStyle } from '../../utils.js'
 import { images } from './image-list.js'
 
 export function loadTheme() {
-    console.log(`loading google earth`)
     loadCss()
 }
 
@@ -16,7 +15,7 @@ function resumeLoading() {
 }
 
 function loadCss() {
-    loadStyle("addons/google-earth/index.css")
+    loadStyle("override/addons/google-earth/index.css")
     .then(() => {
         document.querySelector("#seshParent").className = `theme-googleearth`
         resumeLoading()
@@ -32,7 +31,6 @@ function setBackgroundAndText() {
 
 // DO THIS
 export function cleanup() {
-    console.log(`cleaning up google earth`)
     let container = document.getElementById("vignetteBackground")
     if(container)   container.remove()
     container = document.getElementById("vignetteContainer")

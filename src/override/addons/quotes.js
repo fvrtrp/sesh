@@ -1,8 +1,7 @@
 import { createElement } from '../utils.js'
 
 export function loadQuotes() {
-    console.log(`loading quotes`)
-    let quotesContainer = createElement("quotesContainer", "", "#seshParent")
+    createElement("quotesContainer", "", "#seshParent")
     getQuotes()
 }
 

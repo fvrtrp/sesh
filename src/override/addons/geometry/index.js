@@ -1,14 +1,13 @@
 import { createElement, loadStyle } from '../../utils.js'
 
 export function loadTheme() {
-    console.log(`loading geometry theme`)
     createElement("geometryContainer","", "#seshParent")
     const randomTheme = themes[Math.floor(Math.random()*themes.length)]
     loadCss(randomTheme)
 }
 
 function loadCss(theme) {
-    loadStyle(`addons/geometry/index.css`)
+    loadStyle(`override/addons/geometry/index.css`)
     .then(() => {
         document.querySelector("#seshParent").className = `theme-geometry geometry-${theme}`
         initGeometry(theme)
@@ -33,13 +32,11 @@ const palette = {
 }
 
 function initGeometry(theme) {
-    console.log(`init geometry`)
     const num = Math.floor(Math.random()*1) + 3
     for(let i=0; i<num; i++) {
         makeSquare(theme)
         makeCircle(theme)
         makeTriangle(theme)
-        // makeApple(theme)
     }
 }
 
@@ -62,19 +59,6 @@ function makeTriangle(theme) {
     </defs>
     <polygon points="0,0 ${size/2},${size} ${size},0" fill="url(#grad3)" />
 </svg>`
-}
-
-function makeApple(theme) {
-    const windowHeight = window.innerHeight, windowWidth = window.innerWidth
-    const square = createElement("apple",`fruit speed${Math.floor(Math.random()*3) + 2}`, "#geometryContainer")
-    const size = Math.floor(Math.random()*50) + 50
-    square.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`
-    square.style.width = `${size}px`
-    square.style.height = `${size}px`
-    square.style.position = 'absolute'
-    square.style.left = `${Math.floor(Math.random()*(windowWidth-200))}px`
-    square.style.top = `${Math.floor(Math.random()*(windowHeight-200))}px`
-    square.innerHTML = `<img src="addons/geometry/rotten-apple.svg" />`
 }
 
 function makeCircle(theme) {
@@ -120,7 +104,6 @@ function makeSquare(theme) {
 }
 
 export function cleanup() {
-    console.log(`cleaning up geometry theme`)
     let container = document.getElementById("geometryContainer")
     if(container)   container.remove()
 }
