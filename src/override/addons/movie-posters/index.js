@@ -2,7 +2,6 @@ import { createElement, loadStyle } from '../../utils.js'
 import { imageList } from './movie-list.js'
 
 export function loadTheme() {
-    console.log(`loading movie posters`)
     loadCss()
 }
 
@@ -22,7 +21,7 @@ function resumeLoading() {
 }
 
 function loadCss() {
-    loadStyle("addons/movie-posters/index.css")
+    loadStyle("override/addons//movie-posters/index.css")
     .then(() => {
         document.querySelector("#seshParent").className = `theme-movies`
         resumeLoading()
@@ -58,7 +57,6 @@ function setBackgroundAndText() {
 }
 
 export function cleanup() {
-    console.log(`cleaning up movies`)
     let container = document.getElementById("vignetteBackground")
     if(container)   container.remove()
     container = document.getElementById("vignetteContainer")

@@ -1,7 +1,6 @@
 import { createElement } from '../utils.js'
 
 export function loadDateTime() {
-    console.log(`loading date-time`)
     createElement("dateTimeContainer", "", "#seshParent")
     let timeContainer = createElement("timeContainer", "", "#dateTimeContainer")
     let dateContainer = createElement("dateContainer", "", "#dateTimeContainer")

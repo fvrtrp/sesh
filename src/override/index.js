@@ -9,6 +9,7 @@ import { loadTheme as loadZenTheme } from './addons/zen/index.js'
 import { loadTheme as loadGeometryTheme } from './addons/geometry/index.js'
 import { loadTheme as loadGoogleEarth } from './addons/google-earth/index.js'
 import { loadSettings, updateLocalStorage } from './utils.js'
+import './css/index.css'
 
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
@@ -32,7 +33,6 @@ window.onload = () => {
 
 function initSesh() {
     chrome.storage.local.get(['state'], function(result) {
-        // console.log(`zzz result`, result)
         if(!result.state || (!'version' in result.state)) {
             updateLocalStorage(initSesh())
         }
@@ -44,7 +44,6 @@ function initSesh() {
 }
 
 export function loadApp(state) {
-    console.log(`loading app`)
     loadSettings()
     loadTheme(state.theme)
     loadContent(state)

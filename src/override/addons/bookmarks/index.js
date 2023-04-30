@@ -1,28 +1,28 @@
 import { createElement, clearCurrentDivs, updateLocalStorage, loadStyle, launch_toast } from '../../utils.js'
 import { stateBuffer, loadApp } from '../../index.js'
+import PinImg from 'override/addons/bookmarks/assets/pin.svg'
+import UnpinImg from 'override/addons/bookmarks/assets/unpin.svg'
 
 const selectedBookmark = {}
 
 export function loadBookmarks() {
-    console.log(`loading bookmarks`)
     loadCss()
 }
 
 export function loadBookmarkStyles() {
-    loadStyle("addons/bookmarks/index.css")
+    loadStyle("override/addons/bookmarks/index.css")
     .then(() => {
     }).catch(err => alert(err))
 }
 
 function loadCss() {
-    loadStyle("addons/bookmarks/index.css")
+    loadStyle("override/addons/bookmarks/index.css")
     .then(() => {
         resumeLoading()
     }).catch(err => alert(err))
 }
 
 function resumeLoading() {
-    //createElement("bookmarksContainer","", "#seshParent")
     getBookmarks()
 }
 
@@ -33,7 +33,6 @@ export function showBookmarksShortcut() {
 
     const closeButton = createElement("closeBookmarks", "", "#buttonContainer")
     closeButton.innerHTML = "close"
-    //bookmarksButton.addEventListener('click', ()=>openBookmarks(), false)
     closeButton.addEventListener('click', ()=>closeBookmarks(), false);
 }
 
@@ -48,7 +47,6 @@ function openBookmarks() {
     if(settingsButton)  settingsButton.classList.remove('show')
     const pinnedItemsContainer = document.querySelector("#pinnedItemsContainer")
     if(pinnedItemsContainer)    pinnedItemsContainer.remove()
-    //loadPinnedBookmarks(stateBuffer)
     getBookmarks()
 }
 
@@ -116,8 +114,8 @@ function searchBookmarks(event, bookmarks) {
         //show no results div
         if(searchEmptyDiv)
             return
-        let searchEmptyDiv = createElement("searchEmpty", "searchEmpty", "#searchContainer")
-        searchEmpty.innerHTML = 'No results'
+        searchEmptyDiv = createElement("searchEmpty", "searchEmpty", "#searchContainer")
+        searchEmptyDiv.innerHTML = 'No results'
     }
     else {
         //hide search empty, show searchresults div
@@ -195,7 +193,7 @@ function populateBookmarks(level, bookmarks) {
 
         let pinIcon = document.createElement("img")
         pinIcon.className = `pinIcon`
-        pinIcon.src = 'addons/bookmarks/assets/pin.svg'
+        pinIcon.src = PinImg
         pinIcon.title = 'pin bookmark'
         bookmarkItem.appendChild(pinIcon)
 
@@ -349,7 +347,7 @@ export function loadPinnedBookmarks(state) {
 
         let pinIcon = document.createElement("img")
         pinIcon.className = `pinIcon unpin`
-        pinIcon.src = 'addons/bookmarks/assets/unpin.svg'
+        pinIcon.src = UnpinImg
         pinIcon.title = 'Unpin'
         bookmarkItem.appendChild(pinIcon)
 

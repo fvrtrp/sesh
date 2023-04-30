@@ -1,4 +1,6 @@
 import { stateBuffer, loadApp } from "./index.js"
+import SeshBg from "./sesh-rounded-bg.svg"
+import SettingsImg from '../icons/icon128.png'
 import { cleanup as cleanupDateTime } from './addons/date-time.js'
 import { cleanup as cleanupQuotes } from './addons/quotes.js'
 import { cleanup as cleanupMessage } from './addons/message.js'
@@ -76,7 +78,7 @@ function openSettingsScreen() {
     settingsContainer = createElement("settingsContainer", "settingsContainer show", "#seshParent")
 
     const bg = createElement('settingsBg', 'settingsBg', '#settingsContainer', 'img')
-    bg.src = "./sesh-rounded-bg.svg"
+    bg.src = SeshBg
 
     const attribution = createElement("attribution", "attribution", "#settingsContainer", "a")
     attribution.className = "attribution"
@@ -84,7 +86,7 @@ function openSettingsScreen() {
     attribution.href = "https://fvrtrp.github.io/sesh"
 
     const settingsIcon = createElement("settingsIcon", "settingsIcon", "#settingsContainer", "img")
-    settingsIcon.src = "../../../icons/icon128.png"
+    settingsIcon.src = SettingsImg
     settingsIcon.setAttribute('title', 'sesh by fevertrip')
 
     const themes = addons.themes
@@ -138,8 +140,8 @@ function attachCursorStyle() {
     document.addEventListener('mousemove', (e) => {
         el.style.width = radius + 'px'
         el.style.height = radius + 'px'
-        cursorHighlight.style.left = e.clientX-radius/2 + 'px'
-        cursorHighlight.style.top = e.clientY-radius/2 + 'px'
+        el.style.left = e.clientX-radius/2 + 'px'
+        el.style.top = e.clientY-radius/2 + 'px'
     })
 }
 
@@ -173,7 +175,6 @@ function updateHighlights() {
 }
 
 export function clearCurrentDivs() {
-    console.log(`clearing divs`)
     cleanupDateTime()
     cleanupMessage()
     cleanupQuotes()
@@ -187,7 +188,6 @@ export function clearCurrentDivs() {
 }
 
 export function updateLocalStorage(callback) {
-    // console.log(`updating local`, {"state": stateBuffer})
     chrome.storage.local.set({"state": stateBuffer}, function() {
         if(callback)
             callback()
