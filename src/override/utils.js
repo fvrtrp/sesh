@@ -1,6 +1,6 @@
 import { stateBuffer, loadApp } from "./index.js"
 import SeshBg from "./sesh-rounded-bg.svg"
-import SettingsImg from '../icons/icon128.png'
+import SettingsImg from '../../dist/icons/icon128.png'
 import { cleanup as cleanupDateTime } from './addons/date-time.js'
 import { cleanup as cleanupQuotes } from './addons/quotes.js'
 import { cleanup as cleanupMessage } from './addons/message.js'
@@ -27,7 +27,6 @@ export function createElement(id, className, parent, type, method) {
 }
 
 export function loadSettings() {
-    //createElement("settingsContainer", "settingsContainer", "#seshParent")
     const buttonContainer = document.querySelector("#buttonContainer")
     if(!buttonContainer)
         createElement("buttonContainer", "buttonContainer", "#seshParent")
