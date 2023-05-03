@@ -29,7 +29,7 @@
 }
 
 
-#vignetteBackground {
+.theme-movies #vignetteBackground {
     position: fixed;
     top: 0;
     left: 0;
@@ -38,7 +38,7 @@
     z-index: 2;
     background: black;
 }
-#vignetteContainer {
+.theme-movies #vignetteContainer {
     z-index: 3;
     position: fixed;
     top: 0;
@@ -49,7 +49,7 @@
     box-shadow: 0px 0px 99px 64px rgba(0,0,0,0.9) inset;
     pointer-events: none;
 }
-#pictureContainer {
+.theme-movies #pictureContainer {
     position: fixed;
     top: 0;
     left: 0;
@@ -61,14 +61,14 @@
     opacity: 0.2;
     pointer-events: none;
 }
-.picture {
+.theme-movies .picture {
     object-fit: cover;
     width: 100%;
     height: 100%;
     transition: opacity 2s ease-in-out, height 12s ease-out;
 }
 
-#movieTitle {
+.theme-movies #movieTitle {
     z-index: 2;
     display: flex;
     justify-content: center;
@@ -86,11 +86,11 @@
     margin-top: 15px;
     word-break: break-all;
 }
-.zoomedBackground {
+.theme-movies .zoomedBackground {
     opacity: 0;
 }
 
-#posterContainer {
+.theme-movies #posterContainer {
     position: fixed;
     right: 0;
     top: 45px;
@@ -104,7 +104,7 @@
     justify-content: center;
     transition: all 4s ease-in-out;
 }
-#posterContainer img {
+.theme-movies #posterContainer img {
     width: 100%;
     height: 80%;
     object-fit: contain;
@@ -114,7 +114,7 @@
     transition: all 4s ease-in-out;
     opacity: 0.4;
 }
-#posterContainer img.maximized {
+.theme-movies #posterContainer img.maximized {
     opacity: 1;
     transform: scale(1.1);
 }

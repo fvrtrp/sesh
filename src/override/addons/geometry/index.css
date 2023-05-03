@@ -48,14 +48,14 @@
 .theme-geometry #bookmarksStatusBar:hover {
     background: radial-gradient(circle, #0D0D0D, #141414);
 }
-.fruit img{
+.theme-geometry .fruit img{
     object-fit: contain;
     max-width: 100%;
 }
-.square {
+.theme-geometry .square {
     mix-blend-mode: difference;
 }
-.shape, .fruit { 
+.theme-geometry .shape, .theme-geometry .fruit { 
     animation-name: floating;
     animation-duration: 20s;
     animation-iteration-count: infinite;
@@ -65,19 +65,16 @@
     transition: fill 2s ease-in-out;
     border-radius: 8px;
 }
-.shape:hover {
-    /* opacity: 0.5; */
-}
-.speed1 {
+.theme-geometry .speed1 {
     animation-duration: 45s;
 }
-.speed2 {
+.theme-geometry .speed2 {
     animation-duration: 60s;
 }
-.speed3 {
+.theme-geometry .speed3 {
     animation-duration: 75s;
 }
-.speed4 {
+.theme-geometry .speed4 {
     animation-duration: 90s;
 }
  
