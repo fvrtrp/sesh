@@ -51,5 +51,10 @@ const quotes = [
     `Consciousness is the biggest illusion.`,
     `Knowledge and perspective are inseparable.`,
     `The only upshot of life is the transmission of knowledge.`,
-    `Beat around the bush all you want, but consistency and discipline top spurts of inspiration any day.`,
+    `blue is blue.`,
+    `It's about beating the biological machine.`,
+    `Empathy is an apparition.`,
+    `Making a living three fourths of your life is ridiculous.`,
+    `Great minds talk about ideas, average minds talk about events, small minds talk aboue people.`,
+    `It's a mad universe; we're all mad people trying to find love and purpose.`
 ] 
