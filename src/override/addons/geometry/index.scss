@@ -1,0 +1,86 @@
+/* Blues */
+
+.theme-geometry {
+    background: radial-gradient(circle, #0C0E1E, #05040B);
+}
+.geometry-blue {
+    background: linear-gradient(to bottom right, #000000, #0c0d2b);
+}
+.geometry-red {
+    background: linear-gradient(to bottom right, #000000, #0c0d2b);
+}
+.geometry-pink {
+    background: linear-gradient(to bottom right, #000000, #0c0d2b);
+}
+.geometry-yellow {
+    background: linear-gradient(to bottom right, #000000, #0c0d2b);
+}
+.geometry-green {
+    background: linear-gradient(to bottom right, #000000, #0c0d2b);
+}
+.theme-geometry {
+    * {
+        color: white;
+    }
+    #quotesContainer {
+        font: 300 20px 'Open Sans', sans-serif;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+    }
+    #messageContainer {
+        font: 300 45px 'Open Sans', sans-serif;
+        letter-spacing: 10px;
+        text-transform: uppercase;
+    }
+    #timeContainer {
+        font: 300 50px 'Open Sans', sans-serif;
+        letter-spacing: 10px;
+    }
+    #dateContainer {
+        background: none;
+        font: 300 16px 'Open Sans', sans-serif;
+        letter-spacing: 5px;
+        margin-top: 0 !important;
+    }
+    #bookmarksStatusBar {
+        background: radial-gradient(circle, #0D0D0D77, #14141477);
+    }
+    #bookmarksStatusBar:hover {
+        background: radial-gradient(circle, #0D0D0D, #141414);
+    }
+    .square {
+        mix-blend-mode: difference;
+    }
+    .shape { 
+        animation-name: floating;
+        animation-duration: 20s;
+        animation-iteration-count: infinite;
+        animation-timing-function: ease-in-out;
+        margin-left: 30px;
+        margin-top: 5px;
+        transition: fill 2s ease-in-out;
+        border-radius: 8px;
+    }
+
+}
+
+.theme-geometry .speed1 {
+    animation-duration: 45s;
+}
+.theme-geometry .speed2 {
+    animation-duration: 60s;
+}
+.theme-geometry .speed3 {
+    animation-duration: 75s;
+}
+.theme-geometry .speed4 {
+    animation-duration: 90s;
+}
+ 
+@keyframes floating {
+    0% { transform: translate(0,  0px); }
+    25%  { transform: translate(150px, 300px); }
+    50%  { transform: translate(450px, 105px); }
+    75%  { transform: translate(-240px, -225px); }
+    100%   { transform: translate(0, -0px); }   
+}
