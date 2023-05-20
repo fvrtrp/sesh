@@ -23,7 +23,7 @@ export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
     pinnedItems: [],
     version: "1.1.4",
-    theme: 'geometry',
+    theme: 'google-earth',
     content: 'date-time',
     utilities: [
         "showPinnedBookmarks",
