@@ -17,6 +17,8 @@ import { loadTheme as loadGeometryTheme } from './addons/geometry/index.js'
 import './addons/geometry/index.scss'
 import { loadTheme as loadGoogleEarth } from './addons/google-earth/index.js'
 import './addons/google-earth/index.scss'
+import { loadTheme as loadSnake } from './addons/snake/index.js'
+import './addons/snake/index.scss'
 import { loadSettings, updateLocalStorage } from './utils.js'
 
 export let stateBuffer = {
@@ -40,8 +42,8 @@ window.onload = () => {
 
 
 function initSesh() {
-    chrome.storage.local.get(['state'], function(result) {
-        if(!result.state || (!'version' in result.state)) {
+    chrome.storage.local.get(['state'], function (result) {
+        if (!result.state || (!'version' in result.state)) {
             updateLocalStorage(initSesh())
         }
         else {
@@ -55,11 +57,15 @@ export function loadApp(state) {
     loadSettings()
     loadTheme(state.theme)
     loadContent(state)
-    loadUtilities({...state, utilities:['showBookmarksShortcut', 'showPinnedBookmarks']})
+    loadUtilities({ ...state, utilities: ['showBookmarksShortcut', 'showPinnedBookmarks'] })
 }
 
 function loadTheme(theme) {
-    switch(theme) {
+    switch (theme) {
+        case 'snake': {
+            loadSnake()
+            break
+        }
         case 'google-earth': {
             loadGoogleEarth()
             break
@@ -84,12 +90,12 @@ function loadTheme(theme) {
             loadGeometryTheme()
             break
         }
-        default: {}
+        default: { }
     }
 }
 
 function loadContent(state) {
-    switch(state.content) {
+    switch (state.content) {
         case 'date-time': {
             loadDateTime()
             break
@@ -111,17 +117,17 @@ function loadContent(state) {
 }
 
 function loadUtilities(state) {
-    if(state && state.utilities && state.utilities.includes('showBookmarksShortcut')) {
+    if (state && state.utilities && state.utilities.includes('showBookmarksShortcut')) {
         showBookmarksShortcut()
     }
-    if(state && state.utilities && state.utilities.includes('showPinnedBookmarks')) {
+    if (state && state.utilities && state.utilities.includes('showPinnedBookmarks')) {
         loadPinnedBookmarks(state)
     }
 }
 
 function toggleShowPinnedOnAll(flag) {
     stateBuffer['showPinnedOnAll'] = flag;
-    if(flag) {
+    if (flag) {
         document.querySelector("#showPinnedOnAll").classList.add('show');
         document.querySelector("#hidePinnedOnAll").classList.remove('show');
     }
@@ -132,13 +138,13 @@ function toggleShowPinnedOnAll(flag) {
 }
 
 function toggleSettingsScreen(flag) {
-    if(flag) {
+    if (flag) {
         document.getElementById("settingsContainer").classList.add('show');
         document.getElementById("settings").classList.remove('show');
         document.querySelector("#openBookmarks").classList.remove("show");
         document.querySelector("#closeBookmarks").classList.remove("show");
         let pinnedItemsContainer = document.querySelector("#pinnedItemsContainer");
-        if(pinnedItemsContainer)
+        if (pinnedItemsContainer)
             pinnedItemsContainer.classList.remove('show');
     }
     else {
@@ -146,7 +152,7 @@ function toggleSettingsScreen(flag) {
         document.getElementById("settings").classList.add('show');
         document.querySelector("#openBookmarks").classList.add("show");
         let pinnedItemsContainer = document.querySelector("#pinnedItemsContainer");
-        if(pinnedItemsContainer)
+        if (pinnedItemsContainer)
             pinnedItemsContainer.classList.add('show');
     }
 }

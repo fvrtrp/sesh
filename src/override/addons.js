@@ -6,6 +6,7 @@ export const addons = {
         "zen",
         "ninja",
         "vanilla-themes",
+        "snake",
     ],
     "content": [
         "date-time",
