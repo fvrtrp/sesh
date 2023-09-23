@@ -9,6 +9,7 @@ import { cleanup as cleanupMoviePosters } from './addons/movie-posters/index.js'
 import { cleanup as cleanupZen } from './addons/zen/index.js'
 import { cleanup as cleanupGeometry } from './addons/geometry/index.js'
 import { cleanup as cleanupGoogleEarth } from './addons/google-earth/index.js'
+import { cleanup as cleanupAnalogClock } from './addons/analog-clock'
 import { addons } from './addons.js'
 
 export function createElement(id, className, parent, type, method) {
@@ -168,6 +169,7 @@ export function clearCurrentDivs() {
     cleanupZen()
     cleanupGeometry()
     cleanupGoogleEarth()
+    cleanupAnalogClock()
     cleanupBookmarks()
     const settingsButton = document.querySelector("#settings")
     if(settingsButton)  settingsButton.remove()

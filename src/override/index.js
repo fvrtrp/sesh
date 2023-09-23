@@ -19,6 +19,7 @@ import { loadTheme as loadGoogleEarth } from './addons/google-earth/index.js'
 import './addons/google-earth/index.scss'
 import { loadTheme as loadSnake } from './addons/snake/index.js'
 import './addons/snake/index.scss'
+import { loadAnalogClock } from './addons/analog-clock'
 import { loadSettings, updateLocalStorage } from './utils.js'
 
 export let stateBuffer = {
@@ -98,6 +99,10 @@ function loadContent(state) {
     switch (state.content) {
         case 'date-time': {
             loadDateTime()
+            break
+        }
+        case 'analog-clock': {
+            loadAnalogClock()
             break
         }
         case 'nihilist quotes': {

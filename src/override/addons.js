@@ -10,6 +10,7 @@ export const addons = {
     ],
     "content": [
         "date-time",
+        "analog-clock",
         "custom message",
         "nihilist quotes",
         "nothing",
