@@ -1,11 +1,14 @@
 import { createElement } from '../../utils.js'
 
+const handWidth = 50, handHeight = 250
+
 export function loadAnalogClock() {
     createElement("dateTimeContainer", "", "#seshParent")
     let timeContainer = createElement("timeContainer", "", "#dateTimeContainer")
     // let dateContainer = createElement("dateContainer", "", "#dateTimeContainer")
+    let clock = createElement("clock", "clock", "#dateTimeContainer")
     updateDateTime()
-    setInterval(updateDateTime, 5000)
+    //setInterval(updateDateTime, 5000)
 }
 
 function getDate() {
@@ -38,23 +41,26 @@ function getTime() {
 
 function makeClock() {
     const { minutes, hours } = getTime()
-    const html = `<svg height="80" width="300" style="transform: rotate(${(-90+minutes*6)}deg); transform-origin: left; transition: transform 3s ease;">
-    <g fill="none">
-      <path stroke="red" d="M20 20 l215 0" stroke-linecap="round" stroke-width="25"/>
-    </g>
+    const hoursDiv = `<div class="handContainer" style="height:${handHeight}px; width:${handWidth}px; transform: rotate(${(-90+minutes*6)}deg);">
+    <svg class="hand hours" style="height:${handHeight}px; width:${handWidth}px;">
+      <path stroke="red" d="M0 0 l${handHeight} 0" stroke-width="${handWidth/2}"/>
   </svg>
-  <svg height="80" width="300" style="transform: rotate(${(-90+hours*30)}deg); transform-origin: left;">
-    <g fill="none">
-      <path stroke="skyblue" d="M20 20 l100 0" stroke-linecap="round" stroke-width="25"/>
-    </g>
-  </svg>${hours} -- ${minutes}`
-    return html
+  </div>`
+    const minutesDiv = `<div class="handContainer" style="height:${handHeight}px; width:${handWidth}px; transform: rotate(${(-90+hours*30)}deg);">
+  <svg class="hand minutes" style="height:${handHeight}px; width:${handWidth}px;">
+    <path stroke="skyblue" d="M0 ${handWidth/2} l${handHeight} 0" stroke-width="${handWidth/2}"/>
+  </svg>
+  </div>${hours} -- ${minutes}`
+    return { hoursDiv: hoursDiv, minutesDiv: minutesDiv }
 }
 
 function updateDateTime() {
-    let timeContainer = document.querySelector("#timeContainer")
-    if(timeContainer) {
-        timeContainer.innerHTML = makeClock()
+    let clock = document.querySelector("#clock")
+    if(clock) {
+        const clockDiv = makeClock()
+        clock.innerHTML = `${clockDiv.hoursDiv}${clockDiv.minutesDiv}`
+        clock.style.width = handWidth
+        clock.style.height = handHeight
     }
     // let dateContainer = document.querySelector("#dateContainer")
     // if(dateContainer) {

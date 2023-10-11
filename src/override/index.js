@@ -20,6 +20,7 @@ import './addons/google-earth/index.scss'
 import { loadTheme as loadSnake } from './addons/snake/index.js'
 import './addons/snake/index.scss'
 import { loadAnalogClock } from './addons/analog-clock'
+import './addons/analog-clock/index.scss'
 import { loadSettings, updateLocalStorage } from './utils.js'
 
 export let stateBuffer = {

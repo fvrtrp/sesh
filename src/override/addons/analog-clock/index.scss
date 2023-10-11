@@ -1,0 +1,19 @@
+#clock {
+    position: relative;
+    .handContainer {
+        position: absolute;
+        transform-origin: top left;
+        transition: transform 3s ease;
+        .hand {
+            path {
+                stroke-linecap: round;
+            }
+        }
+    }
+    .hours {
+
+    }
+    .minutes {
+
+    }
+}
