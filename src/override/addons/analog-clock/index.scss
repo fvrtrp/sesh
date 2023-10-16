@@ -1,19 +1,37 @@
 #clock {
-    position: relative;
-    .handContainer {
+  position: relative;
+  background: radial-gradient(transparent, #006eff40);
+  width: 300px;
+    height: 300px;
+    border-radius: 50%;
+  .handContainer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: top;
+    transition: transform 3s ease;
+    background: transparent;
+    height: 150px;
+    width: 15px;
+    .hand {
+      &.hours {
+        background: linear-gradient(to top, #639, transparent);
+        width: 15px;
+        height: 60px;
         position: absolute;
-        transform-origin: top left;
-        transition: transform 3s ease;
-        .hand {
-            path {
-                stroke-linecap: round;
-            }
-        }
+        left: 0px;
+        // top: 5px;
+        border-radius: 20px;
+      }
+      &.minutes {
+        background: linear-gradient(to top, #5f9ea0, transparent);;
+        width: 15px;
+        height: 120px;
+        position: absolute;
+        left: 0px;
+        // top: 150px;
+        border-radius: 20px;
+      }
     }
-    .hours {
-
-    }
-    .minutes {
-
-    }
+  }
 }

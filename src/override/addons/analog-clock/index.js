@@ -1,12 +1,14 @@
 import { createElement } from '../../utils.js'
 
-const handWidth = 50, handHeight = 250
+const handWidth = 30, handHeight = 200
 
 export function loadAnalogClock() {
     createElement("dateTimeContainer", "", "#seshParent")
     let timeContainer = createElement("timeContainer", "", "#dateTimeContainer")
     // let dateContainer = createElement("dateContainer", "", "#dateTimeContainer")
     let clock = createElement("clock", "clock", "#dateTimeContainer")
+    // clock.style.width = handHeight*2 + 'px'
+    // clock.style.height = handHeight*2 + 'px'
     updateDateTime()
     //setInterval(updateDateTime, 5000)
 }
@@ -41,16 +43,13 @@ function getTime() {
 
 function makeClock() {
     const { minutes, hours } = getTime()
-    const hoursDiv = `<div class="handContainer" style="height:${handHeight}px; width:${handWidth}px; transform: rotate(${(-90+minutes*6)}deg);">
-    <svg class="hand hours" style="height:${handHeight}px; width:${handWidth}px;">
-      <path stroke="red" d="M0 0 l${handHeight} 0" stroke-width="${handWidth/2}"/>
-  </svg>
-  </div>`
-    const minutesDiv = `<div class="handContainer" style="height:${handHeight}px; width:${handWidth}px; transform: rotate(${(-90+hours*30)}deg);">
-  <svg class="hand minutes" style="height:${handHeight}px; width:${handWidth}px;">
-    <path stroke="skyblue" d="M0 ${handWidth/2} l${handHeight} 0" stroke-width="${handWidth/2}"/>
-  </svg>
-  </div>${hours} -- ${minutes}`
+    const hoursDiv = `<div class="handContainer hours" style="transform: translate(-50%, 0) rotate(${(-180+hours*30)}deg);">
+    <div class="hand hours"></div>
+    </div>`
+    const minutesDiv = `<div class="handContainer minutes" style="transform: translate(-50%, 0) rotate(${(-180+minutes*6)}deg);">
+    <div class="hand minutes"></div>
+    </div>
+    `
     return { hoursDiv: hoursDiv, minutesDiv: minutesDiv }
 }
 
