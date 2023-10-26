@@ -59,7 +59,6 @@ export function loadApp(state) {
     loadSettings()
     loadTheme(state.theme)
     loadContent(state)
-    loadUtilities({ ...state, utilities: ['showBookmarksShortcut', 'showPinnedBookmarks'] })
 }
 
 function loadTheme(theme) {
@@ -120,71 +119,4 @@ function loadContent(state) {
         }
         default: break
     }
-}
-
-function loadUtilities(state) {
-    if (state && state.utilities && state.utilities.includes('showBookmarksShortcut')) {
-        showBookmarksShortcut()
-    }
-    if (state && state.utilities && state.utilities.includes('showPinnedBookmarks')) {
-        loadPinnedBookmarks(state)
-    }
-}
-
-function toggleShowPinnedOnAll(flag) {
-    stateBuffer['showPinnedOnAll'] = flag;
-    if (flag) {
-        document.querySelector("#showPinnedOnAll").classList.add('show');
-        document.querySelector("#hidePinnedOnAll").classList.remove('show');
-    }
-    else {
-        document.querySelector("#showPinnedOnAll").classList.remove('show');
-        document.querySelector("#hidePinnedOnAll").classList.add('show');
-    }
-}
-
-function toggleSettingsScreen(flag) {
-    if (flag) {
-        document.getElementById("settingsContainer").classList.add('show');
-        document.getElementById("settings").classList.remove('show');
-        document.querySelector("#openBookmarks").classList.remove("show");
-        document.querySelector("#closeBookmarks").classList.remove("show");
-        let pinnedItemsContainer = document.querySelector("#pinnedItemsContainer");
-        if (pinnedItemsContainer)
-            pinnedItemsContainer.classList.remove('show');
-    }
-    else {
-        document.getElementById("settingsContainer").classList.remove('show');
-        document.getElementById("settings").classList.add('show');
-        document.querySelector("#openBookmarks").classList.add("show");
-        let pinnedItemsContainer = document.querySelector("#pinnedItemsContainer");
-        if (pinnedItemsContainer)
-            pinnedItemsContainer.classList.add('show');
-    }
-}
-
-function preloadSettings(state) {
-    // const option = document.querySelector(`div[value=${state.mode}]`);
-    // if(option) {
-    //     option.classList.add('active');
-    // }
-    // const theme = document.querySelector(`div[value=${state.theme}]`);
-    // if(theme) {
-    //     theme.classList.add('active');
-    // }
-    // const showPinnedOnAll = document.querySelector('#showPinnedOnAll');
-    // const hidePinnedOnAll = document.querySelector('#hidePinnedOnAll');
-    // if(state.showPinnedOnAll) {
-    //     showPinnedOnAll.classList.add('show');
-    //     hidePinnedOnAll.classList.remove('show');
-    // }
-    // else {
-    //     showPinnedOnAll.classList.remove('show');
-    //     hidePinnedOnAll.classList.add('show');
-    // }
-    stateBuffer = state;
-}
-
-function updateMessage(event) {
-    stateBuffer['message'] = event.target.value;
 }
