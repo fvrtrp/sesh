@@ -1,6 +1,4 @@
 import { stateBuffer, loadApp } from "./index.js"
-import SeshBg from "./sesh-rounded-bg.svg"
-import SettingsImg from '../../dist/icons/icon128.png'
 import { cleanup as cleanupDateTime } from './addons/date-time.js'
 import { cleanup as cleanupQuotes } from './addons/quotes.js'
 import { cleanup as cleanupMessage } from './addons/message.js'
@@ -64,21 +62,14 @@ function openSettingsScreen() {
         settingsContainer.remove()
     settingsContainer = createElement("settingsContainer", "settingsContainer show", "#seshParent")
 
-    const bg = createElement('settingsBg', 'settingsBg', '#settingsContainer', 'img')
-    bg.src = SeshBg
-
     const attribution = createElement("attribution", "attribution", "#settingsContainer", "a")
     attribution.className = "attribution"
     attribution.innerHTML = "sesh"
     attribution.href = "https://fvrtrp.github.io/sesh"
-
-    const settingsIcon = createElement("settingsIcon", "settingsIcon", "#settingsContainer", "img")
-    settingsIcon.src = SettingsImg
-    settingsIcon.setAttribute('title', 'sesh by fevertrip')
+    attribution.setAttribute('title', 'sesh by fevertrip')
 
     const themes = addons.themes
     const contentItems = addons.content
-    const utilities = addons.utilities
 
     createElement("", "settingsParent", "#settingsContainer")
 

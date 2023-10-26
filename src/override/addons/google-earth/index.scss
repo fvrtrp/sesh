@@ -95,4 +95,17 @@
     #pictureContainer.active {
         opacity: 1;
     }
+    #clock {
+        background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #00ff56 100%);
+        .handContainer {
+            .hand {
+                &.minutes, &.hours {
+                    background: linear-gradient(to top, #00ff56, #ffa6a6);
+                }
+            }
+        }
+        .pin {
+            background: #00ff56;
+        }
+    }
 }

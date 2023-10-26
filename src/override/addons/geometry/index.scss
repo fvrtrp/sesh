@@ -84,3 +84,70 @@
     75%  { transform: translate(-240px, -225px); }
     100%   { transform: translate(0, -0px); }   
 }
+
+
+.geometry-blue #clock {
+    background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #8F00FF 100%);
+    .handContainer {
+        .hand {
+            &.minutes, &.hours {
+                background: linear-gradient(to top, #8F00FF, #ffa6a6);
+            }
+        }
+    }
+    .pin {
+        background: #8F00FF;
+    }
+}
+.geometry-red #clock {
+    background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #ff873e 100%);
+    .handContainer {
+        .hand {
+            &.minutes, &.hours {
+                background: linear-gradient(to top, #ff873e, #ffa6a6);
+            }
+        }
+    }
+    .pin {
+        background: #ff873e;
+    }
+}
+.geometry-pink #clock {
+    background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #ea4bff 100%);
+    .handContainer {
+        .hand {
+            &.minutes, &.hours {
+                background: linear-gradient(to top, #ea4bff, #ffa6a6);
+            }
+        }
+    }
+    .pin {
+        background: #ea4bff;
+    }
+}
+.geometry-yellow #clock {
+    background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #f4ff00 100%);
+    .handContainer {
+        .hand {
+            &.minutes, &.hours {
+                background: linear-gradient(to top, #f4ff00, #ffa6a6);
+            }
+        }
+    }
+    .pin {
+        background: #f4ff00;
+    }
+}
+.geometry-green #clock {
+    background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #00ff56 100%);
+    .handContainer {
+        .hand {
+            &.minutes, &.hours {
+                background: linear-gradient(to top, #00ff56, #ffa6a6);
+            }
+        }
+    }
+    .pin {
+        background: #00ff56;
+    }
+}
