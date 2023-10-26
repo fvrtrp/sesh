@@ -96,7 +96,7 @@
         opacity: 1;
     }
     #clock {
-        background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #00ff56 100%);
+        background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #00ff56 100%);
         .handContainer {
             .hand {
                 &.minutes, &.hours {

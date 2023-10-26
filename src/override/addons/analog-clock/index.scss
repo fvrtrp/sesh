@@ -1,6 +1,6 @@
 #clock {
   position: relative;
-  background: radial-gradient(#121212, #373737);
+  background: radial-gradient(transparent, #373737);
   width: 150px;
   height: 150px;
   border-radius: 50%;
@@ -15,7 +15,7 @@
     width: 20px;
     .hand {
       &.hours {
-        background: linear-gradient(to top, #363636, #FFF);
+        background: linear-gradient(to top, #ffffff80, #FFF);
         width: 20px;
         height: 90px;
         position: absolute;
@@ -24,7 +24,7 @@
         border-radius: 20px;
       }
       &.minutes {
-        background: linear-gradient(to top, #363636, #FFF);
+        background: linear-gradient(to top, #ffffff80, #FFF);
         width: 20px;
         height: 150px;
         position: absolute;

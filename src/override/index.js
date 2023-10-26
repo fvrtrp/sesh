@@ -59,6 +59,7 @@ export function loadApp(state) {
     loadSettings()
     loadTheme(state.theme)
     loadContent(state)
+    loadUtilities({ ...state, utilities: ['showBookmarksShortcut', 'showPinnedBookmarks'] })
 }
 
 function loadTheme(theme) {
@@ -118,5 +119,14 @@ function loadContent(state) {
             break
         }
         default: break
+    }
+}
+
+function loadUtilities(state) {
+    if (state && state.utilities && state.utilities.includes('showBookmarksShortcut')) {
+        showBookmarksShortcut()
+    }
+    if (state && state.utilities && state.utilities.includes('showPinnedBookmarks')) {
+        loadPinnedBookmarks(state)
     }
 }

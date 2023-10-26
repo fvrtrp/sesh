@@ -87,7 +87,7 @@
 
 
 .geometry-blue #clock {
-    background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #8F00FF 100%);
+    background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #8F00FF 100%);
     .handContainer {
         .hand {
             &.minutes, &.hours {
@@ -100,7 +100,7 @@
     }
 }
 .geometry-red #clock {
-    background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #ff873e 100%);
+    background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #ff873e 100%);
     .handContainer {
         .hand {
             &.minutes, &.hours {
@@ -113,7 +113,7 @@
     }
 }
 .geometry-pink #clock {
-    background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #ea4bff 100%);
+    background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #ea4bff 100%);
     .handContainer {
         .hand {
             &.minutes, &.hours {
@@ -126,7 +126,7 @@
     }
 }
 .geometry-yellow #clock {
-    background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #f4ff00 100%);
+    background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #f4ff00 100%);
     .handContainer {
         .hand {
             &.minutes, &.hours {
@@ -139,7 +139,7 @@
     }
 }
 .geometry-green #clock {
-    background: radial-gradient(50% 50% at 50% 50%, #1400FC 0%, #00ff56 100%);
+    background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #00ff56 100%);
     .handContainer {
         .hand {
             &.minutes, &.hours {
