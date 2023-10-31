@@ -24,12 +24,14 @@
     }
 
     #quotesContainer {
-        font: 200 18px 'Source Code Pro', sans-serif;
-        letter-spacing: 5.4px;
+        font: 200 18px 'Open Sans', sans-serif;
     }
 
     #quoteContainer {
-        background: rgba(0, 0, 0, 0.75);
+        background: rgba(0, 0, 0, 0.95);
+        color: white;
+        padding: 5px 30px;
+        border-radius: 5px;
     }
 
     #messageContainer,
