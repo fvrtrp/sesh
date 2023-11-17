@@ -64,10 +64,6 @@ export function loadApp(state) {
 
 function loadTheme(theme) {
     switch (theme) {
-        case 'snake': {
-            loadSnake()
-            break
-        }
         case 'google-earth': {
             loadGoogleEarth()
             break
@@ -98,6 +94,10 @@ function loadTheme(theme) {
 
 function loadContent(state) {
     switch (state.content) {
+        case 'snake': {
+            loadSnake()
+            break
+        }
         case 'date-time': {
             loadDateTime()
             break

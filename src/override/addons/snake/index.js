@@ -2,8 +2,8 @@ import { createElement } from '../../utils.js'
 
 var canvas = null,
   ctx = null,
-  limitX = window.innerWidth - 100,
-  limitY = window.innerHeight - 50,
+  limitX = window.innerWidth - 200,
+  limitY = window.innerHeight - 100,
   intervalId = null,
   TIMEOUT = 50,
   score = 0,
@@ -11,7 +11,7 @@ var canvas = null,
   //snake properties
   snake = [],
   initialSnakeLength = 2,
-  size = 20,
+  size = 30,
   direction = "right",
   //food properties
   food = [[0, 0]];
