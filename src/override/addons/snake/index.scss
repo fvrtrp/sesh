@@ -6,24 +6,39 @@
   }
 
   #snakeContainer {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: calc(100% - 200px);
-    height: calc(100% - 100px);
     display: grid;
     justify-items: center;
     align-items: center;
     z-index: 99;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+  }
+  #snakeContainer canvas {
     border: solid 1px pink;
     border-radius: 12px;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.75);
   }
 
+  #gameOver {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    bottom: 20px;
+    font-size: 20px;
+  }
   #score {
-    position: absolute;
-    right: -20px;
-    bottom: -20px;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    bottom: 50px;
+  }
+  #scoreContainer #score {
+
+  }
+  #scoreContainer #highScore {
+
   }
 
   #canvas {

@@ -2,30 +2,35 @@ import { createElement } from '../../utils.js'
 
 var canvas = null,
   ctx = null,
-  limitX = window.innerWidth - 200,
-  limitY = window.innerHeight - 100,
+  // limitX = window.innerWidth - 200,
+  // limitY = window.innerHeight - 100,
+  limitX = 500,
+  limitY = 500,
   intervalId = null,
   TIMEOUT = 50,
   score = 0,
-  gameOver = false,
+  gameOver = true,
   //snake properties
   snake = [],
   initialSnakeLength = 2,
-  size = 30,
+  size = 15,
   direction = "right",
   //food properties
   food = [[0, 0]];
 
 export function loadTheme() {
-  createElement("snakeContainer", "", "#seshParent")
+  const snakeContainer = createElement("snakeContainer", "", "#seshParent")
+  snakeContainer.style.width = limitX
+  snakeContainer.style.height = limitY
   document.querySelector("#seshParent").className = `theme-snake`
   canvas = createElement("canvas", "canvas", "#snakeContainer", "canvas")
   ctx = canvas.getContext("2d");
+  createElement('gameOver', 'gameOver' ,'#snakeContainer')
   init()
 }
 
 function init() {
-  console.log(`init`, limitX, window.innerWidth, limitY, window.innerHeight);
+  console.log(`init snake`, limitX, limitY);
   createElement("score", "score", "#snakeContainer")
   canvas.width = limitX
   canvas.height = limitY
@@ -84,12 +89,19 @@ function addEventListeners() {
 }
 
 function initGame() {
+  updateGameOver()
   gameOver = false
   clear();
   makeInitialSnake();
   makeFood();
   drawItems();
   //start();
+}
+
+function updateGameOver() {
+  if(gameOver)
+    document.querySelector('#gameOver').innerHTML = 'Press Space to start.'
+  else document.querySelector('#gameOver').innerHTML = ''
 }
 
 function makeInitialSnake() {
@@ -102,6 +114,8 @@ function makeInitialSnake() {
 }
 
 function start() {
+  gameOver = false
+  updateGameOver()
   intervalId = setInterval(refresh, TIMEOUT);
   // refreshState()
 }
@@ -125,6 +139,10 @@ function pause() {
 }
 
 function gameover() {
+  gameOver = true
+  updateGameOver()
+  score = 0
+  updateScore()
   pause();
 }
 
@@ -175,12 +193,16 @@ function checkFoodEaten() {
   if (checkIntersection(snake[0], food)) {
     console.log(`eaten`);
     score++;
-    document.querySelector("#score").innerText = score;
+    updateScore()
     makeFood();
     appendTailToSnake();
   } else {
     console.log(`not eaten`);
   }
+}
+
+function updateScore() {
+  document.querySelector("#score").innerText = `SCORE: ${score}`;
 }
 
 function appendTailToSnake() {
