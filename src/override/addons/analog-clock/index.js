@@ -38,7 +38,6 @@ function makeClock() {
 
 function updateDateTime() {
     const { minutes, hours } = getTime()
-    console.log(`updating date time`, minutes, hours)
     const minutesDiv = document.querySelector('#handContainer-minutes')
     if(minutesDiv) {
         minutesDiv.style.transform = `translate(-50%, 0) rotate(${(-180+minutes*6)}deg)`;

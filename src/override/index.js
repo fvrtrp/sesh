@@ -56,6 +56,7 @@ function initSesh() {
 }
 
 export function loadApp(state) {
+    // console.log(`zzz load`, state)
     loadSettings()
     loadTheme(state.theme)
     loadContent(state)

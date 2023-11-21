@@ -23,7 +23,7 @@ export function loadTheme() {
   const snakeContainer = createElement("snakeContainer", "", "#seshParent")
   snakeContainer.style.width = limitX
   snakeContainer.style.height = limitY
-  document.querySelector("#seshParent").className = `theme-snake`
+  document.querySelector("#seshParent").classList.add(`theme-snake`)
   canvas = createElement("canvas", "canvas", "#snakeContainer", "canvas")
   ctx = canvas.getContext("2d");
   createElement('gameOver', 'gameOver' ,'#snakeContainer')
@@ -45,41 +45,43 @@ function init() {
 
 
 function addEventListeners() {
+  document.addEventListener("keydown", eventListener);
+}
+
+function eventListener(e) {
   function captureEvent(e) {
     e.preventDefault();
     e.stopPropagation();
   }
-  document.addEventListener("keydown", function (e) {
-    switch (e.key) {
-      case " ":
-        captureEvent(e)
-        if (intervalId) pause();
-        else if (gameOver) {
-          reset()
-          start()
-        }
-        else start();
-        break;
-      case "ArrowLeft":
-        captureEvent(e)
-        if (direction !== "left" && direction !== "right") direction = "left";
-        break;
-      case "ArrowRight":
-        captureEvent(e)
-        if (direction !== "left" && direction !== "right") direction = "right";
-        break;
-      case "ArrowUp":
-        captureEvent(e)
-        if (direction !== "up" && direction !== "down") direction = "up";
-        break;
-      case "ArrowDown":
-        captureEvent(e)
-        if (direction !== "up" && direction !== "down") direction = "down";
-        break;
-      default:
-        break;
-    }
-  });
+  switch (e.key) {
+    case " ":
+      captureEvent(e)
+      if (intervalId) pause();
+      else if (gameOver) {
+        reset()
+        start()
+      }
+      else start();
+      break;
+    case "ArrowLeft":
+      captureEvent(e)
+      if (direction !== "left" && direction !== "right") direction = "left";
+      break;
+    case "ArrowRight":
+      captureEvent(e)
+      if (direction !== "left" && direction !== "right") direction = "right";
+      break;
+    case "ArrowUp":
+      captureEvent(e)
+      if (direction !== "up" && direction !== "down") direction = "up";
+      break;
+    case "ArrowDown":
+      captureEvent(e)
+      if (direction !== "up" && direction !== "down") direction = "down";
+      break;
+    default:
+      break;
+  }
 }
 
 function initGame() {
@@ -93,9 +95,12 @@ function initGame() {
 }
 
 function updateGameOver() {
-  if(gameOver)
-    document.querySelector('#gameOver').innerHTML = 'Press Space to start.'
-  else document.querySelector('#gameOver').innerHTML = ''
+  const goContainer = document.querySelector('#gameOver')
+  if(goContainer) {
+    if(gameOver)
+      document.querySelector('#gameOver').innerHTML = 'Press Space to start.'
+    else document.querySelector('#gameOver').innerHTML = ''
+  }
 }
 
 function makeInitialSnake() {
@@ -193,7 +198,8 @@ function checkFoodEaten() {
 }
 
 function updateScore() {
-  document.querySelector("#score").innerText = `Score: ${score}     High Score: ${highScore}`;
+  const sc = document.querySelector('#score')
+  if(sc) sc.innerText = `Score: ${score}     High Score: ${highScore}`;
 }
 
 function appendTailToSnake() {
@@ -286,6 +292,8 @@ function drawFood() {
 
 
 export function cleanup() {
+  gameover()
+  document.removeEventListener("keydown", eventListener);
   let container = document.getElementById("snakeContainer")
   if (container) container.remove()
 }
