@@ -13,11 +13,11 @@
     position: fixed;
     left: 50%;
     top: 50%;
+    transform: translate(-50%, -50%);
   }
   #snakeContainer canvas {
     border: solid 1px pink;
     border-radius: 12px;
-    transform: translate(-50%, -50%);
     background: rgba(0, 0, 0, 0.75);
   }
 
@@ -25,20 +25,15 @@
     position: fixed;
     left: 50%;
     transform: translate(-50%, -50%);
-    bottom: 20px;
+    top: 50%;
     font-size: 20px;
   }
   #score {
     position: fixed;
     left: 50%;
     transform: translate(-50%, 0%);
-    bottom: 50px;
-  }
-  #scoreContainer #score {
-
-  }
-  #scoreContainer #highScore {
-
+    font-size: 20px;
+    bottom: -50px;
   }
 
   #canvas {

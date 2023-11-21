@@ -8,15 +8,16 @@ var canvas = null,
   limitY = 500,
   intervalId = null,
   TIMEOUT = 50,
-  score = 0,
   gameOver = true,
   //snake properties
   snake = [],
-  initialSnakeLength = 2,
+  initialSnakeLength = 5,
   size = 15,
   direction = "right",
   //food properties
   food = [[0, 0]];
+  var score = initialSnakeLength,
+  highScore = 0;
 
 export function loadTheme() {
   const snakeContainer = createElement("snakeContainer", "", "#seshParent")
@@ -37,20 +38,13 @@ function init() {
   canvas.focus()
   initGame();
   addEventListeners();
+  const hs = localStorage.getItem('highScore')
+  if(hs) highScore = hs
+  updateScore()
 }
 
 
 function addEventListeners() {
-  // document.querySelector("#start").addEventListener("click", function (e) {
-  //   start();
-  // });
-  // document.querySelector("#pause").addEventListener("click", function (e) {
-  //   pause();
-  // });
-  // document.querySelector("#reset").addEventListener("click", function (e) {
-  //   reset();
-  //   document.querySelector("#reset").blur();
-  // });
   function captureEvent(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -110,7 +104,7 @@ function makeInitialSnake() {
     newSnake.unshift([i * size, 0]);
   }
   snake = JSON.parse(JSON.stringify(newSnake));
-  console.log(`intial snake`, JSON.stringify(snake));
+  // console.log(`intial snake`, JSON.stringify(snake));
 }
 
 function start() {
@@ -122,7 +116,6 @@ function start() {
 
 function reset() {
   pause();
-  //change this
   clear();
   makeInitialSnake();
   makeFood();
@@ -134,8 +127,6 @@ function reset() {
 function pause() {
   clearInterval(intervalId);
   intervalId = null;
-  console.log(`paused`, snake[0], food);
-  // checkFoodEaten();
 }
 
 function gameover() {
@@ -191,22 +182,21 @@ function checkIntersection(r1, r2) {
 
 function checkFoodEaten() {
   if (checkIntersection(snake[0], food)) {
-    console.log(`eaten`);
     score++;
+    if(score>highScore) highScore = score
+    localStorage.setItem('highScore', highScore)
     updateScore()
     makeFood();
     appendTailToSnake();
   } else {
-    console.log(`not eaten`);
   }
 }
 
 function updateScore() {
-  document.querySelector("#score").innerText = `SCORE: ${score}`;
+  document.querySelector("#score").innerText = `Score: ${score}     High Score: ${highScore}`;
 }
 
 function appendTailToSnake() {
-  console.log(`appending`);
   const tail = JSON.parse(JSON.stringify(snake[snake.length - 1]));
   switch (direction) {
     case "right": {
@@ -228,7 +218,7 @@ function appendTailToSnake() {
     default:
       break;
   }
-  printSnake();
+  //printSnake();
 }
 
 function printSnake() {
