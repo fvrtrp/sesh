@@ -9,16 +9,19 @@
     display: grid;
     justify-items: center;
     align-items: center;
-    z-index: 99;
+    z-index: 9;
     position: fixed;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    perspective: 1000px;
   }
   #snakeContainer canvas {
-    border: solid 1px pink;
+    // border: solid 1px pink;
     border-radius: 12px;
-    background: rgba(0, 0, 0, 0.75);
+    background: rgb(25 0 255 / 75%);
+    // transform: rotate3d(1, 1, 1, 25deg);
+    transition: transform 5s ease-in;
   }
 
   #gameOver {
@@ -34,6 +37,7 @@
     transform: translate(-50%, 0%);
     font-size: 20px;
     bottom: -50px;
+    font-family: 'Open Sans', sans-serif;
     white-space: break-spaces;
   }
 

@@ -106,7 +106,7 @@ function updateGameOver() {
 function makeInitialSnake() {
   const newSnake = [];
   for (let i = 0; i < initialSnakeLength - 1; i++) {
-    newSnake.unshift([i * size, 0]);
+    newSnake.unshift([i * size, 10]);
   }
   snake = JSON.parse(JSON.stringify(newSnake));
   // console.log(`intial snake`, JSON.stringify(snake));
@@ -191,10 +191,19 @@ function checkFoodEaten() {
     if(score>highScore) highScore = score
     localStorage.setItem('highScore', highScore)
     updateScore()
-    makeFood();
+    makeFood()
+    updateEffects()
     appendTailToSnake();
   } else {
   }
+}
+
+function updateEffects() {
+  canvas.style.transform = `scale(${(getRandom(0, 3) + 8)/10}) rotate3d(${getRandom(0, 4) - 2}, ${getRandom(0, 4) - 2}, ${getRandom(0, 4) - 2}, ${getRandom(0, 30) - 15}deg)`
+}
+
+function getRandom(min, max) {
+  return Math.floor(Math.random() * (max - min + 1) + min)
 }
 
 function updateScore() {
@@ -272,9 +281,15 @@ function clear() {
 
 function drawSnake() {
   // console.log(JSON.stringify(snake));
-  ctx.fillStyle = "#35fbff";
-  for (let cell of snake) {
-    ctx.fillRect(cell[0], cell[1], size, size);
+  ctx.fillStyle = "#35fbff"
+  for (let i=0; i<snake.length; i++) {
+    const cell = snake[i]
+    ctx.fillRect(cell[0], cell[1], size-1, size-1);
+    if(i === 0) {
+      ctx.fillStyle = 'red'
+      ctx.fillRect(cell[0] + size - 10, cell[1] + size - 10, 5, 5)
+      ctx.fillStyle = "#35fbff"
+    }
   }
 }
 
