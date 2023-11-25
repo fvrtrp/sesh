@@ -95,7 +95,7 @@ function loadTheme(theme) {
 
 function loadContent(state) {
     switch (state.content) {
-        case 'snake': {
+        case 'drunken-snake': {
             loadSnake()
             break
         }
