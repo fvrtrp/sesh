@@ -199,7 +199,7 @@ function checkFoodEaten() {
 }
 
 function updateEffects() {
-  canvas.style.transform = `scale(${(getRandom(0, 3) + 8)/10}) rotate3d(${getRandom(0, 4) - 2}, ${getRandom(0, 4) - 2}, ${getRandom(0, 4) - 2}, ${getRandom(0, 30) - 15}deg)`
+  canvas.style.transform = `scale(${(getRandom(0, 4) + 7)/10}) rotate3d(${getRandom(0, 4) - 2}, ${getRandom(0, 4) - 2}, ${getRandom(0, 4) - 2}, ${getRandom(0, 50) - 25}deg)`
 }
 
 function getRandom(min, max) {
