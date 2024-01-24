@@ -1,4 +1,4 @@
-import { stateBuffer, loadApp } from "./index.js"
+import { stateBuffer, loadApp, notes } from "./index.js"
 import { cleanup as cleanupDateTime } from './addons/date-time.js'
 import { cleanup as cleanupQuotes } from './addons/quotes.js'
 import { cleanup as cleanupMessage } from './addons/message.js'
@@ -9,7 +9,9 @@ import { cleanup as cleanupGeometry } from './addons/geometry/index.js'
 import { cleanup as cleanupGoogleEarth } from './addons/google-earth/index.js'
 import { cleanup as cleanupAnalogClock } from './addons/analog-clock'
 import { cleanup as cleanupSnake } from './addons/snake'
+import { cleanup as cleanupNotes } from './addons/notes'
 import { addons } from './addons.js'
+import { loadNotes } from "./addons/notes/index.js"
 
 export function createElement(id, className, parent, type, method) {
     if(!type)
@@ -42,6 +44,7 @@ function closeSettingsScreen() {
     if(settingsClose)   settingsClose.remove()
     clearCurrentDivs()
     loadApp(stateBuffer)
+    loadNotes(notes)
 }
 
 function openSettingsScreen() {
@@ -164,6 +167,7 @@ export function clearCurrentDivs() {
     cleanupAnalogClock()
     cleanupBookmarks()
     cleanupSnake()
+    cleanupNotes()
     const settingsButton = document.querySelector("#settings")
     if(settingsButton)  settingsButton.remove()
 }
@@ -172,6 +176,11 @@ export function updateLocalStorage(callback) {
     chrome.storage.local.set({"state": stateBuffer}, function() {
         if(callback)
             callback()
+    });
+}
+
+export function updateNotes(value) {
+    chrome.storage.local.set({"notes": value}, function() {
     });
 }
 

@@ -31,7 +31,6 @@ export function loadTheme() {
 }
 
 function init() {
-  console.log(`init snake`, limitX, limitY);
   createElement("score", "score", "#snakeContainer")
   canvas.width = limitX
   canvas.height = limitY

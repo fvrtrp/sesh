@@ -3,6 +3,8 @@ import { loadDateTime } from './addons/date-time.js'
 import { loadQuotes } from './addons/quotes.js'
 import { loadMessage } from './addons/message.js'
 import { loadBookmarks, showBookmarksShortcut, loadPinnedBookmarks } from './addons/bookmarks/index.js'
+import { loadNotes } from './addons/notes'
+import './addons/notes/index.scss'
 import './addons/bookmarks/index.scss'
 import { loadTheme as loadVanillaTheme } from './addons/vanilla-themes/index.js'
 import './addons/vanilla-themes/autumn.scss'
@@ -26,13 +28,18 @@ import { loadSettings, updateLocalStorage } from './utils.js'
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
     pinnedItems: [],
-    version: "1.1.4",
+    version: "2.4.1",
     theme: 'google-earth',
     content: 'date-time',
     utilities: [
         "showPinnedBookmarks",
-        "showBookmarksShortcut"
+        "showBookmarksShortcut",
+        "showNotes",
     ],
+}
+export let notes = {
+    show: true,
+    value: '',
 }
 
 window.onload = () => {
@@ -52,6 +59,13 @@ function initSesh() {
             loadApp(result.state)
             stateBuffer = result.state
         }
+    });
+    chrome.storage.local.get(['notes'], function (result) {
+        console.log(`zzz notes`, result)
+        if (result.notes) {
+            notes = result.notes
+        }
+        loadNotes(notes)
     });
 }
 

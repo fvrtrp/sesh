@@ -1,7 +1,8 @@
 import { createElement, clearCurrentDivs, updateLocalStorage, launch_toast } from '../../utils.js'
-import { stateBuffer, loadApp } from '../../index.js'
+import { stateBuffer, loadApp, notes } from '../../index.js'
 import PinImg from 'override/addons/bookmarks/assets/pin.svg'
 import UnpinImg from 'override/addons/bookmarks/assets/unpin.svg'
+import { loadNotes } from '../notes/index.js'
 
 const selectedBookmark = {}
 
@@ -43,6 +44,7 @@ function closeBookmarks() {
 
     clearCurrentDivs()
     loadApp(stateBuffer)
+    loadNotes(notes)
 }
 
 

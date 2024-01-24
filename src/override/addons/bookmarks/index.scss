@@ -316,8 +316,10 @@
 /* common themes */
 #pinnedItemsContainer,
 .bookmarksContainer,
+#notesBody, #noteToggle,
 #searchResultsContainer .searchItem {
     background: rgba(0, 0, 0, 0.65);
+    color: white;
 }
 
 #pinnedItemsContainer .bookmarkItem:not(:last-child) .itemTitle,
