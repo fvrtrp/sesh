@@ -42,6 +42,10 @@ body {
     padding: 12px 5px;
     border-radius: 8px;
     text-transform: uppercase;
+    opacity: 0.5;
+}
+.buttonContainer:hover {
+    opacity: 1;
 }
 .buttonContainer>div {
     font-family: 'Open Sans', sans-serif;
