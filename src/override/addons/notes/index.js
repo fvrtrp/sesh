@@ -14,6 +14,7 @@ export function loadNotes(notes) {
 
     const noteValue = createElement('noteValue', '', '#notesBody', 'textarea' )
     noteValue.value = notes.value
+    noteValue.setAttribute('spellcheck', false)
     noteValue.addEventListener('input', (e) => {
       notes.value = e.target.value
       updateNotes(notes)  
