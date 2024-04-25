@@ -1,36 +1,10 @@
-#settingsContainer {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    padding: 25px 0;
-    z-index: 9;
-    opacity: 0;
-    color: white;
-    background: black;
-    transition: opacity 0.2s ease-in-out;
-    pointer-events: none;
-}
-#settingsContainer.show {
-    display: flex;
-    opacity: 1;
-    pointer-events: all;
-}
-#settingsContainer .customInput {
+#settingsParent .customInput {
     border: none;
     outline: none;
     border-bottom: solid 0.5px white;
     background: black;
     color: white;
     margin-left: 15px;
-}
-#settingsContainer .settingsParent {
-    display: flex;
-    justify-content: flex-start;
-    width: calc(100% - 50px);
-    margin-left: 50px;
-    padding-top: 50px;
 }
 .settingsSection {
     display: flex;
@@ -99,26 +73,26 @@
     height: 100% !important;
     width: 100% !important;
 }
-#settingsContainer .title {
+#settingsParent .title {
     font-size: 30px;
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 300;
     text-align: center;
 }
 
-#settingsContainer #themesContainer {
+#settingsParent #themesContainer {
     position: fixed;
     left: 45px;
     bottom: 25px;
     display: flex;
     align-items: center;
 }
-#settingsContainer #themesContainer .title{
+#settingsParent #themesContainer .title{
     font-size: 16px;
     margin-right: 15px;
     letter-spacing: 7px;
 }
-#settingsContainer #themesContainer .preview{
+#settingsParent #themesContainer .preview{
     width: 20px;
     height: 20px;
     border-radius: 6px;
@@ -130,7 +104,7 @@
     border: solid 2px white;
 }
 
-#settingsContainer .togglePinnedItems {
+#settingsParent .togglePinnedItems {
     display: flex;
     align-items: center;
     padding: 10px 30px;
@@ -138,12 +112,12 @@
     margin-top: 25px;
     border-radius: 4px;
 }
-#settingsContainer .togglePinnedItems img {
+#settingsParent .togglePinnedItems img {
     display: none;
     margin-right: 25px;
     cursor: pointer;
 }
-#settingsContainer .togglePinnedItems img.show {
+#settingsParent .togglePinnedItems img.show {
     display: inline-block;
 }
 
@@ -164,26 +138,4 @@
     border-radius: 50%;
     mix-blend-mode: hard-light;
     pointer-events: none;
-}
-
-#settingsBg {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    z-index: -1;
-    opacity: 0.2;
-    pointer-events: none;
-    animation: roll 50s infinite linear;
-}
-
-@keyframes roll {
-	from {
-        transform: rotate(0deg);
-    }
-    to {
-        transform: rotate(359deg);
-    }
 }

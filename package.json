@@ -1,6 +1,6 @@
 {
   "name": "sesh",
-  "version": "2.1.0",
+  "version": "3.0.0",
   "description": "",
   "private": true,
   "scripts": {
@@ -13,7 +13,7 @@
     "url": "git+https://github.com/fvrtrp/sesh.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "fvrtrp",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/fvrtrp/sesh/issues"

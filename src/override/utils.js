@@ -29,55 +29,23 @@ export function createElement(id, className, parent, type, method) {
 }
 
 export function loadSettings() {
+    console.log(`loading settings`)
     const buttonContainer = document.querySelector("#buttonContainer")
     if(!buttonContainer)
         createElement("buttonContainer", "buttonContainer", "#seshParent")
+    
     const settingsButton = createElement("settings", "show", "#buttonContainer")
     settingsButton.innerHTML = "settings"
     settingsButton.addEventListener('click', ()=>openSettingsScreen(), false)
-}
 
-function closeSettingsScreen() {
-    let settingsContainer = document.querySelector(`#settingsContainer`)
-    if(settingsContainer)   settingsContainer.remove()
-    let settingsClose = document.querySelector(`#closeSettings`)
-    if(settingsClose)   settingsClose.remove()
-    clearCurrentDivs()
-    loadApp(stateBuffer)
-    loadNotes(notes)
-}
-
-function openSettingsScreen() {
-    clearCurrentDivs()
-    let closeButton = document.querySelector('#closeSettings')
-    if(closeButton) closeButton.remove()
-    closeButton = createElement("closeSettings", "show", "#buttonContainer")
-    closeButton.innerHTML = "close"
-    closeButton.addEventListener('click', ()=>closeSettingsScreen(), false)
-
-    createElement("bookmarksContainer", "", "#seshParent")
-    let openBookmarks  = document.querySelector('#openBookmarks')
-    if(openBookmarks)   openBookmarks.remove()
-    let settingsButton  = document.querySelector('#settings')
-    if(settingsButton)  settingsButton.classList.remove('show')
-    
-    let settingsContainer = document.querySelector(`#settingsContainer`)
-    if(settingsContainer)
-        settingsContainer.remove()
-    settingsContainer = createElement("settingsContainer", "settingsContainer show", "#seshParent")
-
-    const attribution = createElement("attribution", "attribution", "#settingsContainer", "a")
-    attribution.className = "attribution"
-    attribution.innerHTML = "sesh"
-    attribution.href = "https://fvrtrp.github.io/sesh"
-    attribution.setAttribute('title', 'sesh by fevertrip')
+    const settingsParent = document.querySelector('#settingsParent')
+    const closeButton = settingsParent.querySelector('.close');
+    closeButton.addEventListener('click', () => closeSettingsScreen())
 
     const themes = addons.themes
     const contentItems = addons.content
 
-    createElement("", "settingsParent", "#settingsContainer")
-
-    createElement("","settingsSection themeSection",".settingsParent")
+    createElement("","settingsSection themeSection","#settingsParent")
     let sectionTitle = createElement("", "sectionTitle", ".themeSection")
     sectionTitle.innerHTML = "themes"
     createElement("", "sectionItems themeItems", ".themeSection")
@@ -87,7 +55,7 @@ function openSettingsScreen() {
         el.addEventListener('click', ()=>applySetting('theme', i, false))
     })
 
-    createElement("","settingsSection contentSection",".settingsParent")
+    createElement("","settingsSection contentSection","#settingsParent")
     sectionTitle = createElement("", "sectionTitle", ".contentSection")
     sectionTitle.innerHTML = "content"
     createElement("", "sectionItems contentItems", ".contentSection")
@@ -109,6 +77,20 @@ function openSettingsScreen() {
     attachItemStyles()
 }
 
+function closeSettingsScreen() {
+    const settingsParent = document.querySelector('#settingsParent')
+    settingsParent.classList.remove('show')
+    clearCurrentDivs()
+    loadApp(stateBuffer)
+    loadNotes(notes)
+}
+
+function openSettingsScreen() {
+    // clearCurrentDivs()
+    const settingsParent = document.querySelector('#settingsParent')
+    settingsParent.classList.add('show');
+}
+
 function attachItemStyles() {
     for(let item of document.querySelectorAll('.settingsItem')) {
         const att = createElement('decor', 'decor')
@@ -117,7 +99,7 @@ function attachItemStyles() {
 }
 
 function attachCursorStyle() {
-    const el = createElement('cursorHighlight', 'cursorHighlight', ".settingsContainer")
+    const el = createElement('cursorHighlight', 'cursorHighlight', "#settingsParent")
     const radius = 50
     document.addEventListener('mousemove', (e) => {
         el.style.width = radius + 'px'
