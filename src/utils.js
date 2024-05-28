@@ -17,7 +17,6 @@ export function createElement(id, className, parent, type, method) {
 }
 
 export function loadSettings() {
-    console.log(`loading settings`)
     const controls = document.querySelector("#controls")
     const settingsButton = controls.querySelector("#settingsControl")
     settingsButton.addEventListener('click', openSettingsScreen, false)
@@ -75,6 +74,7 @@ function closeSettingsScreen() {
 
 function openSettingsScreen() {
     // clearCurrentDivs()
+    console.log(`opening settings`)
     const settingsParent = document.querySelector('#settingsParent')
     settingsParent.classList.add('show');
 
@@ -89,7 +89,7 @@ function openSettingsScreen() {
 
 function attachItemStyles() {
     for (let item of document.querySelectorAll('.settingsItem')) {
-        const att = createElement('decor', 'decor')
+        const att = createElement('', 'decor')
         item.appendChild(att)
     }
 }
@@ -102,6 +102,7 @@ function applySetting(type, val) {
         updateLocalStorage()
         return
     }
+
     stateBuffer[type] = val
     updateHighlights()
     updateLocalStorage()
@@ -124,19 +125,8 @@ function updateHighlights() {
 }
 
 export function clearCurrentDivs() {
-    cleanupDateTime()
-    cleanupMessage()
-    cleanupQuotes()
-    cleanupMoviePosters()
-    cleanupZen()
-    cleanupGeometry()
-    cleanupGoogleEarth()
-    cleanupAnalogClock()
-    cleanupBookmarks()
-    cleanupSnake()
-    cleanupNotes()
-    const settingsButton = document.querySelector("#settings")
-    if (settingsButton) settingsButton.remove()
+    const seshParent = document.querySelector('#seshParent')
+    seshParent.innerHTML = ``;
 }
 
 export function updateLocalStorage(callback) {
@@ -159,5 +149,5 @@ export function launch_toast(message = '') {
     }
     setTimeout(function () {
         x.className = x.className.replace("show", "");
-    }, 2000);
+    }, 1500);
 }

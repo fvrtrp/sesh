@@ -1,27 +1,27 @@
 .theme-ninja {
-    background: radial-gradient(circle, #030303, #000000);
+    background: linear-gradient(90deg, #050210, #000000);
+
     * {
         color: rgb(187, 187, 187);
     }
+
     #timeContainer {
         font: 200 50px 'Source Code Pro', sans-serif;
         margin-bottom: 15px;
     }
+
     #dateContainer {
         font: 200 16px 'Source Code Pro', sans-serif;
         letter-spacing: 5px;
     }
+
     #quotesContainer {
         font: 200 18px 'Source Code Pro', sans-serif;
         letter-spacing: 5.4px;
     }
-    #messageContainer, #messageInput {
+
+    #messageContainer,
+    #messageInput {
         font-weight: 300 !important;
-    }
-    #bookmarksStatusBar {
-        background: radial-gradient(circle, #0D0D0D77, #14141477);
-    }
-    #bookmarksStatusBar:hover {
-        background: radial-gradient(circle, #0D0D0D, #141414);
     }
 }

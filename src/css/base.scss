@@ -6,8 +6,8 @@
 
 body {
     font-family: sans-serif;
-    background: black;
-    color: white;
+    background: var(--primary-background);
+    color: var(--primary-color);
 }
 
 #seshParent {
@@ -83,7 +83,6 @@ body {
 }
 
 #messageContainer,
-#dateTimeContainer,
 #quotesContainer {
     text-align: center;
     padding: 20px 100px;
@@ -96,7 +95,7 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     font-weight: 400;
     pointer-events: none;
-    z-index: 3;
+    z-index: 2;
 }
 
 #quotesContainer {
@@ -107,17 +106,6 @@ body {
 
 #messageContainer {
     font-size: 25px;
-}
-
-#dateTimeContainer {
-    flex-direction: column;
-    font-size: 50px;
-}
-
-#dateTimeContainer #dateContainer {
-    padding: 5px 25px;
-    border-radius: 10px;
-    margin-top: 15px;
 }
 
 /* toast stuff */
@@ -140,14 +128,15 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &.show {
+        visibility: visible;
+        -webkit-animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+    }
 }
 
-#toast.show {
-    visibility: visible;
-    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
-    animation: fadein 0.5s, expand 0.5s 0.5s, stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
-}
-
+//  scrollbar styles
 ::-webkit-scrollbar {
     width: 10px;
 }

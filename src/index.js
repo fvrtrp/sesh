@@ -1,5 +1,7 @@
 import './css/index.css'
-import { loadDateTime } from './addons/date-time.js'
+import { loadDateTime } from './addons/date-time/index.js'
+import { loadTheme as loadNinjaTheme } from './addons/ninja-theme'
+import { loadTheme as loadVanillaTheme } from './addons/vanilla-themes'
 import { loadSettings, updateLocalStorage } from './utils.js'
 
 export let stateBuffer = {
@@ -32,17 +34,17 @@ function initSesh() {
             updateLocalStorage(initSesh())
         }
         else {
-            // loadSettings()
             loadApp(result.state)
             stateBuffer = result.state
+            loadSettings()
         }
     });
 }
 
 export function loadApp(state) {
     // console.log(`zzz load`, state)
-    // loadTheme(state.theme)
-    loadContent(state)
+    loadTheme(state.theme)
+    loadContent(state.content)
     // loadUtilities([
     //     "showPinnedBookmarks",
     //     "showBookmarksShortcut",
@@ -51,6 +53,7 @@ export function loadApp(state) {
 }
 
 function loadTheme(theme) {
+    console.log(`loading theme`, theme)
     switch (theme) {
         // case 'google-earth': {
         //     loadGoogleEarth()
@@ -80,8 +83,8 @@ function loadTheme(theme) {
     }
 }
 
-function loadContent(state) {
-    switch (state.content) {
+function loadContent(content) {
+    switch (content) {
         // case 'drunken-snake': {
         //     loadSnake()
         //     break
