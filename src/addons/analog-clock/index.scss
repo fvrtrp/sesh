@@ -1,0 +1,54 @@
+#clock {
+  position: relative;
+  background: radial-gradient(transparent, #373737);
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  .handContainer {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform-origin: top;
+    transition: transform 3s ease;
+    background: transparent;
+    height: 150px;
+    width: 20px;
+    .hand {
+      &.hours {
+        background: linear-gradient(to top, #ffffff80, #FFF);
+        width: 20px;
+        height: 90px;
+        position: absolute;
+        left: 0px;
+        // top: 5px;
+        border-radius: 20px;
+      }
+      &.minutes {
+        background: linear-gradient(to top, #ffffff80, #FFF);
+        width: 20px;
+        height: 150px;
+        position: absolute;
+        left: 0px;
+        // top: 150px;
+        border-radius: 20px;
+      }
+    }
+  }
+  .gear, .pin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .gear {
+    height: 100px;
+    width: 100px;
+  }
+  .pin {
+    width: 7px;
+    height: 7px;
+    background: #373737;
+    border-radius: 50%;
+    border: 16px solid black;
+  }
+}

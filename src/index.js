@@ -1,8 +1,11 @@
 import './css/index.css'
+import { loadSettings, updateLocalStorage } from './utils.js'
 import { loadDateTime } from './addons/date-time/index.js'
 import { loadTheme as loadNinjaTheme } from './addons/ninja-theme'
 import { loadTheme as loadVanillaTheme } from './addons/vanilla-themes'
-import { loadSettings, updateLocalStorage } from './utils.js'
+import { loadTheme as loadMessage } from './addons/message'
+import { loadTheme as loadQuotes } from './addons/quotes'
+import { loadTheme as loadGoogleEarth } from './addons/google-earth'
 
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
@@ -55,10 +58,10 @@ export function loadApp(state) {
 function loadTheme(theme) {
     console.log(`loading theme`, theme)
     switch (theme) {
-        // case 'google-earth': {
-        //     loadGoogleEarth()
-        //     break
-        // }
+        case 'google-earth': {
+            loadGoogleEarth()
+            break
+        }
         // case 'movie-posters': {
         //     loadMoviePosters()
         //     break
@@ -97,12 +100,12 @@ function loadContent(content) {
         //     loadAnalogClock()
         //     break
         // }
-        // case 'nihilist quotes': {
-        //     loadQuotes()
-        //     break
-        // }
+        case 'nihilist quotes': {
+            loadQuotes()
+            break
+        }
         case 'custom message': {
-            loadMessage(state.message)
+            loadMessage(stateBuffer.message)
             break
         }
         // case 'bookmarks': {

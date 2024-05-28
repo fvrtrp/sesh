@@ -1,0 +1,15 @@
+#quotesContainer {
+    text-align: center;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    font-family: 'Source Sans Pro', sans-serif;
+    pointer-events: none;
+    z-index: 2;
+    font-size: 27px;
+    font-weight: 300;
+    font-style: italic;
+}

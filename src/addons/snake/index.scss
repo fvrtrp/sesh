@@ -1,0 +1,103 @@
+.theme-snake {
+  background: radial-gradient(circle, #030303, #000000);
+
+  * {
+    color: white;
+  }
+
+  #snakeContainer {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    z-index: 9;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    perspective: 1000px;
+  }
+  #snakeContainer canvas {
+    // border: solid 1px pink;
+    border-radius: 12px;
+    background: rgb(25 0 255 / 75%);
+    // transform: rotate3d(1, 1, 1, 25deg);
+    transition: transform 5s ease-in;
+  }
+
+  #gameOver {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    font-size: 20px;
+  }
+  #score {
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    font-size: 20px;
+    bottom: -50px;
+    font-family: 'Open Sans', sans-serif;
+    white-space: break-spaces;
+  }
+
+  #canvas {
+    background: rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+  }
+
+  #timeContainer {
+    font: 300 50px 'Open Sans', sans-serif;
+  }
+
+  #dateContainer {
+    background: rgba(0, 0, 0, 0.15);
+    font: 300 16px 'Source Sans Pro', sans-serif;
+    padding: 10px 25px !important;
+    letter-spacing: 5px;
+  }
+
+  #bookmarksStatusBar {
+    background: radial-gradient(circle, #0D0D0D77, #14141477);
+  }
+
+  #bookmarksStatusBar:hover {
+    background: radial-gradient(circle, #0D0D0D, #141414);
+  }
+}
+
+#Container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 35s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+canvas {
+  background: rgb(255, 170, 170);
+}
+
+#controls {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
