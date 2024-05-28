@@ -1,0 +1,155 @@
+:root {
+    --translucent-black: rgba(0, 0, 0, 0.2);
+    --primary-color: white;
+    --primary-background: black;
+}
+
+body {
+    font-family: sans-serif;
+    background: black;
+    color: white;
+}
+#seshParent {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.attribution {
+    position: absolute;
+    transform: rotate(-90deg);
+    font-family: 'Source Code Pro';
+    letter-spacing: 15px;
+    font-weight: 200;
+    font-size: 14px;
+    left: -30px;
+    top: 50%;
+    cursor: pointer;
+    color: #cacaca !important;
+    z-index: 3;
+    transition: color 0.3s ease-in-out;
+    text-decoration: none;
+    a {
+        color: inherit;
+        text-decoration: none;
+    }
+    &:hover {
+        color: var(--primary-color) !important;
+    }
+}
+
+#controls {
+    position: absolute;
+    top: 15px;
+    right: 25px;
+    display: flex;
+    z-index: 10;
+    background: var(--translucent-black);
+    color: var(--primary-color);
+    padding: 12px 5px;
+    border-radius: 8px;
+    text-transform: uppercase;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 12px;
+    letter-spacing: 1px;
+    >div {
+        cursor: pointer;
+        z-index: 3;
+        transition: color 0.3s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+        display: none;
+        margin: 0 20px;
+        letter-spacing: 6px;
+        font-weight: 400;
+        &.show {
+            opacity: 0.7;
+            pointer-events: all;
+            display: block;
+        }
+        &:hover {
+            opacity: 1;
+        }
+    }
+}
+
+#messageContainer, #dateTimeContainer, #quotesContainer {
+    text-align: center;
+    padding: 20px 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+    font-size: 40px;
+    font-family: 'Source Sans Pro', sans-serif;
+    font-weight: 400;
+    pointer-events: none;
+    z-index: 3;
+}
+
+#quotesContainer {
+    font-size: 27px;
+    font-weight: 300;
+    font-style: italic;
+}
+
+#messageContainer {
+    font-size: 25px;
+}
+
+#dateTimeContainer {
+    flex-direction: column;
+    font-size: 50px;
+}
+#dateTimeContainer #dateContainer {
+    padding: 5px 25px;
+    border-radius: 10px;
+    margin-top: 15px;
+}
+
+/* toast stuff */
+#toast {
+    visibility: hidden;
+    max-width: 400px;
+    height: 40px;
+    margin: auto;
+    background:rgba(0, 0, 0, 0.65);
+    color: #fff;
+    text-align: center;
+    border-radius: 4px;
+    position: fixed;
+    z-index: 12;
+    left: 0;
+    right:0;
+    bottom: 30px;
+    white-space: nowrap;
+    font: 300 14px 'Open Sans', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#toast.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 2s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, expand 0.5s 0.5s,stay 3s 1s, shrink 0.5s 4s, fadeout 0.5s 4.5s;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #545454;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: #2d2d2d;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background: #1e1e1e;
+  }

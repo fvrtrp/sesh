@@ -1,0 +1,22 @@
+/* Greens */
+
+.theme-autumn {
+    background: radial-gradient(circle, #171114, #000000);
+}
+.theme-autumn * {
+    color: white;
+}
+.theme-autumn #timeContainer {
+    font: 300 50px 'Open Sans', sans-serif;
+}
+.theme-autumn #dateContainer {
+    background: linear-gradient(to bottom right, #A60063, #AA0D4F, #C85227);
+    font: 400 16px 'Source Code Pro', sans-serif;
+    letter-spacing: 5px;
+}
+.theme-autumn #bookmarksStatusBar {
+    background: linear-gradient(to bottom right, #151013, #1A0D14, #15080A);
+}
+.theme-autumn #bookmarksStatusBar:hover {
+    background: linear-gradient(to bottom right, #151013, #1A0D14, #15080A);
+}

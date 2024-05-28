@@ -2,10 +2,9 @@
   "name": "sesh - Beautiful New Tab",
   "version": "3.0.0",
   "manifest_version": 3,
-  "description": "Beautiful new tab",
+  "description": "Sesh by fevertrip",
   "homepage_url": "https://fvrtrp.github.io/sesh",
   "icons": {
-    "16": "icons/icon16.png",
     "48": "icons/icon48.png",
     "128": "icons/icon128.png"
   },
