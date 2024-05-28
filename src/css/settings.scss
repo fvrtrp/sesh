@@ -1,27 +1,27 @@
 #settingsParent {
     position: fixed;
-    right: 0;
+    left: 0;
     top: 0;
     width: 0;
     height: 0;
     display: flex;
     justify-content: flex-start;
-    margin-left: 50px;
     overflow: hidden;
     z-index: 9;
     opacity: 0;
     transition: height 0.7s ease, opacity 0s ease;
-    padding: 25px 0;
-    padding-top: 50px;
+    padding: 50px 25px 25px 50px;
     color: white;
     background: black;
     pointer-events: none;
+
     &.show {
         opacity: 1;
         width: 100%;
         height: 100%;
         pointer-events: all;
     }
+
     .customInput {
         border: none;
         outline: none;
@@ -31,25 +31,32 @@
         margin-left: 15px;
     }
 }
+
 .settingsSection {
     display: flex;
     flex-basis: 30%;
 }
+
 .settingsSection.themeSection {
     flex-basis: 30%;
 }
+
 .settingsSection.contentSection {
     flex-basis: 40%;
 }
+
 .settingsSection.utilitySection {
     flex-basis: 40%;
 }
-.settingsSection.contentSection .sectionTitle{
+
+.settingsSection.contentSection .sectionTitle {
     margin-left: -95px;
 }
-.settingsSection.utilitySection .sectionTitle{
+
+.settingsSection.utilitySection .sectionTitle {
     margin-left: -102px;
 }
+
 .settingsSection .sectionTitle {
     transform: rotate(-90deg);
     transform-origin: right;
@@ -61,9 +68,11 @@
     font-size: 10px;
     color: #ffd48c;
 }
+
 .settingsSection .sectionItems {
     margin-left: 40px;
 }
+
 .settingsSection .settingsItem {
     position: relative;
     text-transform: uppercase;
@@ -76,9 +85,11 @@
     border-radius: 4px;
     transition: background 0.1s ease-in-out;
 }
+
 .settingsSection .settingsItem.active {
     color: white;
 }
+
 .settingsSection .settingsItem #decor {
     width: 0;
     height: 7px;
@@ -90,14 +101,17 @@
     z-index: -1;
     border-radius: 2px;
 }
+
 .settingsSection .settingsItem:hover #decor {
     width: 100%;
     transition: height 0.3s ease-out, width 3s ease-out;
 }
-.settingsSection .settingsItem.active #decor{
+
+.settingsSection .settingsItem.active #decor {
     height: 100% !important;
     width: 100% !important;
 }
+
 #settingsParent .title {
     font-size: 30px;
     font-family: 'Source Sans Pro', sans-serif;
@@ -112,12 +126,14 @@
     display: flex;
     align-items: center;
 }
-#settingsParent #themesContainer .title{
+
+#settingsParent #themesContainer .title {
     font-size: 16px;
     margin-right: 15px;
     letter-spacing: 7px;
 }
-#settingsParent #themesContainer .preview{
+
+#settingsParent #themesContainer .preview {
     width: 20px;
     height: 20px;
     border-radius: 6px;
@@ -125,6 +141,7 @@
     margin: 3px 10px;
     cursor: pointer;
 }
+
 #themesContainer .preview.active {
     border: solid 2px white;
 }
@@ -137,11 +154,13 @@
     margin-top: 25px;
     border-radius: 4px;
 }
+
 #settingsParent .togglePinnedItems img {
     display: none;
     margin-right: 25px;
     cursor: pointer;
 }
+
 #settingsParent .togglePinnedItems img.show {
     display: inline-block;
 }
@@ -153,6 +172,7 @@
     width: 70px;
     transition: opacity 1s;
 }
+
 .settingsIcon:hover {
     opacity: 0.7;
 }

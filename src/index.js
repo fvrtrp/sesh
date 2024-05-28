@@ -32,7 +32,7 @@ function initSesh() {
             updateLocalStorage(initSesh())
         }
         else {
-            loadSettings()
+            // loadSettings()
             loadApp(result.state)
             stateBuffer = result.state
         }

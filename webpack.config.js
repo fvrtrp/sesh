@@ -20,5 +20,5 @@ module.exports = {
   },
   resolve: {
     modules: [path.resolve(__dirname, 'src')]
-   }
+  }
 };
