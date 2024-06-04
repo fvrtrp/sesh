@@ -15,11 +15,13 @@
     top: 50%;
     transform: translate(-50%, -50%);
     perspective: 1000px;
+    transition: transform 5s ease-in;
   }
+
   #snakeContainer canvas {
     // border: solid 1px pink;
     border-radius: 12px;
-    background: rgb(25 0 255 / 75%);
+    background: rgba(44, 38, 95, 0.75);
     // transform: rotate3d(1, 1, 1, 25deg);
     transition: transform 5s ease-in;
   }
@@ -30,15 +32,33 @@
     transform: translate(-50%, -50%);
     top: 50%;
     font-size: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .mainPrompt {
+      font-size: 1rem;
+    }
+
+    .subPrompt {
+      font-size: 0.7rem;
+      margin-top: 15px;
+    }
   }
+
   #score {
     position: fixed;
     left: 50%;
-    transform: translate(-50%, 0%);
-    font-size: 20px;
     bottom: -50px;
+    transform: translate(-50%, 0%);
+    width: max-content;
+    padding: 5px 20px;
+    border-radius: 5px;
+    font-size: 1.1rem;
     font-family: 'Open Sans', sans-serif;
     white-space: break-spaces;
+    background: var(--translucent-black);
   }
 
   #canvas {
@@ -90,10 +110,6 @@
   100% {
     background-position: 0% 50%;
   }
-}
-
-canvas {
-  background: rgb(255, 170, 170);
 }
 
 #controls {

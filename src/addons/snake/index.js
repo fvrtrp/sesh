@@ -1,4 +1,5 @@
 import { createElement } from '../../utils.js'
+import './index.scss'
 
 var canvas = null,
   ctx = null,
@@ -16,29 +17,31 @@ var canvas = null,
   direction = "right",
   //food properties
   food = [[0, 0]];
-  var score = initialSnakeLength,
+var score = initialSnakeLength,
   highScore = 0;
+var snakeContainer = null
+var scoreDiv = null
 
 export function loadTheme() {
-  const snakeContainer = createElement("snakeContainer", "", "#seshParent")
+  snakeContainer = createElement("snakeContainer", "", "#seshParent")
   snakeContainer.style.width = limitX
   snakeContainer.style.height = limitY
   document.querySelector("#seshParent").classList.add(`theme-snake`)
   canvas = createElement("canvas", "canvas", "#snakeContainer", "canvas")
   ctx = canvas.getContext("2d");
-  createElement('gameOver', 'gameOver' ,'#snakeContainer')
+  createElement('gameOver', 'gameOver', '#snakeContainer')
   init()
 }
 
 function init() {
-  createElement("score", "score", "#snakeContainer")
+  scoreDiv = createElement("score", "score", "#snakeContainer")
   canvas.width = limitX
   canvas.height = limitY
   canvas.focus()
   initGame();
   addEventListeners();
   const hs = localStorage.getItem('highScore')
-  if(hs) highScore = hs
+  if (hs) highScore = hs
   updateScore()
 }
 
@@ -90,14 +93,16 @@ function initGame() {
   makeInitialSnake();
   makeFood();
   drawItems();
-  //start();
 }
 
 function updateGameOver() {
   const goContainer = document.querySelector('#gameOver')
-  if(goContainer) {
-    if(gameOver)
-      document.querySelector('#gameOver').innerHTML = 'Press Space to start.'
+  if (goContainer) {
+    if (gameOver)
+      document.querySelector('#gameOver').innerHTML = `
+    <div class='mainPrompt'>
+    Press Space to start.</div><div class='subPrompt'>Use arrow keys to change direction.</div>
+    `
     else document.querySelector('#gameOver').innerHTML = ''
   }
 }
@@ -136,6 +141,7 @@ function pause() {
 function gameover() {
   gameOver = true
   updateGameOver()
+  resetEffects()
   score = 0
   updateScore()
   pause();
@@ -187,7 +193,7 @@ function checkIntersection(r1, r2) {
 function checkFoodEaten() {
   if (checkIntersection(snake[0], food)) {
     score++;
-    if(score>highScore) highScore = score
+    if (score > highScore) highScore = score
     localStorage.setItem('highScore', highScore)
     updateScore()
     makeFood()
@@ -198,7 +204,18 @@ function checkFoodEaten() {
 }
 
 function updateEffects() {
-  canvas.style.transform = `scale(${(getRandom(0, 4) + 7)/10}) rotate3d(${getRandom(0, 4) - 2}, ${getRandom(0, 4) - 2}, ${getRandom(0, 4) - 2}, ${getRandom(0, 50) - 25}deg)`
+  const rotationMultiplier = Math.floor(score / 10)
+  const newStyle = `translate(-50%, -50%) scale(${(getRandom(0, 4) + 7) / 10})
+  rotate3d(
+    ${getRandom(0, 4) - 2},
+    ${getRandom(0, 4) - 2},
+    ${getRandom(0, 4) - 2},
+    ${getRandom(0, 30 * rotationMultiplier) - Math.round(rotationMultiplier / 2)}deg)
+    `
+  snakeContainer.style.transform = newStyle
+}
+function resetEffects() {
+  snakeContainer.style.transform = `translate(-50%, -50%) scale(1) rotate3d(0,0,0,0deg)`
 }
 
 function getRandom(min, max) {
@@ -206,8 +223,7 @@ function getRandom(min, max) {
 }
 
 function updateScore() {
-  const sc = document.querySelector('#score')
-  if(sc) sc.innerText = `Score: ${score}     High Score: ${highScore}`;
+  if (scoreDiv) scoreDiv.innerText = `Score: ${score}     High Score: ${highScore}`;
 }
 
 function appendTailToSnake() {
@@ -281,10 +297,10 @@ function clear() {
 function drawSnake() {
   // console.log(JSON.stringify(snake));
   ctx.fillStyle = "#35fbff"
-  for (let i=0; i<snake.length; i++) {
+  for (let i = 0; i < snake.length; i++) {
     const cell = snake[i]
-    ctx.fillRect(cell[0], cell[1], size-1, size-1);
-    if(i === 0) {
+    ctx.fillRect(cell[0], cell[1], size - 1, size - 1);
+    if (i === 0) {
       ctx.fillStyle = 'red'
       ctx.fillRect(cell[0] + size - 10, cell[1] + size - 10, 5, 5)
       ctx.fillStyle = "#35fbff"
@@ -302,14 +318,4 @@ function drawFood() {
   ctx.fillStyle = "#ffc735";
   ctx.fillRect(food[0], food[1], size, size);
 }
-
-
-
-export function cleanup() {
-  gameover()
-  document.removeEventListener("keydown", eventListener);
-  let container = document.getElementById("snakeContainer")
-  if (container) container.remove()
-}
-
 

@@ -10,6 +10,7 @@ import { loadTheme as loadGeometryTheme } from './addons/geometry'
 import { loadTheme as loadMoviePosters } from './addons/movie-posters'
 import { loadTheme as loadAnalogClock } from './addons/analog-clock'
 import { loadTheme as loadZenTheme } from './addons/zen'
+import { loadTheme as loadSnake } from './addons/snake'
 
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
@@ -92,10 +93,10 @@ function loadTheme(theme) {
 
 function loadContent(content) {
     switch (content) {
-        // case 'drunken-snake': {
-        //     loadSnake()
-        //     break
-        // }
+        case 'drunken-snake': {
+            loadSnake()
+            break
+        }
         case 'date-time': {
             loadDateTime()
             break
