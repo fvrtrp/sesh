@@ -11,6 +11,7 @@ import { loadTheme as loadMoviePosters } from './addons/movie-posters'
 import { loadTheme as loadAnalogClock } from './addons/analog-clock'
 import { loadTheme as loadZenTheme } from './addons/zen'
 import { loadTheme as loadSnake } from './addons/snake'
+import { loadNotes } from './addons/notes/index.js'
 
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
@@ -25,7 +26,7 @@ export let stateBuffer = {
     ],
 }
 export let notes = {
-    show: true,
+    show: false,
     value: '',
 }
 
@@ -53,11 +54,7 @@ export function loadApp(state) {
     // console.log(`zzz load`, state)
     loadTheme(state.theme)
     loadContent(state.content)
-    // loadUtilities([
-    //     "showPinnedBookmarks",
-    //     "showBookmarksShortcut",
-    //     "showNotes",
-    // ])
+    loadUtilities(state)
 }
 
 function loadTheme(theme) {
@@ -113,22 +110,23 @@ function loadContent(content) {
             loadMessage(stateBuffer.message)
             break
         }
-        // case 'bookmarks': {
-        //     loadBookmarks()
-        //     break
-        // }
         default: break
     }
 }
 
 function loadUtilities(state) {
-    if (state && state.utilities && state.utilities.includes('showBookmarksShortcut')) {
-        showBookmarksShortcut()
-    }
-    if (state && state.utilities && state.utilities.includes('showPinnedBookmarks')) {
-        loadPinnedBookmarks(state)
-    }
-    if (state && state.utilities && state.utilities.includes('showNotes')) {
-        loadPinnedBookmarks(state)
-    }
+    // if (state && state.utilities && state.utilities.includes('showBookmarksShortcut')) {
+    //     showBookmarksShortcut()
+    // }
+    // if (state && state.utilities && state.utilities.includes('showPinnedBookmarks')) {
+    //     loadPinnedBookmarks(state)
+    // }
+
+    chrome.storage.local.get(['notes'], function (result) {
+        console.log(`zzz notes`, result)
+        if (result.notes) {
+            notes = result.notes
+        }
+        loadNotes(notes)
+    });
 }
