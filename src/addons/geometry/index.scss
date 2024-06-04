@@ -1,57 +1,15 @@
 /* Blues */
 
 .theme-geometry {
-    background: radial-gradient(circle, #0C0E1E, #05040B);
-}
-.geometry-blue {
     background: linear-gradient(to bottom right, #000000, #0c0d2b);
 }
-.geometry-red {
-    background: linear-gradient(to bottom right, #000000, #0c0d2b);
-}
-.geometry-pink {
-    background: linear-gradient(to bottom right, #000000, #0c0d2b);
-}
-.geometry-yellow {
-    background: linear-gradient(to bottom right, #000000, #0c0d2b);
-}
-.geometry-green {
-    background: linear-gradient(to bottom right, #000000, #0c0d2b);
-}
+
 .theme-geometry {
-    * {
-        color: white;
-    }
-    #quotesContainer {
-        font: 300 20px 'Open Sans', sans-serif;
-        letter-spacing: 7px;
-        text-transform: uppercase;
-    }
-    #messageContainer {
-        font: 300 25px 'Open Sans', sans-serif;
-        letter-spacing: 10px;
-        text-transform: uppercase;
-    }
-    #timeContainer {
-        font: 300 50px 'Open Sans', sans-serif;
-        letter-spacing: 10px;
-    }
-    #dateContainer {
-        background: none;
-        font: 300 16px 'Open Sans', sans-serif;
-        letter-spacing: 5px;
-        margin-top: 0 !important;
-    }
-    #bookmarksStatusBar {
-        background: radial-gradient(circle, #0D0D0D77, #14141477);
-    }
-    #bookmarksStatusBar:hover {
-        background: radial-gradient(circle, #0D0D0D, #141414);
-    }
     .square {
         mix-blend-mode: difference;
     }
-    .shape { 
+
+    .shape {
         animation-name: floating;
         animation-duration: 20s;
         animation-iteration-count: infinite;
@@ -62,91 +20,131 @@
         border-radius: 8px;
     }
 
+    .speed1 {
+        animation-duration: 45s;
+    }
+
+    .speed2 {
+        animation-duration: 60s;
+    }
+
+    .speed3 {
+        animation-duration: 75s;
+    }
+
+    .speed4 {
+        animation-duration: 90s;
+    }
 }
 
-.theme-geometry .speed1 {
-    animation-duration: 45s;
-}
-.theme-geometry .speed2 {
-    animation-duration: 60s;
-}
-.theme-geometry .speed3 {
-    animation-duration: 75s;
-}
-.theme-geometry .speed4 {
-    animation-duration: 90s;
-}
- 
 @keyframes floating {
-    0% { transform: translate(0,  0px); }
-    25%  { transform: translate(150px, 300px); }
-    50%  { transform: translate(450px, 105px); }
-    75%  { transform: translate(-240px, -225px); }
-    100%   { transform: translate(0, -0px); }   
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    25% {
+        transform: translate3d(150px, 300px, 200px);
+    }
+
+    50% {
+        transform: translate3d(450px, 105px, 300px);
+    }
+
+    75% {
+        transform: translate3d(-240px, -225px, -100px);
+    }
+
+    100% {
+        transform: translate3d(0, -0, -0);
+    }
 }
 
 
 .geometry-blue #clock {
     background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #8F00FF 100%);
+
     .handContainer {
         .hand {
-            &.minutes, &.hours {
+
+            &.minutes,
+            &.hours {
                 background: linear-gradient(to top, #8F00FF, #ffa6a6);
             }
         }
     }
+
     .pin {
         background: #8F00FF;
     }
 }
+
 .geometry-red #clock {
     background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #ff873e 100%);
+
     .handContainer {
         .hand {
-            &.minutes, &.hours {
+
+            &.minutes,
+            &.hours {
                 background: linear-gradient(to top, #ff873e, #ffa6a6);
             }
         }
     }
+
     .pin {
         background: #ff873e;
     }
 }
+
 .geometry-pink #clock {
     background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #ea4bff 100%);
+
     .handContainer {
         .hand {
-            &.minutes, &.hours {
+
+            &.minutes,
+            &.hours {
                 background: linear-gradient(to top, #ea4bff, #ffa6a6);
             }
         }
     }
+
     .pin {
         background: #ea4bff;
     }
 }
+
 .geometry-yellow #clock {
     background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #f4ff00 100%);
+
     .handContainer {
         .hand {
-            &.minutes, &.hours {
+
+            &.minutes,
+            &.hours {
                 background: linear-gradient(to top, #f4ff00, #ffa6a6);
             }
         }
     }
+
     .pin {
         background: #f4ff00;
     }
 }
+
 .geometry-green #clock {
     background: radial-gradient(50% 50% at 50% 50%, transparent 0%, #00ff56 100%);
+
     .handContainer {
         .hand {
-            &.minutes, &.hours {
+
+            &.minutes,
+            &.hours {
                 background: linear-gradient(to top, #00ff56, #ffa6a6);
             }
         }
     }
+
     .pin {
         background: #00ff56;
     }

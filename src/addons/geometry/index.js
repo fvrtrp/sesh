@@ -1,11 +1,16 @@
 import { createElement } from '../../utils.js'
+import './index.scss'
 
 export function loadTheme() {
-    createElement("geometryContainer","", "#seshParent")
-    const theme = themes[Math.floor(Math.random()*themes.length)]
+    createElement("geometryContainer", "", "#seshParent")
+    const theme = themes[Math.floor(Math.random() * themes.length)]
     document.querySelector("#seshParent").className = `theme-geometry geometry-${theme}`
     initGeometry(theme)
 }
+
+const sizeLimit = 30
+// max amount of circles, triangles, squares each
+const countLimit = 5
 
 const themes = [
     "blue",
@@ -24,8 +29,8 @@ const palette = {
 }
 
 function initGeometry(theme) {
-    const num = Math.floor(Math.random()*1) + 3
-    for(let i=0; i<num; i++) {
+    const num = Math.floor(Math.random() * 1) + countLimit
+    for (let i = 0; i < num; i++) {
         makeSquare(theme)
         makeCircle(theme)
         makeTriangle(theme)
@@ -34,57 +39,57 @@ function initGeometry(theme) {
 
 function makeTriangle(theme) {
     const windowHeight = window.innerHeight, windowWidth = window.innerWidth
-    const square = createElement("square","square", "#geometryContainer")
-    const size = Math.floor(Math.random()*50) + 50
-    square.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`
-    square.style.width = `${size}px`
-    square.style.height = `${size}px`
+    const square = createElement("square", "square", "#geometryContainer")
+    const size = Math.floor(Math.random() * sizeLimit) + sizeLimit
+    square.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`
+    square.style.width = `${size}rem`
+    square.style.height = `${size}rem`
     square.style.position = 'absolute'
-    square.style.left = `${Math.floor(Math.random()*(windowWidth-200))}px`
-    square.style.top = `${Math.floor(Math.random()*(windowHeight-200))}px`
-    square.innerHTML = `<svg width="${size}" height="${size}" class="shape speed${Math.floor(Math.random()*3) + 2}">
+    square.style.left = `${Math.floor(Math.random() * (windowWidth - 200))}px`
+    square.style.top = `${Math.floor(Math.random() * (windowHeight - 200))}px`
+    square.innerHTML = `<svg width="${size}" height="${size}" class="shape speed${Math.floor(Math.random() * 3) + 2}">
     <defs>
         <radialGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" style="stop-color: ${palette[theme][0]} ;stop-opacity:1" />
         <stop offset="100%" style="stop-color: ${palette[theme][1]} ;stop-opacity:1" />
         </radialGradient>
     </defs>
-    <polygon points="0,0 ${size/2},${size} ${size},0" fill="url(#grad3)" />
+    <polygon points="0,0 ${size / 2},${size} ${size},0" fill="url(#grad3)" />
 </svg>`
 }
 
 function makeCircle(theme) {
     const windowHeight = window.innerHeight, windowWidth = window.innerWidth
-    const square = createElement("square","square", "#geometryContainer")
-    const size = Math.floor(Math.random()*50) + 50
-    square.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`
+    const square = createElement("square", "square", "#geometryContainer")
+    const size = Math.floor(Math.random() * sizeLimit) + sizeLimit
+    square.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`
     square.style.width = `${size}px`
     square.style.height = `${size}px`
     square.style.position = 'absolute'
-    square.style.left = `${Math.floor(Math.random()*(windowWidth-200))}px`
-    square.style.top = `${Math.floor(Math.random()*(windowHeight-200))}px`
-    square.innerHTML = `<svg width="${size}" height="${size}" class="shape speed${Math.floor(Math.random()*3) + 2}">
+    square.style.left = `${Math.floor(Math.random() * (windowWidth - 200))}px`
+    square.style.top = `${Math.floor(Math.random() * (windowHeight - 200))}px`
+    square.innerHTML = `<svg width="${size}" height="${size}" class="shape speed${Math.floor(Math.random() * 3) + 2}">
     <defs>
         <radialGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" style="stop-color: ${palette[theme][0]};stop-opacity:1" />
         <stop offset="100%" style="stop-color: ${palette[theme][1]};stop-opacity:1" />
         </radialGradient>
     </defs>
-  <circle cx="${size/2}" cy="${size/2}" r="${size/2}" stroke="black" stroke-width="0" fill="url(#grad3)" />
+  <circle cx="${size / 2}" cy="${size / 2}" r="${size / 2}" stroke="black" stroke-width="0" fill="url(#grad3)" />
 </svg>`
 }
 
 function makeSquare(theme) {
     const windowHeight = window.innerHeight, windowWidth = window.innerWidth
-    const square = createElement("square","square", "#geometryContainer")
-    const size = Math.floor(Math.random()*50) + 50
-    square.style.transform = `rotate(${Math.floor(Math.random()*360)}deg)`
+    const square = createElement("square", "square", "#geometryContainer")
+    const size = Math.floor(Math.random() * sizeLimit) + sizeLimit
+    square.style.transform = `rotate(${Math.floor(Math.random() * 360)}deg)`
     square.style.width = `${size}px`
     square.style.height = `${size}px`
     square.style.position = 'absolute'
-    square.style.left = `${Math.floor(Math.random()*(windowWidth-200))}px`
-    square.style.top = `${Math.floor(Math.random()*(windowHeight-200))}px`
-    square.innerHTML = `<svg width="${size}" height="${size}" class="shape speed${Math.floor(Math.random()*3) + 2}">
+    square.style.left = `${Math.floor(Math.random() * (windowWidth - 200))}px`
+    square.style.top = `${Math.floor(Math.random() * (windowHeight - 200))}px`
+    square.innerHTML = `<svg width="${size}" height="${size}" class="shape speed${Math.floor(Math.random() * 3) + 2}">
     <defs>
         <radialGradient id="grad3" x1="0%" y1="0%" x2="100%" y2="0%">
         <stop offset="0%" style="stop-color: ${palette[theme][0]};stop-opacity:1" />
@@ -97,5 +102,5 @@ function makeSquare(theme) {
 
 export function cleanup() {
     let container = document.getElementById("geometryContainer")
-    if(container)   container.remove()
+    if (container) container.remove()
 }

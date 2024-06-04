@@ -1,20 +1,19 @@
 .theme-zen {
-    background: radial-gradient(circle, #030303, #000000);
-    * {
-        color: white;
-    }
     #timeContainer {
         font: 300 50px 'Open Sans', sans-serif;
     }
+
     #dateContainer {
         background: rgba(0, 0, 0, 0.15);
         font: 300 16px 'Source Sans Pro', sans-serif;
         padding: 10px 25px !important;
         letter-spacing: 5px;
     }
+
     #bookmarksStatusBar {
         background: radial-gradient(circle, #0D0D0D77, #14141477);
     }
+
     #bookmarksStatusBar:hover {
         background: radial-gradient(circle, #0D0D0D, #141414);
     }
@@ -28,18 +27,20 @@
     height: 100%;
     pointer-events: none;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-	background-size: 400% 400%;
-	animation: gradient 35s ease infinite;
+    background-size: 400% 400%;
+    animation: gradient 35s ease infinite;
 }
 
 @keyframes gradient {
-	0% {
-		background-position: 0% 50%;
-	}
-	50% {
-		background-position: 100% 50%;
-	}
-	100% {
-		background-position: 0% 50%;
-	}
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
 }

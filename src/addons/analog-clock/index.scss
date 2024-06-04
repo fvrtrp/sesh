@@ -1,9 +1,10 @@
 #clock {
   position: relative;
   background: radial-gradient(transparent, #373737);
-  width: 150px;
-  height: 150px;
+  width: 10rem;
+  height: 10rem;
   border-radius: 50%;
+
   .handContainer {
     position: absolute;
     left: 50%;
@@ -11,22 +12,24 @@
     transform-origin: top;
     transition: transform 3s ease;
     background: transparent;
-    height: 150px;
-    width: 20px;
+    height: 10rem;
+    width: 1.2rem;
+
     .hand {
       &.hours {
         background: linear-gradient(to top, #ffffff80, #FFF);
-        width: 20px;
-        height: 90px;
+        width: 1.1rem;
+        height: 6rem;
         position: absolute;
         left: 0px;
         // top: 5px;
         border-radius: 20px;
       }
+
       &.minutes {
         background: linear-gradient(to top, #ffffff80, #FFF);
-        width: 20px;
-        height: 150px;
+        width: 1.1rem;
+        height: 8rem;
         position: absolute;
         left: 0px;
         // top: 150px;
@@ -34,16 +37,20 @@
       }
     }
   }
-  .gear, .pin {
+
+  .gear,
+  .pin {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
+
   .gear {
-    height: 100px;
-    width: 100px;
+    height: 6rem;
+    width: 6rem;
   }
+
   .pin {
     width: 7px;
     height: 7px;

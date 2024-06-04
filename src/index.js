@@ -6,6 +6,10 @@ import { loadTheme as loadVanillaTheme } from './addons/vanilla-themes'
 import { loadTheme as loadMessage } from './addons/message'
 import { loadTheme as loadQuotes } from './addons/quotes'
 import { loadTheme as loadGoogleEarth } from './addons/google-earth'
+import { loadTheme as loadGeometryTheme } from './addons/geometry'
+import { loadTheme as loadMoviePosters } from './addons/movie-posters'
+import { loadTheme as loadAnalogClock } from './addons/analog-clock'
+import { loadTheme as loadZenTheme } from './addons/zen'
 
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
@@ -62,10 +66,10 @@ function loadTheme(theme) {
             loadGoogleEarth()
             break
         }
-        // case 'movie-posters': {
-        //     loadMoviePosters()
-        //     break
-        // }
+        case 'movie-posters': {
+            loadMoviePosters()
+            break
+        }
         case 'vanilla-themes': {
             loadVanillaTheme()
             break
@@ -74,14 +78,14 @@ function loadTheme(theme) {
             loadNinjaTheme()
             break
         }
-        // case 'zen': {
-        //     loadZenTheme()
-        //     break
-        // }
-        // case 'geometry': {
-        //     loadGeometryTheme()
-        //     break
-        // }
+        case 'zen': {
+            loadZenTheme()
+            break
+        }
+        case 'geometry': {
+            loadGeometryTheme()
+            break
+        }
         default: { }
     }
 }
@@ -96,10 +100,10 @@ function loadContent(content) {
             loadDateTime()
             break
         }
-        // case 'analog-clock': {
-        //     loadAnalogClock()
-        //     break
-        // }
+        case 'analog-clock': {
+            loadAnalogClock()
+            break
+        }
         case 'nihilist quotes': {
             loadQuotes()
             break

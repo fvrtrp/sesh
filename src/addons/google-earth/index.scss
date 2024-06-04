@@ -1,22 +1,24 @@
 .theme-googleearth {
 
+    #timeContainer,
+    #dateContainer,
+    #quoteContainer,
+    #messageInput {
+        background: var(--translucent-black);
+        color: var(--primary-color);
+    }
+
     #timeContainer {
         font: 700 40px 'Open Sans', sans-serif;
-        color: white;
-        text-shadow: 3px 4px #00000073;
     }
 
     #dateContainer {
-        background: rgba(0, 0, 0, 0.15);
-        color: white;
         font: 400 16px 'Source Sans Pro', sans-serif;
         padding: 10px 25px !important;
         letter-spacing: 2px;
     }
 
     #quoteContainer {
-        background: rgba(0, 0, 0, 0.95);
-        color: white;
         padding: 5px 30px;
         border-radius: 5px;
     }
@@ -24,12 +26,6 @@
     #messageContainer,
     #messageInput {
         font-weight: 300 !important;
-    }
-
-    #messageContainer {
-        font: 700 30px 'Open Sans', sans-serif !important;
-        color: white;
-        text-shadow: 2px 3px #00000073;
     }
 
     #bookmarksStatusBar {
