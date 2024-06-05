@@ -12,7 +12,7 @@ import { loadTheme as loadAnalogClock } from './addons/analog-clock'
 import { loadTheme as loadZenTheme } from './addons/zen'
 import { loadTheme as loadSnake } from './addons/snake'
 import { loadNotes } from './addons/notes/index.js'
-import { loadBookmarks } from './addons/bookmarks/index.js'
+import { loadBookmarks, loadPinnedBookmarks } from './addons/bookmarks/index.js'
 
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
@@ -117,12 +117,7 @@ function loadContent(content) {
 }
 
 function loadUtilities(state) {
-    // if (state && state.utilities && state.utilities.includes('showBookmarksShortcut')) {
-    //     showBookmarksShortcut()
-    // }
-    // if (state && state.utilities && state.utilities.includes('showPinnedBookmarks')) {
-    //     loadPinnedBookmarks(state)
-    // }
+    loadPinnedBookmarks(state)
 
     chrome.storage.local.get(['notes'], function (result) {
         console.log(`zzz notes`, result)

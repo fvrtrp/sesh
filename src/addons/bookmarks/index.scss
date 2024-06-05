@@ -44,9 +44,7 @@
 
 }
 
-/* #bookmarksContainer .bookmarkLevel:not(:nth-child(1)), #bookmarksContainer .bookmarkLevel:not(:nth-child(2)) {
-    margin-left: 150px;
-} */
+
 #bookmarksContainer .bookmarkLevel:nth-child(2) {
     margin-left: 0;
 }
@@ -157,7 +155,7 @@
     cursor: pointer;
 }
 
-#bookmarksContainer #bookmarksStatusBar.active {
+#bookmarksContainer.show #bookmarksStatusBar.active {
     opacity: 1;
     pointer-events: all;
 }
@@ -347,72 +345,4 @@
 
 .pinnedTitle {
     background: rgba(0, 0, 0, 0.25) !important;
-}
-
-/* support for themes */
-.theme-ninja #pinnedItemsContainer,
-.theme-ninja .bookmarksContainer,
-.theme-ninja .searchResultsContainer,
-.theme-movies #pinnedItemsContainer,
-.theme-movies .bookmarksContainer,
-.theme-movies .searchResultsContainer,
-.theme-zen #pinnedItemsContainer,
-.theme-zen .bookmarksContainer,
-.theme-zen .searchResultsContainer {
-    border: solid 1px #757575;
-    background: black;
-}
-
-.theme-ninja #pinnedItemsContainer .itemTitle,
-.theme-movies #pinnedItemsContainer .itemTitle {
-    color: white;
-}
-
-.theme-ninja #pinnedItemsContainer .itemTitle:not(:last-child),
-.theme-ninja #bookmarksContainer .itemTitle:not(:last-child),
-.theme-ninja #searchResultsContainer .itemTitle:not(:last-child),
-.theme-movies #pinnedItemsContainer .itemTitle:not(:last-child),
-.theme-movies #bookmarksContainer .itemTitle:not(:last-child),
-.theme-movies #searchResultsContainer .itemTitle:not(:last-child),
-.theme-zen #pinnedItemsContainer .itemTitle:not(:last-child),
-.theme-zen #bookmarksContainer .itemTitle:not(:last-child),
-.theme-zen #searchResultsContainer .itemTitle:not(:last-child) {
-    border-bottom: solid 1px #333333;
-}
-
-.theme-ninja .pinnedTitle,
-.theme-movies .pinnedTitle {
-    background: #111111;
-}
-
-.theme-zen .pinnedTitle {
-    background: rgba(0, 0, 0, 0.25) !important;
-}
-
-.theme-blues #pinnedItemsContainer,
-.theme-blues .bookmarksContainer,
-.theme-blues #searchResultsContainer {
-    background: linear-gradient(to bottom right, #0B0D20, #161142, #150B22);
-}
-
-.theme-blues .pinnedTitle {
-    background: linear-gradient(to bottom right, #2B3286, #322991, #6827C8);
-}
-
-.theme-blues .svgConnector svg {
-    stroke: #8172FF;
-}
-
-.theme-autumn #pinnedItemsContainer,
-.theme-autumn .bookmarksContainer,
-.theme-autumn #searchResultsContainer {
-    background: linear-gradient(to bottom right, #151013, #1A0D14, #15080A);
-}
-
-.theme-autumn .pinnedTitle {
-    background: linear-gradient(to bottom right, #A60063, #AA0D4F, #C85227);
-}
-
-.theme-autumn .svgConnector svg {
-    stroke: #FFB76C;
 }
