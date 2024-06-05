@@ -12,6 +12,7 @@ import { loadTheme as loadAnalogClock } from './addons/analog-clock'
 import { loadTheme as loadZenTheme } from './addons/zen'
 import { loadTheme as loadSnake } from './addons/snake'
 import { loadNotes } from './addons/notes/index.js'
+import { loadBookmarks } from './addons/bookmarks/index.js'
 
 export let stateBuffer = {
     message: "Most people don't even get an opportunity to make a change. You do.",
@@ -45,8 +46,9 @@ function initSesh() {
         else {
             loadApp(result.state)
             stateBuffer = result.state
-            loadSettings()
         }
+        loadSettings()
+        loadBookmarks()
     });
 }
 

@@ -17,6 +17,7 @@ export function createElement(id, className, parent, type, method) {
 }
 
 export function loadSettings() {
+    console.log(`loading settings`)
     const controls = document.querySelector("#controls")
     const settingsButton = controls.querySelector("#settingsControl")
     settingsButton.addEventListener('click', openSettingsScreen, false)
@@ -73,8 +74,6 @@ function closeSettingsScreen() {
 }
 
 function openSettingsScreen() {
-    // clearCurrentDivs()
-    console.log(`opening settings`)
     const settingsParent = document.querySelector('#settingsParent')
     settingsParent.classList.add('show');
 
