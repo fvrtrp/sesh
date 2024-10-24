@@ -1,325 +1,326 @@
 #bookmarksContainer {
-    position: fixed;
-    z-index: 9;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    padding: 50px 100px 50px;
-    display: flex;
-    overflow-x: scroll;
-    overflow-y: hidden;
-    box-sizing: border-box;
-    color: var(--primary-color);
-    background: var(--primary-background);
-    pointer-events: none;
-    opacity: 0;
-    transition: height 0.7s ease, opacity 0s ease;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  padding: 50px 100px 50px;
+  display: flex;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  box-sizing: border-box;
+  color: var(--primary-color);
+  background: var(--primary-background);
+  pointer-events: none;
+  opacity: 0;
+  transition: height 0.7s ease, opacity 0s ease;
 
-    &.show {
-        opacity: 1;
-        height: 100%;
-        width: 100%;
-        pointer-events: all;
-    }
+  &.show {
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    pointer-events: all;
+  }
 }
 
 #bookmarksContainer::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 #bookmarksContainer .bookmarkLevel {
-    height: 100%;
-    min-width: 400px;
-    margin-top: 50px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    position: relative;
+  height: calc(100% - 100px);
+  min-width: 500px;
+  margin-top: 50px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: relative;
 }
 
 #bookmarksContainer .bookmarkLevel .bookmarksContainer {
-    position: relative;
-    width: 250px;
-    border-radius: 10px;
-
+  position: relative;
+  width: 350px;
+  border-radius: 10px;
+  border: 1px solid var(--highlight-color);
 }
 
 
 #bookmarksContainer .bookmarkLevel:nth-child(2) {
-    margin-left: 0;
+  margin-left: 0;
 }
 
 #bookmarksContainer .bookmarkLevel::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 #bookmarksContainer .bookmarkLevel.hide {
-    display: none;
+  display: none;
 }
 
 .bookmarkItem {
-    position: relative;
-    width: 250px;
-    display: flex;
-    align-items: center;
-    height: 40px;
-    font-family: 'Source Sans Pro', sans-serif;
-    font-weight: 400;
-    cursor: pointer;
-    user-select: none;
-    justify-content: center;
+  position: relative;
+  width: 350px;
+  display: flex;
+  align-items: center;
+  height: 40px;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 400;
+  cursor: pointer;
+  user-select: none;
+  justify-content: center;
 }
 
 .bookmarkItem.searchItem {
-    display: block;
-    width: 500px;
-    height: 80px;
-    padding: 5px 15px;
+  display: block;
+  width: 500px;
+  height: 80px;
+  padding: 5px 15px;
 }
 
 .bookmarkItem .itemTitle {
-    position: relative;
-    width: 80%;
-    display: flex;
-    align-items: center;
-    padding: 0;
-    text-overflow: ellipsis;
-    height: 40px;
-    font-family: 'Source Code Pro', sans-serif;
-    font-weight: 400;
-    box-sizing: border-box;
-    word-break: break-all;
+  position: relative;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  padding: 0;
+  text-overflow: ellipsis;
+  height: 40px;
+  font-family: 'Source Code Pro', sans-serif;
+  font-weight: 400;
+  box-sizing: border-box;
+  word-break: break-all;
 }
 
 .bookmarkItem .tooltip {
-    position: absolute;
-    right: 25px;
-    top: 75px;
-    background: rgb(35, 36, 36);
-    color: white;
-    padding: 5px 10px;
-    font-size: 10px;
-    font-weight: 200;
-    display: none;
-    border-radius: 6px;
-    z-index: 9;
+  position: absolute;
+  right: 25px;
+  top: 75px;
+  background: rgb(35, 36, 36);
+  color: white;
+  padding: 5px 10px;
+  font-size: 10px;
+  font-weight: 200;
+  display: none;
+  border-radius: 6px;
+  z-index: 9;
 }
 
 .bookmarkItem:hover .tooltip {
-    display: block;
+  display: block;
 }
 
 .bookmarkItem.link {
-    font-size: 12px;
-    font-weight: 200;
+  font-size: 12px;
+  font-weight: 200;
 }
 
 .bookmarkItem.folder {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .bookmarkItem .pinIcon {
-    position: absolute;
-    width: 25px;
-    height: 25px;
-    right: 25px;
-    display: none;
-    z-index: 9;
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: 25px;
+  display: none;
+  z-index: 9;
 }
 
 .bookmarkItem .pinIcon.unpin {
-    width: 20px;
-    height: 20px;
+  width: 20px;
+  height: 20px;
 }
 
 .bookmarkItem:hover .pinIcon {
-    display: block;
+  display: block;
 }
 
 #bookmarksContainer #bookmarksStatusBar {
-    position: fixed;
-    bottom: 10px;
-    height: 50px;
-    width: 98%;
-    left: 1%;
-    padding: 0 35px;
-    border-radius: 8px;
-    z-index: 3;
-    opacity: 0;
-    pointer-events: none;
-    box-sizing: border-box;
-    display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
-    font-family: 'Source Code Pro', sans-serif;
-    cursor: pointer;
+  position: fixed;
+  bottom: 10px;
+  height: 50px;
+  width: 98%;
+  left: 1%;
+  padding: 0 35px;
+  border: 1px solid var(--highlight-color);
+  border-radius: 8px;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  font-family: 'Source Code Pro', sans-serif;
+  cursor: pointer;
 }
 
 #bookmarksContainer.show #bookmarksStatusBar.active {
-    opacity: 1;
-    pointer-events: all;
+  opacity: 1;
+  pointer-events: all;
 }
 
 #bookmarksContainer #bookmarksStatusBar .itemContents {
-    flex-basis: 15%;
+  flex-basis: 15%;
 }
 
 #bookmarksContainer #bookmarksStatusBar .itemDescription {
-    flex-basis: 100%;
-    font-size: 18px;
+  flex-basis: 100%;
+  font-size: 18px;
 }
 
 #bookmarksContainer #bookmarksStatusBar .descriptionHeading {
-    font-size: 16px;
+  font-size: 16px;
 }
 
 #bookmarksContainer #bookmarksStatusBar .descriptionLink {
-    font-size: 12px;
-    font-weight: 300;
+  font-size: 12px;
+  font-weight: 300;
 }
 
 #bookmarksContainer #bookmarksStatusBar .itemAction {
-    flex-basis: 20%;
-    font-size: 10px;
+  flex-basis: 20%;
+  font-size: 10px;
 }
 
 #bookmarksContainer #bookmarkSearch {
-    position: absolute;
-    top: 0;
-    width: 400px;
-    border: none;
-    outline: none;
-    background: #171717;
-    padding: 15px 20px;
-    box-sizing: border-box;
-    border-radius: 6px;
-    font-family: 'Source Code Pro', sans-serif;
-    font-weight: 400;
+  position: absolute;
+  top: 30px;
+  width: 500px;
+  border: none;
+  outline: none;
+  background: #171717;
+  color: white;
+  padding: 15px 20px;
+  box-sizing: border-box;
+  border-radius: 6px;
+  font-family: 'Source Code Pro', sans-serif;
+  font-weight: 400;
 }
 
 #bookmarksContainer #searchContainer {
-    display: none;
+  display: none;
+  margin-top: 50px;
+  height: calc(100% - 100px);
 }
 
 #bookmarksContainer #searchContainer.show {
-    display: block;
+  display: block;
 }
 
 #bookmarksContainer #searchContainer #searchEmpty {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 20px;
-    font-weight: 300;
+  font-family: 'Open Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 300;
 }
 
 #bookmarksContainer #searchContainer #searchResultsContainer {
-    height: 100%;
-    overflow-y: scroll;
+  height: 100%;
+  overflow-y: scroll;
+  border: 1px solid var(--highlight-color);
+  border-radius: 10px;
 }
 
 #bookmarksContainer #searchContainer #searchResultsContainer::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-#bookmarksContainer #searchContainer .searchResult {
-    width: 500px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 5px 25px;
-    text-overflow: ellipsis;
-    height: 100px;
+#bookmarksContainer #searchContainer .searchItem {
+  width: 600px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 5px 20px;
+  text-overflow: ellipsis;
+  height: 80px;
+  font-weight: 400;
+  box-sizing: border-box;
+  word-break: break-all;
+  cursor: pointer;
+  user-select: none;
+
+  .itemTitle {
+    font-size: 1.1rem;
     font-weight: 400;
-    box-sizing: border-box;
-    word-break: break-all;
-    margin-bottom: 20px;
-    cursor: pointer;
-    user-select: none;
-}
-
-#bookmarksContainer #searchContainer .searchResult .resultTitle {
-    font-size: 14px;
-    margin: 5px 0 10px;
-    pointer-events: none;
-}
-
-#bookmarksContainer #searchContainer .searchResult .resultLink {
-    font-size: 14px;
-    font-weight: 300;
-    pointer-events: none;
+    color: var(--highlight-color);
+    border: none;
+  }
 }
 
 /*  Pinned Bookmarks */
 #pinnedItemsContainer {
-    position: fixed;
-    bottom: 25px;
-    left: 25px;
-    width: 250px;
-    max-height: 300px;
-    overflow-y: scroll;
-    display: none;
-    z-index: 9;
-    border-radius: 10px;
+  position: fixed;
+  bottom: 25px;
+  left: 25px;
+  width: 250px;
+  max-height: 300px;
+  overflow-y: scroll;
+  display: none;
+  z-index: 9;
+  border-radius: 10px;
 }
 
 #pinnedItemsContainer.show {
-    display: block;
+  display: block;
 }
 
 #pinnedItemsContainer::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 #pinnedItemsContainer .bookmarkItem {
-    width: 100%;
-    justify-content: center;
+  width: 100%;
+  justify-content: center;
 }
 
 #pinnedItemsContainer .pinnedTitle {
-    font-weight: 400;
-    font-family: 'Open Sans';
-    padding: 8px 15px 9px 20px;
-    text-transform: uppercase;
-    letter-spacing: 7px;
-    text-align: center;
+  font-weight: 400;
+  font-family: 'Open Sans';
+  padding: 8px 15px 9px 20px;
+  text-transform: uppercase;
+  letter-spacing: 7px;
+  text-align: center;
 }
 
 #pinnedItemsContainer .itemTitle {
-    padding: 0;
+  padding: 0;
 }
 
 #pinnedItemsContainer .bookmarkItem:not(:last-child) .itemTitle,
 .bookmarksContainer .bookmarkItem:not(:last-child) .itemTitle {
-    border-bottom: solid 1px #333333;
+  border-bottom: solid 1px #333333;
 }
 
 #pinnedItemsContainer .tooltip {
-    right: 0;
-    top: 50px;
-    bottom: -35px;
-    top: initial;
+  right: 0;
+  top: 50px;
+  bottom: -35px;
+  top: initial;
 }
 
 .svgConnector {
-    position: absolute;
-    right: 0;
-    top: 0;
-    width: 150px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 150px;
 }
 
 .svgConnector svg {
-    fill: none;
-    stroke: darkturquoise;
-    stroke-width: 1px;
+  fill: none;
+  stroke: darkturquoise;
+  stroke-width: 1px;
 }
 
 #pinnedItemsContainer .bookmarkItem:not(:last-child) .itemTitle,
 #bookmarksContainer .bookmarkItem:not(:last-child) .itemTitle,
 #searchResultsContainer .searchItem:not(:last-child) {
-    border-bottom: solid 1px #333333;
+  border-bottom: solid 1px #333333;
 }
 
 #searchResultsContainer .itemTitle:not(:last-child) {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 
@@ -329,20 +330,20 @@
 #notesBody,
 #noteToggle,
 #searchResultsContainer .searchItem {
-    background: rgba(0, 0, 0, 0.65);
-    color: white;
+  background: rgba(0, 0, 0, 0.65);
+  color: white;
 }
 
 #pinnedItemsContainer .bookmarkItem:not(:last-child) .itemTitle,
 #bookmarksContainer .itemTitle:not(:last-child),
 #searchResultsContainer .itemTitle:not(:last-child) {
-    border-bottom: solid 1px #333333;
+  border-bottom: solid 1px #333333;
 }
 
 #pinnedItemsContainer .itemTitle {
-    color: white;
+  color: white;
 }
 
 .pinnedTitle {
-    background: rgba(0, 0, 0, 0.25) !important;
+  background: rgba(0, 0, 0, 0.25) !important;
 }
